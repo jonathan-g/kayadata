@@ -1,0 +1,200 @@
+# library(magrittr)
+library(tidyverse)
+library(readxl)
+library(stringr)
+library(janitor)
+
+
+mtoe = 1 / 25.2 # quads
+
+kaya_data_files <- list(
+  # Data from World Bank
+  # https://data.worldbank.org/
+  # https://data.worldbank.org/indicator/SP.POP.TOTL
+  pop = system.file("extdata", "API_SP.POP.TOTL_DS2_en_csv_v2.csv",
+                         package = "kayadata"),
+  # Data from World Bank
+  # https://data.worldbank.org/indicator/NY.GDP.MKTP.KD
+  # GDP constant 2010 US dollars
+  # Because PPP adjusted GDP is not available before 1990
+  gdp = system.file("extdata", "API_NY.GDP.MKTP.KD_DS2_en_csv_v2.csv",
+                         package = "kayadata"),
+  # Data from BP Statistical Review of World Energy
+  # https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html
+  energy = system.file("extdata", "bp-statistical-review-of-world-energy-2017-underpinning-data.xlsx",
+                            package = "kayadata")
+)
+
+nation_translations <- list(
+  world_bank = c(", +(Islamic|Arab) +Rep\\. *$" = "",
+                              "^Korea, +Rep\\. *$" = "South Korea",
+                              " +SAR, +China *$" = "",
+                              " +members *$" = "", ", +RB *$" = ""),
+  bp = c("^Total +" = "", "&" = "and", "of which: +" = "",
+                      "^US$" = "United States", "Slovakia" = "Slovak Republic",
+                      "China Hong Kong SAR" = "Hong Kong")
+)
+
+kaya_data = NULL
+
+load_kaya <- function() {
+
+  population = suppressWarnings(suppressMessages(read_csv(kaya_data_files$pop, skip = 4))) %>%
+    clean_names() %>% select(-starts_with('indicator'), -x62) %>%
+    gather(key = year, value = population, -(country_name:country_code)) %>%
+    mutate(year = str_replace_all(year, '^x', '') %>% as.integer(),
+           population = population * 1E-9)
+
+  gdp = suppressWarnings(suppressMessages(read_csv(kaya_data_files$gdp, skip = 4))) %>%
+    clean_names() %>% select(-starts_with('indicator'), -x62) %>%
+    gather(key = year, value = gdp, -(country_name:country_code)) %>%
+    mutate(year = str_replace_all(year, '^x', '') %>% as.integer(),
+           gdp = gdp * 1E-12)
+
+
+  kaya_data = full_join(population, gdp, by = c("country_name", "country_code", "year")) %>%
+    rename(P = population, G = gdp, country = country_name) %>%
+    mutate(country = str_replace_all(country, nation_translations$world_bank),
+           country_code = factor(country_code),
+           g = G / P)
+
+  energy = read_excel(kaya_data_files$energy, "Primary Energy Consumption",
+                      range = "A3:BA94", na = c('', 'NA', "na", "N/A/", "n/a")) %>%
+    clean_names() %>% rename(country = million_tonnes_oil_equivalent) %>%
+    filter(! is.na(country)) %>%
+    gather(key = year, value = primary_energy_mtoe, -country) %>%
+    mutate(year = str_replace(year, "^x", "") %>% as.integer(),
+           country = str_replace_all(country, nation_translations$bp),
+           primary_energy_quads = primary_energy_mtoe * mtoe)
+
+  carbon <- read_excel(kaya_data_files$energy, "Carbon Dioxide Emissions",
+                       range = "A3:BA94", na = c('', 'NA', "na", "N/A/", "n/a")) %>%
+    clean_names() %>% rename(country = million_tonnes_carbon_dioxide) %>%
+    filter(! is.na(country)) %>%
+    gather(key = year, value = mmt_co2, -country) %>%
+    mutate(year = str_replace(year, "^x", "") %>% as.integer(),
+           country = str_replace_all(country, nation_translations$bp),
+           mmtc = mmt_co2 * 12 / (12 + 32))
+
+  energy = inner_join(energy, carbon, by = c('year', 'country')) %>%
+    select(country, year, E = primary_energy_quads, F = mmtc)
+
+  #
+  # P = population in billions
+  # G = world GDP in trillion dollars
+  # E = energy consumption in quads
+  # F = CO2 emissions in million tons of carbon
+  #
+  # g = thousand dollars per person
+  # e = quads per trillion dollars
+  # f = million tons of carbon per quad
+  #
+  kaya_data = kaya_data %>% inner_join(energy, by = c("country", "year")) %>%
+    mutate(country = factor(country)) %>%
+    mutate(e = E / G, f = F / E, ef = e * f)
+
+  exclude_countries <- c('Other Middle East', 'North America')
+
+  world <- c('World')
+  regions <- c('North America')
+
+  kaya_data = kaya_data %>%
+    filter(! country %in% exclude_countries) %>%
+    mutate(geography = ifelse(country %in% world, 'world',
+                              ifelse(country %in% regions, 'region',
+                                     'country')) %>%
+             ordered(levels = c('country', 'region', 'world'))) %>%
+    arrange(desc(geography), country, year)
+
+  kayadata:::kaya_data <- kaya_data
+}
+
+load_top_down <- function() {
+  P <- read_csv('data/World_population_by_region.csv', skip = 4,
+                na = c('NA','N/A','')) %>%
+    rename(nation = X1, r.P = `Growth (2012-2040)`) %>%
+    select(nation, r.P) %>%
+    dplyr::filter(! is.na(nation)) %>%
+    mutate(r.P = r.P %>% str_extract('^.*?(?=%$)') %>% as.numeric() / 100)
+
+  g <- read_csv('data/world_GDP_PPP.csv', skip = 4,
+                na = c('NA','N/A','')) %>%
+    rename(nation = X1, r.g = `Growth (2012-2040)`) %>%
+    select(nation, r.g) %>%
+    dplyr::filter(! is.na(nation)) %>%
+    mutate(r.g = r.g %>% str_extract('^.*?(?=%$)') %>% as.numeric() / 100)
+
+  e <- read_csv('data/World_energy_intensity_by_region.csv', skip = 4,
+                na = c('NA','N/A','')) %>%
+    rename(nation = X1, r.e = `Growth (2012-2040)`) %>%
+    select(nation, r.e) %>%
+    dplyr::filter(! is.na(nation)) %>%
+    mutate(r.e = r.e %>% str_extract('^.*?(?=%$)') %>% as.numeric() / 100)
+
+  top.down <- P %>% full_join(g, by = 'nation') %>%
+    full_join(e, by = 'nation')
+  # top.down <- translate_nations(top.down)
+  invisible(top.down)
+}
+
+load_energy_by_fuel <- function() {
+  fuel_levels <- c('coal', 'gas', 'oil', 'nuclear', 'renewables', 'total')
+  fuel_labels <- c('Coal', 'Natural Gas', 'Oil', 'Nuclear', 'Renewables', 'Total')
+
+  sheet = "Primary Energy - Cons by fuel"
+
+  countries = read_excel(kaya_data_files$energy,  sheet, range = 'A3:A94',
+                         na = c('-', '', 'NA', 'N/A', 'na', 'n/a')) %>%
+    clean_names() %>%
+    rename(country = million_tonnes_oil_equivalent)
+
+  year1 = read_excel(kaya_data_files$energy, sheet, range = "H2", col_names = FALSE) %>%
+    simplify() %>% unname()
+
+  ebf1 = read_excel(kaya_data_files$energy, sheet, range = 'B3:H94',
+                    na = c('-', '', 'NA', 'N/A', 'na', 'n/a')) %>%
+    clean_names() %>%
+    mutate(year = year1)
+
+  year2 = read_excel(kaya_data_files$energy, sheet, range = "O2", col_names = FALSE) %>%
+    simplify() %>% unname()
+
+  ebf2 = read_excel(kaya_data_files$energy, sheet, range = 'I3:O94',
+                              na = c('-', '', 'NA', 'N/A', 'na', 'n/a')) %>%
+    clean_names() %>%
+    mutate(year = year2)
+
+  ebf = bind_rows(ebf1, ebf2) %>%
+    rename(gas = natural_gas, nuclear = nuclear_energy, hydro = hydro_electric,
+           renewables = renew_ables) %>%
+    mutate(renewables = renewables + hydro) %>%
+    select(year, oil, gas, coal, nuclear, renewables)
+
+  energy_by_fuel = bind_rows(countries, countries) %>% bind_cols(ebf) %>%
+    filter(!is.na(country)) %>%
+    mutate(country = str_replace_all(country, nation_translations$bp)) %>%
+    gather(key = fuel, value = quads, -country, -year) %>%
+    mutate(fuel = ordered(fuel, levels = fuel_levels, labels = fuel_labels),
+           quads = ifelse(is.na(quads), 0.0, quads)) %>%
+    group_by(country, year) %>% mutate(pct = 100 * quads / sum(quads, na.rm = T)) %>%
+    ungroup()
+
+  invisible(energy_by_fuel)
+}
+
+kaya_country_list <- function() {
+  load_kaya_if_necessary()
+  levels(kayadata:::kaya_data$country)
+}
+
+country_data <- function(country_name) {
+  load_kaya_if_necessary()
+  kaya_data %>% filter(country == country_name) %>%
+    invisible()
+}
+
+load_kaya_if_necessary <- function() {
+  if (is.null(kayadata:::kaya_data)) {
+    kayadata:::kaya_data <- load_kaya()
+  }
+}
