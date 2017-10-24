@@ -1,12 +1,12 @@
-# library(magrittr)
-library(tidyverse)
-library(readxl)
-library(stringr)
-library(janitor)
+#' Environment for keeping package-level variables
+#' @keywords internal
+kayadata.env <- new.env()
 
-
+#' Conversion factor: quads per MTOE
+#' @keywords internal
 mtoe = 1 / 25.2 # quads
 
+#' List of data files, to look up when loading data
 kaya_data_files <- list(
   # Data from World Bank
   # https://data.worldbank.org/
@@ -25,6 +25,8 @@ kaya_data_files <- list(
                             package = "kayadata")
 )
 
+#' Translations to reconcile different ways of writing nation names in different
+#' databases.
 nation_translations <- list(
   world_bank = c(", +(Islamic|Arab) +Rep\\. *$" = "",
                               "^Korea, +Rep\\. *$" = "South Korea",
@@ -35,8 +37,13 @@ nation_translations <- list(
                       "China Hong Kong SAR" = "Hong Kong")
 )
 
-kaya_data = NULL
+#' Package variable for holding Kaya data tibble
+kayadata.env$secret_kaya_data = NULL
+#' Package variable for holding fuel mix data tibble
+kayadata.env$secret_energy_by_fuel = NULL
 
+#' Load Kaya-Identity data and store it to kayadata:::kaya_data
+#'
 load_kaya <- function() {
 
   population = suppressWarnings(suppressMessages(read_csv(kaya_data_files$pop, skip = 4))) %>%
@@ -106,37 +113,38 @@ load_kaya <- function() {
              ordered(levels = c('country', 'region', 'world'))) %>%
     arrange(desc(geography), country, year)
 
-  kayadata:::kaya_data <- kaya_data
+  kayadata.env$secret_kaya_data <- kaya_data
 }
 
-load_top_down <- function() {
-  P <- read_csv('data/World_population_by_region.csv', skip = 4,
-                na = c('NA','N/A','')) %>%
-    rename(nation = X1, r.P = `Growth (2012-2040)`) %>%
-    select(nation, r.P) %>%
-    dplyr::filter(! is.na(nation)) %>%
-    mutate(r.P = r.P %>% str_extract('^.*?(?=%$)') %>% as.numeric() / 100)
+# load_top_down <- function() {
+#   P <- read_csv('data/World_population_by_region.csv', skip = 4,
+#                 na = c('NA','N/A','')) %>%
+#     rename(nation = X1, r.P = `Growth (2012-2040)`) %>%
+#     select(nation, r.P) %>%
+#     dplyr::filter(! is.na(nation)) %>%
+#     mutate(r.P = r.P %>% str_extract('^.*?(?=%$)') %>% as.numeric() / 100)
+#
+#   g <- read_csv('data/world_GDP_PPP.csv', skip = 4,
+#                 na = c('NA','N/A','')) %>%
+#     rename(nation = X1, r.g = `Growth (2012-2040)`) %>%
+#     select(nation, r.g) %>%
+#     dplyr::filter(! is.na(nation)) %>%
+#     mutate(r.g = r.g %>% str_extract('^.*?(?=%$)') %>% as.numeric() / 100)
+#
+#   e <- read_csv('data/World_energy_intensity_by_region.csv', skip = 4,
+#                 na = c('NA','N/A','')) %>%
+#     rename(nation = X1, r.e = `Growth (2012-2040)`) %>%
+#     select(nation, r.e) %>%
+#     dplyr::filter(! is.na(nation)) %>%
+#     mutate(r.e = r.e %>% str_extract('^.*?(?=%$)') %>% as.numeric() / 100)
+#
+#   top.down <- P %>% full_join(g, by = 'nation') %>%
+#     full_join(e, by = 'nation')
+#   # top.down <- translate_nations(top.down)
+#   invisible(top.down)
+# }
 
-  g <- read_csv('data/world_GDP_PPP.csv', skip = 4,
-                na = c('NA','N/A','')) %>%
-    rename(nation = X1, r.g = `Growth (2012-2040)`) %>%
-    select(nation, r.g) %>%
-    dplyr::filter(! is.na(nation)) %>%
-    mutate(r.g = r.g %>% str_extract('^.*?(?=%$)') %>% as.numeric() / 100)
-
-  e <- read_csv('data/World_energy_intensity_by_region.csv', skip = 4,
-                na = c('NA','N/A','')) %>%
-    rename(nation = X1, r.e = `Growth (2012-2040)`) %>%
-    select(nation, r.e) %>%
-    dplyr::filter(! is.na(nation)) %>%
-    mutate(r.e = r.e %>% str_extract('^.*?(?=%$)') %>% as.numeric() / 100)
-
-  top.down <- P %>% full_join(g, by = 'nation') %>%
-    full_join(e, by = 'nation')
-  # top.down <- translate_nations(top.down)
-  invisible(top.down)
-}
-
+#' Load energy_by_fuel data and store it to kayadata:::energy_by_fuel
 load_energy_by_fuel <- function() {
   fuel_levels <- c('coal', 'gas', 'oil', 'nuclear', 'renewables', 'total')
   fuel_labels <- c('Coal', 'Natural Gas', 'Oil', 'Nuclear', 'Renewables', 'Total')
@@ -176,25 +184,60 @@ load_energy_by_fuel <- function() {
     gather(key = fuel, value = quads, -country, -year) %>%
     mutate(fuel = ordered(fuel, levels = fuel_levels, labels = fuel_labels),
            quads = ifelse(is.na(quads), 0.0, quads)) %>%
-    group_by(country, year) %>% mutate(pct = 100 * quads / sum(quads, na.rm = T)) %>%
+    group_by(country, year) %>%
+    mutate(pct = 100 * quads / sum(quads, na.rm = T)) %>%
     ungroup()
 
-  invisible(energy_by_fuel)
+  kayadata.env$secret_energy_by_fuel <- energy_by_fuel
 }
 
+#' Get a list of countries in the Kaya data
+#'
+#' @return a vector of country names
+#' @export
 kaya_country_list <- function() {
   load_kaya_if_necessary()
-  levels(kayadata:::kaya_data$country)
+  levels(kayadata.env$secret_kaya_data$country) %>%
+    as.character()
 }
 
-country_data <- function(country_name) {
+#' Get Kaya data for a country
+#'
+#' @param country_name The name of a country to look up
+#'
+#' @return a tibble of Kaya identity data for the country
+#' @export
+kaya_data <- function(country_name) {
   load_kaya_if_necessary()
-  kaya_data %>% filter(country == country_name) %>%
+  kayadata.env$secret_kaya_data %>%
+    filter(country == country_name) %>%
+  select(-country_code, -geography) %>%
     invisible()
 }
 
+#' Get fuel mix for a country
+#'
+#' @param country_name The name of a country to look up
+#'
+#' @return a tibble of fuel mix for the country.
+#'   That is, the number of quads of each fuel and the
+#'   fraction of total primary energy coming from that fuel.
+#' @export
+fuel_mix <- function(country_name) {
+  load_kaya_if_necessary()
+  kayadata.env$secret_energy_by_fuel %>%
+    filter(country == country_name) %>%
+    top_n(1, year) %>%
+    invisible()
+}
+
+#' Load Kaya data and fuel mix data if necessary
 load_kaya_if_necessary <- function() {
-  if (is.null(kayadata:::kaya_data)) {
-    kayadata:::kaya_data <- load_kaya()
+  if (is.null(kayadata.env$secret_kaya_data)) {
+    load_kaya()
+  }
+  if (is.null(kayadata.env$secret_energy_by_fuel)) {
+    load_energy_by_fuel()
   }
 }
+
