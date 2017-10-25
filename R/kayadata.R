@@ -41,9 +41,9 @@
 #' }
 #'
 #'
-#' @import tidyverse
-#' @import janitor
-#' @import stringr
-#' @import readxl
+#' @importFrom magrittr %>%
+#' @importFrom dplyr filter
+#' @import dplyr
+#' @import ggplot2
 #'
 NULL

@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^README\.Rmd$
 ^LICENSE\.R?md$
+^raw_data/
+^prep_tools/

@@ -1,9 +1,9 @@
-#' Environment for keeping package-level variables
-#' @keywords internal
-kayadata.env <- new.env()
+library(tidyverse)
+library(stringr)
+library(readxl)
+library(janitor)
 
 #' Conversion factor: quads per MTOE
-#' @keywords internal
 mtoe = 1 / 25.2 # quads
 
 #' List of data files, to look up when loading data
@@ -11,18 +11,15 @@ kaya_data_files <- list(
   # Data from World Bank
   # https://data.worldbank.org/
   # https://data.worldbank.org/indicator/SP.POP.TOTL
-  pop = system.file("extdata", "API_SP.POP.TOTL_DS2_en_csv_v2.csv",
-                         package = "kayadata"),
+  pop = file.path("raw_data", "API_SP.POP.TOTL_DS2_en_csv_v2.csv"),
   # Data from World Bank
   # https://data.worldbank.org/indicator/NY.GDP.MKTP.KD
   # GDP constant 2010 US dollars
   # Because PPP adjusted GDP is not available before 1990
-  gdp = system.file("extdata", "API_NY.GDP.MKTP.KD_DS2_en_csv_v2.csv",
-                         package = "kayadata"),
+  gdp = file.path("raw_data", "API_NY.GDP.MKTP.KD_DS2_en_csv_v2.csv"),
   # Data from BP Statistical Review of World Energy
   # https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html
-  energy = system.file("extdata", "bp-statistical-review-of-world-energy-2017-underpinning-data.xlsx",
-                            package = "kayadata")
+  energy = file.path("raw_data", "bp-statistical-review-of-world-energy-2017-underpinning-data.xlsx")
 )
 
 #' Translations to reconcile different ways of writing nation names in different
@@ -37,14 +34,9 @@ nation_translations <- list(
                       "China Hong Kong SAR" = "Hong Kong")
 )
 
-#' Package variable for holding Kaya data tibble
-kayadata.env$secret_kaya_data = NULL
-#' Package variable for holding fuel mix data tibble
-kayadata.env$secret_energy_by_fuel = NULL
-
-#' Load Kaya-Identity data and store it to kayadata:::kaya_data
+#' Load Kaya-Identity data
 #'
-load_kaya <- function() {
+prepare_kaya <- function() {
 
   population = suppressWarnings(suppressMessages(read_csv(kaya_data_files$pop, skip = 4))) %>%
     clean_names() %>% select(-starts_with('indicator'), -x62) %>%
@@ -113,7 +105,7 @@ load_kaya <- function() {
              ordered(levels = c('country', 'region', 'world'))) %>%
     arrange(desc(geography), country, year)
 
-  kayadata.env$secret_kaya_data <- kaya_data
+  invisible(kaya_data)
 }
 
 # load_top_down <- function() {
@@ -144,8 +136,8 @@ load_kaya <- function() {
 #   invisible(top.down)
 # }
 
-#' Load energy_by_fuel data and store it to kayadata:::energy_by_fuel
-load_energy_by_fuel <- function() {
+#' Load fuel_mix data
+prepare_fuel_mix <- function() {
   fuel_levels <- c('coal', 'gas', 'oil', 'nuclear', 'renewables', 'total')
   fuel_labels <- c('Coal', 'Natural Gas', 'Oil', 'Nuclear', 'Renewables', 'Total')
 
@@ -178,7 +170,7 @@ load_energy_by_fuel <- function() {
     mutate(renewables = renewables + hydro) %>%
     select(year, oil, gas, coal, nuclear, renewables)
 
-  energy_by_fuel = bind_rows(countries, countries) %>% bind_cols(ebf) %>%
+  fuel_mix = bind_rows(countries, countries) %>% bind_cols(ebf) %>%
     filter(!is.na(country)) %>%
     mutate(country = str_replace_all(country, nation_translations$bp)) %>%
     gather(key = fuel, value = quads, -country, -year) %>%
@@ -188,56 +180,13 @@ load_energy_by_fuel <- function() {
     mutate(pct = 100 * quads / sum(quads, na.rm = T)) %>%
     ungroup()
 
-  kayadata.env$secret_energy_by_fuel <- energy_by_fuel
+  invisible(fuel_mix)
 }
 
-#' Get a list of countries in the Kaya data
-#'
-#' @return a vector of country names
-#' @export
-kaya_country_list <- function() {
-  load_kaya_if_necessary()
-  levels(kayadata.env$secret_kaya_data$country) %>%
-    as.character()
+prepare_data_files = function() {
+  kaya_data = prepare_kaya()
+  fuel_mix = prepare_fuel_mix()
+  devtools::use_data(kaya_data, fuel_mix)
 }
 
-#' Get Kaya data for a country
-#'
-#' @param country_name The name of a country to look up
-#'
-#' @return a tibble of Kaya identity data for the country
-#' @export
-kaya_data <- function(country_name) {
-  load_kaya_if_necessary()
-  kayadata.env$secret_kaya_data %>%
-    filter(country == country_name) %>%
-  select(-country_code, -geography) %>%
-    invisible()
-}
-
-#' Get fuel mix for a country
-#'
-#' @param country_name The name of a country to look up
-#'
-#' @return a tibble of fuel mix for the country.
-#'   That is, the number of quads of each fuel and the
-#'   fraction of total primary energy coming from that fuel.
-#' @export
-fuel_mix <- function(country_name) {
-  load_kaya_if_necessary()
-  kayadata.env$secret_energy_by_fuel %>%
-    filter(country == country_name) %>%
-    top_n(1, year) %>%
-    invisible()
-}
-
-#' Load Kaya data and fuel mix data if necessary
-load_kaya_if_necessary <- function() {
-  if (is.null(kayadata.env$secret_kaya_data)) {
-    load_kaya()
-  }
-  if (is.null(kayadata.env$secret_energy_by_fuel)) {
-    load_energy_by_fuel()
-  }
-}
-
+prepare_data_files()
