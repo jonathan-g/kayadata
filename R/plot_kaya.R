@@ -12,7 +12,7 @@
 #' @return A plot oblect.
 #'
 #' @export
-kaya_plot <- function(kaya_data, variable, start_year = NULL, y_lab = NULL) {
+plot_kaya <- function(kaya_data, variable, start_year = NULL, y_lab = NULL) {
   labels <- c(P =  'Population (billions)',
               G =  'Gross Domestic Product ($ trillion)',
               E =  'Energy consumption (quads)',

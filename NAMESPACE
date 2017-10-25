@@ -3,7 +3,7 @@
 export(get_fuel_mix)
 export(get_kaya_data)
 export(kaya_country_list)
-export(kaya_plot)
+export(plot_kaya)
 import(dplyr)
 import(ggplot2)
 importFrom(dplyr,filter)
