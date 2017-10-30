@@ -91,7 +91,8 @@ read_top_down_var <- function(var, file_name) {
   regions = x$regions
 
   td_translations = c(
-    " +/a" = ""
+    " +/a" = "",
+    "^Total " = ""
   )
 
   td_df = read_excel(file.path("raw_data", file_name), range = "A3:J29") %>%
@@ -105,6 +106,10 @@ read_top_down_var <- function(var, file_name) {
   td_df = td_df %>% filter(region != "Other") %>% bind_rows(td_others)
 
   td = tibble()
+
+  for (rgn in c("World", "OECD", "Non-OECD")) {
+    td = bind_rows(td, filter(td_df, region == rgn) %>% mutate(country = rgn))
+  }
 
   for (ctry in names(td_countries)) {
     cx = td_countries[ctry]
