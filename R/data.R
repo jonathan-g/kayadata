@@ -40,3 +40,36 @@
 #' @source \url{https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html}
 "fuel_mix"
 
+#' Top-down projections of future Kaya variables for many countries
+#'
+#' A dataset containing top-down projections of P, G, and E, from the
+#' EIA's International Energy Outlook 2017.
+#'
+#' @format A tibble containing 336 rows and 5 variables
+#' \describe{
+#'    \item{country}{Country name}
+#'    \item{year}{The year}
+#'   \item{P}{Population, in billions}
+#'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars}
+#'   \item{E}{Total primary energy consumption, in quads}
+#'   \item{F}{Total CO2 emissions, in millions of metric tons}
+#' }
+#' @source \url{https://www.eia.gov/outlooks/ieo/ieo_tables.php}
+"td_values"
+
+#' Top-down projections of trends in Kaya variables for many countries
+#'
+#' A dataset containing top-down projections of trends in P, G, and E,
+#' from the EIA's International Energy Outlook 2017.
+#'
+#' @format A tibble containing 42 rows and 5 variables
+#' \describe{
+#'    \item{country}{Country name}
+#'    \item{year}{The year}
+#'   \item{P}{Trend in population, in percent per year}
+#'   \item{G}{Trend in gross demestic product, in percent per year}
+#'   \item{E}{Trend in total primary energy consumption, in percent per year}
+#'   \item{F}{Trend in CO2 emissions, in percent per year}
+#' }
+#' @source \url{https://www.eia.gov/outlooks/ieo/ieo_tables.php}
+"td_trends"

@@ -26,12 +26,15 @@ kaya_data_files <- list(
 #' databases.
 nation_translations <- list(
   world_bank = c(", +(Islamic|Arab) +Rep\\. *$" = "",
-                              "^Korea, +Rep\\. *$" = "South Korea",
-                              " +SAR, +China *$" = "",
-                              " +members *$" = "", ", +RB *$" = ""),
+                 "^Korea, +Rep\\. *$" = "South Korea",
+                 "^Russian Federation" = "Russia",
+                 "^Slovak Republic$" = "Slovakia",
+                 " +SAR, +China *$" = "",
+                 " +members *$" = "", ", +RB *$" = ""),
   bp = c("^Total +" = "", "&" = "and", "of which: +" = "",
-                      "^US$" = "United States", "Slovakia" = "Slovak Republic",
-                      "China Hong Kong SAR" = "Hong Kong")
+         "^US$" = "United States",
+         "^Russian Federation" = "Russia",
+         "China Hong Kong SAR" = "Hong Kong")
 )
 
 #' Load Kaya-Identity data
@@ -160,7 +163,7 @@ prepare_fuel_mix <- function() {
     simplify() %>% unname()
 
   ebf2 = read_excel(kaya_data_files$energy, sheet, range = 'I3:O94',
-                              na = c('-', '', 'NA', 'N/A', 'na', 'n/a')) %>%
+                    na = c('-', '', 'NA', 'N/A', 'na', 'n/a')) %>%
     clean_names() %>%
     mutate(year = year2)
 

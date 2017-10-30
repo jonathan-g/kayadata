@@ -1,0 +1,14 @@
+---
+title: "kayadata"
+author: "Jonathan Gilligan"
+date: "October 30, 2017"
+output: 
+  md_document:
+    variant: markdown_github
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+# kayadata
+
+This package loads Kaya-identity data, synthesized from several sources.
