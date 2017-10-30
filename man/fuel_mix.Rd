@@ -9,8 +9,10 @@
   \item{country}{Country name}
   \item{year}{The year}
   \item{fuel}{The fuel: Coal, Gas, Oil, Nuclear, and Renewables}
-  \item{quads}{The number of quads of that fuel consumed in the given country and year}
-  \item{pct}{The percentage of that country's total primary energy consumption from the fuel}
+  \item{quads}{The number of quads of that fuel consumed in the given country
+               and year}
+  \item{pct}{The percentage of that country's total primary energy consumption
+             from the fuel}
 }}
 \source{
 \url{https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html}

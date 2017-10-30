@@ -24,11 +24,14 @@ kaya_country_list <- function() {
 #'   \item{P}{Population, in billions}
 #'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
 #'   \item{E}{Total primary energy consumption, in quads}
-#'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of tons}
+#'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric
+#'            tons of carbon}
 #'   \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per person.}
 #'   \item{e}{Energy intensity of the economy, in quads per trillion dollars.}
-#'   \item{f}{Emissions intensity of the energy supply, in million tons per quad.}
-#'   \item{ef}{Emissions intensity of the economy, in tons per million dollars of GDP.}
+#'   \item{f}{Emissions intensity of the energy supply, in million metric tons
+#'            of carbon per quad.}
+#'   \item{ef}{Emissions intensity of the economy, in metric tons of carbon per
+#'             million dollars of GDP.}
 #' }
 #' @export
 get_kaya_data <- function(country_name) {
@@ -76,11 +79,14 @@ top_down_trend <- function(country_name) {
 #'   \item{P}{Population, in billions}
 #'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
 #'   \item{E}{Total primary energy consumption, in quads}
-#'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of tons}
+#'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric
+#'            tons of carbon}
 #'   \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per person.}
 #'   \item{e}{Energy intensity of the economy, in quads per trillion dollars.}
-#'   \item{f}{Emissions intensity of the energy supply, in million tons per quad.}
-#'   \item{ef}{Emissions intensity of the economy, in tons per million dollars of GDP.}
+#'   \item{f}{Emissions intensity of the energy supply, in million metric tons
+#'            of carbon per quad.}
+#'   \item{ef}{Emissions intensity of the economy, in metric tons of carbon per
+#'             million dollars of GDP.}
 #' }
 #' @export
 top_down_values <- function(country_name) {

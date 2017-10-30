@@ -11,11 +11,13 @@
 #'   \item{P}{Population, in billions}
 #'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
 #'   \item{E}{Total primary energy consumption, in quads}
-#'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of tons}
+#'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of tons of carbon}
 #'   \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per person.}
 #'   \item{e}{Energy intensity of the economy, in quads per trillion dollars.}
-#'   \item{f}{Emissions intensity of the energy supply, in million tons per quad.}
-#'   \item{ef}{Emissions intensity of the economy, in tons per million dollars of GDP.}
+#'   \item{f}{Emissions intensity of the energy supply, in million metric tons
+#'            of carbon per quad.}
+#'   \item{ef}{Emissions intensity of the economy, in metric tons of carbon per
+#'             million dollars of GDP.}
 #' }
 #' @source \url{https://data.worldbank.org/indicator/SP.POP.TOTL},
 #' \url{https://data.worldbank.org/indicator/NY.GDP.MKTP.KD}, and
@@ -34,8 +36,10 @@
 #'   \item{country}{Country name}
 #'   \item{year}{The year}
 #'   \item{fuel}{The fuel: Coal, Gas, Oil, Nuclear, and Renewables}
-#'   \item{quads}{The number of quads of that fuel consumed in the given country and year}
-#'   \item{pct}{The percentage of that country's total primary energy consumption from the fuel}
+#'   \item{quads}{The number of quads of that fuel consumed in the given country
+#'                and year}
+#'   \item{pct}{The percentage of that country's total primary energy consumption
+#'              from the fuel}
 #' }
 #' @source \url{https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html}
 "fuel_mix"
@@ -52,7 +56,7 @@
 #'   \item{P}{Population, in billions}
 #'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars}
 #'   \item{E}{Total primary energy consumption, in quads}
-#'   \item{F}{Total CO2 emissions, in millions of metric tons}
+#'   \item{F}{Total CO2 emissions, in millions of metric tons of carbon}
 #' }
 #' @source \url{https://www.eia.gov/outlooks/ieo/ieo_tables.php}
 "td_values"
