@@ -1,4 +1,5 @@
-globalVariables(c("in_range"))
+globalVariables(c("in_range", "fuel", "quads", "pct", "label", "spread",
+                  "qmin", "qmax"))
 
 
 #' Plot kaya-identity variable
@@ -74,4 +75,39 @@ plot_kaya <- function(kaya_data, variable,
           axis.title.x = element_text(vjust=-0.1),
           legend.key = element_rect(color = NA))
   p
+}
+
+
+#' Plot fuel mix
+#'
+#' @param fuel_mix A tibble with the mixture of fuels:
+#' \describe{
+#'   \item{fuel}{The name of the fuel}
+#'   \item{quads}{The number of quads per year the country consumes}
+#'   \item{pct}{The percentage of the country's energy that comes from that fuel}
+#' }
+#' @return A plot oblect.
+#'
+#' @export
+plot_fuel_mix <- function(fuel_mix) {
+  fd <- fuel_mix %>%
+    arrange(fuel) %>%
+    mutate(qmin = cumsum(lag(quads, default=0)), qmax = cumsum(quads))
+  labels <- fd %>% mutate(label = paste0(fuel, ": ", round(quads,2), " quads (", round(pct,1), "%)")) %>%
+    arrange(fuel) %>% select(fuel, label) %>%
+    spread(key = fuel, value = label) %>% unlist()
+  if (FALSE) {
+    message(paste0(levels(fd$fuel), collapse=", "))
+  }
+  ggplot(fd, aes(ymin = qmin, ymax = qmax, fill = fuel)) +
+    geom_rect(xmin = 2, xmax = 4) +
+    coord_polar(theta = "y") +
+    xlim(c(0,4)) +
+    scale_fill_manual(values = c(Coal = '#e31a1c', 'Natural Gas' = '#fdbf6f', 'Oil' = '#ff7f00',
+                                 Nuclear = '#b2df8a', Renewables = '#33a02c', Total = '#a6cee3'),
+                      breaks = names(labels), labels = labels, name = "Fuel") +
+    theme_bw(base_size = 20) +
+    theme(panel.grid=element_blank(),
+          axis.text=element_blank(),
+          axis.ticks=element_blank())
 }
