@@ -67,7 +67,7 @@ top_down_trend <- function(country_name) {
   td_trends %>%
     dplyr::filter(country == country_name) %>%
     mutate(g = G - P, e = E - G, f = F - E, ef = F - G) %>%
-    select(country, year, P, G, g, E, F, e, f, ef) %>%
+    select(country, P, G, g, E, F, e, f, ef) %>%
   invisible()
 }
 

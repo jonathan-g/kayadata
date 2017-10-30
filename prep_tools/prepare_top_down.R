@@ -92,10 +92,17 @@ read_top_down_var <- function(var, file_name) {
 
   td_translations = c(
     " +/a" = "",
-    "^Total " = ""
+    "^Total *" = ""
   )
 
-  td_df = read_excel(file.path("raw_data", file_name), range = "A3:J29") %>%
+  last_line = c(ieotab_1.xls = 29,
+                ieotab_3.xls = 30,
+                ieotab_10.xlsx = 30,
+                ieotab_14.xlsx = 31)
+
+  range = str_c("A3:J", last_line[file_name])
+
+  td_df = read_excel(file.path("raw_data", file_name), range = range) %>%
     clean_names() %>% filter(! is.na(x2015)) %>%
     mutate(region = str_replace_all(region, td_translations)) %>%
     rename(trend = average_annual_percent_change_2015_50)
