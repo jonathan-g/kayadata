@@ -126,7 +126,11 @@ top_down_values <- function(country_name) {
 #' @export
 project_top_down <- function(country_name, year) {
   y = year
-  td_values %>%
+
+  stopifnot(year >= min(td_values$year, na.rm=T) &&
+              year <= max(td_values$year, na.rm=T))
+
+    td_values %>%
     dplyr::filter(country == country_name) %>%
     mutate(g = G/P, e = E/G, f = F/E, ef = F/G) %>%
     summarize_at(vars(-country, -year), funs(approx(x = year, y = ., xout = y)$y)) %>%
