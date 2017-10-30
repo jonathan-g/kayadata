@@ -188,6 +188,7 @@ generation_capacity <- function() {
 #' produce one quad of energy
 #'
 #' @return The number of megawatts equivalent to one quad per year.
+#' @export
 megawatts_per_quad <- function() {
   1.1E4
 }
