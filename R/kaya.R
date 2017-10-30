@@ -67,7 +67,8 @@ top_down_trend <- function(country_name) {
   td_trends %>%
     dplyr::filter(country == country_name) %>%
     mutate(g = G - P, e = E - G, f = F - E, ef = F - G) %>%
-    invisible()
+    select(country, year, P, G, g, E, F, e, f, ef) %>%
+  invisible()
 }
 
 #' Get top-down projections of Kaya variables for a country
@@ -93,5 +94,6 @@ top_down_values <- function(country_name) {
   td_values %>%
     dplyr::filter(country == country_name) %>%
     mutate(g = G/P, e = E/G, f = F/E, ef = F/G) %>%
+    select(country, year, P, G, g, E, F, e, f, ef) %>%
     invisible()
 }
