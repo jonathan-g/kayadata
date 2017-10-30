@@ -12,6 +12,8 @@ get_kaya_data(country_name)
 \value{
 a tibble of Kaya identity data for the country:
 \describe{
+  \item{country}{The name of the country}
+  \item{year}{The year}
   \item{P}{Population, in billions}
   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
   \item{E}{Total primary energy consumption, in quads}

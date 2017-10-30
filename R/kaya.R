@@ -21,6 +21,8 @@ kaya_country_list <- function() {
 #'
 #' @return a tibble of Kaya identity data for the country:
 #' \describe{
+#'   \item{country}{The name of the country}
+#'   \item{year}{The year}
 #'   \item{P}{Population, in billions}
 #'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
 #'   \item{E}{Total primary energy consumption, in quads}
@@ -77,6 +79,7 @@ top_down_trend <- function(country_name) {
 #'
 #' @return a tibble of values for P, G, E, F, g, e, f, and ef for the country:
 #' \describe{
+#'   \item{country}{The name of the country}
 #'   \item{P}{Population, in billions}
 #'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
 #'   \item{E}{Total primary energy consumption, in quads}
@@ -97,6 +100,41 @@ top_down_values <- function(country_name) {
     select(country, year, P, G, g, E, F, e, f, ef) %>%
     invisible()
 }
+
+#' Get top-down projections of Kaya variables for a country for a given year
+#'
+#' @param country_name The name of a country to look up
+#'
+#' @param year The year to project to
+#'
+#' @return a tibble of values for P, G, E, F, g, e, f, and ef for the country:
+#' \describe{
+#'   \item{country}{The name of the country}
+#'   \item{year}{The year}
+#'   \item{P}{Population, in billions}
+#'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
+#'   \item{E}{Total primary energy consumption, in quads}
+#'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric
+#'            tons }
+#'   \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per person.}
+#'   \item{e}{Energy intensity of the economy, in quads per trillion dollars.}
+#'   \item{f}{Emissions intensity of the energy supply, in million metric tons
+#'            per quad.}
+#'   \item{ef}{Emissions intensity of the economy, in metric tons per
+#'             million dollars of GDP.}
+#' }
+#' @export
+project_top_down <- function(country_name, year) {
+  y = year
+  td_values %>%
+    dplyr::filter(country == country_name) %>%
+    mutate(g = G/P, e = E/G, f = F/E, ef = F/G) %>%
+    summarize_at(vars(-country, -year), funs(approx(x = year, y = ., xout = y)$y)) %>%
+    mutate(country = country_name, year = y) %>%
+    select(country, year, P, G, g, E, F, e, f, ef) %>%
+    invisible()
+}
+
 
 #' Get emission factors for different energy sources
 #'
