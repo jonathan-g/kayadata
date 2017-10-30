@@ -149,7 +149,9 @@ emissions_factors <- function() {
   tibble(
     fuel = c("Coal", "Oil", "Natural Gas", "Nuclear", "Renewables"),
     emission_factor = c(94.4, 70.0, 53.1, 0.0, 0.0)
-  )
+  ) %>%
+    mutate(fuel = ordered(fuel, levels = c("Coal", "Natural Gas", "Oil",
+                                           "Nuclear", "Renewables")))
 }
 
 #' Get power output from generation sources
