@@ -43,13 +43,13 @@ prepare_kaya <- function() {
 
   population = suppressWarnings(suppressMessages(read_csv(kaya_data_files$pop, skip = 4))) %>%
     clean_names() %>% select(-starts_with('indicator'), -x62) %>%
-    gather(key = year, value = population, -(country_name:country_code)) %>%
+    tidyr::gather(key = year, value = population, -(country_name:country_code)) %>%
     mutate(year = str_replace_all(year, '^x', '') %>% as.integer(),
            population = population * 1E-9)
 
   gdp = suppressWarnings(suppressMessages(read_csv(kaya_data_files$gdp, skip = 4))) %>%
     clean_names() %>% select(-starts_with('indicator'), -x62) %>%
-    gather(key = year, value = gdp, -(country_name:country_code)) %>%
+    tidyr::gather(key = year, value = gdp, -(country_name:country_code)) %>%
     mutate(year = str_replace_all(year, '^x', '') %>% as.integer(),
            gdp = gdp * 1E-12)
 
@@ -64,7 +64,7 @@ prepare_kaya <- function() {
                       range = "A3:BA94", na = c('', 'NA', "na", "N/A/", "n/a")) %>%
     clean_names() %>% rename(country = million_tonnes_oil_equivalent) %>%
     filter(! is.na(country)) %>%
-    gather(key = year, value = primary_energy_mtoe, -country) %>%
+    tidyr::gather(key = year, value = primary_energy_mtoe, -country) %>%
     mutate(year = str_replace(year, "^x", "") %>% as.integer(),
            country = str_replace_all(country, nation_translations$bp),
            primary_energy_quads = primary_energy_mtoe * mtoe)
@@ -73,7 +73,7 @@ prepare_kaya <- function() {
                        range = "A3:BA94", na = c('', 'NA', "na", "N/A/", "n/a")) %>%
     clean_names() %>% rename(country = million_tonnes_carbon_dioxide) %>%
     filter(! is.na(country)) %>%
-    gather(key = year, value = mmt_co2, -country) %>%
+    tidyr::gather(key = year, value = mmt_co2, -country) %>%
     mutate(year = str_replace(year, "^x", "") %>% as.integer(),
            country = str_replace_all(country, nation_translations$bp),
            mmtc = mmt_co2 * 12 / (12 + 32))
@@ -148,7 +148,7 @@ prepare_fuel_mix <- function() {
   fuel_mix = bind_rows(countries, countries) %>% bind_cols(ebf) %>%
     filter(!is.na(country)) %>%
     mutate(country = str_replace_all(country, nation_translations$bp)) %>%
-    gather(key = fuel, value = quads, -country, -year) %>%
+    tidyr::gather(key = fuel, value = quads, -country, -year) %>%
     mutate(fuel = ordered(fuel, levels = fuel_levels, labels = fuel_labels),
            quads = ifelse(is.na(quads), 0.0, quads)) %>%
     group_by(country, year) %>%

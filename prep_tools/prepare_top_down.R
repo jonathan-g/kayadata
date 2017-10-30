@@ -132,7 +132,7 @@ read_top_down_var <- function(var, file_name) {
   }
 
   tdx = td %>% select(-region, -trend) %>%
-    gather_(key = "year", value = "value", select_vars(names(.), -country)) %>%
+    tidyr::gather_(key = "year", value = "value", select_vars(names(.), -country)) %>%
     mutate(year = str_replace(year, "^x", "") %>% as.integer(), variable = var)
 
   td_trend = td %>% select(country, trend) %>% mutate(variable = var)
@@ -155,9 +155,9 @@ prepare_top_down <- function() {
     td_trends = bind_rows(td_trends, td$trend)
   }
 
-  td_values = spread(td_values, key = variable, value = value) %>%
+  td_values = tidyr::spread(td_values, key = variable, value = value) %>%
     mutate(G = G / 1000, P = P / 1000)
-  td_trends = spread(td_trends, key = variable, value = trend)
+  td_trends = tidyr::spread(td_trends, key = variable, value = trend)
 
   save(td_values, file = file.path("data", "td_values.rda"))
   save(td_trends, file = file.path("data", "td_trends.rda"))

@@ -8,6 +8,7 @@ Description: Loads Kaya Identity Data.
 License: MIT + file LICENSE
 Depends:
   dplyr   (>= 0.7),
+  tidyr   (>= 0.7),
   ggplot2 (>= 2.2),
   R       (>= 3.4)
 Imports:

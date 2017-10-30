@@ -1,5 +1,5 @@
-globalVariables(c("in_range", "fuel", "quads", "pct", "label", "spread",
-                  "qmin", "qmax"))
+globalVariables(c("in_range", "fuel", "quads", "pct", "label",
+                  "qmin", "qmax", "."))
 
 
 #' Plot kaya-identity variable
@@ -95,7 +95,7 @@ plot_fuel_mix <- function(fuel_mix) {
     mutate(qmin = cumsum(lag(quads, default=0)), qmax = cumsum(quads))
   labels <- fd %>% mutate(label = paste0(fuel, ": ", round(quads,2), " quads (", round(pct,1), "%)")) %>%
     arrange(fuel) %>% select(fuel, label) %>%
-    spread(key = fuel, value = label) %>% unlist()
+    tidyr::spread(key = fuel, value = label) %>% unlist()
   if (FALSE) {
     message(paste0(levels(fd$fuel), collapse=", "))
   }
