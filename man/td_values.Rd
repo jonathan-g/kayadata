@@ -11,7 +11,7 @@
   \item{P}{Population, in billions}
   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars}
   \item{E}{Total primary energy consumption, in quads}
-  \item{F}{Total CO2 emissions, in millions of metric tons of carbon}
+  \item{F}{Total CO2 emissions, in millions of metric tons}
 }}
 \source{
 \url{https://www.eia.gov/outlooks/ieo/ieo_tables.php}

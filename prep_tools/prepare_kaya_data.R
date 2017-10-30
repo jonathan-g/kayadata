@@ -79,7 +79,7 @@ prepare_kaya <- function() {
            mmtc = mmt_co2 * 12 / (12 + 32))
 
   energy = inner_join(energy, carbon, by = c('year', 'country')) %>%
-    select(country, year, E = primary_energy_quads, F = mmtc)
+    select(country, year, E = primary_energy_quads, F = mmt_co2)
 
   #
   # P = population in billions

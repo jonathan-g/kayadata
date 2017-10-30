@@ -16,12 +16,12 @@ a tibble of values for P, G, E, F, g, e, f, and ef for the country:
   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
   \item{E}{Total primary energy consumption, in quads}
   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric
-           tons of carbon}
+           tons }
   \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per person.}
   \item{e}{Energy intensity of the economy, in quads per trillion dollars.}
   \item{f}{Emissions intensity of the energy supply, in million metric tons
-           of carbon per quad.}
-  \item{ef}{Emissions intensity of the economy, in metric tons of carbon per
+           per quad.}
+  \item{ef}{Emissions intensity of the economy, in metric tons per
             million dollars of GDP.}
 }
 }

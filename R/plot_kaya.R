@@ -1,3 +1,6 @@
+globalVariables(c("in_range"))
+
+
 #' Plot kaya-identity variable
 #'
 #' @param kaya_data A tibble with kaya-identity data
@@ -7,12 +10,22 @@
 #' @param start_year The year to start highlighting the data (should correspond
 #' to the beginning of the trend calculation)
 #'
+#' @param stop_year The year to stop highlighting the data (should correspond
+#' to the beginning of the trend calculation)
+#'
 #' @param y_lab Optional label for the y-axis
+#'
+#' @param log_scale Use log scale for y axis
+#'
+#' @param trend_line Include a trend line
 #'
 #' @return A plot oblect.
 #'
 #' @export
-plot_kaya <- function(kaya_data, variable, start_year = NULL, y_lab = NULL) {
+plot_kaya <- function(kaya_data, variable,
+                      start_year = NA, stop_year = NA,
+                      y_lab = NULL,
+                      log_scale = FALSE, trend_line = FALSE) {
   labels <- c(P =  'Population (billions)',
               G =  'Gross Domestic Product ($ trillion)',
               E =  'Energy consumption (quads)',
@@ -24,24 +37,41 @@ plot_kaya <- function(kaya_data, variable, start_year = NULL, y_lab = NULL) {
   )
 
   if (is.null(y_lab)) y_lab <- labels[variable]
-  if (is.null(start_year)) start_year = 1980
+  if (is.na(start_year)) start_year = 1980
+  if (is.na(stop_year)) stop_year = max(kaya_data$year)
 
   color_scale = scale_color_manual(values = c("TRUE" = "dark blue",
-                                              "FALSE" = "cornflowerblue"))
+                                              "PRE" = "cornflowerblue",
+                                              "POST" = "cornflowerblue"
+  ))
   legend = guides(color = FALSE, shape = FALSE)
 
-  df <- kaya_data %>% filter(year <= start_year) %>% mutate(in_range = "FALSE") %>%
-    bind_rows(
-      kaya_data %>% filter(year >= start_year) %>% mutate(in_range = "TRUE")
-    )
+  df <- bind_rows(
+    kaya_data %>% filter(year <= start_year) %>% mutate(in_range = "PRE"),
+    kaya_data %>% filter(year >= stop_year) %>% mutate(in_range = "POST"),
+    kaya_data %>% filter(between(year, start_year, stop_year)) %>%
+      mutate(in_range = "TRUE")
+  )
 
   p <- ggplot(df, aes_string(x = "year", y = variable, color = "in_range"))
-  p + geom_line(size = 1) + geom_point(size = 3) +
+  p <- p +
+    geom_line(size = 1) + geom_point(size = 3) +
     color_scale +
-    legend +
+    legend
+
+  if (log_scale) {
+    p <- p + scale_y_log10()
+  }
+
+  if (trend_line) {
+    p <- p + geom_smooth(method = "lm", data = filter(df, in_range == "TRUE"))
+  }
+
+  p <- p +
     labs(x = "Year", y = y_lab) +
     theme_bw(base_size = 20) +
     theme(axis.title.y = element_text(vjust=1.2),
           axis.title.x = element_text(vjust=-0.1),
           legend.key = element_rect(color = NA))
+  p
 }

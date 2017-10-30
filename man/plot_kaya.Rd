@@ -4,7 +4,8 @@
 \alias{plot_kaya}
 \title{Plot kaya-identity variable}
 \usage{
-plot_kaya(kaya_data, variable, start_year = NULL, y_lab = NULL)
+plot_kaya(kaya_data, variable, start_year = NA, stop_year = NA,
+  y_lab = NULL, log_scale = FALSE, trend_line = FALSE)
 }
 \arguments{
 \item{kaya_data}{A tibble with kaya-identity data}
@@ -14,7 +15,14 @@ plot_kaya(kaya_data, variable, start_year = NULL, y_lab = NULL)
 \item{start_year}{The year to start highlighting the data (should correspond
 to the beginning of the trend calculation)}
 
+\item{stop_year}{The year to stop highlighting the data (should correspond
+to the beginning of the trend calculation)}
+
 \item{y_lab}{Optional label for the y-axis}
+
+\item{log_scale}{Use log scale for y axis}
+
+\item{trend_line}{Include a trend line}
 }
 \value{
 A plot oblect.

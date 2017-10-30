@@ -25,12 +25,12 @@ kaya_country_list <- function() {
 #'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
 #'   \item{E}{Total primary energy consumption, in quads}
 #'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric
-#'            tons of carbon}
+#'            tons }
 #'   \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per person.}
 #'   \item{e}{Energy intensity of the economy, in quads per trillion dollars.}
 #'   \item{f}{Emissions intensity of the energy supply, in million metric tons
-#'            of carbon per quad.}
-#'   \item{ef}{Emissions intensity of the economy, in metric tons of carbon per
+#'            per quad.}
+#'   \item{ef}{Emissions intensity of the economy, in metric tons per
 #'             million dollars of GDP.}
 #' }
 #' @export
@@ -81,12 +81,12 @@ top_down_trend <- function(country_name) {
 #'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
 #'   \item{E}{Total primary energy consumption, in quads}
 #'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric
-#'            tons of carbon}
+#'            tons }
 #'   \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per person.}
 #'   \item{e}{Energy intensity of the economy, in quads per trillion dollars.}
 #'   \item{f}{Emissions intensity of the energy supply, in million metric tons
-#'            of carbon per quad.}
-#'   \item{ef}{Emissions intensity of the economy, in metric tons of carbon per
+#'            per quad.}
+#'   \item{ef}{Emissions intensity of the economy, in metric tons per
 #'             million dollars of GDP.}
 #' }
 #' @export
@@ -96,4 +96,54 @@ top_down_values <- function(country_name) {
     mutate(g = G/P, e = E/G, f = F/E, ef = F/G) %>%
     select(country, year, P, G, g, E, F, e, f, ef) %>%
     invisible()
+}
+
+#' Get emission factors for different energy sources
+#'
+#' @return a tibble of values for emissions factors, in million metric
+#'         tons of carbon dioxide per quad of energy.
+#' @export
+emissions_factors <- function() {
+  tibble(
+    fuel = c("Coal", "Oil", "Gas", "Nuclear", "Renewable"),
+    emission_factor = c(94.4, 70.0, 53.1, 0.0, 0.0)
+  )
+}
+
+#' Get power output from generation sources
+#'
+#' Nameplate capacity and capacity factors for different electrical generation
+#' technologies. The average power supplied over a year is the nameplate
+#' capacity times the capacity factor.
+#'
+#' @return a tibble of values for generation sources
+#' \describe{
+#'     \item{fuel}{Energy source: Coal, Nuclear, Gas, Solar Thermal, or Wind}
+#'     \item{description}{Text description of the power source}
+#'     \item{nameplate_capacity}{Maximum sustained power output, in megawatts}
+#'     \item{capacity_factor}{Capacity factor: the fraction of the nameplate
+#'         capacity that the plant can provide, averaged over a typical year}
+#' }
+#' @export
+generation_capacity <- function() {
+  tibble(
+    fuel = c("Coal", "Nuclear", "Gas", "Solar Thermal", "Wind"),
+    description = c("Large coal-fired power plant",
+                    "Large nuclear power plant",
+                    "Gas-fired power plant",
+                    "Concentrated solar-thermal power plant",
+                    "Wind turbine"),
+    nameplate_capacity = c(1000, 1000, 500,  200,  2.5),
+    capacity_factor    = c(0.53, 0.75, 0.56, 0.30, 0.30)
+    )
+}
+
+#' The number of megawatts it takes to replace a quad.
+#'
+#' The number of megawatts of average power output over a year to
+#' produce one quad of energy
+#'
+#' @return The number of megawatts equivalent to one quad per year.
+megawatts_per_quad <- function() {
+  1.1E4
 }

@@ -144,7 +144,7 @@ prepare_top_down <- function() {
   }
 
   td_values = spread(td_values, key = variable, value = value) %>%
-    mutate(G = G / 1000, P = P / 1000, F = F * 12 / (12 + 32))
+    mutate(G = G / 1000, P = P / 1000)
   td_trends = spread(td_trends, key = variable, value = trend)
 
   save(td_values, file = file.path("data", "td_values.rda"))
