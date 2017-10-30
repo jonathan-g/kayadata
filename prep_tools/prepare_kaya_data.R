@@ -111,34 +111,6 @@ prepare_kaya <- function() {
   invisible(kaya_data)
 }
 
-# load_top_down <- function() {
-#   P <- read_csv('data/World_population_by_region.csv', skip = 4,
-#                 na = c('NA','N/A','')) %>%
-#     rename(nation = X1, r.P = `Growth (2012-2040)`) %>%
-#     select(nation, r.P) %>%
-#     dplyr::filter(! is.na(nation)) %>%
-#     mutate(r.P = r.P %>% str_extract('^.*?(?=%$)') %>% as.numeric() / 100)
-#
-#   g <- read_csv('data/world_GDP_PPP.csv', skip = 4,
-#                 na = c('NA','N/A','')) %>%
-#     rename(nation = X1, r.g = `Growth (2012-2040)`) %>%
-#     select(nation, r.g) %>%
-#     dplyr::filter(! is.na(nation)) %>%
-#     mutate(r.g = r.g %>% str_extract('^.*?(?=%$)') %>% as.numeric() / 100)
-#
-#   e <- read_csv('data/World_energy_intensity_by_region.csv', skip = 4,
-#                 na = c('NA','N/A','')) %>%
-#     rename(nation = X1, r.e = `Growth (2012-2040)`) %>%
-#     select(nation, r.e) %>%
-#     dplyr::filter(! is.na(nation)) %>%
-#     mutate(r.e = r.e %>% str_extract('^.*?(?=%$)') %>% as.numeric() / 100)
-#
-#   top.down <- P %>% full_join(g, by = 'nation') %>%
-#     full_join(e, by = 'nation')
-#   # top.down <- translate_nations(top.down)
-#   invisible(top.down)
-# }
-
 #' Load fuel_mix data
 prepare_fuel_mix <- function() {
   fuel_levels <- c('coal', 'gas', 'oil', 'nuclear', 'renewables', 'total')
@@ -180,7 +152,7 @@ prepare_fuel_mix <- function() {
     mutate(fuel = ordered(fuel, levels = fuel_levels, labels = fuel_labels),
            quads = ifelse(is.na(quads), 0.0, quads)) %>%
     group_by(country, year) %>%
-    mutate(pct = 100 * quads / sum(quads, na.rm = T)) %>%
+    mutate(quads = quads * mtoe, pct = 100 * quads / sum(quads, na.rm = T)) %>%
     ungroup()
 
   invisible(fuel_mix)

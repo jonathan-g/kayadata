@@ -45,5 +45,6 @@
 #' @importFrom dplyr filter
 #' @import dplyr
 #' @import ggplot2
+#' @importFrom stats approx
 #'
 NULL

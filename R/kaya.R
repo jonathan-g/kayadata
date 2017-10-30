@@ -37,7 +37,7 @@ kaya_country_list <- function() {
 #' }
 #' @export
 get_kaya_data <- function(country_name) {
-  kaya_data %>%
+  kayadata::kaya_data %>%
     dplyr::filter(country == country_name) %>%
     dplyr::select(-country_code, -geography) %>%
     invisible()
@@ -52,7 +52,7 @@ get_kaya_data <- function(country_name) {
 #'   fraction of total primary energy coming from that fuel.
 #' @export
 get_fuel_mix <- function(country_name) {
-  fuel_mix %>%
+  kayadata::fuel_mix %>%
     dplyr::filter(country == country_name) %>%
     top_n(1, year) %>%
     invisible()
@@ -66,7 +66,7 @@ get_fuel_mix <- function(country_name) {
 #' in percent per year.
 #' @export
 top_down_trend <- function(country_name) {
-  td_trends %>%
+  kayadata::td_trends %>%
     dplyr::filter(country == country_name) %>%
     mutate(g = G - P, e = E - G, f = F - E, ef = F - G) %>%
     select(country, P, G, g, E, F, e, f, ef) %>%
@@ -94,7 +94,7 @@ top_down_trend <- function(country_name) {
 #' }
 #' @export
 top_down_values <- function(country_name) {
-  td_values %>%
+  kayadata::td_values %>%
     dplyr::filter(country == country_name) %>%
     mutate(g = G/P, e = E/G, f = F/E, ef = F/G) %>%
     select(country, year, P, G, g, E, F, e, f, ef) %>%
@@ -130,7 +130,7 @@ project_top_down <- function(country_name, year) {
   stopifnot(year >= min(td_values$year, na.rm=T) &&
               year <= max(td_values$year, na.rm=T))
 
-    td_values %>%
+    kayadata::td_values %>%
     dplyr::filter(country == country_name) %>%
     mutate(g = G/P, e = E/G, f = F/E, ef = F/G) %>%
     summarize_at(vars(-country, -year), funs(approx(x = year, y = ., xout = y)$y)) %>%
