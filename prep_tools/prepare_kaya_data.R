@@ -143,7 +143,8 @@ prepare_fuel_mix <- function() {
     rename(gas = natural_gas, nuclear = nuclear_energy, hydro = hydro_electric,
            renewables = renew_ables) %>%
     mutate(renewables = renewables + hydro) %>%
-    select(year, oil, gas, coal, nuclear, renewables)
+    select(year, oil, gas, coal, nuclear, renewables) %>%
+    mutate_at(vars(-year), funs(. * mtoe))
 
   fuel_mix = bind_rows(countries, countries) %>% bind_cols(ebf) %>%
     filter(!is.na(country)) %>%
