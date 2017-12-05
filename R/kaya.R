@@ -39,8 +39,7 @@ kaya_country_list <- function() {
 get_kaya_data <- function(country_name) {
   kayadata::kaya_data %>%
     dplyr::filter(country == country_name) %>%
-    dplyr::select(-country_code, -geography) %>%
-    invisible()
+    dplyr::select(-country_code, -geography)
 }
 
 #' Get fuel mix for a country
@@ -54,8 +53,7 @@ get_kaya_data <- function(country_name) {
 get_fuel_mix <- function(country_name) {
   kayadata::fuel_mix %>%
     dplyr::filter(country == country_name) %>%
-    top_n(1, year) %>%
-    invisible()
+    top_n(1, year)
 }
 
 #' Get top-down trends for Kaya variables for a country
@@ -69,8 +67,7 @@ top_down_trend <- function(country_name) {
   kayadata::td_trends %>%
     dplyr::filter(country == country_name) %>%
     mutate(g = G - P, e = E - G, f = F - E, ef = F - G) %>%
-    select(country, P, G, g, E, F, e, f, ef) %>%
-  invisible()
+    select(country, P, G, g, E, F, e, f, ef)
 }
 
 #' Get top-down projections of Kaya variables for a country
@@ -97,8 +94,7 @@ top_down_values <- function(country_name) {
   kayadata::td_values %>%
     dplyr::filter(country == country_name) %>%
     mutate(g = G/P, e = E/G, f = F/E, ef = F/G) %>%
-    select(country, year, P, G, g, E, F, e, f, ef) %>%
-    invisible()
+    select(country, year, P, G, g, E, F, e, f, ef)
 }
 
 #' Get top-down projections of Kaya variables for a country for a given year
@@ -133,10 +129,9 @@ project_top_down <- function(country_name, year) {
     kayadata::td_values %>%
     dplyr::filter(country == country_name) %>%
     mutate(g = G/P, e = E/G, f = F/E, ef = F/G) %>%
-    summarize_at(vars(-country, -year), funs(approx(x = year, y = ., xout = y)$y)) %>%
+    summarize_at(vars(-country, -region, -year), funs(approx(x = year, y = ., xout = y)$y)) %>%
     mutate(country = country_name, year = y) %>%
-    select(country, year, P, G, g, E, F, e, f, ef) %>%
-    invisible()
+    select(country, year, P, G, g, E, F, e, f, ef)
 }
 
 
