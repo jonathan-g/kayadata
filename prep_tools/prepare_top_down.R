@@ -81,21 +81,21 @@ prepare_regions <- function() {
   region_tbl <- regions %>% map2(names(.), ~tibble(rgn = .y, country = .x)) %>% bind_rows()
   region_tbl <- td_regions %>% map2(names(.), ~tibble(rgn = .y, region = .x)) %>% bind_rows() %>%
     full_join(region_tbl, by = "rgn")
-  
-  country_tbl <- td_countries %>% 
-    map2(names(.), ~tibble(country = .y, region = .x, 
-                           rgn = str_to_lower(.x) %>% str_replace_all("[^a-z0-9]+", "_"))) %>% 
+
+  country_tbl <- td_countries %>%
+    map2(names(.), ~tibble(country = .y, region = .x,
+                           rgn = str_to_lower(.x) %>% str_replace_all("[^a-z0-9]+", "_"))) %>%
     bind_rows()
-  
+
   region_tbl <- bind_rows(region_tbl, country_tbl)
-  
+
   invisible(list(td_countries = td_countries, td_regions = td_regions,
                  regions = regions, region_tbl = region_tbl))
 }
 
 read_top_down_var <- function(var, file_name, kaya_data) {
   var_name = enquo(var)
-  
+
   x = prepare_regions()
 
   td_countries = x$td_countries
@@ -126,17 +126,17 @@ read_top_down_var <- function(var, file_name, kaya_data) {
 
   td_df <- td_df %>% left_join(x$region_tbl, by = "region") %>% select(-rgn)
 
-  td_trend = td_df %>% select(country, region, trend) %>% 
+  td_trend = td_df %>% select(country, region, trend) %>%
     mutate(variable = var, trend = trend / 100)
-  
-  kd <- kaya_data %>% filter(year == 2015) %>% 
+
+  kd <- kaya_data %>% filter(year == 2015) %>%
     select(country, ref = !!var_name) %>%
     mutate(country = as.character(country))
-  
+
   td_df <- td_df %>% select(-trend) %>% left_join(kd, by = "country") %>%
-    mutate(x = x2015) %>% 
-    mutate_at(vars(matches("^x2[0-9]+$")), 
-              funs(ifelse(is.na(ref), ., . * ref / x))) %>% 
+    mutate(x = x2015) %>%
+    mutate_at(vars(matches("^x2[0-9]+$")),
+              funs(ifelse(is.na(ref), ., . * ref / x))) %>%
     select(-x, -ref) %>%
     gather(key = year, value = value, matches("^x2[0-9]+$")) %>%
              mutate(year = str_replace(year, "^x", "") %>% as.integer(),
@@ -145,14 +145,14 @@ read_top_down_var <- function(var, file_name, kaya_data) {
   invisible(list(trend = td_trend, values = td_df))
 }
 
-prepare_top_down <- function() {
+prepare_top_down <- function(overwrite = FALSE) {
   files = c(E = "ieotab_1.xls",
             P = "ieotab_14.xlsx",
             G = "ieotab_3.xls",
             F = "ieotab_10.xlsx")
 
   load(file.path('data', 'kaya_data.rda'))
-  
+
   td_values = tibble()
   td_trends = tibble()
 
@@ -167,6 +167,6 @@ prepare_top_down <- function() {
   td_trends = td_trends %>%
     tidyr::spread(key = variable, value = trend)
 
-  save(td_values, file = file.path("data", "td_values.rda"))
-  save(td_trends, file = file.path("data", "td_trends.rda"))
+  tryCatch(devtools::use_data(td_values, td_trends, overwrite = overwrite),
+           error = warning)
 }

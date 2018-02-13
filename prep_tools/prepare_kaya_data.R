@@ -159,10 +159,11 @@ prepare_fuel_mix <- function() {
   invisible(fuel_mix)
 }
 
-prepare_data_files = function() {
+prepare_data_files = function(overwrite = FALSE) {
   kaya_data = prepare_kaya()
   fuel_mix = prepare_fuel_mix()
-  devtools::use_data(kaya_data, fuel_mix)
+  tryCatch(devtools::use_data(kaya_data, fuel_mix, overwrite = overwrite),
+           error = warning)
 }
 
 prepare_data_files()
