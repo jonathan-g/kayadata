@@ -1,7 +1,7 @@
 Package: kayadata
 Type: Package
 Title: Provide Kaya Identity Data
-Version: 0.3.0
+Version: 0.3.1
 Authors@R: c( person("Jonathan", "Gilligan", email = "jonathan.gilligan@vanderbilt.edu", role = c("cre", "aut")))
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: Loads Kaya Identity Data.

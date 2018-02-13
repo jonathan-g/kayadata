@@ -1,0 +1,4 @@
+language: r
+sudo: required
+cache: packages
+after_failure: "cat /home/travis/build/gilligan-ees-3310/kayadata/kayadata.Rcheck/00install.out"

@@ -1,6 +1,9 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^README\.Rmd$
+^README\.R?md$
+^README-.*\.(png|jpg|jpeg|pdf)$
 ^LICENSE\.R?md$
+^\.travis\.yml$
+^\.gitlab-ci\.yml$
 ^raw_data/
 ^prep_tools/
