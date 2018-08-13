@@ -4,10 +4,11 @@
 \name{kaya_data}
 \alias{kaya_data}
 \title{Kaya identity data for many countries}
-\format{A tibble containing 3536 rows and 12 variables:
+\format{A tibble containing 13163 rows and 13 variables:
 \describe{
   \item{country}{Country name}
   \item{country_code}{Three-letter country code}
+  \item{geography}{Geographic category: "nation", "region", or "world"}
   \item{year}{The year}
   \item{P}{Population, in billions}
   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
@@ -19,6 +20,10 @@
            per quad.}
   \item{ef}{Emissions intensity of the economy, in metric tons per
             million dollars of GDP.}
+  \item{G_ppp}{Gross domestic product adjusted for purchasing power parity,
+               in trillions of constant 2011 international dollars}
+  \item{G_mer}{Gross domestic product at market-exchange-rate,
+               in trillions of constant 2010 U.S. dollars}
 }}
 \source{
 \url{https://data.worldbank.org/indicator/SP.POP.TOTL},

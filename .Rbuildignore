@@ -5,5 +5,5 @@
 ^LICENSE\.R?md$
 ^\.travis\.yml$
 ^\.gitlab-ci\.yml$
-^raw_data/
-^prep_tools/
+^raw_data/.*$
+^prep_tools/.*$

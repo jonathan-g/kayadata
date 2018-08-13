@@ -4,10 +4,13 @@
 \alias{get_kaya_data}
 \title{Get Kaya data for a country}
 \usage{
-get_kaya_data(country_name)
+get_kaya_data(country_name, country_code = NULL)
 }
 \arguments{
 \item{country_name}{The name of a country to look up}
+
+\item{country_code}{Optional three-letter country code to look up instead
+of the `country_name`}
 }
 \value{
 a tibble of Kaya identity data for the country:
@@ -15,11 +18,13 @@ a tibble of Kaya identity data for the country:
   \item{country}{The name of the country}
   \item{year}{The year}
   \item{P}{Population, in billions}
-  \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
+  \item{G}{Gross demestic product, in trillions of constant 2010 U.S.
+           dollars.}
   \item{E}{Total primary energy consumption, in quads}
   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric
            tons }
-  \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per person.}
+  \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per
+           person.}
   \item{e}{Energy intensity of the economy, in quads per trillion dollars.}
   \item{f}{Emissions intensity of the energy supply, in million metric tons
            per quad.}

@@ -4,7 +4,7 @@
 \alias{plot_fuel_mix}
 \title{Plot fuel mix}
 \usage{
-plot_fuel_mix(fuel_mix)
+plot_fuel_mix(fuel_mix, collapse_renewables = TRUE)
 }
 \arguments{
 \item{fuel_mix}{A tibble with the mixture of fuels:
@@ -13,6 +13,9 @@ plot_fuel_mix(fuel_mix)
   \item{quads}{The number of quads per year the country consumes}
   \item{pct}{The percentage of the country's energy that comes from that fuel}
 }}
+
+\item{collapse_renewables}{Combine Hydro and other Renewables into a single
+category.}
 }
 \value{
 A plot oblect.

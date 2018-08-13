@@ -4,10 +4,13 @@
 \alias{top_down_trend}
 \title{Get top-down trends for Kaya variables for a country}
 \usage{
-top_down_trend(country_name)
+top_down_trend(country_name, country_code = NULL)
 }
 \arguments{
 \item{country_name}{The name of a country to look up}
+
+\item{country_code}{Optional three-letter country code to look up instead
+of the `country_name`}
 }
 \value{
 a tibble of trends for P, G, E, F, g, e, f, and ef for the country,

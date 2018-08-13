@@ -3,10 +3,11 @@
 #' A dataset containing Kaya identity parameters
 #' P, G, E, F, g, e, f, and ef for many countries
 #'
-#' @format A tibble containing 3536 rows and 12 variables:
+#' @format A tibble containing 13163 rows and 13 variables:
 #' \describe{
 #'   \item{country}{Country name}
 #'   \item{country_code}{Three-letter country code}
+#'   \item{geography}{Geographic category: "nation", "region", or "world"}
 #'   \item{year}{The year}
 #'   \item{P}{Population, in billions}
 #'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
@@ -18,6 +19,10 @@
 #'            per quad.}
 #'   \item{ef}{Emissions intensity of the economy, in metric tons per
 #'             million dollars of GDP.}
+#'   \item{G_ppp}{Gross domestic product adjusted for purchasing power parity,
+#'                in trillions of constant 2011 international dollars}
+#'   \item{G_mer}{Gross domestic product at market-exchange-rate,
+#'                in trillions of constant 2010 U.S. dollars}
 #' }
 #' @source \url{https://data.worldbank.org/indicator/SP.POP.TOTL},
 #' \url{https://data.worldbank.org/indicator/NY.GDP.MKTP.KD}, and
@@ -31,11 +36,14 @@
 #' total primary energy supply comes from coal, gas, oil, nuclear, and
 #' renewable sources.
 #'
-#' @format A tibble containing 840 rows and 5 variables
+#' @format A tibble containing 936 rows and 7 variables
 #' \describe{
 #'   \item{country}{Country name}
+#'   \item{country_code}{Three-letter country code}
+#'   \item{geography}{Geographic category: "nation", "region", or "world"}
 #'   \item{year}{The year}
-#'   \item{fuel}{The fuel: Coal, Gas, Oil, Nuclear, and Renewables}
+#'   \item{fuel}{The fuel: "Coal", "Natural Gas", "Oil", "Nuclear", "Hydro",
+#'               and "Renewables"}
 #'   \item{quads}{The number of quads of that fuel consumed in the given country
 #'                and year}
 #'   \item{pct}{The percentage of that country's total primary energy consumption
@@ -49,14 +57,22 @@
 #' A dataset containing top-down projections of P, G, and E, from the
 #' EIA's International Energy Outlook 2017.
 #'
-#' @format A tibble containing 336 rows and 5 variables
+#' @format A tibble containing 1752 rows and 12 variables
 #' \describe{
-#'    \item{country}{Country name}
-#'    \item{year}{The year}
+#'   \item{country}{Country name}
+#'   \item{country_code}{Three-letter country code}
+#'   \item{geography}{Geographic category: "nation", "region", or "world"}
+#'   \item{year}{The year}
 #'   \item{P}{Population, in billions}
 #'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars}
 #'   \item{E}{Total primary energy consumption, in quads}
 #'   \item{F}{Total CO2 emissions, in millions of metric tons}
+#'   \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per person.}
+#'   \item{e}{Energy intensity of the economy, in quads per trillion dollars.}
+#'   \item{f}{Emissions intensity of the energy supply, in million metric tons
+#'            per quad.}
+#'   \item{ef}{Emissions intensity of the economy, in metric tons per
+#'             million dollars of GDP.}
 #' }
 #' @source \url{https://www.eia.gov/outlooks/ieo/ieo_tables.php}
 "td_values"
@@ -66,14 +82,19 @@
 #' A dataset containing top-down projections of trends in P, G, and E,
 #' from the EIA's International Energy Outlook 2017.
 #'
-#' @format A tibble containing 42 rows and 5 variables
+#' @format A tibble containing 221 rows and 11 variables
 #' \describe{
-#'    \item{country}{Country name}
-#'    \item{year}{The year}
-#'   \item{P}{Trend in population, in percent per year}
-#'   \item{G}{Trend in gross demestic product, in percent per year}
-#'   \item{E}{Trend in total primary energy consumption, in percent per year}
-#'   \item{F}{Trend in CO2 emissions, in percent per year}
+#'   \item{country}{Country name}
+#'   \item{country_code}{Three-letter country code}
+#'   \item{geography}{Geographic category: "nation", "region", or "world"}
+#'   \item{P}{Trend in population, in fraction per year}
+#'   \item{G}{Trend in gross demestic product, in fraction per year}
+#'   \item{E}{Trend in total primary energy consumption, in fraction per year}
+#'   \item{F}{Trend in CO2 emissions, in fraction per year}
+#'   \item{g}{Trend in per-capita GDP, in fraction per year}
+#'   \item{e}{Trend in energy intensity of the economy, in fraction per year}
+#'   \item{f}{Trend in emissions intensity of the energy supply, in fraction per year}
+#'   \item{ef}{Trend in emissions intensity of the economy, in fraction per year}
 #' }
 #' @source \url{https://www.eia.gov/outlooks/ieo/ieo_tables.php}
 "td_trends"

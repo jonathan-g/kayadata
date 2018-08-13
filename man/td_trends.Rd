@@ -4,14 +4,19 @@
 \name{td_trends}
 \alias{td_trends}
 \title{Top-down projections of trends in Kaya variables for many countries}
-\format{A tibble containing 42 rows and 5 variables
+\format{A tibble containing 221 rows and 11 variables
 \describe{
-   \item{country}{Country name}
-   \item{year}{The year}
-  \item{P}{Trend in population, in percent per year}
-  \item{G}{Trend in gross demestic product, in percent per year}
-  \item{E}{Trend in total primary energy consumption, in percent per year}
-  \item{F}{Trend in CO2 emissions, in percent per year}
+  \item{country}{Country name}
+  \item{country_code}{Three-letter country code}
+  \item{geography}{Geographic category: "nation", "region", or "world"}
+  \item{P}{Trend in population, in fraction per year}
+  \item{G}{Trend in gross demestic product, in fraction per year}
+  \item{E}{Trend in total primary energy consumption, in fraction per year}
+  \item{F}{Trend in CO2 emissions, in fraction per year}
+  \item{g}{Trend in per-capita GDP, in fraction per year}
+  \item{e}{Trend in energy intensity of the economy, in fraction per year}
+  \item{f}{Trend in emissions intensity of the energy supply, in fraction per year}
+  \item{ef}{Trend in emissions intensity of the economy, in fraction per year}
 }}
 \source{
 \url{https://www.eia.gov/outlooks/ieo/ieo_tables.php}

@@ -4,11 +4,14 @@
 \name{fuel_mix}
 \alias{fuel_mix}
 \title{Mix of fuels contributing to primary energy supply for many countries}
-\format{A tibble containing 840 rows and 5 variables
+\format{A tibble containing 936 rows and 7 variables
 \describe{
   \item{country}{Country name}
+  \item{country_code}{Three-letter country code}
+  \item{geography}{Geographic category: "nation", "region", or "world"}
   \item{year}{The year}
-  \item{fuel}{The fuel: Coal, Gas, Oil, Nuclear, and Renewables}
+  \item{fuel}{The fuel: "Coal", "Natural Gas", "Oil", "Nuclear", "Hydro",
+              and "Renewables"}
   \item{quads}{The number of quads of that fuel consumed in the given country
                and year}
   \item{pct}{The percentage of that country's total primary energy consumption

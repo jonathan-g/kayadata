@@ -4,14 +4,22 @@
 \name{td_values}
 \alias{td_values}
 \title{Top-down projections of future Kaya variables for many countries}
-\format{A tibble containing 336 rows and 5 variables
+\format{A tibble containing 1752 rows and 12 variables
 \describe{
-   \item{country}{Country name}
-   \item{year}{The year}
+  \item{country}{Country name}
+  \item{country_code}{Three-letter country code}
+  \item{geography}{Geographic category: "nation", "region", or "world"}
+  \item{year}{The year}
   \item{P}{Population, in billions}
   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars}
   \item{E}{Total primary energy consumption, in quads}
   \item{F}{Total CO2 emissions, in millions of metric tons}
+  \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per person.}
+  \item{e}{Energy intensity of the economy, in quads per trillion dollars.}
+  \item{f}{Emissions intensity of the energy supply, in million metric tons
+           per quad.}
+  \item{ef}{Emissions intensity of the economy, in metric tons per
+            million dollars of GDP.}
 }}
 \source{
 \url{https://www.eia.gov/outlooks/ieo/ieo_tables.php}
