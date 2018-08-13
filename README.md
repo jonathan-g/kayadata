@@ -2,7 +2,7 @@ kayadata
 ========
 
 **GitHub:** [![Build
-Status](https://travis-ci.org/gilligan-ees-3310/kayadata.svg?branch=master)](https://github.com/gilligan-ees-3310/kayadata/commits/master)
+Status](https://travis-ci.org/jonathan-g/kayadata.svg?branch=master)](https://github.com/jonathan-g/kayadata/commits/master)
 
 **GitLab:** [![Build
 Status](https://gitlab.jgilligan.org/gilligan_teaching/ees_3310/ees_3310_software/kayadata/badges/master/build.svg)](https://gitlab.jgilligan.org/gilligan_teaching/ees_3310/ees_3310_software/kayadata/commits/master)
@@ -13,13 +13,13 @@ To install and load the package, first install either the `pacman` or
 `devtools` package from CRAN:
 
     install.packages("devtools")
-    devtools::install_github("gilligan-ees-3310/kayadata")
+    devtools::install_github("jonathan-g/kayadata")
     library(kayadata)
 
 or
 
     install.packages("pacman")
-    p_load_gh("gilligan-ees-3310/kayadata")
+    p_load_gh("jonathan-g/kayadata")
 
 Once you’ve installed it, then you just need to use the command
 `library(kayadata)` to load the package.
