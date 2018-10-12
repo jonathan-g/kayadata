@@ -136,8 +136,8 @@ read_top_down_var <- function(var, file_name, kaya_data) {
     "^Total *" = ""
   )
 
-  last_line = c(ieotab_1.xls = 29,
-                ieotab_3.xls = 30,
+  last_line = c(ieotab_1.xlsx = 29,
+                ieotab_3.xlsx = 30,
                 ieotab_10.xlsx = 30,
                 ieotab_14.xlsx = 31)
 
@@ -191,9 +191,9 @@ read_top_down_var <- function(var, file_name, kaya_data) {
 }
 
 prepare_top_down <- function(overwrite = FALSE) {
-  files = c(E = "ieotab_1.xls",
+  files = c(E = "ieotab_1.xlsx",
             P = "ieotab_14.xlsx",
-            G = "ieotab_3.xls",
+            G = "ieotab_3.xlsx",
             F = "ieotab_10.xlsx")
 
   load(file.path('data', 'kaya_data.rda'))

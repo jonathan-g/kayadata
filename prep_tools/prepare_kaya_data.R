@@ -27,7 +27,7 @@ data_params <- within(list(), {
   bp_spreadsheet_path <- file.path(raw_data_path, bp_spreadsheet_name)
 
   bp_energy_sheet     <- "Primary Energy Consumption"
-  bp_co2_sheet        <- "Primary Energy Consumption"
+  bp_co2_sheet        <- "Carbon Dioxide Emissions"
   bp_fuel_mix_sheet   <- "Primary Energy - Cons by fuel"
 
   bp_energy_file      <- "bp_primary_energy.Rds"

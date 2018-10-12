@@ -12,6 +12,7 @@ globalVariables(c("fuel_mix", "kaya_data", "country", "country_code",
 #' @param data Data frame in which to look up `country_code`
 #'
 #' @return The corresponding country name, or NULL if there is no such country
+#' @keywords internal
 lookup_country_code <- function(country_code, data = kayadata::kaya_data) {
   country_name <- data %>%
     dplyr::select(country, country_code) %>% dplyr::distinct() %>%
@@ -102,7 +103,8 @@ get_fuel_mix <- function(country_name, country_code = NULL) {
   data
 }
 
-#' Get top-down trends for Kaya variables for a country
+#' Get top-down trends for Kaya variables for a country, using projections
+#' from U.S. Energy Information Administration's International Energy Outlook.
 #'
 #' @param country_name The name of a country to look up
 #' @param country_code Optional three-letter country code to look up instead
