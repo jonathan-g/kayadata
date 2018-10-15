@@ -61,7 +61,8 @@ mexico_2050
   Example:
 ```{r plot-kaya}
 us_kaya = get_kaya_data("United States")
-plot_kaya(us_kaya, "ef", start_year = 2000, stop_year = 2010, log_scale = TRUE,
+plot_kaya(us_kaya, "ef", y_lab = "Carbon intensity of economy",
+          start_year = 2000, stop_year = 2010, log_scale = TRUE,
           trend_line = TRUE)
 ```
 ```{r plot-kaya-world}
