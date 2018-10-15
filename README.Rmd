@@ -8,6 +8,7 @@ output:
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
 # library(pacman)
 # p_load_current_gh("jonathan-g/kayadata")
 library(kayadata)
@@ -44,22 +45,24 @@ Some of the functions the package provides are:
 * `get_kaya_data()`: Get data for a specific country. 
   Example: 
 ```{r get-kaya-data, echo=TRUE}
-finland_data = get_kaya_data("Finland")
-head(finland_data)
+mexico_data = get_kaya_data("Mexico") 
+mexico_data %>% filter(year >= 1965) %>% 
+  select(country:ef) %>%
+  head()
 ```
 * `project_top_down()`: Project future population, GDP, energy use, and 
   emissions. 
   Example: 
 ```{r project-top-down, echo=TRUE}
-finland_2050 = project_top_down("Finland", 2050)
-finland_2050
+mexico_2050 = project_top_down("Mexico", 2050)
+mexico_2050
 ```
 * `get_fuel_mix`: Get the fuel mix (coal, gas, oil, nuclear, and renewables) 
   for a region or country. 
   Example: 
 ```{r get-fuel-mix, echo=TRUE}
-finland_mix = get_fuel_mix("Finland")
-finland_mix
+mexico_mix = get_fuel_mix("Mexico")
+mexico_mix
 ```
 * `plot_kaya`: Plot trends in kaya variables for a given region or country.
   Example:
