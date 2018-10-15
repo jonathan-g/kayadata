@@ -17,3 +17,4 @@ The corresponding country name, or NULL if there is no such country
 \description{
 Look up country name from country code
 }
+\keyword{internal}
