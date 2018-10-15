@@ -64,6 +64,10 @@ mexico_2050
     ##   <chr>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
     ## 1 Mexico   2050 0.163  2.57  15.8  9.99  231.  3.88  23.1  89.7
 
+-   `plot_kaya`: Plot trends in kaya variables for a given region or
+    country. Example:
+    ![](README_files/figure-markdown_github/plot-kaya-1.png)
+    ![](README_files/figure-markdown_github/plot-kaya-world-1.png)
 -   `get_fuel_mix`: Get the fuel mix (coal, gas, oil, nuclear, and
     renewables) for a region or country. Example:
 
@@ -82,10 +86,13 @@ mexico_mix
     ## 5 Mexico  MEX          nation     2017 Hydro       0.285   3.79
     ## 6 Mexico  MEX          nation     2017 Renewables  0.176   2.34
 
--   `plot_kaya`: Plot trends in kaya variables for a given region or
-    country. Example:
-    ![](README_files/figure-markdown_github/plot-kaya-1.png)
-    ![](README_files/figure-markdown_github/plot-kaya-world-1.png)
+-   `plot_fuel_mix`: Plot the fuel mix in a donut chart
+
+``` r
+plot_fuel_mix(mexico_mix)
+```
+
+![](README_files/figure-markdown_github/plot-fuel-mix-1.png)
 
 After you install the package, you can get more help inside RStudio by
 typing `help(package="kayadata")` in the R console window.

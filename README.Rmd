@@ -57,13 +57,6 @@ mexico_data %>% filter(year >= 1965) %>%
 mexico_2050 = project_top_down("Mexico", 2050)
 mexico_2050
 ```
-* `get_fuel_mix`: Get the fuel mix (coal, gas, oil, nuclear, and renewables) 
-  for a region or country. 
-  Example: 
-```{r get-fuel-mix, echo=TRUE}
-mexico_mix = get_fuel_mix("Mexico")
-mexico_mix
-```
 * `plot_kaya`: Plot trends in kaya variables for a given region or country.
   Example:
 ```{r plot-kaya}
@@ -75,6 +68,17 @@ plot_kaya(us_kaya, "ef", start_year = 2000, stop_year = 2010, log_scale = TRUE,
 world_kaya = get_kaya_data("World")
 plot_kaya(world_kaya, "P", start_year = 2000, stop_year = 2010, log_scale = FALSE,
           trend_line = FALSE)
+```
+* `get_fuel_mix`: Get the fuel mix (coal, gas, oil, nuclear, and renewables) 
+  for a region or country. 
+  Example: 
+```{r get-fuel-mix, echo=TRUE}
+mexico_mix = get_fuel_mix("Mexico")
+mexico_mix
+```
+* `plot_fuel_mix`: Plot the fuel mix in a donut chart
+```{r plot-fuel-mix, echo=TRUE}
+plot_fuel_mix(mexico_mix)
 ```
 
 After you install the package, you can get more help inside RStudio by typing 
