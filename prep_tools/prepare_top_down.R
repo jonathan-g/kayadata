@@ -136,7 +136,7 @@ read_top_down_var <- function(var, file_name, kaya_data) {
     "^Total *" = ""
   )
 
-  last_line = c(ieotab_1.xlsx = 29,
+  last_line = c(ieotab_1.xlsx = 30,
                 ieotab_3.xlsx = 30,
                 ieotab_10.xlsx = 30,
                 ieotab_14.xlsx = 31)
