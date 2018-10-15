@@ -2,22 +2,24 @@
 % Please edit documentation in R/kaya.R
 \name{top_down_trend}
 \alias{top_down_trend}
-\title{Get top-down trends for Kaya variables for a country, using projections
-from U.S. Energy Information Administration's International Energy Outlook.}
+\title{Get top-down trends for Kaya variables for a country or region, using
+projections from U.S. Energy Information Administration's International
+Energy Outlook report.}
 \usage{
 top_down_trend(country_name, country_code = NULL)
 }
 \arguments{
-\item{country_name}{The name of a country to look up}
+\item{country_name}{The name of a country or region to look up}
 
-\item{country_code}{Optional three-letter country code to look up instead
-of the `country_name`}
+\item{country_code}{Optional three-letter country or region code to look up
+instead of the `country_name`}
 }
 \value{
 a tibble of trends for P, G, E, F, g, e, f, and ef for the country,
-in percent per year.
+or region in percent per year.
 }
 \description{
-Get top-down trends for Kaya variables for a country, using projections
-from U.S. Energy Information Administration's International Energy Outlook.
+Get top-down trends for Kaya variables for a country or region, using
+projections from U.S. Energy Information Administration's International
+Energy Outlook report.
 }

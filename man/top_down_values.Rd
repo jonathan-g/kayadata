@@ -2,20 +2,21 @@
 % Please edit documentation in R/kaya.R
 \name{top_down_values}
 \alias{top_down_values}
-\title{Get top-down projections of Kaya variables for a country}
+\title{Get top-down projections of Kaya variables for a country or region}
 \usage{
 top_down_values(country_name, country_code)
 }
 \arguments{
-\item{country_name}{The name of a country to look up}
+\item{country_name}{The name of a country or region to look up}
 
-\item{country_code}{Optional three-letter country code to look up instead
-of the `country_name`}
+\item{country_code}{Optional three-letter country or region code to look up
+instead of the `country_name`}
 }
 \value{
-a tibble of values for P, G, E, F, g, e, f, and ef for the country:
+a tibble of values for P, G, E, F, g, e, f, and ef for the country
+or region:
 \describe{
-  \item{country}{The name of the country}
+  \item{country}{The name of the country or region}
   \item{P}{Population, in billions}
   \item{G}{Gross demestic product, in trillions of constant 2010 U.S.
            dollars.}
@@ -32,5 +33,5 @@ a tibble of values for P, G, E, F, g, e, f, and ef for the country:
 }
 }
 \description{
-Get top-down projections of Kaya variables for a country
+Get top-down projections of Kaya variables for a country or region
 }

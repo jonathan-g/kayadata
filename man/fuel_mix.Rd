@@ -13,9 +13,9 @@
   \item{fuel}{The fuel: "Coal", "Natural Gas", "Oil", "Nuclear", "Hydro",
               and "Renewables"}
   \item{quads}{The number of quads of that fuel consumed in the given country
-               and year}
-  \item{pct}{The percentage of that country's total primary energy consumption
-             from the fuel}
+               or region and year}
+  \item{pct}{The percentage of that country or region's total primary
+             energy consumption from the fuel}
 }}
 \source{
 \url{https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html}

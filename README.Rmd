@@ -8,6 +8,9 @@ output:
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+# library(pacman)
+# p_load_current_gh("jonathan-g/kayadata")
+library(kayadata)
 ```
 # kayadata
 
@@ -18,25 +21,58 @@ knitr::opts_chunk$set(echo = FALSE)
 
 This package loads Kaya-identity data, synthesized from several sources.
 
-To install and load the package, first install either the `pacman` or `devtools` package from CRAN:
-```
+To install and load the package, first install either the `pacman` or `devtools` 
+package from CRAN:
+```{r initialize, echo=TRUE, eval=FALSE}
 install.packages("devtools")
 devtools::install_github("jonathan-g/kayadata")
 library(kayadata)
 ```
 or
-```
+```{r initialize-pacman, echo=TRUE, eval=FALSE}
 install.packages("pacman")
+library(pacman)
 p_load_gh("jonathan-g/kayadata")
 ```
 
-Once you've installed it, then you just need to use the command `library(kayadata)` to load the package.
+Once you've installed it, then you just need to use the command 
+`library(kayadata)` to load the package.
 
 Some of the functions the package provides are:
 
-* `country_list()`: Get a list of available countries.
-* `get_kaya_data()`: Get data for a specific country. Example: `finland_data = get_kaya_data("Finland")`
-* `project_top_down()`: Project future population, GDP, energy use, and emissions. Example: `finland_2050 = project_top_down("Finland", 2050)`
-* `get_fuel_mix`: Get the fuel mix (coal, gas, oil, nuclear, and renewables) for a country. Example: `finland_mix = get_fuel_mix("Finland")`
+* `kaya_region_list()`: Get a list of available countries and regions.
+* `get_kaya_data()`: Get data for a specific country. 
+  Example: 
+```{r get-kaya-data, echo=TRUE}
+finland_data = get_kaya_data("Finland")
+head(finland_data)
+```
+* `project_top_down()`: Project future population, GDP, energy use, and 
+  emissions. 
+  Example: 
+```{r project-top-down, echo=TRUE}
+finland_2050 = project_top_down("Finland", 2050)
+finland_2050
+```
+* `get_fuel_mix`: Get the fuel mix (coal, gas, oil, nuclear, and renewables) 
+  for a region or country. 
+  Example: 
+```{r get-fuel-mix, echo=TRUE}
+finland_mix = get_fuel_mix("Finland")
+finland_mix
+```
+* `plot_kaya`: Plot trends in kaya variables for a given region or country.
+  Example:
+```{r plot-kaya}
+us_kaya = get_kaya_data("United States")
+plot_kaya(us_kaya, "ef", start_year = 2000, stop_year = 2010, log_scale = TRUE,
+          trend_line = TRUE)
+```
+```{r plot-kaya-world}
+world_kaya = get_kaya_data("World")
+plot_kaya(world_kaya, "P", start_year = 2000, stop_year = 2010, log_scale = FALSE,
+          trend_line = FALSE)
+```
 
-From RStudio, you can get more help by typing `help(package="kayadata")` in the R console window.
+After you install the package, you can get more help inside RStudio by typing 
+`help(package="kayadata")` in the R console window.

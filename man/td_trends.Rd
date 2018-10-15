@@ -3,11 +3,11 @@
 \docType{data}
 \name{td_trends}
 \alias{td_trends}
-\title{Top-down projections of trends in Kaya variables for many countries}
+\title{Top-down projections of trends in Kaya variables for many countries and regions}
 \format{A tibble containing 221 rows and 11 variables
 \describe{
-  \item{country}{Country name}
-  \item{country_code}{Three-letter country code}
+  \item{country}{Country or region name}
+  \item{country_code}{Three-letter country or region code}
   \item{geography}{Geographic category: "nation", "region", or "world"}
   \item{P}{Trend in population, in fraction per year}
   \item{G}{Trend in gross demestic product, in fraction per year}

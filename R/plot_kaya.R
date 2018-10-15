@@ -84,7 +84,7 @@ plot_kaya <- function(kaya_data, variable,
 #' @param fuel_mix A tibble with the mixture of fuels:
 #' \describe{
 #'   \item{fuel}{The name of the fuel}
-#'   \item{quads}{The number of quads per year the country consumes}
+#'   \item{quads}{The number of quads per year the country or region consumes}
 #'   \item{pct}{The percentage of the country's energy that comes from that fuel}
 #' }
 #' @param collapse_renewables Combine Hydro and other Renewables into a single

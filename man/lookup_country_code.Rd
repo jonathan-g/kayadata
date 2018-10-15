@@ -2,19 +2,20 @@
 % Please edit documentation in R/kaya.R
 \name{lookup_country_code}
 \alias{lookup_country_code}
-\title{Look up country name from country code}
+\title{Look up country or region name from code}
 \usage{
 lookup_country_code(country_code, data = kayadata::kaya_data)
 }
 \arguments{
-\item{country_code}{The three-letter country code}
+\item{country_code}{The three-letter country or region code}
 
 \item{data}{Data frame in which to look up `country_code`}
 }
 \value{
-The corresponding country name, or NULL if there is no such country
+The corresponding country or region name, or NULL if there is no
+        such country or region
 }
 \description{
-Look up country name from country code
+Look up country or region name from code
 }
 \keyword{internal}

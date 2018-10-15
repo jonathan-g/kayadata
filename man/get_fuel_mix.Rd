@@ -2,21 +2,21 @@
 % Please edit documentation in R/kaya.R
 \name{get_fuel_mix}
 \alias{get_fuel_mix}
-\title{Get fuel mix for a country}
+\title{Get fuel mix for a country or region}
 \usage{
 get_fuel_mix(country_name, country_code = NULL)
 }
 \arguments{
-\item{country_name}{The name of a country to look up}
+\item{country_name}{The name of a country or region to look up}
 
-\item{country_code}{Optional three-letter country code to look up instead
-of the `country_name`}
+\item{country_code}{Optional three-letter country or region code to look up
+instead of the `country_name`}
 }
 \value{
-a tibble of fuel mix for the country.
+a tibble of fuel mix for the country or region.
   That is, the number of quads of each fuel and the
   fraction of total primary energy coming from that fuel.
 }
 \description{
-Get fuel mix for a country
+Get fuel mix for a country or region
 }

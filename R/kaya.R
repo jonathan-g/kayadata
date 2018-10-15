@@ -6,12 +6,13 @@ globalVariables(c("fuel_mix", "kaya_data", "country", "country_code",
                   "geography", "year", "P", "G", "E", "F", "g", "e", "f", "ef",
                   "td_values", "td_trends"))
 
-#' Look up country name from country code
+#' Look up country or region name from code
 #'
-#' @param country_code The three-letter country code
+#' @param country_code The three-letter country or region code
 #' @param data Data frame in which to look up `country_code`
 #'
-#' @return The corresponding country name, or NULL if there is no such country
+#' @return The corresponding country or region name, or NULL if there is no
+#'         such country or region
 #' @keywords internal
 lookup_country_code <- function(country_code, data = kayadata::kaya_data) {
   country_name <- data %>%
@@ -20,29 +21,29 @@ lookup_country_code <- function(country_code, data = kayadata::kaya_data) {
     as.character()
   if (is.null(country_name) || length(country_name) == 0) {
     country_name = NULL
-    warning("There is no country with code ", country_code, ".")
+    warning("There is no country or region with code ", country_code, ".")
   }
   country_name
 }
 
 #' Get a list of countries in the Kaya data
 #'
-#' @return a vector of country names
+#' @return a vector of country and region names
 #' @export
-kaya_country_list <- function() {
+kaya_region_list <- function() {
   levels(kayadata::kaya_data$country) %>%
     as.character()
 }
 
 #' Get Kaya data for a country
 #'
-#' @param country_name The name of a country to look up
-#' @param country_code Optional three-letter country code to look up instead
-#'                     of the `country_name`
+#' @param country_name The name of a country or region to look up
+#' @param country_code Optional three-letter country or region code to look up
+#'                     instead of the `country_name`
 #'
-#' @return a tibble of Kaya identity data for the country:
+#' @return a tibble of Kaya identity data for the country or region:
 #' \describe{
-#'   \item{country}{The name of the country}
+#'   \item{country}{The name of the country or region}
 #'   \item{year}{The year}
 #'   \item{P}{Population, in billions}
 #'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S.
@@ -76,13 +77,13 @@ get_kaya_data <- function(country_name, country_code = NULL) {
   data
 }
 
-#' Get fuel mix for a country
+#' Get fuel mix for a country or region
 #'
-#' @param country_name The name of a country to look up
-#' @param country_code Optional three-letter country code to look up instead
-#'                     of the `country_name`
+#' @param country_name The name of a country or region to look up
+#' @param country_code Optional three-letter country or region code to look up
+#'                     instead of the `country_name`
 #'
-#' @return a tibble of fuel mix for the country.
+#' @return a tibble of fuel mix for the country or region.
 #'   That is, the number of quads of each fuel and the
 #'   fraction of total primary energy coming from that fuel.
 #' @export
@@ -98,20 +99,21 @@ get_fuel_mix <- function(country_name, country_code = NULL) {
     dplyr::filter(country == country_name) %>%
     dplyr::top_n(1, year)
   if (nrow(data) == 0 && is.null(country_code)) {
-    warning("There is no data for country ", country_name)
+    warning("There is no data for country or region ", country_name)
   }
   data
 }
 
-#' Get top-down trends for Kaya variables for a country, using projections
-#' from U.S. Energy Information Administration's International Energy Outlook.
+#' Get top-down trends for Kaya variables for a country or region, using
+#' projections from U.S. Energy Information Administration's International
+#' Energy Outlook report.
 #'
-#' @param country_name The name of a country to look up
-#' @param country_code Optional three-letter country code to look up instead
-#'                     of the `country_name`
+#' @param country_name The name of a country or region to look up
+#' @param country_code Optional three-letter country or region code to look up
+#'                     instead of the `country_name`
 #'
 #' @return a tibble of trends for P, G, E, F, g, e, f, and ef for the country,
-#' in percent per year.
+#' or region in percent per year.
 #' @export
 top_down_trend <- function(country_name, country_code = NULL) {
   if (! is.null(country_code)) {
@@ -126,20 +128,21 @@ top_down_trend <- function(country_name, country_code = NULL) {
     dplyr::mutate(g = G - P, e = E - G, f = F - E, ef = F - G) %>%
     dplyr::select(country, P, G, g, E, F, e, f, ef)
   if (nrow(data) == 0 && is.null(country_code)) {
-    warning("There is no data for country ", country_name)
+    warning("There is no data for country or region ", country_name)
   }
   data
 }
 
-#' Get top-down projections of Kaya variables for a country
+#' Get top-down projections of Kaya variables for a country or region
 #'
-#' @param country_name The name of a country to look up
-#' @param country_code Optional three-letter country code to look up instead
-#'                     of the `country_name`
+#' @param country_name The name of a country or region to look up
+#' @param country_code Optional three-letter country or region code to look up
+#'                     instead of the `country_name`
 #'
-#' @return a tibble of values for P, G, E, F, g, e, f, and ef for the country:
+#' @return a tibble of values for P, G, E, F, g, e, f, and ef for the country
+#' or region:
 #' \describe{
-#'   \item{country}{The name of the country}
+#'   \item{country}{The name of the country or region}
 #'   \item{P}{Population, in billions}
 #'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S.
 #'            dollars.}
@@ -173,17 +176,19 @@ top_down_values <- function(country_name, country_code) {
   data
 }
 
-#' Get top-down projections of Kaya variables for a country for a given year
+#' Get top-down projections of Kaya variables for a country or region for a
+#' given year
 #'
-#' @param country_name The name of a country to look up
-#' @param country_code Optional three-letter country code to look up instead
-#'                     of the `country_name`
+#' @param country_name The name of a country or region to look up
+#' @param country_code Optional three-letter country or region code to look up
+#'                     instead of the `country_name`
 #'
 #' @param year The year to project to
 #'
-#' @return a tibble of values for P, G, E, F, g, e, f, and ef for the country:
+#' @return a tibble of values for P, G, E, F, g, e, f, and ef for the country
+#' or region:
 #' \describe{
-#'   \item{country}{The name of the country}
+#'   \item{country}{The name of the country or region}
 #'   \item{year}{The year}
 #'   \item{P}{Population, in billions}
 #'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S.
@@ -222,7 +227,7 @@ project_top_down <- function(country_name, year, country_code = NULL) {
     dplyr::mutate(country = country_name, year = (!!year)) %>%
     dplyr::select(country, year, P, G, g, E, F, e, f, ef)
   if (nrow(data) == 0 && is.null(country_code)) {
-    warning("There is no data for country ", country_name)
+    warning("There is no data for country or region ", country_name)
   }
   data
 }

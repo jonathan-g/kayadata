@@ -3,11 +3,11 @@
 \docType{data}
 \name{td_values}
 \alias{td_values}
-\title{Top-down projections of future Kaya variables for many countries}
+\title{Top-down projections of future Kaya variables for many countries and regions}
 \format{A tibble containing 1752 rows and 12 variables
 \describe{
-  \item{country}{Country name}
-  \item{country_code}{Three-letter country code}
+  \item{country}{Country or region name}
+  \item{country_code}{Three-letter country or region code}
   \item{geography}{Geographic category: "nation", "region", or "world"}
   \item{year}{The year}
   \item{P}{Population, in billions}

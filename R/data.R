@@ -5,8 +5,8 @@
 #'
 #' @format A tibble containing 13163 rows and 13 variables:
 #' \describe{
-#'   \item{country}{Country name}
-#'   \item{country_code}{Three-letter country code}
+#'   \item{country}{Country or region name}
+#'   \item{country_code}{Three-letter country or region code}
 #'   \item{geography}{Geographic category: "nation", "region", or "world"}
 #'   \item{year}{The year}
 #'   \item{P}{Population, in billions}
@@ -45,22 +45,22 @@
 #'   \item{fuel}{The fuel: "Coal", "Natural Gas", "Oil", "Nuclear", "Hydro",
 #'               and "Renewables"}
 #'   \item{quads}{The number of quads of that fuel consumed in the given country
-#'                and year}
-#'   \item{pct}{The percentage of that country's total primary energy consumption
-#'              from the fuel}
+#'                or region and year}
+#'   \item{pct}{The percentage of that country or region's total primary
+#'              energy consumption from the fuel}
 #' }
 #' @source \url{https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html}
 "fuel_mix"
 
-#' Top-down projections of future Kaya variables for many countries
+#' Top-down projections of future Kaya variables for many countries and regions
 #'
 #' A dataset containing top-down projections of P, G, and E, from the
 #' EIA's International Energy Outlook 2017.
 #'
 #' @format A tibble containing 1752 rows and 12 variables
 #' \describe{
-#'   \item{country}{Country name}
-#'   \item{country_code}{Three-letter country code}
+#'   \item{country}{Country or region name}
+#'   \item{country_code}{Three-letter country or region code}
 #'   \item{geography}{Geographic category: "nation", "region", or "world"}
 #'   \item{year}{The year}
 #'   \item{P}{Population, in billions}
@@ -77,15 +77,15 @@
 #' @source \url{https://www.eia.gov/outlooks/ieo/ieo_tables.php}
 "td_values"
 
-#' Top-down projections of trends in Kaya variables for many countries
+#' Top-down projections of trends in Kaya variables for many countries and regions
 #'
 #' A dataset containing top-down projections of trends in P, G, and E,
 #' from the EIA's International Energy Outlook 2017.
 #'
 #' @format A tibble containing 221 rows and 11 variables
 #' \describe{
-#'   \item{country}{Country name}
-#'   \item{country_code}{Three-letter country code}
+#'   \item{country}{Country or region name}
+#'   \item{country_code}{Three-letter country or region code}
 #'   \item{geography}{Geographic category: "nation", "region", or "world"}
 #'   \item{P}{Trend in population, in fraction per year}
 #'   \item{G}{Trend in gross demestic product, in fraction per year}
