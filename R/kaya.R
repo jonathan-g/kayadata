@@ -14,6 +14,7 @@ globalVariables(c("fuel_mix", "kaya_data", "country", "country_code",
 #' @return The corresponding country or region name, or NULL if there is no
 #'         such country or region
 #' @keywords internal
+#' @importFrom magrittr "%>%" "%$%"
 lookup_country_code <- function(country_code, data = kayadata::kaya_data) {
   country_name <- data %>%
     dplyr::select(country, country_code) %>% dplyr::distinct() %>%

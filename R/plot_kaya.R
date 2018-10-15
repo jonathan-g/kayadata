@@ -23,6 +23,7 @@ globalVariables(c("in_range", "fuel", "quads", "pct", "label",
 #' @return A plot oblect.
 #'
 #' @export
+#' @importFrom magrittr "%>%"
 plot_kaya <- function(kaya_data, variable,
                       start_year = NA, stop_year = NA,
                       y_lab = NULL,
