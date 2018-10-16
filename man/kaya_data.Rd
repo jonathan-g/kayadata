@@ -6,8 +6,8 @@
 \title{Kaya identity data for many countries}
 \format{A tibble containing 13163 rows and 13 variables:
 \describe{
-  \item{country}{Country or region name}
-  \item{country_code}{Three-letter country or region code}
+  \item{region}{Country or region name}
+  \item{region_code}{Three-letter country or region code}
   \item{geography}{Geographic category: "nation", "region", or "world"}
   \item{year}{The year}
   \item{P}{Population, in billions}

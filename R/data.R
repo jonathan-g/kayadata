@@ -5,8 +5,8 @@
 #'
 #' @format A tibble containing 13163 rows and 13 variables:
 #' \describe{
-#'   \item{country}{Country or region name}
-#'   \item{country_code}{Three-letter country or region code}
+#'   \item{region}{Country or region name}
+#'   \item{region_code}{Three-letter country or region code}
 #'   \item{geography}{Geographic category: "nation", "region", or "world"}
 #'   \item{year}{The year}
 #'   \item{P}{Population, in billions}
@@ -38,8 +38,8 @@
 #'
 #' @format A tibble containing 936 rows and 7 variables
 #' \describe{
-#'   \item{country}{Country name}
-#'   \item{country_code}{Three-letter country code}
+#'   \item{region}{Country or region name}
+#'   \item{region_code}{Three-letter country or region code}
 #'   \item{geography}{Geographic category: "nation", "region", or "world"}
 #'   \item{year}{The year}
 #'   \item{fuel}{The fuel: "Coal", "Natural Gas", "Oil", "Nuclear", "Hydro",
@@ -59,8 +59,8 @@
 #'
 #' @format A tibble containing 1752 rows and 12 variables
 #' \describe{
-#'   \item{country}{Country or region name}
-#'   \item{country_code}{Three-letter country or region code}
+#'   \item{region}{Country or region name}
+#'   \item{region_code}{Three-letter country or region code}
 #'   \item{geography}{Geographic category: "nation", "region", or "world"}
 #'   \item{year}{The year}
 #'   \item{P}{Population, in billions}
@@ -84,8 +84,8 @@
 #'
 #' @format A tibble containing 221 rows and 11 variables
 #' \describe{
-#'   \item{country}{Country or region name}
-#'   \item{country_code}{Three-letter country or region code}
+#'   \item{region}{Country or region name}
+#'   \item{region_code}{Three-letter country or region code}
 #'   \item{geography}{Geographic category: "nation", "region", or "world"}
 #'   \item{P}{Trend in population, in fraction per year}
 #'   \item{G}{Trend in gross demestic product, in fraction per year}

@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 ^README\.R?md$
 ^README-.*\.(png|jpg|jpeg|pdf)$
+^README_files/.*$
 ^LICENSE\.R?md$
 ^\.travis\.yml$
 ^\.gitlab-ci\.yml$

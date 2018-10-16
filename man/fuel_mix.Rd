@@ -6,8 +6,8 @@
 \title{Mix of fuels contributing to primary energy supply for many countries}
 \format{A tibble containing 936 rows and 7 variables
 \describe{
-  \item{country}{Country name}
-  \item{country_code}{Three-letter country code}
+  \item{region}{Country or region name}
+  \item{region_code}{Three-letter country or region code}
   \item{geography}{Geographic category: "nation", "region", or "world"}
   \item{year}{The year}
   \item{fuel}{The fuel: "Coal", "Natural Gas", "Oil", "Nuclear", "Hydro",

@@ -461,7 +461,7 @@ prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
              place == "Europe and Central Asia" ~ "ECS",
              TRUE ~ iso3c)) %>%
     arrange(geography, place) %>%
-    select(country = place, country_code = iso3c, geography,
+    select(region = place, region_code = iso3c, geography,
            year,
            P, G, E, F, g, e, f, ef, G_ppp, G_mer)
 
@@ -488,7 +488,7 @@ prepare_fuel_mix <- function(force_bp = FALSE) {
       fuel = ordered(fuel, levels = c("Coal", "Oil", "Natural Gas", "Nuclear",
                                       "Hydro", "Renewables")),
       pct = 100 * frac) %>%
-    select(country = place, country_code = iso3c, geography,
+    select(region = place, region_code = iso3c, geography,
            year, fuel, quads = value, pct)
 
     invisible(fuel_mix)
@@ -505,4 +505,4 @@ prepare_data_files = function(overwrite = FALSE, force_recalc = FALSE,
            error = warning)
 }
 
-prepare_data_files()
+# prepare_data_files()

@@ -4,13 +4,13 @@
 \alias{get_fuel_mix}
 \title{Get fuel mix for a country or region}
 \usage{
-get_fuel_mix(country_name, country_code = NULL)
+get_fuel_mix(region_name, region_code = NULL)
 }
 \arguments{
-\item{country_name}{The name of a country or region to look up}
+\item{region_name}{The name of a country or region to look up}
 
-\item{country_code}{Optional three-letter country or region code to look up
-instead of the `country_name`}
+\item{region_code}{Optional three-letter country or region code to look up
+instead of the `region_name`}
 }
 \value{
 a tibble of fuel mix for the country or region.

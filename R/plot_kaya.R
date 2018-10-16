@@ -9,16 +9,20 @@ globalVariables(c("in_range", "fuel", "quads", "pct", "label",
 #' @param variable The name of the variable to plot (character)
 #'
 #' @param start_year The year to start highlighting the data (should correspond
-#' to the beginning of the trend calculation)
+#' to the beginning of the trend calculation). Set to \code{NULL} to turn off
+#' highlighting.
 #'
 #' @param stop_year The year to stop highlighting the data (should correspond
-#' to the beginning of the trend calculation)
+#' to the beginning of the trend calculation). Set to \code{NULL} to turn off
+#' highlighting.
 #'
 #' @param y_lab Optional label for the y-axis
 #'
 #' @param log_scale Use log scale for y axis
 #'
 #' @param trend_line Include a trend line
+#'
+#' @param points Plot points in addition to the line.
 #'
 #' @return A plot oblect.
 #'
@@ -27,7 +31,8 @@ globalVariables(c("in_range", "fuel", "quads", "pct", "label",
 plot_kaya <- function(kaya_data, variable,
                       start_year = NA, stop_year = NA,
                       y_lab = NULL,
-                      log_scale = FALSE, trend_line = FALSE) {
+                      log_scale = FALSE, trend_line = FALSE,
+                      points = TRUE) {
   labels <- c(P =  'Population (billions)',
               G =  'Gross Domestic Product ($ trillion)',
               E =  'Energy consumption (quads)',
@@ -39,8 +44,13 @@ plot_kaya <- function(kaya_data, variable,
   )
 
   if (is.null(y_lab)) y_lab <- labels[variable]
-  if (is.na(start_year)) start_year = 1980
-  if (is.na(stop_year)) stop_year = max(kaya_data$year)
+  if (is.null(start_year) || is.null(stop_year)) {
+    start_year = NULL
+    stop_year = NULL
+  } else {
+    if (is.na(start_year)) start_year = 1980
+    if (is.na(stop_year)) stop_year = max(kaya_data$year)
+  }
 
   color_scale = scale_color_manual(values = c("TRUE" = "dark blue",
                                               "PRE" = "cornflowerblue",
@@ -48,18 +58,25 @@ plot_kaya <- function(kaya_data, variable,
   ))
   legend = guides(color = FALSE, shape = FALSE)
 
-  df <- bind_rows(
-    kaya_data %>% filter(year <= start_year) %>% mutate(in_range = "PRE"),
-    kaya_data %>% filter(year >= stop_year) %>% mutate(in_range = "POST"),
-    kaya_data %>% filter(between(year, start_year, stop_year)) %>%
-      mutate(in_range = "TRUE")
-  )
+  if (!any(is.null(start_year), is.null(stop_year))) {
+    df <- bind_rows(
+      kaya_data %>% filter(year <= start_year) %>% mutate(in_range = "PRE"),
+      kaya_data %>% filter(year >= stop_year) %>% mutate(in_range = "POST"),
+      kaya_data %>% filter(between(year, start_year, stop_year)) %>%
+        mutate(in_range = "TRUE")
+    )
+  } else {
+    df <- kaya_data %>% mutate(in_range = TRUE)
+  }
 
   p <- ggplot(df, aes_string(x = "year", y = variable, color = "in_range"))
   p <- p +
-    geom_line(size = 1, na.rm = TRUE) + geom_point(size = 3, na.rm = TRUE) +
-    color_scale +
-    legend
+    geom_line(size = 1, na.rm = TRUE)
+
+  if (points) {
+    p <- p + geom_point(size = 3, na.rm = TRUE)
+  }
+  p <- p + color_scale + legend
 
   if (log_scale) {
     p <- p + scale_y_log10()

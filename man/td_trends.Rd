@@ -6,8 +6,8 @@
 \title{Top-down projections of trends in Kaya variables for many countries and regions}
 \format{A tibble containing 221 rows and 11 variables
 \describe{
-  \item{country}{Country or region name}
-  \item{country_code}{Three-letter country or region code}
+  \item{region}{Country or region name}
+  \item{region_code}{Three-letter country or region code}
   \item{geography}{Geographic category: "nation", "region", or "world"}
   \item{P}{Trend in population, in fraction per year}
   \item{G}{Trend in gross demestic product, in fraction per year}

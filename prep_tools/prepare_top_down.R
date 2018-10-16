@@ -150,7 +150,7 @@ read_top_down_var <- function(var, file_name, kaya_data) {
 
   td_regions <- td_df %>%
     filter(region %in% c("Total OECD", "Total Non-OECD", "Total World")) %>%
-    mutate(country = str_replace_all(region, "Total *", ""))
+    mutate(region = str_replace_all(region, "Total *", ""))
 
   td_df <- td_df %>%
     filter(! is.na(x2015),
@@ -164,17 +164,19 @@ read_top_down_var <- function(var, file_name, kaya_data) {
   td_df = td_df %>% filter(region != "Other") %>% bind_rows(td_others)
 
   td_df <- td_df %>% left_join(x$region_tbl, by = "region") %>% select(-rgn) %>%
-    filter(!is.na(country)) %>%
-    bind_rows(td_regions)
+    filter(!is.na(region)) %>%
+    bind_rows(td_regions) %>%
+    mutate(region = ifelse(is.na(country), region, country)) %>%
+    select(-country)
 
-  td_trend = td_df %>% select(country, region, trend) %>%
+  td_trend = td_df %>% select(region, trend) %>%
     mutate(variable = var)
 
   kd <- kaya_data %>% filter(year == 2015) %>%
-    select(country, country_code, geography, ref = !!var_name) %>%
-    mutate(country = as.character(country))
+    select(region, region_code, geography, ref = !!var_name) %>%
+    mutate(region = as.character(region))
 
-  td_df <- td_df %>% select(-trend) %>% left_join(kd, by = "country") %>%
+  td_df <- td_df %>% select(-trend) %>% left_join(kd, by = "region") %>%
     mutate(x = x2015) %>%
     mutate_at(vars(matches("^x2[0-9]+$")),
               funs(. * ref / x)) %>%
@@ -184,7 +186,7 @@ read_top_down_var <- function(var, file_name, kaya_data) {
                     variable = var) %>%
     filter(! is.na(value))
 
-  td_trend = td_trend %>% left_join(kd, by = "country") %>%
+  td_trend = td_trend %>% left_join(kd, by = "region") %>%
     select(-ref)
 
   invisible(list(trend = td_trend, values = td_df))
@@ -209,10 +211,12 @@ prepare_top_down <- function(overwrite = FALSE) {
 
   td_values = spread(td_values, key = variable, value = value) %>%
     mutate(g = G / P, e = E / G, f = F / E, ef = F / G) %>%
-    select(country, country_code, geography, year, P, G, E, F, g, e, f, ef)
+    select(region, region_code, geography, year,
+           P, G, E, F, g, e, f, ef)
   td_trends = td_trends %>% spread(key = variable, value = trend) %>%
     mutate(g = G - P, e = E - G, f = F - E, ef = F - G) %>%
-    select(country, country_code, geography, P, G, E, F, g, e, f, ef)
+    select(region, region_code, geography,
+           P, G, E, F, g, e, f, ef)
 
 
   tryCatch(devtools::use_data(td_values, td_trends, overwrite = overwrite,

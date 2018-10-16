@@ -6,13 +6,13 @@
 projections from U.S. Energy Information Administration's International
 Energy Outlook report.}
 \usage{
-top_down_trend(country_name, country_code = NULL)
+top_down_trend(region_name, region_code = NULL)
 }
 \arguments{
-\item{country_name}{The name of a country or region to look up}
+\item{region_name}{The name of a country or region to look up}
 
-\item{country_code}{Optional three-letter country or region code to look up
-instead of the `country_name`}
+\item{region_code}{Optional three-letter country or region code to look up
+instead of the `region_name`}
 }
 \value{
 a tibble of trends for P, G, E, F, g, e, f, and ef for the country,

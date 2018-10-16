@@ -5,21 +5,21 @@
 \title{Get top-down projections of Kaya variables for a country or region for a
 given year}
 \usage{
-project_top_down(country_name, year, country_code = NULL)
+project_top_down(region_name, year, region_code = NULL)
 }
 \arguments{
-\item{country_name}{The name of a country or region to look up}
+\item{region_name}{The name of a country or region to look up}
 
 \item{year}{The year to project to}
 
-\item{country_code}{Optional three-letter country or region code to look up
-instead of the `country_name`}
+\item{region_code}{Optional three-letter country or region code to look up
+instead of the `region_name`}
 }
 \value{
 a tibble of values for P, G, E, F, g, e, f, and ef for the country
 or region:
 \describe{
-  \item{country}{The name of the country or region}
+  \item{region}{The name of the country or region}
   \item{year}{The year}
   \item{P}{Population, in billions}
   \item{G}{Gross demestic product, in trillions of constant 2010 U.S.

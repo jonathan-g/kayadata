@@ -4,19 +4,19 @@
 \alias{top_down_values}
 \title{Get top-down projections of Kaya variables for a country or region}
 \usage{
-top_down_values(country_name, country_code)
+top_down_values(region_name, region_code)
 }
 \arguments{
-\item{country_name}{The name of a country or region to look up}
+\item{region_name}{The name of a country or region to look up}
 
-\item{country_code}{Optional three-letter country or region code to look up
-instead of the `country_name`}
+\item{region_code}{Optional three-letter country or region code to look up
+instead of the `region_name`}
 }
 \value{
 a tibble of values for P, G, E, F, g, e, f, and ef for the country
 or region:
 \describe{
-  \item{country}{The name of the country or region}
+  \item{region}{The name of the country or region}
   \item{P}{Population, in billions}
   \item{G}{Gross demestic product, in trillions of constant 2010 U.S.
            dollars.}

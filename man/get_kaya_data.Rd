@@ -2,20 +2,20 @@
 % Please edit documentation in R/kaya.R
 \name{get_kaya_data}
 \alias{get_kaya_data}
-\title{Get Kaya data for a country}
+\title{Get Kaya data for a country or region}
 \usage{
-get_kaya_data(country_name, country_code = NULL)
+get_kaya_data(region_name, region_code = NULL)
 }
 \arguments{
-\item{country_name}{The name of a country or region to look up}
+\item{region_name}{The name of a country or region to look up}
 
-\item{country_code}{Optional three-letter country or region code to look up
-instead of the `country_name`}
+\item{region_code}{Optional three-letter country or region code to look up
+instead of the `region_name`}
 }
 \value{
 a tibble of Kaya identity data for the country or region:
 \describe{
-  \item{country}{The name of the country or region}
+  \item{region}{The name of the country or region}
   \item{year}{The year}
   \item{P}{Population, in billions}
   \item{G}{Gross demestic product, in trillions of constant 2010 U.S.
@@ -33,5 +33,5 @@ a tibble of Kaya identity data for the country or region:
 }
 }
 \description{
-Get Kaya data for a country
+Get Kaya data for a country or region
 }

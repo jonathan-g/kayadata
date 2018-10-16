@@ -21,12 +21,12 @@
 #'
 #' @section License:
 #'
-#'  The \pkg{kayatool} package is open source licensed under the
+#'  The \pkg{kayadata} package is open source licensed under the
 #'  MIT License.
 #'
 #' @section Bug reports:
 #' \itemize{
-#'  \item kayatool issue tracker (\url{https://github.com/gilligan-ees-3310/kayadata/issues})
+#'  \item kayadata issue tracker (\url{https://github.com/jonathan-g/kayadata/issues})
 #' }
 #'
 #'
