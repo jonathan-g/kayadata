@@ -16,8 +16,10 @@
 #'
 #' @description
 #'
-#' kayadata is a package for loading Kaya identity data for many countries
-#' into R. Data covers 1960-2017 for population and GDP, and 1965-2017 for
+#' kayadata is a package for working with Kaya identity data for many countries
+#' and regions.
+#'
+#' The data covers 1960-2017 for population and GDP, and 1965-2017 for
 #' energy and fossil-fuel CO2 emissions.
 #'
 #' The package uses data on population and GDP from the World Bank,
