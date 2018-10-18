@@ -1,8 +1,8 @@
 Package: kayadata
 Type: Package
 Title: Kaya Identity Data for Nations around the World
-Version: 0.3.3
-Date: 2018-10-14
+Version: 0.3.4
+Date: 2018-10-17
 Authors@R: c( person("Jonathan", "Gilligan", 
               email = "jonathan.gilligan@vanderbilt.edu", 
               role = c("cre", "aut")))
