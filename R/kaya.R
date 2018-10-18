@@ -10,19 +10,22 @@ globalVariables(c("fuel_mix", "kaya_data", "region", "region_code",
 #'
 #' @param region_code The three-letter country or region code
 #' @param data Data frame in which to look up `region_code`
+#' @param quiet       Suppress warnings if there is no such country or region.
 #'
 #' @return The corresponding country or region name, or NULL if there is no
 #'         such country or region
 #' @keywords internal
 #' @importFrom magrittr %>% %$%
-lookup_region_code <- function(region_code, data = kayadata::kaya_data) {
+lookup_region_code <- function(region_code, data = kayadata::kaya_data, quiet = FALSE) {
   region_name <- data %>%
     dplyr::select(region, region_code) %>% dplyr::distinct() %>%
     dplyr::filter(region_code == (!!region_code)) %$% region %>%
     as.character()
   if (is.null(region_name) || length(region_name) == 0) {
     region_name = NULL
-    warning("There is no country or region with code ", region_code, ".")
+    if (!quiet) {
+      warning("There is no country or region with code ", region_code, ".")
+    }
   }
   region_name
 }
@@ -41,6 +44,9 @@ kaya_region_list <- function() {
 #' @param region_name The name of a country or region to look up
 #' @param region_code Optional three-letter country or region code to look up
 #'                     instead of the `region_name`
+#' @param gdp         Use market exchage rates (`MER`) or purchasing power
+#'                    parity (`PPP`). Default is `MER`.
+#' @param quiet       Suppress warnings if there is no such country or region.
 #'
 #' @return a tibble of Kaya identity data for the country or region:
 #' \describe{
@@ -51,8 +57,8 @@ kaya_region_list <- function() {
 #'            dollars.}
 #'   \item{E}{Total primary energy consumption, in quads}
 #'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric
-#'            tons }
-#'   \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per
+#'            tons}
+#'   \item{g}{Per-capita GDP, in thousands of dollars per
 #'            person.}
 #'   \item{e}{Energy intensity of the economy, in quads per trillion dollars.}
 #'   \item{f}{Emissions intensity of the energy supply, in million metric tons
@@ -60,8 +66,18 @@ kaya_region_list <- function() {
 #'   \item{ef}{Emissions intensity of the economy, in metric tons per
 #'             million dollars of GDP.}
 #' }
+#'
+#' @details Units for G, g, e, and ef depend on whether the data is requested
+#'          in MER or PPP dollars: For MER, dollars are constant 2010 U.S.
+#'          dollars. For PPP, dollars are constant 2011 international dollars.
+#'
+#'          Note that emissions (F, f, and ef) use millions of metric tons of
+#'          carbon dioxide, not carbon.
+#'
 #' @export
-get_kaya_data <- function(region_name, region_code = NULL) {
+get_kaya_data <- function(region_name, region_code = NULL,
+                          gdp = c("MER", "PPP"), quiet = FALSE) {
+  gdp = match.arg(gdp)
   if (! is.null(region_code)) {
     region_name <- lookup_region_code(region_code)
     if (is.null(region_name)) {
@@ -73,8 +89,15 @@ get_kaya_data <- function(region_name, region_code = NULL) {
     dplyr::select(-region_code, -geography) %>%
     dplyr::filter(region == region_name)
   if (nrow(data) == 0 && is.null(region_code)) {
-    warning("There is no data for country or region ", region_name)
+    if (!quiet) {
+      warning("There is no data for country or region ", region_name)
+    }
   }
+  if (gdp == "PPP") {
+    data <- data %>% mutate(G = .data$G_ppp, g = G / P, e = E / G, ef = F / G)
+  }
+  # change select call to avoid spurious R CMD check note.
+  data <- data %>% select(-.data$G_ppp, -.data$G_mer)
   data
 }
 
@@ -83,15 +106,17 @@ get_kaya_data <- function(region_name, region_code = NULL) {
 #' @param region_name The name of a country or region to look up
 #' @param region_code Optional three-letter country or region code to look up
 #'                     instead of the `region_name`
+#' @param quiet       Suppress warnings if there is no data for that country or
+#'                    region.
 #'
 #' @return a tibble of fuel mix for the country or region.
 #'   That is, the number of quads of each fuel and the
 #'   fraction of total primary energy coming from that fuel.
 #' @export
-get_fuel_mix <- function(region_name, region_code = NULL) {
+get_fuel_mix <- function(region_name, region_code = NULL, quiet = FALSE) {
   if (! is.null(region_code)) {
     region_name <- lookup_region_code(region_code,
-                                                   kayadata::fuel_mix)
+                                      kayadata::fuel_mix)
     if (is.null(region_name) || length(region_name) == 0) {
       region_name = ""
     }
@@ -100,7 +125,9 @@ get_fuel_mix <- function(region_name, region_code = NULL) {
     dplyr::filter(region == region_name) %>%
     dplyr::top_n(1, year)
   if (nrow(data) == 0 && is.null(region_code)) {
-    warning("There is no data for country or region ", region_name)
+    if (! quiet) {
+      warning("There is no data for country or region ", region_name)
+    }
   }
   data
 }
@@ -112,14 +139,16 @@ get_fuel_mix <- function(region_name, region_code = NULL) {
 #' @param region_name The name of a country or region to look up
 #' @param region_code Optional three-letter country or region code to look up
 #'                     instead of the `region_name`
+#' @param quiet       Suppress warnings if there is no data for that country or
+#'                    region.
 #'
 #' @return a tibble of trends for P, G, E, F, g, e, f, and ef for the country,
 #' or region in percent per year.
 #' @export
-top_down_trend <- function(region_name, region_code = NULL) {
+top_down_trend <- function(region_name, region_code = NULL, quiet = FALSE) {
   if (! is.null(region_code)) {
     region_name <- lookup_region_code(region_code,
-                                                   kayadata::td_trends)
+                                      kayadata::td_trends)
     if (is.null(region_name) || length(region_name) == 0) {
       region_name = ""
     }
@@ -129,7 +158,9 @@ top_down_trend <- function(region_name, region_code = NULL) {
     dplyr::mutate(g = G - P, e = E - G, f = F - E, ef = F - G) %>%
     dplyr::select(region, P, G, g, E, F, e, f, ef)
   if (nrow(data) == 0 && is.null(region_code)) {
-    warning("There is no data for country or region ", region_name)
+    if (!quiet) {
+      warning("There is no data for country or region ", region_name)
+    }
   }
   data
 }
@@ -139,6 +170,8 @@ top_down_trend <- function(region_name, region_code = NULL) {
 #' @param region_name The name of a country or region to look up
 #' @param region_code Optional three-letter country or region code to look up
 #'                     instead of the `region_name`
+#' @param quiet       Suppress warnings if there is no data for that country or
+#'                    region.
 #'
 #' @return a tibble of values for P, G, E, F, g, e, f, and ef for the country
 #' or region:
@@ -159,10 +192,10 @@ top_down_trend <- function(region_name, region_code = NULL) {
 #'             million dollars of GDP.}
 #' }
 #' @export
-top_down_values <- function(region_name, region_code) {
+top_down_values <- function(region_name, region_code, quiet = FALSE) {
   if (! is.null(region_code)) {
     region_name <- lookup_region_code(region_code,
-                                                   kayadata::td_values)
+                                      kayadata::td_values)
     if (is.null(region_name) || length(region_name) == 0) {
       region_name = ""
     }
@@ -172,7 +205,9 @@ top_down_values <- function(region_name, region_code) {
     dplyr::mutate(g = G/P, e = E/G, f = F/E, ef = F/G) %>%
     dplyr::select(region, year, P, G, g, E, F, e, f, ef)
   if (nrow(data) == 0 && is.null(region_code)) {
-    warning("There is no data for country or region ", region_name)
+    if (!quiet) {
+      warning("There is no data for country or region ", region_name)
+    }
   }
   data
 }
@@ -183,6 +218,8 @@ top_down_values <- function(region_name, region_code) {
 #' @param region_name The name of a country or region to look up
 #' @param region_code Optional three-letter country or region code to look up
 #'                     instead of the `region_name`
+#' @param quiet       Suppress warnings if there is no data for that country or
+#'                    region.
 #'
 #' @param year The year to project to
 #'
@@ -206,16 +243,17 @@ top_down_values <- function(region_name, region_code) {
 #'             million dollars of GDP.}
 #' }
 #' @export
-project_top_down <- function(region_name, year, region_code = NULL) {
+project_top_down <- function(region_name, year, region_code = NULL,
+                             quiet = FALSE) {
   if (! is.null(region_code)) {
     region_name <- lookup_region_code(region_code,
-                                                   kayadata::td_values)
+                                      kayadata::td_values)
     if (is.null(region_name) || length(region_name) == 0) {
       region_name = ""
     }
   }
   if (year < min(kayadata::td_values$year, na.rm=T) ||
-              year > max(kayadata::td_values$year, na.rm=T)) {
+      year > max(kayadata::td_values$year, na.rm=T)) {
     stop("Projecting top-down values only works for year betweeen ",
          min(kayadata::td_values$year, na.rm = T), " and ",
          max(kayadata::td_values$year, na.rm = T), ".")
@@ -224,11 +262,13 @@ project_top_down <- function(region_name, year, region_code = NULL) {
   data <- kayadata::td_values %>%
     dplyr::filter(region == region_name) %>%
     dplyr::summarize_at(vars(-region, -region_code, -geography, -year),
-                 dplyr::funs(approx(x = year, y = ., xout = (!!year))$y)) %>%
+                        dplyr::funs(approx(x = year, y = ., xout = (!!year))$y)) %>%
     dplyr::mutate(region = region_name, year = (!!year)) %>%
     dplyr::select(region, year, P, G, g, E, F, e, f, ef)
   if (nrow(data) == 0 && is.null(region_code)) {
-    warning("There is no data for country or region ", region_name)
+    if (!quiet) {
+      warning("There is no data for country or region ", region_name)
+    }
   }
   data
 }
@@ -273,7 +313,7 @@ generation_capacity <- function() {
                     "Wind turbine"),
     nameplate_capacity = c(1000, 1000, 500,  200,  2.5),
     capacity_factor    = c(0.53, 0.75, 0.56, 0.30, 0.30)
-    )
+  )
 }
 
 #' The number of megawatts it takes to replace a quad.

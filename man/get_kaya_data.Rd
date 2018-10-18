@@ -4,13 +4,19 @@
 \alias{get_kaya_data}
 \title{Get Kaya data for a country or region}
 \usage{
-get_kaya_data(region_name, region_code = NULL)
+get_kaya_data(region_name, region_code = NULL, gdp = c("MER", "PPP"),
+  quiet = FALSE)
 }
 \arguments{
 \item{region_name}{The name of a country or region to look up}
 
 \item{region_code}{Optional three-letter country or region code to look up
 instead of the `region_name`}
+
+\item{gdp}{Use market exchage rates (`MER`) or purchasing power
+parity (`PPP`). Default is `MER`.}
+
+\item{quiet}{Suppress warnings if there is no such country or region.}
 }
 \value{
 a tibble of Kaya identity data for the country or region:
@@ -22,8 +28,8 @@ a tibble of Kaya identity data for the country or region:
            dollars.}
   \item{E}{Total primary energy consumption, in quads}
   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric
-           tons }
-  \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per
+           tons}
+  \item{g}{Per-capita GDP, in thousands of dollars per
            person.}
   \item{e}{Energy intensity of the economy, in quads per trillion dollars.}
   \item{f}{Emissions intensity of the energy supply, in million metric tons
@@ -34,4 +40,12 @@ a tibble of Kaya identity data for the country or region:
 }
 \description{
 Get Kaya data for a country or region
+}
+\details{
+Units for G, g, e, and ef depend on whether the data is requested
+         in MER or PPP dollars: For MER, dollars are constant 2010 U.S.
+         dollars. For PPP, dollars are constant 2011 international dollars.
+
+         Note that emissions (F, f, and ef) use millions of metric tons of
+         carbon dioxide, not carbon.
 }

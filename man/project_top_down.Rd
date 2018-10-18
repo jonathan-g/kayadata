@@ -5,7 +5,7 @@
 \title{Get top-down projections of Kaya variables for a country or region for a
 given year}
 \usage{
-project_top_down(region_name, year, region_code = NULL)
+project_top_down(region_name, year, region_code = NULL, quiet = FALSE)
 }
 \arguments{
 \item{region_name}{The name of a country or region to look up}
@@ -14,6 +14,9 @@ project_top_down(region_name, year, region_code = NULL)
 
 \item{region_code}{Optional three-letter country or region code to look up
 instead of the `region_name`}
+
+\item{quiet}{Suppress warnings if there is no data for that country or
+region.}
 }
 \value{
 a tibble of values for P, G, E, F, g, e, f, and ef for the country
