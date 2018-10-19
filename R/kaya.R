@@ -201,7 +201,7 @@ top_down_trend <- function(region_name, region_code = NULL, quiet = FALSE) {
 #'             million dollars of GDP.}
 #' }
 #' @export
-top_down_values <- function(region_name, region_code, quiet = FALSE) {
+top_down_values <- function(region_name, region_code = NULL, quiet = FALSE) {
   if (! is.null(region_code)) {
     region_name <- lookup_region_code(region_code,
                                       kayadata::td_values)
