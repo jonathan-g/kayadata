@@ -47,7 +47,7 @@ Some of the functions the package provides are:
 ```{r get-kaya-data, echo=TRUE}
 mexico_data = get_kaya_data("Mexico") 
 mexico_data %>% filter(year >= 1965) %>% 
-  select(country:ef) %>%
+  select(region:ef) %>%
   head()
 ```
 * `project_top_down()`: Project future population, GDP, energy use, and 
