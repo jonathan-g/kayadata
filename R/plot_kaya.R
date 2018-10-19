@@ -52,9 +52,32 @@ plot_kaya <- function(kaya_data, variable,
     if (is.na(stop_year)) stop_year = max(kaya_data$year)
   }
 
+  se <- FALSE
+  if (is.character(trend_line)) {
+    trend_line <- str_to_upper(trend_line) %>% str_trim()
+    if (trend_line %in% c("T", "TRUE")) {
+      trend_line <- TRUE
+      se <- FALSE
+    } else if (trend_line %in% c("F", "FALSE")) {
+      trend_line <- FALSE
+      se <- FALSE
+    } else {
+      if (trend_line %in% c("SE","SE:TRUE","SE:T")) {
+        trend_line <- TRUE
+        se <- TRUE
+      } else {
+        if (trend_line %in% c("SE:FALSE", "SE:F")) {
+          trend_line <- TRUE
+          se <- FALSE
+        }
+      }
+    }
+  }
+
   color_scale = scale_color_manual(values = c("TRUE" = "dark blue",
                                               "PRE" = "cornflowerblue",
-                                              "POST" = "cornflowerblue"
+                                              "POST" = "cornflowerblue",
+                                              "TREND" = "orchid4"
   ))
   legend = guides(color = FALSE, shape = FALSE)
 
@@ -69,7 +92,8 @@ plot_kaya <- function(kaya_data, variable,
     df <- kaya_data %>% mutate(in_range = TRUE)
   }
 
-  p <- ggplot(df, aes_string(x = "year", y = variable, color = "in_range"))
+  variable <- sym(variable)
+  p <- ggplot(df, aes(x = year, y = !!variable, color = in_range))
   p <- p +
     geom_line(size = 1, na.rm = TRUE)
 
@@ -84,7 +108,7 @@ plot_kaya <- function(kaya_data, variable,
 
   if (trend_line) {
     p <- p + geom_smooth(method = "lm", data = filter(df, in_range == "TRUE"),
-                         na.rm = TRUE)
+                         na.rm = TRUE, se = se, mapping = aes(color = "TREND"))
   }
 
   p <- p +

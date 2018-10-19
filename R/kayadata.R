@@ -52,5 +52,6 @@
 #' @import ggplot2
 #' @importFrom stats approx
 #' @importFrom tidyr gather spread
+#' @importFrom stringr str_to_upper str_c str_trim
 #'
 NULL

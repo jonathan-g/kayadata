@@ -71,6 +71,15 @@ kaya_region_list <- function() {
 #'          in MER or PPP dollars: For MER, dollars are constant 2010 U.S.
 #'          dollars. For PPP, dollars are constant 2011 international dollars.
 #'
+#'          P and MER values for GDP and related quantities are available from
+#'          1960 onward.
+#'
+#'          PPP values for GDP and related quantities are only available from
+#'          1990 onward.
+#'
+#'          Energy-related values (E, F, and derived quantities) are
+#'          available from 1965 onward.
+#'
 #'          Note that emissions (F, f, and ef) use millions of metric tons of
 #'          carbon dioxide, not carbon.
 #'
