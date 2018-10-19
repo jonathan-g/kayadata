@@ -207,7 +207,7 @@ predictions from macroeconomic integrated assessment models that consider
 interactions between population, GDP, and energy use to predict future energy
 demand:
 ```{r top_down_trends}
-top_down_trends <- top_down_trend("United States")
+top_down_trends <- get_top_down_trends("United States")
 
 top_down_trends %>% select(P, G, E) %>%
   mutate_all(funs(map_chr(., ~sprintf("%.02f%%", 100 * .x)))) %>%
