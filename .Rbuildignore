@@ -8,3 +8,4 @@
 ^\.gitlab-ci\.yml$
 ^raw_data/.*$
 ^prep_tools/.*$
+^cran-comments\.md$

@@ -1,6 +1,9 @@
 kayadata
 ========
 
+[![CRAN Status
+Badge](https://www.r-pkg.org/badges/version/kayadata)](https://cran.r-project.org/package=kayadata)
+
 **GitHub:** [![Build
 Status](https://travis-ci.org/jonathan-g/kayadata.svg?branch=master)](https://github.com/jonathan-g/kayadata/commits/master)
 

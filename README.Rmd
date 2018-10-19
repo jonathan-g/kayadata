@@ -15,6 +15,8 @@ library(kayadata)
 ```
 # kayadata
 
+[![CRAN Status Badge](https://www.r-pkg.org/badges/version/kayadata)](https://cran.r-project.org/package=kayadata)
+
 **GitHub:** [![Build Status](https://travis-ci.org/jonathan-g/kayadata.svg?branch=master)](https://github.com/jonathan-g/kayadata/commits/master)
 
 **GitLab:** [![Build Status](https://gitlab.jgilligan.org/gilligan_teaching/ees_3310/ees_3310_software/kayadata/badges/master/build.svg)](https://gitlab.jgilligan.org/gilligan_teaching/ees_3310/ees_3310_software/kayadata/commits/master)
