@@ -36,6 +36,8 @@ lookup_region_code <- function(region_code, data = kayadata::kaya_data, quiet = 
 #' @export
 kaya_region_list <- function() {
   levels(kayadata::kaya_data$region) %>%
+    # eliminate levels without instances
+    intersect(unique(kaya_data$region)) %>%
     as.character()
 }
 

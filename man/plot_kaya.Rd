@@ -6,7 +6,7 @@
 \usage{
 plot_kaya(kaya_data, variable, start_year = NA, stop_year = NA,
   y_lab = NULL, log_scale = FALSE, trend_line = FALSE,
-  points = TRUE)
+  points = TRUE, font_size = 20)
 }
 \arguments{
 \item{kaya_data}{A tibble with kaya-identity data}
@@ -28,6 +28,8 @@ highlighting.}
 \item{trend_line}{Include a trend line}
 
 \item{points}{Plot points in addition to the line.}
+
+\item{font_size}{Base size of the font for axis labels and titles.}
 }
 \value{
 A plot oblect.

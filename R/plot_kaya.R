@@ -5,24 +5,18 @@ globalVariables(c("in_range", "fuel", "quads", "pct", "label",
 #' Plot kaya-identity variable
 #'
 #' @param kaya_data A tibble with kaya-identity data
-#'
 #' @param variable The name of the variable to plot (character)
-#'
 #' @param start_year The year to start highlighting the data (should correspond
 #' to the beginning of the trend calculation). Set to \code{NULL} to turn off
 #' highlighting.
-#'
 #' @param stop_year The year to stop highlighting the data (should correspond
 #' to the beginning of the trend calculation). Set to \code{NULL} to turn off
 #' highlighting.
-#'
 #' @param y_lab Optional label for the y-axis
-#'
 #' @param log_scale Use log scale for y axis
-#'
 #' @param trend_line Include a trend line
-#'
 #' @param points Plot points in addition to the line.
+#' @param font_size Base size of the font for axis labels and titles.
 #'
 #' @return A plot oblect.
 #'
@@ -32,7 +26,7 @@ plot_kaya <- function(kaya_data, variable,
                       start_year = NA, stop_year = NA,
                       y_lab = NULL,
                       log_scale = FALSE, trend_line = FALSE,
-                      points = TRUE) {
+                      points = TRUE, font_size = 20) {
   labels <- c(P =  'Population (billions)',
               G =  'Gross Domestic Product ($ trillion)',
               E =  'Energy consumption (quads)',
@@ -113,7 +107,7 @@ plot_kaya <- function(kaya_data, variable,
 
   p <- p +
     labs(x = "Year", y = y_lab) +
-    theme_bw(base_size = 20) +
+    theme_bw(base_size = font_size) +
     theme(axis.title.y = element_text(vjust=1.2),
           axis.title.x = element_text(vjust=-0.1),
           legend.key = element_rect(color = NA))

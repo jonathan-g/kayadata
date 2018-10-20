@@ -85,10 +85,12 @@ nation_translations <- list(
                  "^Congo, +Rep\\. *$" = "Congo-Brazzaville",
                  "^Korea, +Rep\\. *$" = "South Korea",
                  "^Korea, +Dem\\. +People.s +Rep\\. *$" = "North Korea",
+                 "^Lao PDR" = "Laos",
                  "^Micronesia, +Fed\\. +Sts\\. *$" = "Micronesia",
                  "^Macedonia, +FYR *$" = "Macedonia",
                  "^Russian Federation" = "Russia",
                  "^Slovak Republic$" = "Slovakia",
+                 "^Taiwan, China" = "Taiwan",
                  "^Yemen, +Rep\\. *$" = "Yemen",
                  " +SAR, +China *$" = "", ", +The" = "",
                  " +members *$" = "", ", +RB *$" = "",
@@ -115,7 +117,7 @@ wb_countries <- wbcountries() %>%
 
 all_countries <- wb_countries %>% bind_rows(
   tibble(iso3c = NA, iso2c = NA,
-         country = c("Asia Pacific", "Middle East", "Non-OECD", "Taiwan",
+         country = c("Asia Pacific", "Middle East", "Non-OECD",
                      "USSR"),
          geography = ordered("region", levels = levels(wb_countries$geography))
   )
