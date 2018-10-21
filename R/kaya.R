@@ -46,7 +46,7 @@ kaya_region_list <- function() {
 #' @param region_name The name of a country or region to look up
 #' @param region_code Optional three-letter country or region code to look up
 #'                     instead of the `region_name`
-#' @param gdp         Use market exchage rates (`MER`) or purchasing power
+#' @param gdp         Use market exchange rates (`MER`) or purchasing power
 #'                    parity (`PPP`). Default is `MER`.
 #' @param quiet       Suppress warnings if there is no such country or region.
 #'
@@ -55,7 +55,7 @@ kaya_region_list <- function() {
 #'   \item{region}{The name of the country or region}
 #'   \item{year}{The year}
 #'   \item{P}{Population, in billions}
-#'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S.
+#'   \item{G}{Gross domestic product, in trillions of constant 2010 U.S.
 #'            dollars.}
 #'   \item{E}{Total primary energy consumption, in quads}
 #'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric
@@ -189,7 +189,7 @@ get_top_down_trends <- function(region_name, region_code = NULL, quiet = FALSE) 
 #' \describe{
 #'   \item{region}{The name of the country or region}
 #'   \item{P}{Population, in billions}
-#'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S.
+#'   \item{G}{Gross domestic product, in trillions of constant 2010 U.S.
 #'            dollars.}
 #'   \item{E}{Total primary energy consumption, in quads}
 #'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric
@@ -240,7 +240,7 @@ get_top_down_values <- function(region_name, region_code = NULL, quiet = FALSE) 
 #'   \item{region}{The name of the country or region}
 #'   \item{year}{The year}
 #'   \item{P}{Population, in billions}
-#'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S.
+#'   \item{G}{Gross domestic product, in trillions of constant 2010 U.S.
 #'            dollars.}
 #'   \item{E}{Total primary energy consumption, in quads}
 #'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric

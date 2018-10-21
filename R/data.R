@@ -10,7 +10,7 @@
 #'   \item{geography}{Geographic category: "nation", "region", or "world"}
 #'   \item{year}{The year}
 #'   \item{P}{Population, in billions}
-#'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars.}
+#'   \item{G}{Gross domestic product, in trillions of constant 2010 U.S. dollars.}
 #'   \item{E}{Total primary energy consumption, in quads}
 #'   \item{F}{CO2 emissions from fossil fuel consumption, in millions of tons}
 #'   \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per person.}
@@ -64,7 +64,7 @@
 #'   \item{geography}{Geographic category: "nation", "region", or "world"}
 #'   \item{year}{The year}
 #'   \item{P}{Population, in billions}
-#'   \item{G}{Gross demestic product, in trillions of constant 2010 U.S. dollars}
+#'   \item{G}{Gross domestic product, in trillions of constant 2010 U.S. dollars}
 #'   \item{E}{Total primary energy consumption, in quads}
 #'   \item{F}{Total CO2 emissions, in millions of metric tons}
 #'   \item{g}{Per-capita GDP, in thousands of constant 2010 U.S. dollars per person.}
@@ -88,7 +88,7 @@
 #'   \item{region_code}{Three-letter country or region code}
 #'   \item{geography}{Geographic category: "nation", "region", or "world"}
 #'   \item{P}{Trend in population, in fraction per year}
-#'   \item{G}{Trend in gross demestic product, in fraction per year}
+#'   \item{G}{Trend in gross domestic product, in fraction per year}
 #'   \item{E}{Trend in total primary energy consumption, in fraction per year}
 #'   \item{F}{Trend in CO2 emissions, in fraction per year}
 #'   \item{g}{Trend in per-capita GDP, in fraction per year}

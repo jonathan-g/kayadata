@@ -18,7 +18,7 @@ globalVariables(c("in_range", "fuel", "quads", "pct", "label",
 #' @param points Plot points in addition to the line.
 #' @param font_size Base size of the font for axis labels and titles.
 #'
-#' @return A plot oblect.
+#' @return A plot object.
 #'
 #' @export
 #' @importFrom magrittr %>%
@@ -125,7 +125,7 @@ plot_kaya <- function(kaya_data, variable,
 #' }
 #' @param collapse_renewables Combine Hydro and other Renewables into a single
 #'        category.
-#' @return A plot oblect.
+#' @return A plot object.
 #'
 #' @export
 plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE) {

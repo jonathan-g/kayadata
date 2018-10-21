@@ -13,7 +13,7 @@ get_kaya_data(region_name, region_code = NULL, gdp = c("MER", "PPP"),
 \item{region_code}{Optional three-letter country or region code to look up
 instead of the `region_name`}
 
-\item{gdp}{Use market exchage rates (`MER`) or purchasing power
+\item{gdp}{Use market exchange rates (`MER`) or purchasing power
 parity (`PPP`). Default is `MER`.}
 
 \item{quiet}{Suppress warnings if there is no such country or region.}
@@ -24,7 +24,7 @@ a tibble of Kaya identity data for the country or region:
   \item{region}{The name of the country or region}
   \item{year}{The year}
   \item{P}{Population, in billions}
-  \item{G}{Gross demestic product, in trillions of constant 2010 U.S.
+  \item{G}{Gross domestic product, in trillions of constant 2010 U.S.
            dollars.}
   \item{E}{Total primary energy consumption, in quads}
   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric

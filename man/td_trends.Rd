@@ -10,7 +10,7 @@
   \item{region_code}{Three-letter country or region code}
   \item{geography}{Geographic category: "nation", "region", or "world"}
   \item{P}{Trend in population, in fraction per year}
-  \item{G}{Trend in gross demestic product, in fraction per year}
+  \item{G}{Trend in gross domestic product, in fraction per year}
   \item{E}{Trend in total primary energy consumption, in fraction per year}
   \item{F}{Trend in CO2 emissions, in fraction per year}
   \item{g}{Trend in per-capita GDP, in fraction per year}

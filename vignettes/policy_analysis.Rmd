@@ -110,7 +110,7 @@ That looks better. The abrupt changes in trend at 1990 and again at 2005 illustr
 
 ### Historical Trends
 
-Now let's calcualte the historical trends:
+Now let's calculate the historical trends:
 ```{r compute-bottom-up-rates}
 vars <- c("P", "g", "e", "f")
 historical_trends <- map_dbl(vars, 

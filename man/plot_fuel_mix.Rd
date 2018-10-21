@@ -18,7 +18,7 @@ plot_fuel_mix(fuel_mix, collapse_renewables = TRUE)
 category.}
 }
 \value{
-A plot oblect.
+A plot object.
 }
 \description{
 Plot fuel mix

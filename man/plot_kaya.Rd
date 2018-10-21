@@ -32,7 +32,7 @@ highlighting.}
 \item{font_size}{Base size of the font for axis labels and titles.}
 }
 \value{
-A plot oblect.
+A plot object.
 }
 \description{
 Plot kaya-identity variable

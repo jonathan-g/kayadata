@@ -25,7 +25,7 @@ or region:
   \item{region}{The name of the country or region}
   \item{year}{The year}
   \item{P}{Population, in billions}
-  \item{G}{Gross demestic product, in trillions of constant 2010 U.S.
+  \item{G}{Gross domestic product, in trillions of constant 2010 U.S.
            dollars.}
   \item{E}{Total primary energy consumption, in quads}
   \item{F}{CO2 emissions from fossil fuel consumption, in millions of metric
