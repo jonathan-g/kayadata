@@ -22,7 +22,7 @@
             million dollars of GDP.}
 }}
 \source{
-\url{https://www.eia.gov/outlooks/ieo/ieo_tables.php}
+\url{https://www.eia.gov/outlooks/archive/ieo17/}
 }
 \usage{
 td_values

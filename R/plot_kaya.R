@@ -2,9 +2,9 @@ globalVariables(c("in_range", "fuel", "quads", "pct", "label",
                   "qmin", "qmax", "."))
 
 
-#' Plot kaya-identity variable
+#' Plot Kaya-identity variable
 #'
-#' @param kaya_data A tibble with kaya-identity data
+#' @param kaya_data A tibble with Kaya-identity data
 #' @param variable The name of the variable to plot (character)
 #' @param start_year The year to start highlighting the data (should correspond
 #' to the beginning of the trend calculation). Set to \code{NULL} to turn off

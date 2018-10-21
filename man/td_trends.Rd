@@ -19,7 +19,7 @@
   \item{ef}{Trend in emissions intensity of the economy, in fraction per year}
 }}
 \source{
-\url{https://www.eia.gov/outlooks/ieo/ieo_tables.php}
+\url{https://www.eia.gov/outlooks/archive/ieo17/}
 }
 \usage{
 td_trends

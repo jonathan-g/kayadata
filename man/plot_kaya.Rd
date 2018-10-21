@@ -2,14 +2,14 @@
 % Please edit documentation in R/plot_kaya.R
 \name{plot_kaya}
 \alias{plot_kaya}
-\title{Plot kaya-identity variable}
+\title{Plot Kaya-identity variable}
 \usage{
 plot_kaya(kaya_data, variable, start_year = NA, stop_year = NA,
   y_lab = NULL, log_scale = FALSE, trend_line = FALSE,
   points = TRUE, font_size = 20)
 }
 \arguments{
-\item{kaya_data}{A tibble with kaya-identity data}
+\item{kaya_data}{A tibble with Kaya-identity data}
 
 \item{variable}{The name of the variable to plot (character)}
 
@@ -35,5 +35,5 @@ highlighting.}
 A plot object.
 }
 \description{
-Plot kaya-identity variable
+Plot Kaya-identity variable
 }
