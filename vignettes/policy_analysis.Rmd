@@ -6,7 +6,7 @@ bibliography: "policy_analysis.bib"
 csl: "american-political-science-association.csl"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Example: Analysis of Emissions-Reduction Policy}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
