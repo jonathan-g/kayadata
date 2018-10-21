@@ -10,7 +10,7 @@ Description: Provides data for Kaya identity variables (population, gross
              domestic product, primary energy consumption, and energy-related 
              CO2 emissions) for the world and for individual nations, and 
              utility functions for looking up data,  plotting trends of 
-             kaya variables, and plotting the fuel mix for a given country
+             Kaya variables, and plotting the fuel mix for a given country
              or region.
 URL: https://github.com/jonathan-g/kayadata
 BugReports: https://github.com/jonathan-g/kayadata/issues

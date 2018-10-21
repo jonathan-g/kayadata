@@ -74,7 +74,7 @@
 #'   \item{ef}{Emissions intensity of the economy, in metric tons per
 #'             million dollars of GDP.}
 #' }
-#' @source \url{https://www.eia.gov/outlooks/ieo/ieo_tables.php}
+#' @source \url{https://www.eia.gov/outlooks/archive/ieo17/}
 "td_values"
 
 #' Top-down projections of trends in Kaya variables for many countries and regions
@@ -96,5 +96,5 @@
 #'   \item{f}{Trend in emissions intensity of the energy supply, in fraction per year}
 #'   \item{ef}{Trend in emissions intensity of the economy, in fraction per year}
 #' }
-#' @source \url{https://www.eia.gov/outlooks/ieo/ieo_tables.php}
+#' @source \url{https://www.eia.gov/outlooks/archive/ieo17/}
 "td_trends"
