@@ -1,4 +1,4 @@
-globalVariables(c("in_range", "fuel", "quads", "pct", "label",
+globalVariables(c("in_range", "fuel", "quads", "frac", "label",
                   "qmin", "qmax", "."))
 
 
@@ -121,7 +121,7 @@ plot_kaya <- function(kaya_data, variable,
 #' \describe{
 #'   \item{fuel}{The name of the fuel}
 #'   \item{quads}{The number of quads per year the country or region consumes}
-#'   \item{pct}{The percentage of the country's energy that comes from that fuel}
+#'   \item{frac}{The percentage of the country's energy that comes from that fuel}
 #' }
 #' @param collapse_renewables Combine Hydro and other Renewables into a single
 #'        category.
@@ -132,7 +132,7 @@ plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE) {
   if (collapse_renewables) {
     fuel_mix <- fuel_mix %>%
       mutate(fuel = fct_recode(fuel, Renewables = "Hydro")) %>%
-      group_by(fuel) %>% summarize(quads = sum(quads), pct = sum(pct))
+      group_by(fuel) %>% summarize(quads = sum(quads), frac = sum(frac))
     color_scale <- c("Coal" = "#e31a1c", "Natural Gas" = "#fdbf6f",
                      "Oil" = "#ff7f00", "Nuclear" = "#33a04c",
                      "Renewables" = "#b2dfca", "Total" = "#a6cee3")
@@ -147,7 +147,8 @@ plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE) {
     arrange(fuel) %>%
     mutate(qmin = cumsum(lag(quads, default=0)), qmax = cumsum(quads))
   labels <- fd %>% mutate(label = paste0(fuel, ": ", round(quads,2),
-                                         " quads (", round(pct,1), "%)")) %>%
+                                         " quads (", scales::percent(frac, 0.1),
+                                         ")")) %>%
     arrange(fuel) %>% select(fuel, label) %>%
     tidyr::spread(key = fuel, value = label) %>% unlist()
   if (FALSE) {

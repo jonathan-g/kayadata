@@ -11,7 +11,7 @@ plot_fuel_mix(fuel_mix, collapse_renewables = TRUE)
 \describe{
   \item{fuel}{The name of the fuel}
   \item{quads}{The number of quads per year the country or region consumes}
-  \item{pct}{The percentage of the country's energy that comes from that fuel}
+  \item{frac}{The percentage of the country's energy that comes from that fuel}
 }}
 
 \item{collapse_renewables}{Combine Hydro and other Renewables into a single

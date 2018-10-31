@@ -479,19 +479,20 @@ prepare_fuel_mix <- function(force_bp = FALSE) {
   }
 
   fuel_mix <- fuel_mix %>%
-    mutate(iso3c = case_when(
-      place == "World" ~ "WLD",
-      place == "Latin America and Caribbean" ~ "LCN",
-      place == "North America" ~ "NAC",
-      place == "OECD" ~ "OED",
-      place == "Africa" ~ "AFR",
-      place == "Europe and Central Asia" ~ "ECS",
-      TRUE ~ iso3c),
+    mutate(
+      iso3c = case_when(
+        place == "World" ~ "WLD",
+        place == "Latin America and Caribbean" ~ "LCN",
+        place == "North America" ~ "NAC",
+        place == "OECD" ~ "OED",
+        place == "Africa" ~ "AFR",
+        place == "Europe and Central Asia" ~ "ECS",
+        TRUE ~ iso3c),
       fuel = ordered(fuel, levels = c("Coal", "Oil", "Natural Gas", "Nuclear",
-                                      "Hydro", "Renewables")),
-      pct = 100 * frac) %>%
+                                      "Hydro", "Renewables"))
+    ) %>%
     select(region = place, region_code = iso3c, geography,
-           year, fuel, quads = value, pct)
+           year, fuel, quads = value, frac)
 
     invisible(fuel_mix)
 }
@@ -501,7 +502,7 @@ prepare_data_files = function(overwrite = FALSE, force_recalc = FALSE,
   kaya_data = prepare_kaya(force_wb = force_recalc, force_bp = force_recalc,
                            force_download = force_download)
   fuel_mix = prepare_fuel_mix(force_bp = force_recalc)
-  tryCatch(devtools::use_data(kaya_data, fuel_mix, pkg = base_dir,
+  tryCatch(usethis::use_data(kaya_data, fuel_mix,
                               internal = FALSE, overwrite = overwrite,
                               compress = "xz"),
            error = warning)

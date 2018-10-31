@@ -12,7 +12,7 @@ test_that("Fuel mix adds up", {
     fm <- get_fuel_mix(r, quiet = TRUE)
     if (nrow(fm) > 0) {
       y <- fm$year[1]
-      fm <- fm %>% dplyr::summarize_at(dplyr::vars(quads, pct),
+      fm <- fm %>% dplyr::summarize_at(dplyr::vars(quads, frac),
                                        funs(sum(., na.rm = TRUE)))
 
       kd <- get_kaya_data(r, quiet = TRUE) %>%
@@ -22,7 +22,7 @@ test_that("Fuel mix adds up", {
                      label = "Sum of primary energy sources",
                      expected.label = "Total primary energy consumption")
       }
-      expect_equal(fm$pct, 100, tolerance = 1E-2,
+      expect_equal(fm$frac, 1, tolerance = 1E-2,
                    label = "Sum of percentages",
                    expected.label = "100")
     }

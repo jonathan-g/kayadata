@@ -4,10 +4,14 @@
 \alias{get_fuel_mix}
 \title{Get fuel mix for a country or region}
 \usage{
-get_fuel_mix(region_name, region_code = NULL, quiet = FALSE)
+get_fuel_mix(region_name, collapse_renewables = TRUE,
+  region_code = NULL, quiet = FALSE)
 }
 \arguments{
 \item{region_name}{The name of a country or region to look up}
+
+\item{collapse_renewables}{Combine Hydro and other Renewables into a single
+category.}
 
 \item{region_code}{Optional three-letter country or region code to look up
 instead of the `region_name`}

@@ -219,7 +219,7 @@ prepare_top_down <- function(overwrite = FALSE) {
            P, G, E, F, g, e, f, ef)
 
 
-  tryCatch(devtools::use_data(td_values, td_trends, overwrite = overwrite,
+  tryCatch(usethis::use_data(td_values, td_trends, overwrite = overwrite,
                               internal = FALSE, compress = "xz"),
            error = warning)
 }

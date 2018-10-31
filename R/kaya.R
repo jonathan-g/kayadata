@@ -19,7 +19,7 @@ globalVariables(c("fuel_mix", "kaya_data", "region", "region_code",
 lookup_region_code <- function(region_code, data = kayadata::kaya_data, quiet = FALSE) {
   region_name <- data %>%
     dplyr::select(region, region_code) %>% dplyr::distinct() %>%
-    dplyr::filter(region_code == (!!region_code)) %$% region %>%
+    dplyr::filter(region_code %in% (!!region_code)) %$% region %>%
     as.character()
   if (is.null(region_name) || length(region_name) == 0) {
     region_name = NULL
@@ -98,10 +98,13 @@ get_kaya_data <- function(region_name, region_code = NULL,
 
   data <- kayadata::kaya_data %>%
     dplyr::select(-region_code, -geography) %>%
-    dplyr::filter(region == region_name)
-  if (nrow(data) == 0 && is.null(region_code)) {
+    dplyr::filter(region %in% region_name)
+  if (nrow(data) == 0) {
     if (!quiet) {
-      warning("There is no data for country or region ", region_name)
+      warning("There is no data for country or region ",
+              str_c(
+                ifelse(isTRUE(region_name == ""), region_code, region_name),
+                collapse = ", "))
     }
   }
   if (gdp == "PPP") {
@@ -115,16 +118,19 @@ get_kaya_data <- function(region_name, region_code = NULL,
 #' Get fuel mix for a country or region
 #'
 #' @param region_name The name of a country or region to look up
+#' @param collapse_renewables Combine Hydro and other Renewables into a single
+#'   category.
 #' @param region_code Optional three-letter country or region code to look up
-#'                     instead of the `region_name`
+#'   instead of the `region_name`
 #' @param quiet       Suppress warnings if there is no data for that country or
-#'                    region.
+#'   region.
 #'
 #' @return a tibble of fuel mix for the country or region.
 #'   That is, the number of quads of each fuel and the
 #'   fraction of total primary energy coming from that fuel.
 #' @export
-get_fuel_mix <- function(region_name, region_code = NULL, quiet = FALSE) {
+get_fuel_mix <- function(region_name, collapse_renewables = TRUE,
+                         region_code = NULL, quiet = FALSE) {
   if (! is.null(region_code)) {
     region_name <- lookup_region_code(region_code,
                                       kayadata::fuel_mix)
@@ -133,14 +139,27 @@ get_fuel_mix <- function(region_name, region_code = NULL, quiet = FALSE) {
     }
   }
   data <- kayadata::fuel_mix %>%
-    dplyr::filter(region == region_name) %>%
-    dplyr::top_n(1, year)
-  if (nrow(data) == 0 && is.null(region_code)) {
-    if (! quiet) {
-      warning("There is no data for country or region ", region_name)
-    }
+    select(region, year, fuel, quads, frac) %>%
+    dplyr::filter(region %in% region_name) %>%
+    group_by(region) %>% dplyr::top_n(1, year) %>% ungroup()
+
+
+  if (collapse_renewables && nrow(data) > 0) {
+    levs <- levels(data$fuel)
+    data <- data %>%
+      mutate(fuel = forcats::fct_recode(fuel, Renewables = "Hydro") %>%
+               lvls_expand(levs)) %>%
+      group_by(region, year, fuel) %>%
+      summarize_at(vars(quads, frac), funs(sum(., na.rm = T))) %>%
+      ungroup()
   }
-  data
+  if (nrow(data) == 0 && is.null(region_code)) {
+    warning("There is no data for country or region ",
+            str_c(
+              ifelse(isTRUE(region_name == ""), region_code, region_name),
+              collapse = ", "))
+  }
+  data %>% arrange(region, fuel)
 }
 
 #' Get top-down trends for Kaya variables for a country or region, using
@@ -165,12 +184,15 @@ get_top_down_trends <- function(region_name, region_code = NULL, quiet = FALSE) 
     }
   }
   data <- kayadata::td_trends %>%
-    dplyr::filter(region == region_name) %>%
+    dplyr::filter(region %in% region_name) %>%
     dplyr::mutate(g = G - P, e = E - G, f = F - E, ef = F - G) %>%
     dplyr::select(region, P, G, g, E, F, e, f, ef)
   if (nrow(data) == 0 && is.null(region_code)) {
     if (!quiet) {
-      warning("There is no data for country or region ", region_name)
+      warning("There is no data for country or region ",
+              str_c(
+                ifelse(isTRUE(region_name == ""), region_code, region_name),
+                collapse = ", "))
     }
   }
   data
@@ -212,12 +234,15 @@ get_top_down_values <- function(region_name, region_code = NULL, quiet = FALSE) 
     }
   }
   data <- kayadata::td_values %>%
-    dplyr::filter(region == region_name) %>%
+    dplyr::filter(region %in% region_name) %>%
     dplyr::mutate(g = G/P, e = E/G, f = F/E, ef = F/G) %>%
     dplyr::select(region, year, P, G, g, E, F, e, f, ef)
   if (nrow(data) == 0 && is.null(region_code)) {
     if (!quiet) {
-      warning("There is no data for country or region ", region_name)
+      warning("There is no data for country or region ",
+              str_c(
+                ifelse(isTRUE(region_name == ""), region_code, region_name),
+                collapse = ", "))
     }
   }
   data
@@ -271,10 +296,13 @@ project_top_down <- function(region_name, year, region_code = NULL,
   }
 
   data <- kayadata::td_values %>%
-    dplyr::filter(region == region_name) %>%
-    dplyr::summarize_at(vars(-region, -region_code, -geography, -year),
+    dplyr::filter(region %in% region_name) %>%
+    dplyr::select(-region_code, -geography) %>%
+    dplyr::group_by(region) %>%
+    dplyr::summarize_at(vars(-year, -region),
                         dplyr::funs(approx(x = year, y = ., xout = (!!year))$y)) %>%
-    dplyr::mutate(region = region_name, year = (!!year)) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(year = (!!year)) %>%
     dplyr::select(region, year, P, G, g, E, F, e, f, ef)
   if (nrow(data) == 0 && is.null(region_code)) {
     if (!quiet) {

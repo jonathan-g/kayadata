@@ -14,7 +14,7 @@
               and "Renewables"}
   \item{quads}{The number of quads of that fuel consumed in the given country
                or region and year}
-  \item{pct}{The percentage of that country or region's total primary
+  \item{frac}{The fraction of that country or region's total primary
              energy consumption from the fuel}
 }}
 \source{
