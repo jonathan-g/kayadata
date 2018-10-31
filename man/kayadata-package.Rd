@@ -8,8 +8,20 @@
 kayadata is a package for working with Kaya identity data for many countries
 and regions.
 
-The data covers 1960-2017 for population and GDP, and 1965-2017 for
-energy and fossil-fuel CO2 emissions.
+The Kaya identity, named for the economist Yoichi Kaya, who introduced it
+(Kaya, 1998); It decomposes the energy-related carbon dioxide emissions from
+a nation, region, or the world into the product of four components:
+\deqn{F = P \times g \times e \times f,}
+where _F_ is the total emissions, _P_ is the population, _g_ is the
+per-capita GDP, _e_ is the energy intensity of the economy, and
+_f_ is the emissions-intensity of the energy supply.
+(Nakicenovic and Swart, 2000,
+[Ch. 3, p. 105](http://www.ipcc.ch/ipccreports/sres/emission/index.php?idp=50);
+Raupach _et al_, 2007)
+
+
+The data in this packages covers 1960--2017 for population and GDP, and
+1965--2017 for ' energy and fossil-fuel CO2 emissions.
 
 The package uses data on population and GDP from the World Bank,
 using market exchange rates (MER) for GDP because those data go back to
@@ -36,3 +48,16 @@ from the
 }
 }
 
+\references{
+Kaya, Yoichi and Keiichi Yokobori, _Environment, Energy, and Economy:
+Strategies for Sustaionability_ (United Nations University Press, 1998).
+
+Nakicenovic, Nebojsa, and Rob Swart (Eds.),
+_Special Report on Emissions Scenarios_
+(Cambridge University Press, 2000).
+<http://www.ipcc.ch/ipccreports/sres/emission/index.php>
+
+Raupach, Michael R., _et al._, "Global and regional drivers of accelerating
+CO~2~ emissions," PNAS **104**, 10288--10293 (2007)
+[doi: 10.1073/pnas.0700609104](https://doi.org/10.1073/pnas.0700609104).
+}
