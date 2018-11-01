@@ -43,3 +43,7 @@ or region:
 Get top-down projections of Kaya variables for a country or region for a
 given year
 }
+\examples{
+project_top_down("China", 2037)
+project_top_down(region_code = "VNM", year = 2043)
+}

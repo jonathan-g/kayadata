@@ -136,6 +136,7 @@ get_kaya_data <- function(region_name, gdp = c("MER", "PPP"), quiet = FALSE,
 #' @examples
 #' get_fuel_mix("United States")
 #' get_fuel_mix("World", collapse_renewables = FALSE)
+#' get_fuel_mix(region_code = "GBR")
 #' @export
 get_fuel_mix <- function(region_name, collapse_renewables = TRUE,
                          quiet = FALSE, region_code = NULL) {
@@ -182,8 +183,9 @@ get_fuel_mix <- function(region_name, collapse_renewables = TRUE,
 #'
 #' @return a tibble of trends for P, G, E, F, g, e, f, and ef for the country,
 #' or region in percent per year.
-#' @example
+#' @examples
 #' get_top_down_trends("Spain")
+#' get_top_down_trends(region_code = "RUS")
 #' @export
 get_top_down_trends <- function(region_name, quiet = FALSE,
                                 region_code = NULL) {
@@ -235,8 +237,9 @@ get_top_down_trends <- function(region_name, quiet = FALSE,
 #'   \item{ef}{Emissions intensity of the economy, in metric tons per
 #'             million dollars of GDP.}
 #' }
-#' example
+#' examples
 #' get_top_down_values("New Zealand")
+#' get_top_down_values(region_code = "NGA")
 #' @export
 get_top_down_values <- function(region_name, quiet = FALSE, region_code = NULL) {
   if (! is.null(region_code)) {
@@ -291,8 +294,9 @@ get_top_down_values <- function(region_name, quiet = FALSE, region_code = NULL) 
 #'   \item{ef}{Emissions intensity of the economy, in metric tons per
 #'             million dollars of GDP.}
 #' }
-#' @example
+#' @examples
 #' project_top_down("China", 2037)
+#' project_top_down(region_code = "VNM", year = 2043)
 #' @export
 project_top_down <- function(region_name, year, quiet = FALSE, region_code = NULL) {
   if (! is.null(region_code)) {
