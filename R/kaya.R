@@ -237,7 +237,7 @@ get_top_down_trends <- function(region_name, quiet = FALSE,
 #'   \item{ef}{Emissions intensity of the economy, in metric tons per
 #'             million dollars of GDP.}
 #' }
-#' examples
+#' @examples
 #' get_top_down_values("New Zealand")
 #' get_top_down_values(region_code = "NGA")
 #' @export
