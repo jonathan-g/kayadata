@@ -4,16 +4,16 @@
 \alias{get_top_down_values}
 \title{Get top-down projections of Kaya variables for a country or region}
 \usage{
-get_top_down_values(region_name, region_code = NULL, quiet = FALSE)
+get_top_down_values(region_name, quiet = FALSE, region_code = NULL)
 }
 \arguments{
 \item{region_name}{The name of a country or region to look up}
 
-\item{region_code}{Optional three-letter country or region code to look up
-instead of the `region_name`}
-
 \item{quiet}{Suppress warnings if there is no data for that country or
 region.}
+
+\item{region_code}{Optional three-letter country or region code to look up
+instead of the `region_name`}
 }
 \value{
 a tibble of values for P, G, E, F, g, e, f, and ef for the country
@@ -34,6 +34,8 @@ or region:
   \item{ef}{Emissions intensity of the economy, in metric tons per
             million dollars of GDP.}
 }
+example
+get_top_down_values("New Zealand")
 }
 \description{
 Get top-down projections of Kaya variables for a country or region

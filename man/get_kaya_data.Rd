@@ -4,19 +4,19 @@
 \alias{get_kaya_data}
 \title{Get Kaya data for a country or region}
 \usage{
-get_kaya_data(region_name, region_code = NULL, gdp = c("MER", "PPP"),
-  quiet = FALSE)
+get_kaya_data(region_name, gdp = c("MER", "PPP"), quiet = FALSE,
+  region_code = NULL)
 }
 \arguments{
 \item{region_name}{The name of a country or region to look up}
-
-\item{region_code}{Optional three-letter country or region code to look up
-instead of the `region_name`}
 
 \item{gdp}{Use market exchange rates (`MER`) or purchasing power
 parity (`PPP`). Default is `MER`.}
 
 \item{quiet}{Suppress warnings if there is no such country or region.}
+
+\item{region_code}{Optional three-letter country or region code to look up
+instead of the `region_name`}
 }
 \value{
 a tibble of Kaya identity data for the country or region:
@@ -57,4 +57,10 @@ Units for G, g, e, and ef depend on whether the data is requested
 
          Note that emissions (F, f, and ef) use millions of metric tons of
          carbon dioxide, not carbon.
+}
+\examples{
+get_kaya_data("Brazil")
+get_kaya_data("United Kingdom", "PPP")
+get_kaya_data(region_name = "United States")
+get_kaya_data(region_code = "USA")
 }

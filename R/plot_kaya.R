@@ -20,6 +20,13 @@ globalVariables(c("in_range", "fuel", "quads", "frac", "label",
 #'
 #' @return A plot object.
 #'
+#' @examples
+#' china <- get_kaya_data("China")
+#' plot_kaya(china, "F", 2001, 2011)
+#' uk <- get_kaya_data("United Kingdom")
+#' plot_kaya(uk, "e", log_scale = TRUE, trend_line = TRUE)
+#' world <- get_kaya_data("World")
+#' plot_kaya(world, "g", 1982, log_scale = TRUE, trend_line = TRUE)
 #' @export
 #' @importFrom magrittr %>%
 plot_kaya <- function(kaya_data, variable,
@@ -126,6 +133,10 @@ plot_kaya <- function(kaya_data, variable,
 #' @param collapse_renewables Combine Hydro and other Renewables into a single
 #'        category.
 #' @return A plot object.
+#' @examples
+#' usa_fuel <- get_fuel_mix("United States", collapse_renewables = FALSE)
+#' plot_fuel_mix(usa_fuel)
+#' plot_fuel_mix(usa_fuel, collapse_renewables = FALSE)
 #'
 #' @export
 plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE) {

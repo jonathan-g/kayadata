@@ -23,3 +23,9 @@ A plot object.
 \description{
 Plot fuel mix
 }
+\examples{
+usa_fuel <- get_fuel_mix("United States", collapse_renewables = FALSE)
+plot_fuel_mix(usa_fuel)
+plot_fuel_mix(usa_fuel, collapse_renewables = FALSE)
+
+}

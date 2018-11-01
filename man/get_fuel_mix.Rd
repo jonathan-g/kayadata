@@ -4,8 +4,8 @@
 \alias{get_fuel_mix}
 \title{Get fuel mix for a country or region}
 \usage{
-get_fuel_mix(region_name, collapse_renewables = TRUE,
-  region_code = NULL, quiet = FALSE)
+get_fuel_mix(region_name, collapse_renewables = TRUE, quiet = FALSE,
+  region_code = NULL)
 }
 \arguments{
 \item{region_name}{The name of a country or region to look up}
@@ -13,11 +13,11 @@ get_fuel_mix(region_name, collapse_renewables = TRUE,
 \item{collapse_renewables}{Combine Hydro and other Renewables into a single
 category.}
 
-\item{region_code}{Optional three-letter country or region code to look up
-instead of the `region_name`}
-
 \item{quiet}{Suppress warnings if there is no data for that country or
 region.}
+
+\item{region_code}{Optional three-letter country or region code to look up
+instead of the `region_name`}
 }
 \value{
 a tibble of fuel mix for the country or region.
@@ -26,4 +26,8 @@ a tibble of fuel mix for the country or region.
 }
 \description{
 Get fuel mix for a country or region
+}
+\examples{
+get_fuel_mix("United States")
+get_fuel_mix("World", collapse_renewables = FALSE)
 }

@@ -44,11 +44,11 @@ kaya_region_list <- function() {
 #' Get Kaya data for a country or region
 #'
 #' @param region_name The name of a country or region to look up
-#' @param region_code Optional three-letter country or region code to look up
-#'                     instead of the `region_name`
 #' @param gdp         Use market exchange rates (`MER`) or purchasing power
 #'                    parity (`PPP`). Default is `MER`.
 #' @param quiet       Suppress warnings if there is no such country or region.
+#' @param region_code Optional three-letter country or region code to look up
+#'                     instead of the `region_name`
 #'
 #' @return a tibble of Kaya identity data for the country or region:
 #' \describe{
@@ -85,9 +85,14 @@ kaya_region_list <- function() {
 #'          Note that emissions (F, f, and ef) use millions of metric tons of
 #'          carbon dioxide, not carbon.
 #'
+#' @examples
+#' get_kaya_data("Brazil")
+#' get_kaya_data("United Kingdom", "PPP")
+#' get_kaya_data(region_name = "United States")
+#' get_kaya_data(region_code = "USA")
 #' @export
-get_kaya_data <- function(region_name, region_code = NULL,
-                          gdp = c("MER", "PPP"), quiet = FALSE) {
+get_kaya_data <- function(region_name, gdp = c("MER", "PPP"), quiet = FALSE,
+                          region_code = NULL) {
   gdp = match.arg(gdp)
   if (! is.null(region_code)) {
     region_name <- lookup_region_code(region_code)
@@ -120,17 +125,20 @@ get_kaya_data <- function(region_name, region_code = NULL,
 #' @param region_name The name of a country or region to look up
 #' @param collapse_renewables Combine Hydro and other Renewables into a single
 #'   category.
-#' @param region_code Optional three-letter country or region code to look up
-#'   instead of the `region_name`
 #' @param quiet       Suppress warnings if there is no data for that country or
 #'   region.
+#' @param region_code Optional three-letter country or region code to look up
+#'   instead of the `region_name`
 #'
 #' @return a tibble of fuel mix for the country or region.
 #'   That is, the number of quads of each fuel and the
 #'   fraction of total primary energy coming from that fuel.
+#' @examples
+#' get_fuel_mix("United States")
+#' get_fuel_mix("World", collapse_renewables = FALSE)
 #' @export
 get_fuel_mix <- function(region_name, collapse_renewables = TRUE,
-                         region_code = NULL, quiet = FALSE) {
+                         quiet = FALSE, region_code = NULL) {
   if (! is.null(region_code)) {
     region_name <- lookup_region_code(region_code,
                                       kayadata::fuel_mix)
@@ -148,7 +156,7 @@ get_fuel_mix <- function(region_name, collapse_renewables = TRUE,
     levs <- levels(data$fuel)
     data <- data %>%
       mutate(fuel = forcats::fct_recode(fuel, Renewables = "Hydro") %>%
-               lvls_expand(levs)) %>%
+               forcats::lvls_expand(levs)) %>%
       group_by(region, year, fuel) %>%
       summarize_at(vars(quads, frac), funs(sum(., na.rm = T))) %>%
       ungroup()
@@ -167,15 +175,18 @@ get_fuel_mix <- function(region_name, collapse_renewables = TRUE,
 #' Energy Outlook report.
 #'
 #' @param region_name The name of a country or region to look up
-#' @param region_code Optional three-letter country or region code to look up
-#'                     instead of the `region_name`
 #' @param quiet       Suppress warnings if there is no data for that country or
 #'                    region.
+#' @param region_code Optional three-letter country or region code to look up
+#'                     instead of the `region_name`
 #'
 #' @return a tibble of trends for P, G, E, F, g, e, f, and ef for the country,
 #' or region in percent per year.
+#' @example
+#' get_top_down_trends("Spain")
 #' @export
-get_top_down_trends <- function(region_name, region_code = NULL, quiet = FALSE) {
+get_top_down_trends <- function(region_name, quiet = FALSE,
+                                region_code = NULL) {
   if (! is.null(region_code)) {
     region_name <- lookup_region_code(region_code,
                                       kayadata::td_trends)
@@ -201,10 +212,10 @@ get_top_down_trends <- function(region_name, region_code = NULL, quiet = FALSE) 
 #' Get top-down projections of Kaya variables for a country or region
 #'
 #' @param region_name The name of a country or region to look up
-#' @param region_code Optional three-letter country or region code to look up
-#'                     instead of the `region_name`
 #' @param quiet       Suppress warnings if there is no data for that country or
 #'                    region.
+#' @param region_code Optional three-letter country or region code to look up
+#'                     instead of the `region_name`
 #'
 #' @return a tibble of values for P, G, E, F, g, e, f, and ef for the country
 #' or region:
@@ -224,8 +235,10 @@ get_top_down_trends <- function(region_name, region_code = NULL, quiet = FALSE) 
 #'   \item{ef}{Emissions intensity of the economy, in metric tons per
 #'             million dollars of GDP.}
 #' }
+#' example
+#' get_top_down_values("New Zealand")
 #' @export
-get_top_down_values <- function(region_name, region_code = NULL, quiet = FALSE) {
+get_top_down_values <- function(region_name, quiet = FALSE, region_code = NULL) {
   if (! is.null(region_code)) {
     region_name <- lookup_region_code(region_code,
                                       kayadata::td_values)
@@ -252,10 +265,10 @@ get_top_down_values <- function(region_name, region_code = NULL, quiet = FALSE) 
 #' given year
 #'
 #' @param region_name The name of a country or region to look up
-#' @param region_code Optional three-letter country or region code to look up
-#'                     instead of the `region_name`
 #' @param quiet       Suppress warnings if there is no data for that country or
 #'                    region.
+#' @param region_code Optional three-letter country or region code to look up
+#'                     instead of the `region_name`
 #'
 #' @param year The year to project to
 #'
@@ -278,9 +291,10 @@ get_top_down_values <- function(region_name, region_code = NULL, quiet = FALSE) 
 #'   \item{ef}{Emissions intensity of the economy, in metric tons per
 #'             million dollars of GDP.}
 #' }
+#' @example
+#' project_top_down("China", 2037)
 #' @export
-project_top_down <- function(region_name, year, region_code = NULL,
-                             quiet = FALSE) {
+project_top_down <- function(region_name, year, quiet = FALSE, region_code = NULL) {
   if (! is.null(region_code)) {
     region_name <- lookup_region_code(region_code,
                                       kayadata::td_values)
@@ -317,6 +331,8 @@ project_top_down <- function(region_name, year, region_code = NULL,
 #'
 #' @return a tibble of values for emissions factors, in million metric
 #'         tons of carbon dioxide per quad of energy.
+#' @example
+#' emissions_factors()
 #' @export
 emissions_factors <- function() {
   tibble(
@@ -341,6 +357,8 @@ emissions_factors <- function() {
 #'     \item{capacity_factor}{Capacity factor: the fraction of the nameplate
 #'         capacity that the plant can provide, averaged over a typical year}
 #' }
+#' @example
+#' generation_capacity()
 #' @export
 generation_capacity <- function() {
   tibble(
