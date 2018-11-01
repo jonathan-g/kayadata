@@ -21,3 +21,7 @@ Nameplate capacity and capacity factors for different electrical generation
 technologies. The average power supplied over a year is the nameplate
 capacity times the capacity factor.
 }
+\examples{
+gc <- generation_capacity()
+gc
+}

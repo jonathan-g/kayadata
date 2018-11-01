@@ -13,3 +13,7 @@ a tibble of values for emissions factors, in million metric
 \description{
 Get emission factors for different energy sources
 }
+\examples{
+e_fac <- emissions_factors()
+e_fac
+}

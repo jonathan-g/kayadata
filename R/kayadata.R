@@ -23,8 +23,8 @@
 #' <http://www.ipcc.ch/ipccreports/sres/emission/index.php>
 #'
 #' Raupach, Michael R., \emph{et al.}, "Global and regional drivers of accelerating
-#' CO~2~ emissions," PNAS \strong{104}, 10288--10293 (2007)
-#' [doi: 10.1073/pnas.0700609104](https://doi.org/10.1073/pnas.0700609104).
+#' CO2 emissions," PNAS \strong{104}, 10288--10293 (2007)
+#' \href{https://doi.org/10.1073/pnas.0700609104}{doi: 10.1073/pnas.0700609104}.
 #'
 #' @description
 #'
@@ -34,12 +34,12 @@
 #' The Kaya identity, named for the economist Yoichi Kaya, who introduced it
 #' (Kaya, 1998); It decomposes the energy-related carbon dioxide emissions from
 #' a nation, region, or the world into the product of four components:
-#' \deqn{F = P \times g \times e \times f,}
+#' \deqn{F = P \times g \times e \times f,}{F = P * g * e * f}
 #' where \emph{F} is the total emissions, \emph{P} is the population, \emph{g} is the
 #' per-capita GDP, \emph{e} is the energy intensity of the economy, and
 #' \emph{f} is the emissions-intensity of the energy supply.
 #' (Nakicenovic and Swart, 2000,
-#' [Ch. 3, p. 105](http://www.ipcc.ch/ipccreports/sres/emission/index.php?idp=50);
+#' \href{http://www.ipcc.ch/ipccreports/sres/emission/index.php?idp=50}{Ch. 3, p. 105};
 #' Raupach \emph{et al}, 2007)
 #'
 #'

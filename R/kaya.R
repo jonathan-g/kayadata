@@ -335,8 +335,9 @@ project_top_down <- function(region_name, year, quiet = FALSE, region_code = NUL
 #'
 #' @return a tibble of values for emissions factors, in million metric
 #'         tons of carbon dioxide per quad of energy.
-#' @example
-#' emissions_factors()
+#' @examples
+#' e_fac <- emissions_factors()
+#' e_fac
 #' @export
 emissions_factors <- function() {
   tibble(
@@ -361,8 +362,9 @@ emissions_factors <- function() {
 #'     \item{capacity_factor}{Capacity factor: the fraction of the nameplate
 #'         capacity that the plant can provide, averaged over a typical year}
 #' }
-#' @example
-#' generation_capacity()
+#' @examples
+#' gc <- generation_capacity()
+#' gc
 #' @export
 generation_capacity <- function() {
   tibble(
