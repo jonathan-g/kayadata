@@ -34,10 +34,13 @@ or region:
   \item{ef}{Emissions intensity of the economy, in metric tons per
             million dollars of GDP.}
 }
-examples
-get_top_down_values("New Zealand")
-get_top_down_values(region_code = "NGA")
 }
 \description{
 Get top-down projections of Kaya variables for a country or region
+}
+\examples{
+get_top_down_values("New Zealand")
+get_top_down_values("OECD")
+get_top_down_values(region_code = "PAK")
+
 }

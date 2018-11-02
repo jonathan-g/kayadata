@@ -89,7 +89,7 @@ kaya_region_list <- function() {
 #' get_kaya_data("Brazil")
 #' get_kaya_data("United Kingdom", "PPP")
 #' get_kaya_data(region_name = "United States")
-#' get_kaya_data(region_code = "USA")
+#' get_kaya_data(region_code = "MYS")
 #' @export
 get_kaya_data <- function(region_name, gdp = c("MER", "PPP"), quiet = FALSE,
                           region_code = NULL) {
@@ -136,7 +136,7 @@ get_kaya_data <- function(region_name, gdp = c("MER", "PPP"), quiet = FALSE,
 #' @examples
 #' get_fuel_mix("United States")
 #' get_fuel_mix("World", collapse_renewables = FALSE)
-#' get_fuel_mix(region_code = "GBR")
+#' get_fuel_mix(region_code = "LAC")
 #' @export
 get_fuel_mix <- function(region_name, collapse_renewables = TRUE,
                          quiet = FALSE, region_code = NULL) {
@@ -237,9 +237,12 @@ get_top_down_trends <- function(region_name, quiet = FALSE,
 #'   \item{ef}{Emissions intensity of the economy, in metric tons per
 #'             million dollars of GDP.}
 #' }
+#'
 #' @examples
 #' get_top_down_values("New Zealand")
-#' get_top_down_values(region_code = "NGA")
+#' get_top_down_values("OECD")
+#' get_top_down_values(region_code = "PAK")
+#'
 #' @export
 get_top_down_values <- function(region_name, quiet = FALSE, region_code = NULL) {
   if (! is.null(region_code)) {
@@ -354,6 +357,8 @@ emissions_factors <- function() {
 #' technologies. The average power supplied over a year is the nameplate
 #' capacity times the capacity factor.
 #'
+#' Data for fossil fuels comes from EIA
+#'
 #' @return a tibble of values for generation sources
 #' \describe{
 #'     \item{fuel}{Energy source: Coal, Nuclear, Gas, Solar Thermal, or Wind}
@@ -365,6 +370,12 @@ emissions_factors <- function() {
 #' @examples
 #' gc <- generation_capacity()
 #' gc
+#' @references
+#' Environmental Protection Agency (2018) "Electric Power Monthly,"
+#' (October 2018) <https://www.eia.gov/electricity/monthly/current_month/epm.pdf>,
+#' \href{Table 6.7.A}{https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_a}.
+#'
+#' Pielke, Jr., Roger A., \emph{The Climate Fix} (Basic Books, 2010).
 #' @export
 generation_capacity <- function() {
   tibble(
@@ -385,6 +396,9 @@ generation_capacity <- function() {
 #' produce one quad of energy
 #'
 #' @return The number of megawatts equivalent to one quad per year.
+#' @examples
+#' mwe <- megawatts_per_quad()
+#' mwe
 #' @export
 megawatts_per_quad <- function() {
   1.1E4

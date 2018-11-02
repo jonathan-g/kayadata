@@ -21,7 +21,17 @@ Nameplate capacity and capacity factors for different electrical generation
 technologies. The average power supplied over a year is the nameplate
 capacity times the capacity factor.
 }
+\details{
+Data for fossil fuels comes from EIA
+}
 \examples{
 gc <- generation_capacity()
 gc
+}
+\references{
+Environmental Protection Agency (2018) "Electric Power Monthly,"
+(October 2018) <https://www.eia.gov/electricity/monthly/current_month/epm.pdf>,
+\href{Table 6.7.A}{https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_a}.
+
+Pielke, Jr., Roger A., \emph{The Climate Fix} (Basic Books, 2010).
 }

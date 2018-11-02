@@ -13,3 +13,7 @@ The number of megawatts equivalent to one quad per year.
 The number of megawatts of average power output over a year to
 produce one quad of energy
 }
+\examples{
+mwe <- megawatts_per_quad()
+mwe
+}

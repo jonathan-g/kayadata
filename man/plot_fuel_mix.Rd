@@ -4,7 +4,7 @@
 \alias{plot_fuel_mix}
 \title{Plot fuel mix}
 \usage{
-plot_fuel_mix(fuel_mix, collapse_renewables = TRUE)
+plot_fuel_mix(fuel_mix, collapse_renewables = TRUE, title = NULL)
 }
 \arguments{
 \item{fuel_mix}{A tibble with the mixture of fuels:
@@ -16,6 +16,12 @@ plot_fuel_mix(fuel_mix, collapse_renewables = TRUE)
 
 \item{collapse_renewables}{Combine Hydro and other Renewables into a single
 category.}
+
+\item{title}{Include a title on the plot. If `title` is `NULL` (default)
+or `TRUE`, a default title is created from the names of the regions in
+`fuel_mix`.
+If `title` is a character string, that string is used.
+If `title` is `FALSE`, the plot is produced with no title.}
 }
 \value{
 A plot object.

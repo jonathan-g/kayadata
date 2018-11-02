@@ -132,6 +132,11 @@ plot_kaya <- function(kaya_data, variable,
 #' }
 #' @param collapse_renewables Combine Hydro and other Renewables into a single
 #'        category.
+#' @param title Include a title on the plot. If `title` is `NULL` (default)
+#' or `TRUE`, a default title is created from the names of the regions in
+#' `fuel_mix`.
+#' If `title` is a character string, that string is used.
+#' If `title` is `FALSE`, the plot is produced with no title.
 #' @return A plot object.
 #' @examples
 #' usa_fuel <- get_fuel_mix("United States", collapse_renewables = FALSE)
@@ -139,21 +144,28 @@ plot_kaya <- function(kaya_data, variable,
 #' plot_fuel_mix(usa_fuel, collapse_renewables = FALSE)
 #'
 #' @export
-plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE) {
+plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL) {
+  if (is.null(title) || title == TRUE) {
+    title <- fuel_mix$region %>% unique() %>% str_c(collapse = ", ")
+  } else if (!is.character(title)) {
+    title = NULL
+  }
   if (collapse_renewables) {
     fuel_mix <- fuel_mix %>%
-      mutate(fuel = fct_recode(fuel, Renewables = "Hydro")) %>%
-      group_by(fuel) %>% summarize(quads = sum(quads), frac = sum(frac))
+      mutate(fuel = fct_recode(fuel, Renewables = "Hydro"))
     color_scale <- c("Coal" = "#e31a1c", "Natural Gas" = "#fdbf6f",
                      "Oil" = "#ff7f00", "Nuclear" = "#33a04c",
                      "Renewables" = "#b2dfca", "Total" = "#a6cee3")
   } else {
+
     color_scale <- c("Coal" = "#e31a1c", "Natural Gas" = "#fdbf6f",
                      "Oil" = "#ff7f00", "Nuclear" = "#33a04c",
                      "Hydro" = "#69d9a4", "Renewables" = "#b2dfca",
                      "Total" = "#a6cee3")
 
   }
+  fuel_mix <- fuel_mix %>% group_by(fuel) %>%
+    summarize(quads = sum(quads), frac = sum(frac)) %>% ungroup()
   fd <- fuel_mix %>%
     arrange(fuel) %>%
     mutate(qmin = cumsum(lag(quads, default=0)), qmax = cumsum(quads))
@@ -165,7 +177,7 @@ plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE) {
   if (FALSE) {
     message(paste0(levels(fd$fuel), collapse=", "))
   }
-  ggplot(fd, aes(ymin = qmin, ymax = qmax, fill = fuel)) +
+  p <- ggplot(fd, aes(ymin = qmin, ymax = qmax, fill = fuel)) +
     geom_rect(xmin = 2, xmax = 4, na.rm = TRUE) +
     coord_polar(theta = "y") +
     xlim(c(0,4)) +
@@ -175,4 +187,7 @@ plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE) {
     theme(panel.grid=element_blank(),
           axis.text=element_blank(),
           axis.ticks=element_blank())
+
+  if (! is.null(title)) p <- p + ggtitle(title)
+  p
 }

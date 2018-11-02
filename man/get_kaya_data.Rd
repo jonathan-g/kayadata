@@ -62,5 +62,5 @@ Units for G, g, e, and ef depend on whether the data is requested
 get_kaya_data("Brazil")
 get_kaya_data("United Kingdom", "PPP")
 get_kaya_data(region_name = "United States")
-get_kaya_data(region_code = "USA")
+get_kaya_data(region_code = "MYS")
 }

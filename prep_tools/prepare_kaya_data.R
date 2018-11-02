@@ -465,7 +465,11 @@ prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
     arrange(geography, place) %>%
     select(region = place, region_code = iso3c, geography,
            year,
-           P, G, E, F, g, e, f, ef, G_ppp, G_mer)
+           P, G, E, F, g, e, f, ef, G_ppp, G_mer) %>%
+    group_by(region) %>%
+    mutate_at(vars(P:G_mer), funs(na = all(is.na(.)))) %>%
+    ungroup() %>% filter(! P_na, !(G_ppp_na | G_mer_na), !E_na, !F_na) %>%
+    select(-ends_with("_na"))
 
   invisible(kaya_data)
 }
