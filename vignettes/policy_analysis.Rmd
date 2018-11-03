@@ -4,7 +4,9 @@ author: "Jonathan Gilligan"
 date: "2018-10-19"
 bibliography: "policy_analysis.bib"
 csl: "american-political-science-association.csl"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette: default
+  rmarkdown::pdf_vignette: default
 vignette: >
   %\VignetteIndexEntry{Example: Analysis of Emissions-Reduction Policy}
   %\VignetteEncoding{UTF-8}
