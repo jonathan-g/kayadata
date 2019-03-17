@@ -26,9 +26,9 @@
   
 ### NOTES: 
 
-* False-positive warning on r-hub and winbuilder about a possibly misspelled 
-  word in hte DESCRIPTION file:
-  "Kaya". This word is spelled correctly (it is a proper noun).
+* False-positives on r-hub and winbuilder about possibly misspelled words in 
+  the DESCRIPTION file: "Kaya," "Keiichi," "Yoichi," and "Yokobori." These 
+  words are proper nouns and they are spelled correctly.
 
 * **r-hub only**: False-positive warning about (possibly) invalid URL 
   <https://www.eia.gov/outlooks/archive/ieo17/>.
@@ -49,9 +49,9 @@
     * Thanks, please explain what kaya is, i.e. by a citation  in the form 
       Authors (year) <doi:10....> or some web reference in the form <http....>.
 
-        * In the package documentation, I have added both an explanation of the 
-          Kaya identity and a citation to published references for the identity 
-          and also for the sources of the data included in this package.
+        * In the DESCRIPTION file and in the package documentation, I have 
+          added explanations of the Kaya identity and citations to published 
+          references for the identity.
     
     * We see: `checking examples ... NONE`. Please add examples and resubmit.
     
