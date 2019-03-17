@@ -179,7 +179,7 @@ read_top_down_var <- function(var, file_name, kaya_data) {
   td_df <- td_df %>% select(-trend) %>% left_join(kd, by = "region") %>%
     mutate(x = x2015) %>%
     mutate_at(vars(matches("^x2[0-9]+$")),
-              funs(. * ref / x)) %>%
+              list(~. * ref / x)) %>%
     select(-x, -ref) %>%
     gather(key = year, value = value, matches("^x2[0-9]+$")) %>%
              mutate(year = str_replace(year, "^x", "") %>% as.integer(),

@@ -13,7 +13,7 @@ test_that("Fuel mix adds up", {
     if (nrow(fm) > 0) {
       y <- fm$year[1]
       fm <- fm %>% dplyr::summarize_at(dplyr::vars(quads, frac),
-                                       funs(sum(., na.rm = TRUE)))
+                                       list(~sum(., na.rm = TRUE)))
 
       kd <- get_kaya_data(r, quiet = TRUE) %>%
         dplyr::filter(none.na(E), year == y)

@@ -166,7 +166,7 @@ implied_decarb_rates <- F_target %>%
 
 implied_decarb_rates %>% 
   mutate_at(vars(starts_with("hist_"), starts_with("impl_")),
-            funs(map_chr(., ~sprintf("%.02f%%", 100 * .x)))) %>%
+            list(~map_chr(., ~sprintf("%.02f%%", 100 * .x)))) %>%
   select(Year = year, 
          "implied F" = impl_F, 
          "historical G" = hist_G,
@@ -212,7 +212,7 @@ demand:
 top_down_trends <- get_top_down_trends("United States")
 
 top_down_trends %>% select(P, G, E) %>%
-  mutate_all(funs(map_chr(., ~sprintf("%.02f%%", 100 * .x)))) %>%
+  mutate_all(list(~map_chr(., ~sprintf("%.02f%%", 100 * .x)))) %>%
   rename("P trend" = P, "G trend" = G, "E trend" = E) %>%
   kable(align="rrr")
 ```
@@ -238,7 +238,7 @@ implied_decarb_rates_top_down <- F_target %>%
 implied_decarb_rates_top_down %>% 
   mutate_at(vars(starts_with("hist_"), starts_with("impl_"), 
                  starts_with("top_down")),
-            funs(map_chr(., ~sprintf("%.02f%%", 100 * .x)))) %>%
+            list(~map_chr(., ~sprintf("%.02f%%", 100 * .x)))) %>%
   select(Year = year, 
          "implied F" = impl_F, 
          "top-down E" = top_down_E,

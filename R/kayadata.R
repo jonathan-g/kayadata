@@ -70,7 +70,6 @@
 #'
 #' @importFrom magrittr %>%
 #' @importFrom dplyr distinct filter mutate select summarize summarize_at top_n
-#'             funs
 #' @importFrom forcats fct_recode
 #' @import dplyr
 #' @import ggplot2

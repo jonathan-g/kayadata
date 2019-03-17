@@ -159,7 +159,7 @@ get_fuel_mix <- function(region_name, collapse_renewables = TRUE,
       mutate(fuel = forcats::fct_recode(fuel, Renewables = "Hydro") %>%
                forcats::lvls_expand(levs)) %>%
       group_by(region, year, fuel) %>%
-      summarize_at(vars(quads, frac), funs(sum(., na.rm = T))) %>%
+      summarize_at(vars(quads, frac), list(~sum(., na.rm = T))) %>%
       ungroup()
   }
   if (nrow(data) == 0 && is.null(region_code)) {
@@ -316,12 +316,15 @@ project_top_down <- function(region_name, year, quiet = FALSE, region_code = NUL
          max(kayadata::td_values$year, na.rm = T), ".")
   }
 
+  ytmp <- year
   data <- kayadata::td_values %>%
     dplyr::filter(region %in% region_name) %>%
     dplyr::select(-region_code, -geography) %>%
     dplyr::group_by(region) %>%
-    dplyr::summarize_at(vars(-year, -region),
-                        dplyr::funs(approx(x = year, y = ., xout = (!!year))$y)) %>%
+    # dplyr::summarize_at(vars(-year),
+    #                     list(~approx(x = year, y = ., xout = (!!year))$y)) %>%
+    dplyr::summarize_at(vars(-year),
+                        list(~approx(x = year, y = ., xout = ytmp)$y)) %>%
     dplyr::ungroup() %>%
     dplyr::mutate(year = (!!year)) %>%
     dplyr::select(region, year, P, G, g, E, F, e, f, ef)
