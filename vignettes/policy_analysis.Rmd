@@ -4,15 +4,15 @@ author: "Jonathan Gilligan"
 date: "2018-10-19"
 bibliography: "policy_analysis.bib"
 csl: "american-political-science-association.csl"
+vignette: >
+  %\VignetteIndexEntry{Example: Analysis of Emissions-Reduction Policy}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+editor_options: 
+  chunk_output_type: console
 output: 
   rmarkdown::html_vignette: default
   rmarkdown::pdf_vignette: default
-vignette: >
-  %\VignetteIndexEntry{Example: Analysis of Emissions-Reduction Policy}
-  %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
-editor_options: 
-  chunk_output_type: console
 ---
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
