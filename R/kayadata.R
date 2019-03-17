@@ -15,7 +15,7 @@
 #' @name kayadata-package
 #' @references
 #' Kaya, Yoichi and Keiichi Yokobori, _Environment, Energy, and Economy:
-#' Strategies for Sustaionability_ (United Nations University Press, 1998).
+#' Strategies for Sustainability_ (United Nations University Press, 1998).
 #'
 #' Nakicenovic, Nebojsa, and Rob Swart (Eds.),
 #' \emph{Special Report on Emissions Scenarios}

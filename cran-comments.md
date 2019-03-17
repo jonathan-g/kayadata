@@ -1,4 +1,5 @@
 ## Test environments
+* local Windows 10 install, R 3.5.3
 * local Windows 10 install, R 3.5.2
 * local ubuntu 18.04.2 install, R 3.5.3
 * ubuntu 14.04.5 (on travis-ci), R 3.5.2
