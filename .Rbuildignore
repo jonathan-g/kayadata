@@ -1,3 +1,4 @@
+^doc$
 ^CRAN-RELEASE$
 ^Meta$
 ^.*\.Rproj$
