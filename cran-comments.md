@@ -2,17 +2,17 @@
 * local Windows 10 install, R 3.5.1
 * local ubuntu 16.05.5 install, R 3.4.4
 * local ubuntu 18.04.1 install, R 3.4.4
-* local ubuntu 18.04.1 install, R 3.5.1
-* ubuntu 14.04.5 (on travis-ci), R 3.5.1
+* local ubuntu 18.04.1 install, R 3.5.2
+* ubuntu 14.04.5 (on travis-ci), R 3.5.2
 * r-hub builder
     * ubuntu 16.04, R-devel
     * Windows Server 2008 R2 SP1, R-devel
-    * Fedora Linux, R-devel clang gfortran
+    * Fedora Linux, R-devel gcc
 * winbuilder, devel, release, oldrelease
 
 ## R CMD check results
 
-* Local installs and R-release builds on rhub and travis-ci:
+* Local installs and R-release builds on r-hub and travis-ci:
 
     0 errors | 0 warnings | 0 notes
 
@@ -54,6 +54,22 @@
     and is not under my control.
 
 * This is a new release.
+
+* I first submitted in October 2018 and received the following comments from
+  Uwe Ligges, which I have addressed in this re-submission:
+  
+    * Thanks, please explain what kaya is, i.e. by a citation  in the form 
+      Authors (year) <doi:10....> or some web reference in the form <http....>.
+
+        * I have added both an explanation of the Kaya identity and a citation
+          to published references for the identity and also for the sources of
+          the data included in this package.
+    
+    * We see: `checking examples ... NONE`. Please add examples and resubmit.
+    
+        * I have added examples for all of the functions exported by this 
+          package.
+
 
 ## Reverse dependencies
 

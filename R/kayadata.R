@@ -20,7 +20,7 @@
 #' Nakicenovic, Nebojsa, and Rob Swart (Eds.),
 #' \emph{Special Report on Emissions Scenarios}
 #' (Cambridge University Press, 2000).
-#' <http://www.ipcc.ch/ipccreports/sres/emission/index.php>
+#' <https://www.ipcc.ch/report/emissions-scenarios/>
 #'
 #' Raupach, Michael R., \emph{et al.}, "Global and regional drivers of accelerating
 #' CO2 emissions," PNAS \strong{104}, 10288--10293 (2007)
@@ -39,7 +39,7 @@
 #' per-capita GDP, \emph{e} is the energy intensity of the economy, and
 #' \emph{f} is the emissions-intensity of the energy supply.
 #' (Nakicenovic and Swart, 2000,
-#' \href{http://www.ipcc.ch/ipccreports/sres/emission/index.php?idp=50}{Ch. 3, p. 105};
+#' \href{https://www.ipcc.ch/report/emissions-scenarios/}{Ch. 3, p. 105};
 #' Raupach \emph{et al}, 2007)
 #'
 #'
