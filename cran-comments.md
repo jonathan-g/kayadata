@@ -1,45 +1,28 @@
 ## Test environments
 * local Windows 10 install, R 3.5.1
-* local ubuntu 16.05.5 install, R 3.4.4
-* local ubuntu 18.04.1 install, R 3.4.4
-* local ubuntu 18.04.1 install, R 3.5.2
+* local ubuntu 18.04.2 install, R 3.5.3
 * ubuntu 14.04.5 (on travis-ci), R 3.5.2
 * r-hub builder
     * ubuntu 16.04, R-devel
-    * Windows Server 2008 R2 SP1, R-devel
+    * Windows Server 2008 R2 SP1, R-release, 32/64 bit
     * Fedora Linux, R-devel gcc
+    * macOS 10.11 El Capitan, R-release
 * winbuilder, devel, release, oldrelease
 
 ## R CMD check results
 
-* Local installs and R-release builds on r-hub and travis-ci:
+* Local installs and R-release builds on travis-ci and r-hub for MacOS:
 
     0 errors | 0 warnings | 0 notes
 
-* r-hub and winbuilder R-devel builds except r-hub Fedora:
+* r-hub: Windows Server R-Release, Fedora R-Devel gcc, 
 
-    0 errors | 0 warnings | 2 notes
-
-* r-hub Fedora
-
-    0 errors | 1 warning | 2 notes
-
-### WARNINGS:
-
-* **r-hub Fedora:**
-  Only on RHub Fedora, I receive a warning building the vignette:
-
-      Error: processing vignette 'policy_analysis.Rmd' failed with diagnostics:
-      X11 font -adobe-helvetica-%s-%s-*-*-%d-*-*-*-*-*-*-*, face 1 at size 11 could 
-      not be loaded
+    0 errors | 0 warnings | 1 note
   
-    This warning is spurious and seems to have to do with the way X11 works 
-    under the RHub headless Fedora installation. 
-    There is nothing in the vignette that specifies specific fonts.
-
 ### NOTES: 
 
-* False-positive warning on r-hub and winbuilder about possibly misspelled word 
+* False-positive warning on r-hub and winbuilder about a possibly misspelled 
+  word in hte DESCRIPTION file:
   "Kaya". This word is spelled correctly.
 
 * **r-hub only**: False-positive warning about (possibly) invalid URL 
