@@ -20,9 +20,12 @@ raw_data_path <- file.path(base_dir, "raw_data")
 data_params <- within(list(), {
 
   # List of data files, to look up when loading data
-  bp_spreadsheet_url  <- str_c("https://www.bp.com/content/dam/bp/en/corporate/excel/",
-                               "energy-economics/statistical-review/",
-                               "bp-stats-review-2018-all-data.xlsx")
+  # bp_spreadsheet_url  <- str_c("https://www.bp.com/content/dam/bp/en/corporate/excel/",
+  #                              "energy-economics/statistical-review/",
+  #                              "bp-stats-review-2018-all-data.xlsx")
+  bp_spreadsheet_url <- str_c("https://www.bp.com/content/dam/bp/business-sites/en/",
+                              "global/corporate/xlsx/energy-economics/statistical-review/",
+                              "bp-stats-review-2018-all-data.xlsx")
   bp_spreadsheet_name <- "bp-stats-review-2018-all-data.xlsx"
   bp_spreadsheet_path <- file.path(raw_data_path, bp_spreadsheet_name)
 
@@ -282,7 +285,14 @@ fix_wb_regions <- function(df) {
 load_bp <- function(fname, sheet, kaya_var, unit_id, unit, scale = 1.0,
                     scenario = "BPStat2017") {
   df <- read_excel(fname, sheet = sheet, col_names = TRUE,
-                   skip = 2, na = c("", "NA", "na", "n/a", "N/A"))
+                   skip = 2, na = c("", "NA", "na", "n/a", "N/A")) %>%
+    clean_names()
+  dups <- names(df) %>% keep(~str_detect(.x, "[0-9]{4}_[0-9]")) %>%
+    { set_names(str_replace_all(., "_[0-9]+$", ""), .) } %>%
+    { dd <- duplicated(.); .[!dd] }
+  fixit <- sort(dups, decreasing = TRUE, na.last = TRUE)[1]
+  df <- df %>% rename(!!fixit := names(fixit)) %>%
+    select(-matches("^x[0-9]+_[0-9]+$"))
   df <- df %>% fix_bp(kaya_var, scenario) %>%
     # Use quosure for unit to reference "unit" in parent environment,
     # not column of tibble.
@@ -342,10 +352,11 @@ load_co2 <- function(fname) {
 load_fuel_mix <- function(fname) {
   col_names <- read_excel(fname, data_params$bp_fuel_mix_sheet, skip = 1,
                           col_names = FALSE, col_types = "text", n_max = 2) %>%
-    mutate(X__1 = c("year", "variable")) %>%
-    gather(-X__1, key = column, value = name) %>%
-    spread(key = X__1, value = name) %>%
-    mutate(column = str_replace_all(column, "^X_+", "") %>% as.integer()) %>%
+    clean_names() %>%
+    mutate(x1 = c("year", "variable")) %>%
+    gather(-x1, key = column, value = name) %>%
+    spread(key = x1, value = name) %>%
+    mutate(column = str_replace_all(column, "^x+", "") %>% as.integer()) %>%
     arrange(desc(column)) %>%
     mutate(year = cummin(ifelse(is.na(year), 9999, year))) %>%
     mutate(variable = str_replace_all(variable, "- *", "") %>%
