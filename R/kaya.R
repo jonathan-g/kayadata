@@ -136,7 +136,7 @@ get_kaya_data <- function(region_name, gdp = c("MER", "PPP"), quiet = FALSE,
 #' @examples
 #' get_fuel_mix("United States")
 #' get_fuel_mix("World", collapse_renewables = FALSE)
-#' get_fuel_mix(region_code = "LAC")
+#' get_fuel_mix(region_code = "LCN")
 #' @export
 get_fuel_mix <- function(region_name, collapse_renewables = TRUE,
                          quiet = FALSE, region_code = NULL) {
