@@ -123,8 +123,8 @@ get_kaya_data <- function(region_name, gdp = c("MER", "PPP"), quiet = FALSE,
 #' Get fuel mix for a country or region
 #'
 #' @param region_name The name of a country or region to look up
-#' @param collapse_renewables Combine Hydro and other Renewables into a single
-#'   category.
+#' @param collapse_renewables Combine hydroelectricity and other renewables into
+#'   a single category.
 #' @param quiet       Suppress warnings if there is no data for that country or
 #'   region.
 #' @param region_code Optional three-letter country or region code to look up

@@ -14,8 +14,8 @@ plot_fuel_mix(fuel_mix, collapse_renewables = TRUE, title = NULL)
   \item{frac}{The percentage of the country's energy that comes from that fuel}
 }}
 
-\item{collapse_renewables}{Combine Hydro and other Renewables into a single
-category.}
+\item{collapse_renewables}{Combine hydroelectricity and other renewables into
+a single category.}
 
 \item{title}{Include a title on the plot. If `title` is `NULL` (default)
 or `TRUE`, a default title is created from the names of the regions in
