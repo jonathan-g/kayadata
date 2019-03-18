@@ -2,6 +2,7 @@
 * local Windows 10 install, R 3.5.3
 * local Windows 10 install, R 3.5.2
 * local ubuntu 18.04.2 install, R 3.5.3
+* local Debian 9 (stretch), R 3.5.3
 * ubuntu 14.04.5 (on travis-ci), R 3.5.2
 * r-hub builder:
     * Debian Linux, R-Release gcc
