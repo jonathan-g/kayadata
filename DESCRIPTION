@@ -5,6 +5,7 @@ Version: 0.4.0
 Date: 2019-03-18
 Authors@R: c( person("Jonathan", "Gilligan", 
               email = "jonathan.gilligan@vanderbilt.edu", 
+              comment = c(ORCID = "0000-0003-1375-6686"),
               role = c("cre", "aut")))
 Description: Provides data for Kaya identity variables (population, gross 
              domestic product, primary energy consumption, and energy-related 
@@ -23,7 +24,7 @@ BugReports: https://github.com/jonathan-g/kayadata/issues
 License: MIT + file LICENSE
 Depends:
   ggplot2 (>= 3.0),
-  R       (>= 3.4)
+  R       (>= 3.5)
 Imports:
     magrittr (>= 1.5),
     forcats (>= 0.3),
@@ -35,9 +36,9 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
 Suggests:
-    testthat,
-    purrr,
-    broom,
-    knitr,
-    rmarkdown
+    testthat (>= 2.0),
+    purrr (>= 0.3),
+    broom (>= 0.5),
+    knitr (>= 1.22),
+    rmarkdown (>= 1.12)
 VignetteBuilder: knitr

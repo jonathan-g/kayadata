@@ -13,7 +13,7 @@
     * Ubuntu 16.04, R-Devel gcc
     * Windows Server 2008 R2 SP1, R-release, 32/64 bit
     * macOS 10.11 El Capitan, R-release
-* winbuilder: devel, release, oldrelease
+* winbuilder: devel, release
 
 ## R CMD check results
 
