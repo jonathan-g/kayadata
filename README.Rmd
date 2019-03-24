@@ -59,7 +59,7 @@ mexico_data %>% filter(year >= 1965) %>%
 mexico_2050 = project_top_down("Mexico", 2050)
 mexico_2050
 ```
-* `plot_kaya`: Plot trends in kaya variables for a given region or country.
+* `plot_kaya`: Plot trends in Kaya variables for a given region or country.
   Example:
 ```{r plot-kaya}
 us_kaya = get_kaya_data("United States")

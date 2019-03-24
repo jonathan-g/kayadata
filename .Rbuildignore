@@ -1,6 +1,6 @@
+^doc$
 ^CRAN-RELEASE$
 ^Meta$
-^doc$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^README\.R?md$

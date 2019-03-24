@@ -130,8 +130,8 @@ plot_kaya <- function(kaya_data, variable,
 #'   \item{quads}{The number of quads per year the country or region consumes}
 #'   \item{frac}{The percentage of the country's energy that comes from that fuel}
 #' }
-#' @param collapse_renewables Combine Hydro and other Renewables into a single
-#'        category.
+#' @param collapse_renewables Combine hydroelectricity and other renewables into
+#'        a single category.
 #' @param title Include a title on the plot. If `title` is `NULL` (default)
 #' or `TRUE`, a default title is created from the names of the regions in
 #' `fuel_mix`.

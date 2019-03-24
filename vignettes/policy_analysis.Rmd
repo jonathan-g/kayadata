@@ -4,15 +4,15 @@ author: "Jonathan Gilligan"
 date: "2018-10-19"
 bibliography: "policy_analysis.bib"
 csl: "american-political-science-association.csl"
+vignette: >
+  %\VignetteIndexEntry{Example: Analysis of Emissions-Reduction Policy}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+editor_options: 
+  chunk_output_type: console
 output: 
   rmarkdown::html_vignette: default
   rmarkdown::pdf_vignette: default
-vignette: >
-  %\VignetteIndexEntry{Example: Analysis of Emissions-Reduction Policy}
-  %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
-editor_options: 
-  chunk_output_type: console
 ---
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
@@ -66,14 +66,17 @@ recent trends.
 Begin by loading historical values of the Kaya identity parameters for the 
 United States:
 ```{r load_data}
-library(magrittr)
-library(dplyr)
-library(stringr)
-library(tidyr)
-library(purrr)
-library(broom)
-library(knitr)
-library(kayadata)
+suppressPackageStartupMessages({
+  library(magrittr)
+  library(dplyr)
+  library(stringr)
+  library(tidyr)
+  library(purrr)
+  library(broom)
+  library(knitr)
+  library(scales)
+  library(kayadata)
+})
 
 kaya <- get_kaya_data("United States")
 ```
@@ -125,7 +128,7 @@ historical_trends <- map_dbl(vars,
 ) %>% set_names(vars)
 
 tibble(Variable = names(historical_trends), 
-       Rate = map_chr(historical_trends, ~sprintf("%.02f%%", 100 * .x))) %>%
+       Rate = map_chr(historical_trends, ~percent(.x, 0.01))) %>%
   kable(align = c("c", "r"))
 ```
 
@@ -134,11 +137,7 @@ tibble(Variable = names(historical_trends),
 Next, calculate the implied rate of change of _F_ under the policy. This is 
 not an extrapolation from history, but a pure implication of the policy goals:
 From the Kaya identity, $F = G \times e \times f$, so the rates of change are
-$r_F = r_G + r_e + r_f = r_G + r_{ef}$. From this, the rate of 
-decarbonization of the economy is given by $r_{ef} = r_F - r_G$.
-Here, $r_F$ is the rate of emissions-reduction implied by the policy and
-$r_G$ is the rate of growth of the GDP, which we extrapolated from historical
-trends.
+$r_F = r_G + r_e + r_f = r_G + r_{ef}$. 
 
 ```{r implied_rate_F}
 ref_year <- 2005
@@ -150,13 +149,18 @@ F_target <- tibble(year = target_years, F = F_ref * (1 - target_reduction)) %>%
   mutate(implied_rate = log(F / F_ref) / (year - ref_year))
 
 F_target %>% 
-  mutate(implied_rate = map_chr(implied_rate, ~sprintf("%.02f%%", 100 * .x))) %>%
+  mutate(implied_rate = map_chr(implied_rate, ~percent(.x,  0.01))) %>%
   rename("Target F" = F, "Implied Rate" = implied_rate) %>%
   kable(align = c("crr"), digits = 0)
 ```
 
-Now we have everything we need for a bottom-up analysis of the implied 
-rates of decarbonization:
+For the bottom-up analysis of decarbonization, I will use $r_{ef}$,
+the implied rate of decarbonization of the economy, conditional on future
+economic growth following the historical trend. 
+This is expressed in the equation $r_{ef} = r_F - r_G$,
+where $r_F$ is the rate of emissions-reduction implied by the policy 
+(see above) and $r_G$ is the historical growth rate of GDP:
+
 ```{r implied_decarb_bottom_up}
 implied_decarb_rates <- F_target %>% 
   transmute(year, impl_F = implied_rate, 
@@ -166,7 +170,7 @@ implied_decarb_rates <- F_target %>%
 
 implied_decarb_rates %>% 
   mutate_at(vars(starts_with("hist_"), starts_with("impl_")),
-            list(~map_chr(., ~sprintf("%.02f%%", 100 * .x)))) %>%
+            list(~map_chr(., ~percent(.x, 0.01)))) %>%
   select(Year = year, 
          "implied F" = impl_F, 
          "historical G" = hist_G,
@@ -212,7 +216,7 @@ demand:
 top_down_trends <- get_top_down_trends("United States")
 
 top_down_trends %>% select(P, G, E) %>%
-  mutate_all(list(~map_chr(., ~sprintf("%.02f%%", 100 * .x)))) %>%
+  mutate_all(list(~map_chr(., ~percent(.x, 0.01)))) %>%
   rename("P trend" = P, "G trend" = G, "E trend" = E) %>%
   kable(align="rrr")
 ```
@@ -238,7 +242,7 @@ implied_decarb_rates_top_down <- F_target %>%
 implied_decarb_rates_top_down %>% 
   mutate_at(vars(starts_with("hist_"), starts_with("impl_"), 
                  starts_with("top_down")),
-            list(~map_chr(., ~sprintf("%.02f%%", 100 * .x)))) %>%
+            list(~map_chr(., ~percent(.x, 0.01)))) %>%
   select(Year = year, 
          "implied F" = impl_F, 
          "top-down E" = top_down_E,

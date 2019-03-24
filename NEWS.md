@@ -1,3 +1,3 @@
-# kayadata 0.3.4
+# kayadata 0.4.0
 
 Initial release

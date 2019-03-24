@@ -10,8 +10,8 @@ get_fuel_mix(region_name, collapse_renewables = TRUE, quiet = FALSE,
 \arguments{
 \item{region_name}{The name of a country or region to look up}
 
-\item{collapse_renewables}{Combine Hydro and other Renewables into a single
-category.}
+\item{collapse_renewables}{Combine hydroelectricity and other renewables into
+a single category.}
 
 \item{quiet}{Suppress warnings if there is no data for that country or
 region.}
@@ -30,5 +30,5 @@ Get fuel mix for a country or region
 \examples{
 get_fuel_mix("United States")
 get_fuel_mix("World", collapse_renewables = FALSE)
-get_fuel_mix(region_code = "LAC")
+get_fuel_mix(region_code = "LCN")
 }
