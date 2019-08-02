@@ -69,10 +69,25 @@ mexico_2050
 
 -   `plot_kaya`: Plot trends in Kaya variables for a given region or
     country. Example:
-    ![](README_files/figure-markdown_github/plot-kaya-1.png)
-    ![](README_files/figure-markdown_github/plot-kaya-world-1.png)
--   `get_fuel_mix`: Get the fuel mix (coal, gas, oil, nuclear, and
-    renewables) for a region or country. Example:
+
+``` r
+us_kaya = get_kaya_data("United States")
+plot_kaya(us_kaya, "ef", y_lab = "Carbon intensity of economy",
+          start_year = 2000, stop_year = 2010, log_scale = TRUE,
+          trend_line = TRUE)
+```
+
+![](README_files/figure-markdown_github/plot-kaya-1.png)
+
+``` r
+world_kaya = get_kaya_data("World")
+plot_kaya(world_kaya, "P", start_year = 2000, stop_year = 2010, log_scale = FALSE,
+          trend_line = FALSE)
+```
+
+![](README_files/figure-markdown_github/plot-kaya-world-1.png) \*
+`get_fuel_mix`: Get the fuel mix (coal, gas, oil, nuclear, and
+renewables) for a region or country. Example:
 
 ``` r
 mexico_mix = get_fuel_mix("Mexico")
