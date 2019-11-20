@@ -1,7 +1,7 @@
 Package: kayadata
 Type: Package
 Title: Kaya Identity Data for Nations and Regions
-Version: 0.4.1
+Version: 0.4.2
 Date: 2019-07-31
 Authors@R: c( person("Jonathan", "Gilligan", 
               email = "jonathan.gilligan@vanderbilt.edu", 
@@ -34,7 +34,7 @@ Imports:
     scales (>= 1.0)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.0
 Suggests:
     testthat (>= 2.0),
     purrr (>= 0.3),
