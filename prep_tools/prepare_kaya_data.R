@@ -25,8 +25,8 @@ data_params <- within(list(), {
   #                              "bp-stats-review-2018-all-data.xlsx")
   bp_spreadsheet_url <- str_c("https://www.bp.com/content/dam/bp/business-sites/en/",
                               "global/corporate/xlsx/energy-economics/statistical-review/",
-                              "bp-stats-review-2018-all-data.xlsx")
-  bp_spreadsheet_name <- "bp-stats-review-2018-all-data.xlsx"
+                              "bp-stats-review-2019-all-data.xlsx")
+  bp_spreadsheet_name <- "bp-stats-review-2019-all-data.xlsx"
   bp_spreadsheet_path <- file.path(raw_data_path, bp_spreadsheet_name)
 
   bp_energy_sheet     <- "Primary Energy Consumption"
@@ -185,7 +185,7 @@ fix_bp_regions <- function(df) {
   invisible(df)
 }
 
-fix_bp <- function(df, kaya_var, bp_scenario = "BPStat2017") {
+fix_bp <- function(df, kaya_var, bp_scenario = "BPStat2019") {
   var_unit <- names(df)[[1]]
   df <- df %>% clean_names() %>% select(-matches("^x[0-9]{4}_")) %>%
     rename(place = 1) %>%
@@ -283,7 +283,7 @@ fix_wb_regions <- function(df) {
 
 #' Load data from the BP spreadsheet
 load_bp <- function(fname, sheet, kaya_var, unit_id, unit, scale = 1.0,
-                    scenario = "BPStat2017") {
+                    scenario = "BPStat2019") {
   df <- read_excel(fname, sheet = sheet, col_names = TRUE,
                    skip = 2, na = c("", "NA", "na", "n/a", "N/A")) %>%
     clean_names()
@@ -385,7 +385,7 @@ load_fuel_mix <- function(fname) {
     select(place, year, fuel, value, geography) %>%
     fix_bp_regions() %>%
     mutate(value = value * quad_per_mtoe, unit_id = "quad", unit = "Quad",
-           model = "History", scenario = "BPStat2017") %>%
+           model = "History", scenario = "BPStat2019") %>%
     select(model, scenario, place, year, fuel, value, unit_id, unit,
            geography, iso3c, iso2c) %>%
     arrange(geography, year, place)

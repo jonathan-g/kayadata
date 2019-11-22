@@ -1,7 +1,7 @@
 ---
 title: "kayadata"
 author: "Jonathan Gilligan"
-date: "2018-08-13"
+date: "2019-07-31"
 output: 
   md_document:
     variant: markdown_github
@@ -61,13 +61,13 @@ mexico_2050
 ```
 * `plot_kaya`: Plot trends in Kaya variables for a given region or country.
   Example:
-```{r plot-kaya}
+```{r plot-kaya, echo=TRUE}
 us_kaya = get_kaya_data("United States")
 plot_kaya(us_kaya, "ef", y_lab = "Carbon intensity of economy",
           start_year = 2000, stop_year = 2010, log_scale = TRUE,
           trend_line = TRUE)
 ```
-```{r plot-kaya-world}
+```{r plot-kaya-world, echo=TRUE}
 world_kaya = get_kaya_data("World")
 plot_kaya(world_kaya, "P", start_year = 2000, stop_year = 2010, log_scale = FALSE,
           trend_line = FALSE)

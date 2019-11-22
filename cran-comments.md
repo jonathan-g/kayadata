@@ -1,38 +1,31 @@
 ## Test environments
-* local Windows 10 install, R 3.5.3
-* local Windows 10 install, R 3.5.2
-* local ubuntu 18.04.2 install, R 3.5.3
-* local Debian 9 (stretch), R 3.5.3
-* ubuntu 14.04.5 (on travis-ci), R 3.5.2
+* local Windows 10 install, R 3.6.0
+* local Windows 10 install, R 3.6.1
+* local ubuntu 18.04.2 install, R 3.6.1
+* local Debian 9 (stretch), R 3.6.1
+* ubuntu 14.04.6 (on travis-ci), R 3.6.1
 * r-hub builder:
-    * Debian Linux, R-Release gcc
-    * Debian Linux, R-Devel gcc
-    * Debian Linux, R-Patched gcc
-    * Fedora Linux, R-Devel gcc
+    * Fedora Linux, R-Devel clang
     * Ubuntu 16.04, R-Release gcc
-    * Ubuntu 16.04, R-Devel gcc
     * Windows Server 2008 R2 SP1, R-release, 32/64 bit
     * macOS 10.11 El Capitan, R-release
-* winbuilder: devel, release
+* winbuilder: devel, release, oldrelease
 
 ## R CMD check results
 
-* Local installs and R-release builds on travis-ci and r-hub for MacOS:
+* Local installs and R-release builds on travis-ci and r-hub for MacOS, Fedora, 
+  and Windows builds:
 
     0 errors | 0 warnings | 0 notes
 
-* r-hub and winbuilder: all other builds:
+* r-hub ubuntu and winbuilder builds:
 
     0 errors | 0 warnings | 1 note
   
 ### NOTES: 
 
-* False-positives on r-hub and winbuilder about possibly misspelled words in 
-  the DESCRIPTION file: "Kaya," "Keiichi," "Yoichi," and "Yokobori." These 
-  words are proper nouns and they are spelled correctly.
-
-* **r-hub only**: False-positive warning about (possibly) invalid URL 
-  <https://www.eia.gov/outlooks/archive/ieo17/>.
+* **r-hub ubuntu and winbuilder only**: False-positive warning about (possibly) 
+  invalid URL <https://www.eia.gov/outlooks/archive/ieo17/>.
   This only occurs on r-hub builder and not other builds. I have checked this 
   URL manually and it is correct and working when I visit it from a web 
   browser.
@@ -42,24 +35,11 @@
     It is a third-party web site operated by the U.S. Department of Energy
     and is not under my control.
 
-* This is a new release.
+* This is an update
 
-* I first submitted in October 2018 and received the following comments from
-  Uwe Ligges, which I have addressed in this re-submission:
-  
-    * Thanks, please explain what kaya is, i.e. by a citation  in the form 
-      Authors (year) <doi:10....> or some web reference in the form <http....>.
-
-        * In the DESCRIPTION file and in the package documentation, I have 
-          added explanations of the Kaya identity and citations to published 
-          references for the identity.
-    
-    * We see: `checking examples ... NONE`. Please add examples and resubmit.
-    
-        * I have added examples for all of the functions exported by this 
-          package.
-
+    I have updated the data to incorporate the 2019 Statistical Report on 
+    World Energy.
 
 ## Reverse dependencies
 
-This is a new release, so there are no reverse dependencies.
+There are no reverse dependencies.
