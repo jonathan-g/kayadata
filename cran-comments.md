@@ -1,9 +1,9 @@
 ## Test environments
-* local Windows 10 install, R 3.6.0
+
 * local Windows 10 install, R 3.6.1
-* local ubuntu 18.04.2 install, R 3.6.1
+* local ubuntu 18.04.3 install, R 3.6.1
 * local Debian 9 (stretch), R 3.6.1
-* ubuntu 14.04.6 (on travis-ci), R 3.6.1
+* ubuntu 16.04.6 (on travis-ci), R 3.6.1
 * r-hub builder:
     * Fedora Linux, R-Devel clang
     * Ubuntu 16.04, R-Release gcc

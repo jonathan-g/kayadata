@@ -2,7 +2,7 @@ Package: kayadata
 Type: Package
 Title: Kaya Identity Data for Nations and Regions
 Version: 0.4.2
-Date: 2019-07-31
+Date: 2019-11-22
 Authors@R: c( person("Jonathan", "Gilligan", 
               email = "jonathan.gilligan@vanderbilt.edu", 
               comment = c(ORCID = "0000-0003-1375-6686"),
