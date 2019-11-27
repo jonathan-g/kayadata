@@ -15,7 +15,7 @@
 
 ## R CMD check results
 
-* Local installs and R-release builds on travis-ci and r-hub for MacOS and
+* Local installs and R-release builds on travis-ci, r-hub build for MacOS and
   win-builder builds:
 
     0 errors | 0 warnings | 0 notes
@@ -45,11 +45,14 @@
   for four people's names in DESCRIPTION: "Kaya", "Keiichi", "Yoichi", and 
   "Yokobori". These names are spelled correctly.
 
-* This submission is an update from version 0.4.1 to 0.4.2.
+## Reverse dependencies
+
+There are no reverse dependencies.
+
+## Additional comments
+
+* This submission is an update to version 0.4.2.
 
     I have updated the data to incorporate the 2019 Statistical Report on 
     World Energy.
 
-## Reverse dependencies
-
-There are no reverse dependencies.
