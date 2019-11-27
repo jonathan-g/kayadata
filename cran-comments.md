@@ -10,14 +10,13 @@
     * Debian, R-Release gcc
     * Debian, R-Devel gcc
     * Debian, R-Patched gcc
-    * Windows Server 2008 R2 SP1, R-release, 32/64 bit
     * macOS 10.11 El Capitan, R-release
-* winbuilder: devel, release, oldrelease
+* winbuilder devel, release, oldrelease
 
 ## R CMD check results
 
-* Local installs and R-release builds on travis-ci and r-hub for MacOS, Fedora, 
-  and Windows builds:
+* Local installs and R-release builds on travis-ci and r-hub for MacOS and
+  win-builder builds:
 
     0 errors | 0 warnings | 0 notes
 
@@ -31,7 +30,7 @@
   
 ### NOTES: 
 
-* **r-hub ubuntu, debian, and winbuilder only**: False-positive warning about 
+* **r-hub ubuntu and debian**: False-positive warning about 
   (possibly) invalid URL <https://www.eia.gov/outlooks/archive/ieo17/>.
   This only occurs on r-hub builder and not other builds. I have checked this 
   URL manually and it is correct and working when I visit it from a web 
@@ -43,7 +42,7 @@
     and is not under my control.
 
 * **r-hub debian only**: False-positive warning about (possible) misspellings
-  for four people's names in documentation: "Kaya", "Keiichi", "Yoichi", and 
+  for four people's names in DESCRIPTION: "Kaya", "Keiichi", "Yoichi", and 
   "Yokobori". These names are spelled correctly.
 
 * This submission is an update from version 0.4.1 to 0.4.2.
