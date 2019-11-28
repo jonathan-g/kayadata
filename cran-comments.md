@@ -15,8 +15,7 @@
 
 ## R CMD check results
 
-* Local installs and R-release builds on travis-ci, r-hub build for MacOS and
-  win-builder builds:
+* Local installs, R-release builds on travis-ci, and win-builder builds:
 
     0 errors | 0 warnings | 0 notes
 
