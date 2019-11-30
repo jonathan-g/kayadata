@@ -75,11 +75,12 @@ plot_kaya <- function(kaya_data, variable,
     }
   }
 
-  color_scale <- scale_color_manual(values = c("TRUE" = "dark blue",
+  color_scale <- scale_color_manual(values = c("IN-RANGE" = "darkblue",
                                               "PRE" = "cornflowerblue",
                                               "POST" = "cornflowerblue",
                                               "TREND" = "orchid4"
   ))
+
   legend <- guides(color = FALSE, shape = FALSE)
 
   if (!any(is.null(start_year), is.null(stop_year))) {
@@ -87,10 +88,10 @@ plot_kaya <- function(kaya_data, variable,
       kaya_data %>% filter(year <= start_year) %>% mutate(in_range = "PRE"),
       kaya_data %>% filter(year >= stop_year) %>% mutate(in_range = "POST"),
       kaya_data %>% filter(between(year, start_year, stop_year)) %>%
-        mutate(in_range = "TRUE")
+        mutate(in_range = "IN-RANGE")
     )
   } else {
-    df <- kaya_data %>% mutate(in_range = TRUE)
+    df <- kaya_data %>% mutate(in_range = "IN-RANGE")
   }
 
   variable <- sym(variable)
@@ -108,7 +109,7 @@ plot_kaya <- function(kaya_data, variable,
   }
 
   if (trend_line) {
-    p <- p + geom_smooth(method = "lm", data = filter(df, in_range == "TRUE"),
+    p <- p + geom_smooth(method = "lm", data = filter(df, in_range == "IN-RANGE"),
                          na.rm = TRUE, se = se, mapping = aes(color = "TREND"))
   }
 
