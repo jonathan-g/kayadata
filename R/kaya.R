@@ -10,7 +10,7 @@ globalVariables(c("fuel_mix", "kaya_data", "region", "region_code",
 #'
 #' @param region_code The three-letter country or region code
 #' @param data Data frame in which to look up `region_code`
-#' @param quiet       Suppress warnings if there is no such country or region.
+#' @param quiet Suppress warnings if there is no such country or region.
 #'
 #' @return The corresponding country or region name, or NULL if there is no
 #'         such country or region
@@ -105,13 +105,11 @@ get_kaya_data <- function(region_name, gdp = c("MER", "PPP"), quiet = FALSE,
   data <- kayadata::kaya_data %>%
     dplyr::select(-region_code, -geography) %>%
     dplyr::filter(region %in% region_name)
-  if (nrow(data) == 0) {
-    if (!quiet) {
-      warning("There is no data for country or region ",
-              str_c(
-                ifelse(isTRUE(region_name == ""), region_code, region_name),
-                collapse = ", "))
-    }
+  if (nrow(data) == 0 && ! quiet) {
+    warning("There is no data for country or region ",
+            str_c(
+              ifelse(isTRUE(region_name == ""), region_code, region_name),
+              collapse = ", "))
   }
   if (gdp == "PPP") {
     data <- data %>% mutate(G = .data$G_ppp, g = G / P, e = E / G, ef = F / G)
@@ -126,7 +124,7 @@ get_kaya_data <- function(region_name, gdp = c("MER", "PPP"), quiet = FALSE,
 #' @param region_name The name of a country or region to look up
 #' @param collapse_renewables Combine hydroelectricity and other renewables into
 #'   a single category.
-#' @param quiet       Suppress warnings if there is no data for that country or
+#' @param quiet Suppress warnings if there is no data for that country or
 #'   region.
 #' @param region_code Optional three-letter country or region code to look up
 #'   instead of the `region_name`
@@ -163,7 +161,7 @@ get_fuel_mix <- function(region_name, collapse_renewables = TRUE,
       summarize_at(vars(quads, frac), list(~sum(., na.rm = T))) %>%
       ungroup()
   }
-  if (nrow(data) == 0 && is.null(region_code)) {
+  if (nrow(data) == 0 && ! quiet) {
     warning("There is no data for country or region ",
             str_c(
               ifelse(isTRUE(region_name == ""), region_code, region_name),
@@ -177,10 +175,10 @@ get_fuel_mix <- function(region_name, collapse_renewables = TRUE,
 #' Energy Outlook report.
 #'
 #' @param region_name The name of a country or region to look up
-#' @param quiet       Suppress warnings if there is no data for that country or
-#'                    region.
+#' @param quiet Suppress warnings if there is no data for that country or
+#'              region.
 #' @param region_code Optional three-letter country or region code to look up
-#'                     instead of the `region_name`
+#'                    instead of the `region_name`
 #'
 #' @return a tibble of trends for P, G, E, F, g, e, f, and ef for the country,
 #' or region in percent per year.
@@ -201,13 +199,11 @@ get_top_down_trends <- function(region_name, quiet = FALSE,
     dplyr::filter(region %in% region_name) %>%
     dplyr::mutate(g = G - P, e = E - G, f = F - E, ef = F - G) %>%
     dplyr::select(region, P, G, g, E, F, e, f, ef)
-  if (nrow(data) == 0 && is.null(region_code)) {
-    if (!quiet) {
-      warning("There is no data for country or region ",
-              str_c(
-                ifelse(isTRUE(region_name == ""), region_code, region_name),
-                collapse = ", "))
-    }
+  if (nrow(data) == 0 && !quiet) {
+    warning("There is no data for country or region ",
+            str_c(
+              ifelse(isTRUE(region_name == ""), region_code, region_name),
+              collapse = ", "))
   }
   data
 }
@@ -258,13 +254,11 @@ get_top_down_values <- function(region_name, quiet = FALSE,
     dplyr::filter(region %in% region_name) %>%
     dplyr::mutate(g = G / P, e = E / G, f = F / E, ef = F / G) %>%
     dplyr::select(region, year, P, G, g, E, F, e, f, ef)
-  if (nrow(data) == 0 && is.null(region_code)) {
-    if (!quiet) {
-      warning("There is no data for country or region ",
-              str_c(
-                ifelse(isTRUE(region_name == ""), region_code, region_name),
-                collapse = ", "))
-    }
+  if (nrow(data) == 0 && !quiet) {
+    warning("There is no data for country or region ",
+            str_c(
+              ifelse(isTRUE(region_name == ""), region_code, region_name),
+              collapse = ", "))
   }
   data
 }
@@ -273,10 +267,10 @@ get_top_down_values <- function(region_name, quiet = FALSE,
 #' given year
 #'
 #' @param region_name The name of a country or region to look up
-#' @param quiet       Suppress warnings if there is no data for that country or
-#'                    region.
+#' @param quiet Suppress warnings if there is no data for that country or
+#'              region.
 #' @param region_code Optional three-letter country or region code to look up
-#'                     instead of the `region_name`
+#'                    instead of the `region_name`
 #'
 #' @param year The year to project to
 #'
@@ -331,7 +325,10 @@ project_top_down <- function(region_name, year, quiet = FALSE,
     dplyr::select(region, year, P, G, g, E, F, e, f, ef)
   if (nrow(data) == 0 && is.null(region_code)) {
     if (!quiet) {
-      warning("There is no data for country or region ", region_name)
+      warning("There is no data for country or region ",
+              str_c(
+                ifelse(isTRUE(region_name == ""), region_code, region_name),
+                collapse = ", "))
     }
   }
   data
