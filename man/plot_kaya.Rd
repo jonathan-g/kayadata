@@ -13,7 +13,12 @@ plot_kaya(
   log_scale = FALSE,
   trend_line = FALSE,
   points = TRUE,
-  font_size = 20
+  font_size = 20,
+  colors = NULL,
+  pre_color = NULL,
+  post_color = NULL,
+  in_range_color = NULL,
+  trend_color = NULL
 )
 }
 \arguments{
@@ -38,6 +43,22 @@ highlighting.}
 \item{points}{Plot points in addition to the line.}
 
 \item{font_size}{Base size of the font for axis labels and titles.}
+
+\item{colors}{Named vector of colors to use for the plot. Elements should include
+`PRE`, `POST`, `IN-RANGE`, and `TREND`, which respectively give the colors for
+the portion of the plot before `start_year`, after `stop_year`, between
+`start_year` and `stop_year`, and the trend line.}
+
+\item{pre_color}{Override default color for the portion of the chart before
+`start_year`.}
+
+\item{post_color}{Override default color for the portion of the chart after
+`stop_year`.}
+
+\item{in_range_color}{Override default color for the portion of the chart
+between `start_year` and `stop_year`.}
+
+\item{trend_color}{Override default color for the trend line.}
 }
 \value{
 A plot object.

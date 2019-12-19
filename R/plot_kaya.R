@@ -17,6 +17,17 @@ globalVariables(c("in_range", "fuel", "quads", "frac", "label",
 #' @param trend_line Include a trend line
 #' @param points Plot points in addition to the line.
 #' @param font_size Base size of the font for axis labels and titles.
+#' @param colors Named vector of colors to use for the plot. Elements should include
+#'   `PRE`, `POST`, `IN-RANGE`, and `TREND`, which respectively give the colors for
+#'   the portion of the plot before `start_year`, after `stop_year`, between
+#'   `start_year` and `stop_year`, and the trend line.
+#' @param pre_color Override default color for the portion of the chart before
+#'   `start_year`.
+#' @param post_color Override default color for the portion of the chart after
+#'   `stop_year`.
+#' @param in_range_color Override default color for the portion of the chart
+#'   between `start_year` and `stop_year`.
+#' @param trend_color Override default color for the trend line.
 #'
 #' @return A plot object.
 #'
@@ -33,7 +44,10 @@ plot_kaya <- function(kaya_data, variable,
                       start_year = NA, stop_year = NA,
                       y_lab = NULL,
                       log_scale = FALSE, trend_line = FALSE,
-                      points = TRUE, font_size = 20) {
+                      points = TRUE, font_size = 20,
+                      colors = NULL, pre_color = NULL,
+                      post_color = NULL, in_range_color = NULL,
+                      trend_color = NULL) {
   labels <- c(P =  "Population (billions)",
               G =  "Gross Domestic Product ($ trillion)",
               E =  "Energy consumption (quads)",
@@ -43,6 +57,17 @@ plot_kaya <- function(kaya_data, variable,
               f =  "Carbon intensity of energy supply (MMT per quad)",
               ef = "Carbon intensity of economy (tons CO2 per $million)"
   )
+
+  if (is.null(colors)) {
+    colors = c("IN-RANGE" = "darkblue",
+               "PRE" = "cornflowerblue",
+               "POST" = "cornflowerblue",
+               "TREND" = "orchid4")
+  }
+  if (! is.null(pre_color)) colors['PRE'] <- pre_color
+  if (! is.null(post_color)) colors['POST'] <- post_color
+  if (! is.null(in_range_color)) colors['IN-RANGE'] <- in_range_color
+  if (! is.null(trend_color)) colors['TREND'] <- trend_color
 
   if (is.null(y_lab)) y_lab <- labels[variable]
   if (is.null(start_year) || is.null(stop_year)) {
@@ -75,50 +100,50 @@ plot_kaya <- function(kaya_data, variable,
     }
   }
 
-  color_scale <- scale_color_manual(values = c("IN-RANGE" = "darkblue",
-                                              "PRE" = "cornflowerblue",
-                                              "POST" = "cornflowerblue",
-                                              "TREND" = "orchid4"
-  ))
+  color_scale <- ggplot2::scale_color_manual(values = colors)
 
-  legend <- guides(color = FALSE, shape = FALSE)
+  legend <- ggplot2::guides(color = FALSE, shape = FALSE)
 
   if (!any(is.null(start_year), is.null(stop_year))) {
-    df <- bind_rows(
-      kaya_data %>% filter(year <= start_year) %>% mutate(in_range = "PRE"),
-      kaya_data %>% filter(year >= stop_year) %>% mutate(in_range = "POST"),
-      kaya_data %>% filter(between(year, start_year, stop_year)) %>%
-        mutate(in_range = "IN-RANGE")
+    df <- dplyr::bind_rows(
+      kaya_data %>% dplyr::filter(year <= start_year) %>%
+        dplyr::mutate(in_range = "PRE"),
+      kaya_data %>% dplyr::filter(year >= stop_year) %>%
+        dplyr::mutate(in_range = "POST"),
+      kaya_data %>%
+        dplyr::filter(between(year, start_year, stop_year)) %>%
+        dplyr::mutate(in_range = "IN-RANGE")
     )
   } else {
-    df <- kaya_data %>% mutate(in_range = "IN-RANGE")
+    df <- kaya_data %>% dplyr::mutate(in_range = "IN-RANGE")
   }
 
   variable <- sym(variable)
-  p <- ggplot(df, aes(x = year, y = !!variable, color = in_range))
+  p <- ggplot2::ggplot(df, aes(x = year, y = !!variable, color = in_range))
   p <- p +
-    geom_line(size = 1, na.rm = TRUE)
+    ggplot2::geom_line(size = 1, na.rm = TRUE)
 
   if (points) {
-    p <- p + geom_point(size = 3, na.rm = TRUE)
+    p <- p + ggplot2::geom_point(size = 3, na.rm = TRUE)
   }
   p <- p + color_scale + legend
 
   if (log_scale) {
-    p <- p + scale_y_log10()
+    p <- p + ggplot2::scale_y_log10()
   }
 
   if (trend_line) {
-    p <- p + geom_smooth(method = "lm", data = filter(df, in_range == "IN-RANGE"),
+    p <- p + ggplot2::geom_smooth(method = "lm",
+                                  data = dplyr::filter(df, in_range == "IN-RANGE"),
                          na.rm = TRUE, se = se, mapping = aes(color = "TREND"))
   }
 
   p <- p +
-    labs(x = "Year", y = y_lab) +
-    theme_bw(base_size = font_size) +
-    theme(axis.title.y = element_text(vjust = 1.2),
-          axis.title.x = element_text(vjust = -0.1),
-          legend.key = element_rect(color = NA))
+    ggplot2::labs(x = "Year", y = y_lab) +
+    ggplot2::theme_bw(base_size = font_size) +
+    ggplot2::theme(axis.title.y = ggplot2::element_text(vjust = 1.2),
+          axis.title.x = ggplot2::element_text(vjust = -0.1),
+          legend.key = ggplot2::element_rect(color = NA))
   p
 }
 
@@ -138,6 +163,8 @@ plot_kaya <- function(kaya_data, variable,
 #' `fuel_mix`.
 #' If `title` is a character string, that string is used.
 #' If `title` is `FALSE`, the plot is produced with no title.
+#' @param color_scale A named vector with the colors to use for
+#'   `Coal`, `Oil`, `Natural Gas`, `Nuclear`, `Hydro`, and `Renewables`.
 #' @return A plot object.
 #' @examples
 #' usa_fuel <- get_fuel_mix("United States", collapse_renewables = FALSE)
@@ -145,50 +172,50 @@ plot_kaya <- function(kaya_data, variable,
 #' plot_fuel_mix(usa_fuel, collapse_renewables = FALSE)
 #'
 #' @export
-plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL) {
+plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL,
+                          color_scale = NULL) {
   if (is.null(title) || title == TRUE) {
     title <- fuel_mix$region %>% unique() %>% str_c(collapse = ", ")
   } else if (!is.character(title)) {
     title <- NULL
   }
-  if (collapse_renewables) {
-    fuel_mix <- fuel_mix %>%
-      mutate(fuel = fct_recode(fuel, Renewables = "Hydro"))
-    color_scale <- c("Coal" = "#e31a1c", "Natural Gas" = "#fdbf6f",
-                     "Oil" = "#ff7f00", "Nuclear" = "#33a04c",
-                     "Renewables" = "#b2dfca", "Total" = "#a6cee3")
-  } else {
 
+  if (is.null(color_scale)) {
     color_scale <- c("Coal" = "#e31a1c", "Natural Gas" = "#fdbf6f",
                      "Oil" = "#ff7f00", "Nuclear" = "#33a04c",
                      "Hydro" = "#69d9a4", "Renewables" = "#b2dfca",
                      "Total" = "#a6cee3")
-
   }
-  fuel_mix <- fuel_mix %>% group_by(fuel) %>%
-    summarize(quads = sum(quads), frac = sum(frac)) %>% ungroup()
+
+  if (collapse_renewables) {
+    fuel_mix <- fuel_mix %>%
+      dplyr::mutate(fuel = forcats::fct_recode(fuel, Renewables = "Hydro"))
+    color_scale <- color_scale[names(color_scale) != "Hydro"]
+  }
+  fuel_mix <- fuel_mix %>% dplyr::group_by(fuel) %>%
+    dplyr::summarize(quads = sum(quads), frac = sum(frac)) %>% dplyr::ungroup()
   fd <- fuel_mix %>%
-    arrange(fuel) %>%
-    mutate(qmin = cumsum(lag(quads, default = 0)), qmax = cumsum(quads))
-  labels <- fd %>% mutate(label = paste0(fuel, ": ", round(quads, 2),
+    dplyr::arrange(fuel) %>%
+    dplyr::mutate(qmin = cumsum(lag(quads, default = 0)), qmax = cumsum(quads))
+  labels <- fd %>% dplyr::mutate(label = paste0(fuel, ": ", round(quads, 2),
                                          " quads (", scales::percent(frac, 0.1),
                                          ")")) %>%
-    arrange(fuel) %>% select(fuel, label) %>%
+    dplyr::arrange(fuel) %>% dplyr::select(fuel, label) %>%
     tidyr::spread(key = fuel, value = label) %>% unlist()
   if (FALSE) {
     message(paste0(levels(fd$fuel), collapse = ", "))
   }
-  p <- ggplot(fd, aes(ymin = qmin, ymax = qmax, fill = fuel)) +
-    geom_rect(xmin = 2, xmax = 4, na.rm = TRUE) +
-    coord_polar(theta = "y") +
-    xlim(c(0, 4)) +
-    scale_fill_manual(values = color_scale,
+  p <- ggplot2::ggplot(fd, aes(ymin = qmin, ymax = qmax, fill = fuel)) +
+    ggplot2::geom_rect(xmin = 2, xmax = 4, na.rm = TRUE) +
+    ggplot2::coord_polar(theta = "y") +
+    ggplot2::xlim(c(0, 4)) +
+    ggplot2::scale_fill_manual(values = color_scale,
                       breaks = names(labels), labels = labels, name = "Fuel") +
-    theme_bw(base_size = 20) +
-    theme(panel.grid = element_blank(),
-          axis.text = element_blank(),
-          axis.ticks = element_blank())
+    ggplot2::theme_bw(base_size = 20) +
+    ggplot2::theme(panel.grid = ggplot2::element_blank(),
+          axis.text = ggplot2::element_blank(),
+          axis.ticks = ggplot2::element_blank())
 
-  if (! is.null(title)) p <- p + ggtitle(title)
+  if (! is.null(title)) p <- p + ggplot2::ggtitle(title)
   p
 }
