@@ -1,15 +1,13 @@
 kayadata
 ========
 
-[![CRAN Status Badge](https://www.r-pkg.org/badges/version-last-release/kayadata)](https://cran.r-project.org/package=kayadata)
+[![CRAN Status
+Badge](https://www.r-pkg.org/badges/version-last-release/kayadata)](https://cran.r-project.org/package=kayadata)
 [![DOI](https://zenodo.org/badge/108232691.svg)](https://zenodo.org/badge/latestdoi/108232691)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-**GitHub:** [![Build
+[![License:
+MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build
 Status](https://travis-ci.org/jonathan-g/kayadata.svg?branch=master)](https://github.com/jonathan-g/kayadata/commits/master)
-
-**GitLab:** [![Build
-Status](https://gitlab.jgilligan.org/gilligan_teaching/ees_3310/ees_3310_software/kayadata/badges/master/build.svg)](https://gitlab.jgilligan.org/gilligan_teaching/ees_3310/ees_3310_software/kayadata/commits/master)
 
 This package loads Kaya-identity data, synthesized from several sources.
 
@@ -78,7 +76,7 @@ plot_kaya(us_kaya, "ef", y_lab = "Carbon intensity of economy",
           trend_line = TRUE)
 ```
 
-![](README_files/figure-markdown_github/plot-kaya-1.png)
+![](man/figures/plot-kaya-1.png)
 
 ``` r
 world_kaya = get_kaya_data("World")
@@ -86,9 +84,9 @@ plot_kaya(world_kaya, "P", start_year = 2000, stop_year = 2010, log_scale = FALS
           trend_line = FALSE)
 ```
 
-![](README_files/figure-markdown_github/plot-kaya-world-1.png) \*
-`get_fuel_mix`: Get the fuel mix (coal, gas, oil, nuclear, and
-renewables) for a region or country. Example:
+![](man/figures/plot-kaya-world-1.png) \* `get_fuel_mix`: Get the fuel
+mix (coal, gas, oil, nuclear, and renewables) for a region or country.
+Example:
 
 ``` r
 mexico_mix = get_fuel_mix("Mexico")
@@ -110,7 +108,7 @@ mexico_mix
 plot_fuel_mix(mexico_mix)
 ```
 
-![](README_files/figure-markdown_github/plot-fuel-mix-1.png)
+![](man/figures/plot-fuel-mix-1.png)
 
 After you install the package, you can get more help inside RStudio by
 typing `help(package="kayadata")` in the R console window.
