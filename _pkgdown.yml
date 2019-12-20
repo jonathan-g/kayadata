@@ -15,7 +15,7 @@ home:
     or region's greenhouse gas emissions in terms of its population,
     per-capita Gross Domestic Product, the energy intensity of its
     economy, and the carbon-intensity of its energy supply.
-  strip_header: true
+  strip_header: false
 
 authors:
   Jonathan Gilligan:
