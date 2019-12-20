@@ -19,7 +19,8 @@ Description: Provides data for Kaya identity variables (population, gross
              or region's greenhouse gas emissions in terms of its population, 
              per-capita Gross Domestic Product, the energy intensity of its 
              economy, and the carbon-intensity of its energy supply.
-URL: https://github.com/jonathan-g/kayadata
+URL: https://jonathan-g.github.io/kayadata/, 
+     https://github.com/jonathan-g/kayadata
 BugReports: https://github.com/jonathan-g/kayadata/issues
 License: MIT + file LICENSE
 Depends:
