@@ -4,6 +4,7 @@
   (now it must be "darkblue").
 * Add regression tests for plotting functions (using `vdiffr`).
 * Add optional arguments to plotting functions to override default colors.
+* Add documentation site for Github Pages via `pkgdown`.
 
 # kayadata 0.4.2
 
