@@ -1,6 +1,6 @@
 ## ----setup, include=FALSE-----------------------------------------------------
 knitr::opts_chunk$set(echo = FALSE)
-library(tidyverse)
+library(dplyr)
 library(kayadata)
 
 ## ----initialize, echo=TRUE, eval=FALSE----------------------------------------
