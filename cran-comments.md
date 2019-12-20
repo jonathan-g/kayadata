@@ -1,12 +1,12 @@
 ## Test environments
-* local Windows 10 install, R 3.6.1
-* local ubuntu 18.04.2 install, R 3.6.1
+
+* local Windows 10 install, R 3.6.2
+* local ubuntu 18.04.2 install, R 3.6.2
 * local Debian 9 (stretch), R 3.6.1
-* ubuntu 14.04.6 (on travis-ci), R 3.6.1
+* ubuntu 16.04.6 (on travis-ci), R 3.6.1
 * r-hub builder:
     * Ubuntu 16.04, R-Release gcc
     * Ubuntu 16.04, R-Devel gcc
-    * Ubuntu 16.04, R-chk
     * Debian, R-Release gcc
     * Debian, R-Devel gcc
     * Debian, R-Patched gcc
@@ -21,26 +21,13 @@
 
 * r-hub debian R-devel build:
 
-    0 errors | 0 warnings | 2 notes
+    0 errors | 0 warnings | 1 note
 
 * All other r-hub builds:
 
-    0 errors | 0 warnings | 1 note
+    0 errors | 0 warnings | 0 notes
   
 ### NOTES: 
-
-* **r-hub builds**: False-positive warning about 
-  two (possibly) invalid URLs <https://www.eia.gov/outlooks/archive/ieo17/> and
-  <https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_a>.
-  This only occurs on r-hub builder and not other builds. I have checked both 
-  URLs manually and they correct and working when I visit them from a web 
-  browser.
-  
-    These URLs reference the underlying source of the data provided by this 
-    package (they are listed in "\source" lines in `td_trends.Rd` and
-    `td_values.Rd`, and a "\references" line in `generation_capacity.Rd`). 
-    They reference a third-party web site operated by the U.S. Department of 
-    Energy and is not under my control.
 
 * **r-hub debian R-devel only**: False-positive warning about (possible) 
   misspellings for four people's names in DESCRIPTION: "Kaya", "Keiichi", 
@@ -52,8 +39,8 @@ There are no reverse dependencies.
 
 ## Additional comments
 
-* This submission is an update to version 0.4.2.
+* This submission updates the package to version 0.4.3.
 
-    I have updated the data to incorporate the 2019 Statistical Report on 
-    World Energy.
-
+I fixed a newly discovered error caused by the update to the scales library
+to version 1.1.0 and added relevant regression tests. 
+See <https://github.com/tidyverse/ggplot2/issues/3644>.

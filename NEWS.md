@@ -1,10 +1,13 @@
 # kayadata 0.4.3 
 
-* Fix color in plot_kaya. ggplot no longer recognizes "dark blue" as a color
-  (now it must be "darkblue").
-* Add regression tests for plotting functions (using `vdiffr`).
+This release is mostly a bugfix for changes in the way that the latest releases
+of `ggplot2` and `scales` packages handle color names.
+
+* Fix color in plot_kaya. Since `scales` v. 1.1.0, `ggplot2` no longer 
+  recognizes `"dark blue"` as a color (now it must be `"darkblue"`).
+* Add visual regression tests for plotting functions (using `vdiffr`).
 * Add optional arguments to plotting functions to override default colors.
-* Add documentation site for Github Pages via `pkgdown`.
+* Add documentation site on Github Pages via `pkgdown`.
 
 # kayadata 0.4.2
 
