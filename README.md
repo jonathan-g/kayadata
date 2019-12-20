@@ -112,3 +112,10 @@ plot_fuel_mix(mexico_mix)
 
 After you install the package, you can get more help inside RStudio by
 typing `help(package="kayadata")` in the R console window.
+
+Code of conduct
+---------------
+
+Please note that this project is released with a [Contributor Code of
+Conduct](https://jonathan-g.github.io/kayadata/CODE_OF_CONDUCT.html). By
+participating in this project you agree to abide by its terms.
