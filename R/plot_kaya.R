@@ -36,6 +36,14 @@ globalVariables(c("in_range", "fuel", "quads", "frac", "label",
 #' plot_kaya(china, "F", 2001, 2011)
 #' uk <- get_kaya_data("United Kingdom")
 #' plot_kaya(uk, "e", log_scale = TRUE, trend_line = TRUE)
+#' plot_kaya(uk, "e", log_scale = TRUE, trend_line = TRUE,
+#'           start_year = 1970, stop_year = 2000,
+#'           colors = c(PRE="limegreen", POST="darkgreen",
+#'                      "IN-RANGE" = "cadetblue", TREMD="orange"))
+#' plot_kaya(uk, "e", log_scale = TRUE, trend_line = TRUE,
+#'           start_year = 1970, stop_year = 2000,
+#'           pre_color = "limegreen", post_color = "limegreen",
+#'           trend_color = "magenta")
 #' world <- get_kaya_data("World")
 #' plot_kaya(world, "g", 1982, log_scale = TRUE, trend_line = TRUE)
 #' @export
@@ -163,34 +171,37 @@ plot_kaya <- function(kaya_data, variable,
 #' `fuel_mix`.
 #' If `title` is a character string, that string is used.
 #' If `title` is `FALSE`, the plot is produced with no title.
-#' @param color_scale A named vector with the colors to use for
+#' @param colors A named vector with the colors to use for
 #'   `Coal`, `Oil`, `Natural Gas`, `Nuclear`, `Hydro`, and `Renewables`.
 #' @return A plot object.
 #' @examples
 #' usa_fuel <- get_fuel_mix("United States", collapse_renewables = FALSE)
 #' plot_fuel_mix(usa_fuel)
 #' plot_fuel_mix(usa_fuel, collapse_renewables = FALSE)
+#' plot_fuel_mix(usa_fuel, colors = c(Coal = "black", "Natural Gas" = "gray60",
+#'                                    Oil = "gray30", Nuclear = "forestgreen",
+#'                                    Hydro = "royalblue", Renewables="palegreen"))
 #'
 #' @export
 plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL,
-                          color_scale = NULL) {
+                          colors = NULL) {
   if (is.null(title) || title == TRUE) {
     title <- fuel_mix$region %>% unique() %>% str_c(collapse = ", ")
   } else if (!is.character(title)) {
     title <- NULL
   }
 
-  if (is.null(color_scale)) {
-    color_scale <- c("Coal" = "#e31a1c", "Natural Gas" = "#fdbf6f",
-                     "Oil" = "#ff7f00", "Nuclear" = "#33a04c",
-                     "Hydro" = "#69d9a4", "Renewables" = "#b2dfca",
-                     "Total" = "#a6cee3")
+  if (is.null(colors)) {
+    colors <- c("Coal" = "#e31a1c", "Natural Gas" = "#fdbf6f",
+                "Oil" = "#ff7f00", "Nuclear" = "#33a04c",
+                "Hydro" = "#69d9a4", "Renewables" = "#b2dfca",
+                "Total" = "#a6cee3")
   }
 
   if (collapse_renewables) {
     fuel_mix <- fuel_mix %>%
       dplyr::mutate(fuel = forcats::fct_recode(fuel, Renewables = "Hydro"))
-    color_scale <- color_scale[names(color_scale) != "Hydro"]
+    colors <- colors[names(colors) != "Hydro"]
   }
   fuel_mix <- fuel_mix %>% dplyr::group_by(fuel) %>%
     dplyr::summarize(quads = sum(quads), frac = sum(frac)) %>% dplyr::ungroup()
@@ -209,7 +220,7 @@ plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL,
     ggplot2::geom_rect(xmin = 2, xmax = 4, na.rm = TRUE) +
     ggplot2::coord_polar(theta = "y") +
     ggplot2::xlim(c(0, 4)) +
-    ggplot2::scale_fill_manual(values = color_scale,
+    ggplot2::scale_fill_manual(values = colors,
                       breaks = names(labels), labels = labels, name = "Fuel") +
     ggplot2::theme_bw(base_size = 20) +
     ggplot2::theme(panel.grid = ggplot2::element_blank(),

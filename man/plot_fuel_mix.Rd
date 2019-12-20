@@ -8,7 +8,7 @@ plot_fuel_mix(
   fuel_mix,
   collapse_renewables = TRUE,
   title = NULL,
-  color_scale = NULL
+  colors = NULL
 )
 }
 \arguments{
@@ -28,7 +28,7 @@ or `TRUE`, a default title is created from the names of the regions in
 If `title` is a character string, that string is used.
 If `title` is `FALSE`, the plot is produced with no title.}
 
-\item{color_scale}{A named vector with the colors to use for
+\item{colors}{A named vector with the colors to use for
 `Coal`, `Oil`, `Natural Gas`, `Nuclear`, `Hydro`, and `Renewables`.}
 }
 \value{
@@ -41,5 +41,8 @@ Plot fuel mix
 usa_fuel <- get_fuel_mix("United States", collapse_renewables = FALSE)
 plot_fuel_mix(usa_fuel)
 plot_fuel_mix(usa_fuel, collapse_renewables = FALSE)
+plot_fuel_mix(usa_fuel, colors = c(Coal = "black", "Natural Gas" = "gray60",
+                                   Oil = "gray30", Nuclear = "forestgreen",
+                                   Hydro = "royalblue", Renewables="palegreen"))
 
 }

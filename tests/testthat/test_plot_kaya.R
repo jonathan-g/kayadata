@@ -21,5 +21,11 @@ test_that("fuel mix plots have correct output", {
   vdiffr::expect_doppelganger("fuel-mix-collapsed", pfm)
   pfm2 <-  plot_fuel_mix(fm, FALSE)
   vdiffr::expect_doppelganger("fuel-mix-full", pfm2)
+  pfm3 <- plot_fuel_mix(fm, collapse_renewables = FALSE,
+                        colors = c(Coal = "black", "Natural Gas" = "gray60",
+                                   Oil = "gray30", Nuclear = "forestgreen",
+                                   Hydro = "royalblue", Renewables="palegreen")
+                        )
+  vdiffr::expect_doppelganger("fuel-mix-colors", pfm3)
 })
 
