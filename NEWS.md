@@ -1,6 +1,6 @@
 # kayadata 0.4.3 
 
-This release is mostly a bugfix for changes in the way that the latest releases
+This release is mostly a bug fix for changes in the way that the latest releases
 of `ggplot2` and `scales` packages handle color names.
 
 * Fix color in plot_kaya. Since `scales` v. 1.1.0, `ggplot2` no longer 
