@@ -149,24 +149,24 @@ Energy Outlook report.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>region_name</th>
-      <td><p>The name of a country or region to look up</p></td>
+      <td><p>The name of one or more countries or regions to look up</p></td>
     </tr>
     <tr>
       <th>quiet</th>
-      <td><p>Suppress warnings if there is no data for that country or
-region.</p></td>
+      <td><p>Suppress warnings if there is no data for the specified
+countries or regions.</p></td>
     </tr>
     <tr>
       <th>region_code</th>
-      <td><p>Optional three-letter country or region code to look up
+      <td><p>Optional three-letter country or region codes to look up
 instead of the <code>region_name</code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a tibble of trends for P, G, E, F, g, e, f, and ef for the country,
-or region in percent per year.</p>
+    <p>a tibble of trends for <em>P</em>, <em>G</em>, <em>E</em>, <em>F</em>, <em>g</em>, <em>e</em>, <em>f</em>, and <em>ef</em>
+for each country or region in percent per year.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>get_top_down_trends</span>(<span class='st'>"Spain"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 9

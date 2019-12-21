@@ -144,7 +144,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>region_name</th>
-      <td><p>The name of a country or region to look up</p></td>
+      <td><p>The name of one or more countries or regions to look up</p></td>
     </tr>
     <tr>
       <th>gdp</th>
@@ -164,7 +164,8 @@ instead of the <code>region_name</code></p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a tibble of Kaya identity data for the country or region:</p><dl class='dl-horizontal'>
+    <p>a tibble of Kaya identity data for the countries or regions
+specified:</p><dl class='dl-horizontal'>
 <dt>region</dt><dd><p>The name of the country or region</p></dd>
 <dt>year</dt><dd><p>The year</p></dd>
 <dt>P</dt><dd><p>Population, in billions</p></dd>
@@ -185,19 +186,20 @@ million dollars of GDP.</p></dd>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Units for G, g, e, and ef depend on whether the data is requested
-in MER or PPP dollars: For MER, dollars are constant 2010 U.S.
-dollars. For PPP, dollars are constant 2011 international dollars.</p><pre>     P and MER values for GDP and related quantities are available from
-     1960 onward.
+    <p>Units for <em>G</em>, <em>g</em>, <em>e</em>, and <em>ef</em> depend on whether the data is
+requested in MER or PPP dollars:
+For MER, dollars are constant 2010 U.S.
+dollars. For PPP, dollars are constant 2011 international dollars.</p><pre>     _P_ and MER values for GDP and related quantities are available
+     from 1960 onward.
 
      PPP values for GDP and related quantities are only available from
      1990 onward.
 
-     Energy-related values (E, F, and derived quantities) are
+     Energy-related values (_E_, _F_, and derived quantities) are
      available from 1965 onward.
 
-     Note that emissions (F, f, and ef) use millions of metric tons of
-     carbon dioxide, not carbon.
+     Note that emissions (_F_, _f_, and _ef_) are reported as millions
+     of metric tons of carbon dioxide, not carbon.
 </pre>
 
 
