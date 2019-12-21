@@ -152,14 +152,20 @@ plot_kaya <- function(kaya_data, variable,
     ggplot2::theme(axis.title.y = ggplot2::element_text(vjust = 1.2),
           axis.title.x = ggplot2::element_text(vjust = -0.1),
           legend.key = ggplot2::element_rect(color = NA))
+
+  if (length(unique(df$region)) > 1) {
+    p <- p + facet_wrap(~region)
+  }
+
   p
 }
 
 
 #' Plot fuel mix
 #'
-#' @param fuel_mix A tibble with the mixture of fuels:
+#' @param fuel_mix A tibble with the mixture of fuels for one or more countries or regions:
 #' \describe{
+#'   \item{region}{The name of the country or region}
 #'   \item{fuel}{The name of the fuel}
 #'   \item{quads}{The number of quads per year the country or region consumes}
 #'   \item{frac}{The percentage of the country's energy that comes from that fuel}
@@ -229,5 +235,6 @@ plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL,
           axis.ticks = ggplot2::element_blank())
 
   if (! is.null(title)) p <- p + ggplot2::ggtitle(title)
+
   p
 }

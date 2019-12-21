@@ -16,8 +16,8 @@ region.}
 instead of the \code{region_name}}
 }
 \value{
-a tibble of values for P, G, E, F, g, e, f, and ef for the country
-or region:
+a tibble of values for \emph{P}, \emph{G}, \emph{E}, \emph{F}, \emph{g}, \emph{e}, \emph{f}, and \emph{ef}
+for each country or region:
 \describe{
 \item{region}{The name of the country or region}
 \item{P}{Population, in billions}

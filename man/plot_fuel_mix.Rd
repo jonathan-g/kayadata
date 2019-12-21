@@ -12,8 +12,9 @@ plot_fuel_mix(
 )
 }
 \arguments{
-\item{fuel_mix}{A tibble with the mixture of fuels:
+\item{fuel_mix}{A tibble with the mixture of fuels for one or more countries or regions:
 \describe{
+\item{region}{The name of the country or region}
 \item{fuel}{The name of the fuel}
 \item{quads}{The number of quads per year the country or region consumes}
 \item{frac}{The percentage of the country's energy that comes from that fuel}
