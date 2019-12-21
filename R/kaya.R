@@ -42,13 +42,13 @@ kaya_region_list <- function() {
     as.character()
 }
 
-#' Get Kaya data for a country or region
+#' Get Kaya data for one or more countries or regions
 #'
 #' @param region_name The name of one or more countries or regions to look up
 #' @param gdp         Use market exchange rates (`MER`) or purchasing power
 #'                    parity (`PPP`). Default is `MER`.
 #' @param quiet       Suppress warnings if there is no such country or region.
-#' @param region_code Optional three-letter country or region code to look up
+#' @param region_code Optional three-letter country or region codes to look up
 #'                     instead of the `region_name`
 #'
 #' @return a tibble of Kaya identity data for the countries or regions
@@ -121,7 +121,7 @@ get_kaya_data <- function(region_name, gdp = c("MER", "PPP"), quiet = FALSE,
   data
 }
 
-#' Get fuel mix for a country or region
+#' Get fuel mix for one or more countries or regions
 #'
 #' @param region_name A character vector with the names of one or more
 #'   countries or regions to look up
@@ -129,13 +129,22 @@ get_kaya_data <- function(region_name, gdp = c("MER", "PPP"), quiet = FALSE,
 #'   into a single category.
 #' @param quiet Suppress warnings if there is no data for that country or
 #'   region.
-#' @param region_code Optional three-letter country or region code to look up
+#' @param region_code Optional three-letter country or region codes to look up
 #'   instead of the `region_name`
 #'
 #' @return A tibble of fuel mix for the countries or regions specified.
 #'   That is, the number of quads of each fuel and the
 #'   fraction of total primary energy coming from that fuel for each country
-#'   or region.
+#'   or region:
+#' \describe{
+#'   \item{region}{The name of the country or region}
+#'   \item{year}{The year reported}
+#'   \item{fuel}{The name of the fuel}
+#'   \item{quads}{The number of quads per year the country or region consumes}
+#'   \item{frac}{The fraction of the country's energy that comes from that
+#'     fuel}
+#' }
+#'
 #' @examples
 #' get_fuel_mix("United States")
 #' get_fuel_mix("World", collapse_renewables = FALSE)
@@ -174,9 +183,9 @@ get_fuel_mix <- function(region_name, collapse_renewables = TRUE,
   data %>% arrange(region, fuel)
 }
 
-#' Get top-down trends for Kaya variables for a country or region, using
-#' projections from U.S. Energy Information Administration's International
-#' Energy Outlook report.
+#' Get top-down trends for Kaya variables for one or more countries or
+#' regions, using projections from U.S. Energy Information Administration's
+#' International Energy Outlook report.
 #'
 #' @param region_name The name of one or more countries or regions to look up
 #' @param quiet Suppress warnings if there is no data for the specified
@@ -212,7 +221,8 @@ get_top_down_trends <- function(region_name, quiet = FALSE,
   data
 }
 
-#' Get top-down projections of Kaya variables for a country or region
+#' Get top-down projections of Kaya variables for one or more countries or
+#' regions
 #'
 #' @param region_name The name of a country or region to look up
 #' @param quiet       Suppress warnings if there is no data for that country or
@@ -267,8 +277,8 @@ get_top_down_values <- function(region_name, quiet = FALSE,
   data
 }
 
-#' Get top-down projections of Kaya variables for a country or region for a
-#' given year
+#' Get top-down projections of Kaya variables for one or more countries
+#' or regions for a given year
 #'
 #' @param region_name The name of a country or region to look up
 #' @param quiet Suppress warnings if there is no data for that country or

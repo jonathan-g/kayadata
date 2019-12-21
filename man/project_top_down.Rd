@@ -2,8 +2,8 @@
 % Please edit documentation in R/kaya.R
 \name{project_top_down}
 \alias{project_top_down}
-\title{Get top-down projections of Kaya variables for a country or region for a
-given year}
+\title{Get top-down projections of Kaya variables for one or more countries
+or regions for a given year}
 \usage{
 project_top_down(region_name, year, quiet = FALSE, region_code = NULL)
 }
@@ -40,8 +40,8 @@ million dollars of GDP.}
 }
 }
 \description{
-Get top-down projections of Kaya variables for a country or region for a
-given year
+Get top-down projections of Kaya variables for one or more countries
+or regions for a given year
 }
 \examples{
 project_top_down("China", 2037)

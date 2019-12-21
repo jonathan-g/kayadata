@@ -168,7 +168,7 @@ plot_kaya <- function(kaya_data, variable,
 #'   \item{region}{The name of the country or region}
 #'   \item{fuel}{The name of the fuel}
 #'   \item{quads}{The number of quads per year the country or region consumes}
-#'   \item{frac}{The percentage of the country's energy that comes from that fuel}
+#'   \item{frac}{The fraction of the country's energy that comes from that fuel}
 #' }
 #' @param collapse_renewables Combine hydroelectricity and other renewables into
 #'        a single category.

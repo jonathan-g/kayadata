@@ -2,7 +2,7 @@
 % Please edit documentation in R/kaya.R
 \name{get_kaya_data}
 \alias{get_kaya_data}
-\title{Get Kaya data for a country or region}
+\title{Get Kaya data for one or more countries or regions}
 \usage{
 get_kaya_data(
   region_name,
@@ -19,7 +19,7 @@ parity (\code{PPP}). Default is \code{MER}.}
 
 \item{quiet}{Suppress warnings if there is no such country or region.}
 
-\item{region_code}{Optional three-letter country or region code to look up
+\item{region_code}{Optional three-letter country or region codes to look up
 instead of the \code{region_name}}
 }
 \value{
@@ -44,7 +44,7 @@ million dollars of GDP.}
 }
 }
 \description{
-Get Kaya data for a country or region
+Get Kaya data for one or more countries or regions
 }
 \details{
 Units for \emph{G}, \emph{g}, \emph{e}, and \emph{ef} depend on whether the data is

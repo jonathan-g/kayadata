@@ -2,7 +2,8 @@
 % Please edit documentation in R/kaya.R
 \name{get_top_down_values}
 \alias{get_top_down_values}
-\title{Get top-down projections of Kaya variables for a country or region}
+\title{Get top-down projections of Kaya variables for one or more countries or
+regions}
 \usage{
 get_top_down_values(region_name, quiet = FALSE, region_code = NULL)
 }
@@ -36,7 +37,8 @@ million dollars of GDP.}
 }
 }
 \description{
-Get top-down projections of Kaya variables for a country or region
+Get top-down projections of Kaya variables for one or more countries or
+regions
 }
 \examples{
 get_top_down_values("New Zealand")
