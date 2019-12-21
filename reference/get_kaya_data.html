@@ -148,8 +148,8 @@
     </tr>
     <tr>
       <th>gdp</th>
-      <td><p>Use market exchange rates (`MER`) or purchasing power
-parity (`PPP`). Default is `MER`.</p></td>
+      <td><p>Use market exchange rates (<code>MER</code>) or purchasing power
+parity (<code>PPP</code>). Default is <code>MER</code>.</p></td>
     </tr>
     <tr>
       <th>quiet</th>
@@ -158,44 +158,48 @@ parity (`PPP`). Default is `MER`.</p></td>
     <tr>
       <th>region_code</th>
       <td><p>Optional three-letter country or region code to look up
-instead of the `region_name`</p></td>
+instead of the <code>region_name</code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a tibble of Kaya identity data for the country or region:</p><dl class='dl-horizontal'>
-  <dt>region</dt><dd><p>The name of the country or region</p></dd>
-  <dt>year</dt><dd><p>The year</p></dd>
-  <dt>P</dt><dd><p>Population, in billions</p></dd>
-  <dt>G</dt><dd><p>Gross domestic product, in trillions of constant 2010 U.S.
-           dollars.</p></dd>
-  <dt>E</dt><dd><p>Total primary energy consumption, in quads</p></dd>
-  <dt>F</dt><dd><p>CO2 emissions from fossil fuel consumption, in millions of metric
-           tons</p></dd>
-  <dt>g</dt><dd><p>Per-capita GDP, in thousands of dollars per
-           person.</p></dd>
-  <dt>e</dt><dd><p>Energy intensity of the economy, in quads per trillion dollars.</p></dd>
-  <dt>f</dt><dd><p>Emissions intensity of the energy supply, in million metric tons
-           per quad.</p></dd>
-  <dt>ef</dt><dd><p>Emissions intensity of the economy, in metric tons per
-            million dollars of GDP.</p></dd>
+<dt>region</dt><dd><p>The name of the country or region</p></dd>
+<dt>year</dt><dd><p>The year</p></dd>
+<dt>P</dt><dd><p>Population, in billions</p></dd>
+<dt>G</dt><dd><p>Gross domestic product, in trillions of constant 2010 U.S.
+dollars.</p></dd>
+<dt>E</dt><dd><p>Total primary energy consumption, in quads</p></dd>
+<dt>F</dt><dd><p>CO2 emissions from fossil fuel consumption, in millions of metric
+tons</p></dd>
+<dt>g</dt><dd><p>Per-capita GDP, in thousands of dollars per
+person.</p></dd>
+<dt>e</dt><dd><p>Energy intensity of the economy, in quads per trillion dollars.</p></dd>
+<dt>f</dt><dd><p>Emissions intensity of the energy supply, in million metric tons
+per quad.</p></dd>
+<dt>ef</dt><dd><p>Emissions intensity of the economy, in metric tons per
+million dollars of GDP.</p></dd>
 
 </dl>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Units for G, g, e, and ef depend on whether the data is requested
-         in MER or PPP dollars: For MER, dollars are constant 2010 U.S.
-         dollars. For PPP, dollars are constant 2011 international dollars.</p>
-<p>P and MER values for GDP and related quantities are available from
-         1960 onward.</p>
-<p>PPP values for GDP and related quantities are only available from
-         1990 onward.</p>
-<p>Energy-related values (E, F, and derived quantities) are
-         available from 1965 onward.</p>
-<p>Note that emissions (F, f, and ef) use millions of metric tons of
-         carbon dioxide, not carbon.</p>
+in MER or PPP dollars: For MER, dollars are constant 2010 U.S.
+dollars. For PPP, dollars are constant 2011 international dollars.</p><pre>     P and MER values for GDP and related quantities are available from
+     1960 onward.
+
+     PPP values for GDP and related quantities are only available from
+     1990 onward.
+
+     Energy-related values (E, F, and derived quantities) are
+     available from 1965 onward.
+
+     Note that emissions (F, f, and ef) use millions of metric tons of
+     carbon dioxide, not carbon.
+</pre>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>get_kaya_data</span>(<span class='st'>"Brazil"</span>)</div><div class='output co'>#&gt; # A tibble: 59 x 10
