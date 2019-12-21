@@ -3,7 +3,7 @@
 \docType{data}
 \name{kaya_data}
 \alias{kaya_data}
-\title{Kaya identity data for many countries}
+\title{Kaya identity data for many countries and regions}
 \format{A tibble containing 5133 rows and 14 variables:
 \describe{
 \item{region}{Country or region name}

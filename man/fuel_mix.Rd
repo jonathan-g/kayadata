@@ -3,7 +3,8 @@
 \docType{data}
 \name{fuel_mix}
 \alias{fuel_mix}
-\title{Mix of fuels contributing to primary energy supply for many countries}
+\title{Mix of fuels contributing to primary energy supply for many countries and
+regions}
 \format{A tibble containing 936 rows and 7 variables
 \describe{
 \item{region}{Country or region name}

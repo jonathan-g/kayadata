@@ -1,4 +1,4 @@
-#' Kaya identity data for many countries
+#' Kaya identity data for many countries and regions
 #'
 #' A dataset containing Kaya identity parameters
 #' P, G, E, F, g, e, f, and ef for many countries
@@ -30,7 +30,8 @@
 "kaya_data"
 
 
-#' Mix of fuels contributing to primary energy supply for many countries
+#' Mix of fuels contributing to primary energy supply for many countries and
+#' regions
 #'
 #' A dataset containing the fuel mix of how many quads and what fraction of
 #' total primary energy supply comes from coal, gas, oil, nuclear, and
