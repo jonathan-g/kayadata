@@ -41,8 +41,9 @@ Plot fuel mix
 usa_fuel <- get_fuel_mix("United States", collapse_renewables = FALSE)
 plot_fuel_mix(usa_fuel)
 plot_fuel_mix(usa_fuel, collapse_renewables = FALSE)
-plot_fuel_mix(usa_fuel, colors = c(Coal = "black", "Natural Gas" = "gray60",
-                                   Oil = "gray30", Nuclear = "forestgreen",
-                                   Hydro = "royalblue", Renewables="palegreen"))
+plot_fuel_mix(usa_fuel, collapse_renewables = FALSE,
+              colors = c(Coal = "black", "Natural Gas" = "gray60",
+                         Oil = "gray30", Nuclear = "forestgreen",
+                         Hydro = "royalblue", Renewables="palegreen"))
 
 }

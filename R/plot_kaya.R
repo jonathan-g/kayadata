@@ -178,9 +178,10 @@ plot_kaya <- function(kaya_data, variable,
 #' usa_fuel <- get_fuel_mix("United States", collapse_renewables = FALSE)
 #' plot_fuel_mix(usa_fuel)
 #' plot_fuel_mix(usa_fuel, collapse_renewables = FALSE)
-#' plot_fuel_mix(usa_fuel, colors = c(Coal = "black", "Natural Gas" = "gray60",
-#'                                    Oil = "gray30", Nuclear = "forestgreen",
-#'                                    Hydro = "royalblue", Renewables="palegreen"))
+#' plot_fuel_mix(usa_fuel, collapse_renewables = FALSE,
+#'               colors = c(Coal = "black", "Natural Gas" = "gray60",
+#'                          Oil = "gray30", Nuclear = "forestgreen",
+#'                          Hydro = "royalblue", Renewables="palegreen"))
 #'
 #' @export
 plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL,
