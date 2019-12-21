@@ -2,12 +2,16 @@
 title: "kayadata"
 author: "Jonathan Gilligan"
 date: "2019-07-31"
-output: 
-  md_document:
-    variant: markdown_github
+output: github_document
 ---
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, fig.path="man/figures/")
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  echo = FALSE, 
+  comment = "#>",
+  fig.path="man/figures/README-",
+  out.width = "100%"
+  )
 library(tidyverse)
 # library(pacman)
 # p_load_current_gh("jonathan-g/kayadata")
@@ -15,10 +19,12 @@ library(kayadata)
 ```
 # kayadata
 
+<!-- badges: start -->
 [![CRAN Status Badge](https://www.r-pkg.org/badges/version-last-release/kayadata)](https://cran.r-project.org/package=kayadata)
 [![DOI](https://zenodo.org/badge/108232691.svg)](https://zenodo.org/badge/latestdoi/108232691)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/jonathan-g/kayadata.svg?branch=master)](https://github.com/jonathan-g/kayadata/commits/master)
+<!-- badges: end -->
 
 This package loads Kaya-identity data, synthesized from several sources.
 
