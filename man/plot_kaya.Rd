@@ -45,18 +45,18 @@ highlighting.}
 \item{font_size}{Base size of the font for axis labels and titles.}
 
 \item{colors}{Named vector of colors to use for the plot. Elements should include
-`PRE`, `POST`, `IN-RANGE`, and `TREND`, which respectively give the colors for
-the portion of the plot before `start_year`, after `stop_year`, between
-`start_year` and `stop_year`, and the trend line.}
+\code{PRE}, \code{POST}, \code{IN-RANGE}, and \code{TREND}, which respectively give the colors for
+the portion of the plot before \code{start_year}, after \code{stop_year}, between
+\code{start_year} and \code{stop_year}, and the trend line.}
 
 \item{pre_color}{Override default color for the portion of the chart before
-`start_year`.}
+\code{start_year}.}
 
 \item{post_color}{Override default color for the portion of the chart after
-`stop_year`.}
+\code{stop_year}.}
 
 \item{in_range_color}{Override default color for the portion of the chart
-between `start_year` and `stop_year`.}
+between \code{start_year} and \code{stop_year}.}
 
 \item{trend_color}{Override default color for the trend line.}
 }

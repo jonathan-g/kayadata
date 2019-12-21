@@ -7,10 +7,10 @@ globalVariables(c("in_range", "fuel", "quads", "frac", "label",
 #' @param kaya_data A tibble with Kaya-identity data
 #' @param variable The name of the variable to plot (character)
 #' @param start_year The year to start highlighting the data (should correspond
-#' to the beginning of the trend calculation). Set to \code{NULL} to turn off
+#' to the beginning of the trend calculation). Set to `NULL` to turn off
 #' highlighting.
 #' @param stop_year The year to stop highlighting the data (should correspond
-#' to the beginning of the trend calculation). Set to \code{NULL} to turn off
+#' to the beginning of the trend calculation). Set to `NULL` to turn off
 #' highlighting.
 #' @param y_lab Optional label for the y-axis
 #' @param log_scale Use log scale for y axis

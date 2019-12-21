@@ -21,12 +21,12 @@ a single category.}
 region.}
 
 \item{region_code}{Optional three-letter country or region code to look up
-instead of the `region_name`}
+instead of the \code{region_name}}
 }
 \value{
 a tibble of fuel mix for the country or region.
-  That is, the number of quads of each fuel and the
-  fraction of total primary energy coming from that fuel.
+That is, the number of quads of each fuel and the
+fraction of total primary energy coming from that fuel.
 }
 \description{
 Get fuel mix for a country or region

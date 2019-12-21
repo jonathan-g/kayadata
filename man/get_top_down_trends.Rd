@@ -15,7 +15,7 @@ get_top_down_trends(region_name, quiet = FALSE, region_code = NULL)
 region.}
 
 \item{region_code}{Optional three-letter country or region code to look up
-instead of the `region_name`}
+instead of the \code{region_name}}
 }
 \value{
 a tibble of trends for P, G, E, F, g, e, f, and ef for the country,
