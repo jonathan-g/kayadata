@@ -3,7 +3,7 @@
 * local Windows 10 install, R 3.6.2
 * local ubuntu 18.04.2 install, R 3.6.2
 * local Debian 9 (stretch), R 3.6.1
-* ubuntu 16.04.6 (on travis-ci), R 3.6.1
+* Ubuntu 16.04.6 (on travis-ci), R 3.6.1
 * r-hub builder:
     * Ubuntu 16.04, R-Release gcc
     * Ubuntu 16.04, R-Devel gcc
