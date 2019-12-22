@@ -41,6 +41,6 @@ There are no reverse dependencies.
 
 * This submission updates the package to version 0.4.3.
 
-I fixed a newly discovered error caused by the update to the scales library
+I fixed a newly discovered error caused by the update of the scales library
 to version 1.1.0 and added relevant regression tests. 
 See <https://github.com/tidyverse/ggplot2/issues/3644>.
