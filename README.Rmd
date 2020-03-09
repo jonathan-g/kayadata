@@ -28,20 +28,10 @@ library(kayadata)
 
 This package loads Kaya-identity data, synthesized from several sources.
 
-To install and load the package, first install either the `pacman` or `devtools` 
-package from CRAN:
+To install the package from CRAN:
 ```{r initialize, echo=TRUE, eval=FALSE}
-install.packages("devtools")
-devtools::install_github("jonathan-g/kayadata")
-library(kayadata)
+install.packages("kayadata")
 ```
-or
-```{r initialize-pacman, echo=TRUE, eval=FALSE}
-install.packages("pacman")
-library(pacman)
-p_load_gh("jonathan-g/kayadata")
-```
-
 Once you've installed it, then you just need to use the command 
 `library(kayadata)` to load the package.
 

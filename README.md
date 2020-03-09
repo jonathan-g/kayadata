@@ -18,21 +18,10 @@ Status](https://travis-ci.org/jonathan-g/kayadata.svg?branch=master)](https://gi
 
 This package loads Kaya-identity data, synthesized from several sources.
 
-To install and load the package, first install either the `pacman` or
-`devtools` package from CRAN:
+To install the package from CRAN:
 
 ``` r
-install.packages("devtools")
-devtools::install_github("jonathan-g/kayadata")
-library(kayadata)
-```
-
-or
-
-``` r
-install.packages("pacman")
-library(pacman)
-p_load_gh("jonathan-g/kayadata")
+install.packages("kayadata")
 ```
 
 Once you’ve installed it, then you just need to use the command
@@ -85,6 +74,7 @@ us_kaya = get_kaya_data("United States")
 plot_kaya(us_kaya, "ef", y_lab = "Carbon intensity of economy",
           start_year = 2000, stop_year = 2010, log_scale = TRUE,
           trend_line = TRUE)
+#> `geom_smooth()` using formula 'y ~ x'
 ```
 
 <img src="man/figures/README-plot-kaya-1.png" width="100%" />
