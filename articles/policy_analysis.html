@@ -139,28 +139,32 @@ F = P \times g \times e \times f,
 <a class="sourceLine" id="cb1-13" data-line-number="13">kaya &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_kaya_data.html">get_kaya_data</a></span>(<span class="st">"United States"</span>)</a></code></pre></div>
 <p>Let’s start by looking at trends in <em>P</em>, <em>g</em>, <em>e</em>, and <em>f</em> starting in 1990. I plot these with a log-scale on the y-axis because a constant growth rate produces exponential growth, so it should look linear on a semi-log plot.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/plot_kaya.html">plot_kaya</a></span>(kaya, <span class="st">"P"</span>, <span class="dt">log_scale =</span> <span class="ot">TRUE</span>, <span class="dt">start_year =</span> <span class="dv">1990</span>, <span class="dt">trend_line =</span> <span class="ot">TRUE</span>, <span class="dt">points =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></a></code></pre></div>
 <div class="figure">
 <img src="policy_analysis_files/figure-html/plot_P_1990-1.png" alt="Trend in population for U.S. from 1990--2018" width="700"><p class="caption">
 Trend in population for U.S. from 1990–2018
 </p>
 </div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/plot_kaya.html">plot_kaya</a></span>(kaya, <span class="st">"g"</span>, <span class="dt">log_scale =</span> <span class="ot">TRUE</span>, <span class="dt">start_year =</span> <span class="dv">1990</span>, <span class="dt">trend_line =</span> <span class="ot">TRUE</span>, <span class="dt">points =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></a></code></pre></div>
 <div class="figure">
 <img src="policy_analysis_files/figure-html/plot_g_1990-1.png" alt="Trend in per-capita GDP for U.S. from 1990--2018" width="700"><p class="caption">
 Trend in per-capita GDP for U.S. from 1990–2018
 </p>
 </div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/plot_kaya.html">plot_kaya</a></span>(kaya, <span class="st">"e"</span>, <span class="dt">log_scale =</span> <span class="ot">TRUE</span>, <span class="dt">start_year =</span> <span class="dv">1990</span>, <span class="dt">trend_line =</span> <span class="ot">TRUE</span>, <span class="dt">points =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></a></code></pre></div>
 <div class="figure">
 <img src="policy_analysis_files/figure-html/plot_e_1990-1.png" alt="Trend in primary-energy intensity of the U.S. economy from 1990--2018" width="700"><p class="caption">
 Trend in primary-energy intensity of the U.S. economy from 1990–2018
 </p>
 </div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/plot_kaya.html">plot_kaya</a></span>(kaya, <span class="st">"f"</span>, <span class="dt">log_scale =</span> <span class="ot">TRUE</span>, <span class="dt">start_year =</span> <span class="dv">1990</span>, <span class="dt">trend_line =</span> <span class="ot">TRUE</span>, <span class="dt">points =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></a></code></pre></div>
 <div class="figure">
 <img src="policy_analysis_files/figure-html/plot_f_1990-1.png" alt="Trend in the carbon-dioxide intensity of the U.S. energy supply from 1990--2018" width="700"><p class="caption">
 Trend in the carbon-dioxide intensity of the U.S. energy supply from 1990–2018
@@ -168,7 +172,8 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 1990–2018
 </div>
 <p>All of these trends look reasonable, except for <em>f</em>. Let’s try <em>f</em> again, but fitting the trend only since 2005:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/plot_kaya.html">plot_kaya</a></span>(kaya, <span class="st">"f"</span>, <span class="dt">log_scale =</span> <span class="ot">TRUE</span>, <span class="dt">start_year =</span> <span class="dv">2005</span>, <span class="dt">trend_line =</span> <span class="ot">TRUE</span>, <span class="dt">points =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a></code></pre></div>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></a></code></pre></div>
 <div class="figure">
 <img src="policy_analysis_files/figure-html/plot_f_2005-1.png" alt="Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005--2018" width="700"><p class="caption">
 Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2018

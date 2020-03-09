@@ -97,14 +97,8 @@
 <!-- badges: start -->
 
 <p>This package loads Kaya-identity data, synthesized from several sources.</p>
-<p>To install and load the package, first install either the <code>pacman</code> or <code>devtools</code> package from CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"jonathan-g/kayadata"</span>)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(kayadata)</a></code></pre></div>
-<p>or</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"pacman"</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(pacman)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">p_load_gh</span>(<span class="st">"jonathan-g/kayadata"</span>)</a></code></pre></div>
+<p>To install the package from CRAN:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"kayadata"</span>)</a></code></pre></div>
 <p>Once you’ve installed it, then you just need to use the command <code><a href="https://rdrr.io/r/base/library.html">library(kayadata)</a></code> to load the package.</p>
 <p>Some of the functions the package provides are:</p>
 <ul>
@@ -113,57 +107,58 @@
 <li>
 <code><a href="reference/get_kaya_data.html">get_kaya_data()</a></code>: Get data for a specific country. Example:</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">mexico_data =<span class="st"> </span><span class="kw"><a href="reference/get_kaya_data.html">get_kaya_data</a></span>(<span class="st">"Mexico"</span>) </a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">mexico_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1965</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(region<span class="op">:</span>ef) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; # A tibble: 6 x 10</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;   region  year      P     G     E     F     g     e     f    ef</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt;   &lt;ord&gt;  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 1 Mexico  1965 0.0441 0.210 0.991  62.1  4.76  4.72  62.7  296.</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 2 Mexico  1966 0.0455 0.223 1.05   65.0  4.90  4.70  62.0  292.</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 3 Mexico  1967 0.0470 0.236 1.07   66.6  5.03  4.53  62.4  282.</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; 4 Mexico  1968 0.0484 0.258 1.16   72.2  5.33  4.50  62.1  279.</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; 5 Mexico  1969 0.0499 0.267 1.28   79.1  5.35  4.78  61.9  296.</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; 6 Mexico  1970 0.0515 0.284 1.36   84.2  5.52  4.79  61.8  296.</span></a></code></pre></div>
+<!-- end list --><div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">mexico_data =<span class="st"> </span><span class="kw"><a href="reference/get_kaya_data.html">get_kaya_data</a></span>(<span class="st">"Mexico"</span>) </a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">mexico_data <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span>(year <span class="op">&gt;=</span><span class="st"> </span><span class="dv">1965</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(region<span class="op">:</span>ef) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>()</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; # A tibble: 6 x 10</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;   region  year      P     G     E     F     g     e     f    ef</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;   &lt;ord&gt;  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; 1 Mexico  1965 0.0441 0.210 0.991  62.1  4.76  4.72  62.7  296.</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; 2 Mexico  1966 0.0455 0.223 1.05   65.0  4.90  4.70  62.0  292.</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt; 3 Mexico  1967 0.0470 0.236 1.07   66.6  5.03  4.53  62.4  282.</span></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 4 Mexico  1968 0.0484 0.258 1.16   72.2  5.33  4.50  62.1  279.</span></a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"><span class="co">#&gt; 5 Mexico  1969 0.0499 0.267 1.28   79.1  5.35  4.78  61.9  296.</span></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13"><span class="co">#&gt; 6 Mexico  1970 0.0515 0.284 1.36   84.2  5.52  4.79  61.8  296.</span></a></code></pre></div>
 <ul>
 <li>
 <code><a href="reference/project_top_down.html">project_top_down()</a></code>: Project future population, GDP, energy use, and emissions. Example:</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">mexico_<span class="dv">2050</span> =<span class="st"> </span><span class="kw"><a href="reference/project_top_down.html">project_top_down</a></span>(<span class="st">"Mexico"</span>, <span class="dv">2050</span>)</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">mexico_<span class="dv">2050</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; # A tibble: 1 x 10</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   region  year     P     G     g     E     F     e     f    ef</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 1 Mexico  2050 0.163  2.57  15.8  9.99  581.  3.89  58.2  226.</span></a></code></pre></div>
+<!-- end list --><div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">mexico_<span class="dv">2050</span> =<span class="st"> </span><span class="kw"><a href="reference/project_top_down.html">project_top_down</a></span>(<span class="st">"Mexico"</span>, <span class="dv">2050</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">mexico_<span class="dv">2050</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; # A tibble: 1 x 10</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;   region  year     P     G     g     E     F     e     f    ef</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 1 Mexico  2050 0.163  2.57  15.8  9.99  581.  3.89  58.2  226.</span></a></code></pre></div>
 <ul>
 <li>
 <code>plot_kaya</code>: Plot trends in Kaya variables for a given region or country. Example:</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">us_kaya =<span class="st"> </span><span class="kw"><a href="reference/get_kaya_data.html">get_kaya_data</a></span>(<span class="st">"United States"</span>)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="reference/plot_kaya.html">plot_kaya</a></span>(us_kaya, <span class="st">"ef"</span>, <span class="dt">y_lab =</span> <span class="st">"Carbon intensity of economy"</span>,</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">          <span class="dt">start_year =</span> <span class="dv">2000</span>, <span class="dt">stop_year =</span> <span class="dv">2010</span>, <span class="dt">log_scale =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">          <span class="dt">trend_line =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<!-- end list --><div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">us_kaya =<span class="st"> </span><span class="kw"><a href="reference/get_kaya_data.html">get_kaya_data</a></span>(<span class="st">"United States"</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="reference/plot_kaya.html">plot_kaya</a></span>(us_kaya, <span class="st">"ef"</span>, <span class="dt">y_lab =</span> <span class="st">"Carbon intensity of economy"</span>,</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">          <span class="dt">start_year =</span> <span class="dv">2000</span>, <span class="dt">stop_year =</span> <span class="dv">2010</span>, <span class="dt">log_scale =</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">          <span class="dt">trend_line =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></a></code></pre></div>
 <p><img src="reference/figures/README-plot-kaya-1.png" width="100%"></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">world_kaya =<span class="st"> </span><span class="kw"><a href="reference/get_kaya_data.html">get_kaya_data</a></span>(<span class="st">"World"</span>)</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="reference/plot_kaya.html">plot_kaya</a></span>(world_kaya, <span class="st">"P"</span>, <span class="dt">start_year =</span> <span class="dv">2000</span>, <span class="dt">stop_year =</span> <span class="dv">2010</span>, <span class="dt">log_scale =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">          <span class="dt">trend_line =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">world_kaya =<span class="st"> </span><span class="kw"><a href="reference/get_kaya_data.html">get_kaya_data</a></span>(<span class="st">"World"</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="reference/plot_kaya.html">plot_kaya</a></span>(world_kaya, <span class="st">"P"</span>, <span class="dt">start_year =</span> <span class="dv">2000</span>, <span class="dt">stop_year =</span> <span class="dv">2010</span>, <span class="dt">log_scale =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">          <span class="dt">trend_line =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <p><img src="reference/figures/README-plot-kaya-world-1.png" width="100%"> * <code>get_fuel_mix</code>: Get the fuel mix (coal, gas, oil, nuclear, and renewables) for a region or country. Example:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">mexico_mix =<span class="st"> </span><span class="kw"><a href="reference/get_fuel_mix.html">get_fuel_mix</a></span>(<span class="st">"Mexico"</span>)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">mexico_mix</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#&gt; # A tibble: 5 x 5</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;   region  year fuel        quads   frac</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;  &lt;int&gt; &lt;ord&gt;       &lt;dbl&gt;  &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; 1 Mexico  2018 Coal        0.472 0.0637</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; 2 Mexico  2018 Oil         3.29  0.443 </span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; 3 Mexico  2018 Natural Gas 3.05  0.412 </span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; 4 Mexico  2018 Nuclear     0.122 0.0165</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; 5 Mexico  2018 Renewables  0.483 0.0651</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">mexico_mix =<span class="st"> </span><span class="kw"><a href="reference/get_fuel_mix.html">get_fuel_mix</a></span>(<span class="st">"Mexico"</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">mexico_mix</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; # A tibble: 5 x 5</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;   region  year fuel        quads   frac</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt;   &lt;chr&gt;  &lt;int&gt; &lt;ord&gt;       &lt;dbl&gt;  &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 1 Mexico  2018 Coal        0.472 0.0637</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; 2 Mexico  2018 Oil         3.29  0.443 </span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 3 Mexico  2018 Natural Gas 3.05  0.412 </span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 4 Mexico  2018 Nuclear     0.122 0.0165</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 5 Mexico  2018 Renewables  0.483 0.0651</span></a></code></pre></div>
 <ul>
 <li>
 <code>plot_fuel_mix</code>: Plot the fuel mix in a donut chart</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="reference/plot_fuel_mix.html">plot_fuel_mix</a></span>(mexico_mix)</a></code></pre></div>
+<!-- end list --><div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="reference/plot_fuel_mix.html">plot_fuel_mix</a></span>(mexico_mix)</a></code></pre></div>
 <p><img src="reference/figures/README-plot-fuel-mix-1.png" width="100%"></p>
 <p>After you install the package, you can get more help inside RStudio by typing <code><a href="https://rdrr.io/r/utils/help.html">help(package="kayadata")</a></code> in the R console window.</p>
 <div id="code-of-conduct" class="section level2">
