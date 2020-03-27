@@ -4,7 +4,9 @@
 \name{mtoe}
 \alias{mtoe}
 \title{Conversion factor: quads per MTOE}
-\format{An object of class \code{numeric} of length 1.}
+\format{
+An object of class \code{numeric} of length 1.
+}
 \usage{
 mtoe
 }

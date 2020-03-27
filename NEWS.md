@@ -1,3 +1,10 @@
+# kayadata 0.4.4
+
+This release is a minor bug fix. Previously there hadn't been an emissions 
+factor for hydroelectricity if renewables were not collapsed in the fuel mix.
+Now there's a factor for hydro if `emissions_factors()` is called with 
+`collapse_renewables = FALSE`.
+
 # kayadata 0.4.3 
 
 This release is mostly a bug fix for changes in the way that the latest releases

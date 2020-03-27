@@ -351,19 +351,24 @@ project_top_down <- function(region_name, year, quiet = FALSE,
 
 #' Get emission factors for different energy sources
 #'
+#' @param collapse_renewables Combine hydroelectricity and other renewables
+#'   into a single category.
 #' @return a tibble of values for emissions factors, in million metric
 #'         tons of carbon dioxide per quad of energy.
 #' @examples
 #' e_fac <- emissions_factors()
 #' e_fac
 #' @export
-emissions_factors <- function() {
-  tibble(
-    fuel = c("Coal", "Oil", "Natural Gas", "Nuclear", "Renewables"),
-    emission_factor = c(94.4, 70.0, 53.1, 0.0, 0.0)
+emissions_factors <- function(collapse_renewables = TRUE) {
+  ef <- tibble(
+    fuel = c("Coal", "Oil", "Natural Gas", "Nuclear", "Hydro", "Renewables"),
+    emission_factor = c(94.4, 70.0, 53.1, 0.0, 0.0, 0.0)
   ) %>%
-    mutate(fuel = ordered(fuel, levels = c("Coal", "Natural Gas", "Oil",
-                                           "Nuclear", "Renewables")))
+    mutate(fuel = ordered(fuel, levels = levels(fuel_mix$fuel)))
+  if (collapse_renewables) {
+    ef <- ef %>% filter(fuel != "Hydro") %>%
+      mutate(fuel = forcats::fct_recode(fuel, Renewables = "Hydro"))
+  }
 }
 
 #' Get power output from generation sources
