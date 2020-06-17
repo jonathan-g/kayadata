@@ -8,8 +8,8 @@ library(rprojroot)
 
 #' Conversion factors:
 quad_per_mtoe <- 0.0396832072
-quad_per_MJ <- 9.47817120E-13
 quad_per_EJ <- 0.947817120
+quad_per_MJ <- quad_per_EJ * 1.0E-12
 
 #' Paths for data files
 base_dir <- find_root("DESCRIPTION")
@@ -23,11 +23,16 @@ data_params <- within(list(), {
   # bp_spreadsheet_url  <- str_c("https://www.bp.com/content/dam/bp/en/corporate/excel/",
   #                              "energy-economics/statistical-review/",
   #                              "bp-stats-review-2018-all-data.xlsx")
-  bp_spreadsheet_url <- str_c("https://www.bp.com/content/dam/bp/business-sites/en/",
-                              "global/corporate/xlsx/energy-economics/statistical-review/",
-                              "bp-stats-review-2019-all-data.xlsx")
-  bp_spreadsheet_name <- "bp-stats-review-2019-all-data.xlsx"
+  # bp_spreadsheet_url <- str_c("https://www.bp.com/content/dam/bp/business-sites/en/",
+  #                             "global/corporate/xlsx/energy-economics/statistical-review/",
+  #                             "bp-stats-review-2019-all-data.xlsx")
+  bp_year <- 2020
+  bp_spreadsheet_name <- str_c("bp-stats-review-", bp_year, "-all-data.xlsx")
+  bp_spreadsheet_url <- str_c(
+    "https://www.bp.com/content/dam/bp/business-sites/en/global/corporate/xlsx/energy-economics/statistical-review/",
+    bp_spreadsheet_name)
   bp_spreadsheet_path <- file.path(raw_data_path, bp_spreadsheet_name)
+  bp_scenario <- str_c("BPStat", bp_year)
 
   bp_energy_sheet     <- "Primary Energy Consumption"
   bp_co2_sheet        <- "Carbon Dioxide Emissions"
@@ -63,23 +68,23 @@ data_params <- within(list(), {
 #' geographic names to be consistent across the BP and World Bank
 #' databases.
 bp_regions <- c("Total North America", "Total S. & Cent. America",
-             "Total Europe", "Total CIS", "Total Middle East",
-             "Total Asia Pacific", "Total Africa", "Total World",
-             "European Union \\#", "Non-OECD", "of which: OECD", "CIS"
+                "Total Europe", "Total CIS", "Total Middle East",
+                "Total Asia Pacific", "Total Africa", "Total World",
+                "European Union \\#", "Non-OECD", "of which: OECD", "CIS"
 )
 
 bp_other_nations <- c("Other Caribbean", "Other South America",
-                   "Other Europe", "Other CIS", "Other Middle East",
-                   "Other Northern Africa", "Other Southern Africa",
-                   "Other Asia Pacific",
-                   "Central America",
-                   "Middle Africa", "Eastern Africa", "Western Africa"
+                      "Other Europe", "Other CIS", "Other Middle East",
+                      "Other Northern Africa", "Other Southern Africa",
+                      "Other Asia Pacific",
+                      "Central America",
+                      "Middle Africa", "Eastern Africa", "Western Africa"
 )
 
 bp_omit_patterns <- str_c("^([^A-Za-z]", "Notes:", "^Note:", "Growth rates",
                           "w Less|n/a)",
-                       "^This does not allow", "^Our data", sep = "|",
-                       "^USSR includes Georgia")
+                          "^This does not allow", "^Our data", sep = "|",
+                          "^USSR includes Georgia")
 
 nation_translations <- list(
   world_bank = c(", *(Islamic|Arab) +Rep(\\.|ublic) *$" = "",
@@ -113,8 +118,8 @@ wb_countries <- wbcountries() %>%
          region = str_replace_all(region, nation_translations$world_bank)) %>%
   select(iso3c, iso2c, country, regionID, region) %>% distinct() %>%
   mutate(geography = ifelse(country == "world", "world",
-                              ifelse(region == "Aggregates", "region",
-                                     "nation")) %>%
+                            ifelse(region == "Aggregates", "region",
+                                   "nation")) %>%
            ordered(levels = c("nation", "region", "world"))) %>%
   arrange(geography, country)
 
@@ -194,9 +199,9 @@ fix_bp <- function(df, kaya_var, bp_scenario = "BPStat2019") {
     mutate(year = as.integer(str_replace(year, "^x", "")),
            place = str_trim(place)) %>%
     mutate(geography = ifelse(place == "Total World", "world",
-                                ifelse(place %in% bp_regions, "region",
-                                       ifelse(place %in% bp_other_nations,
-                                              "others", "nation")))) %>%
+                              ifelse(place %in% bp_regions, "region",
+                                     ifelse(place %in% bp_other_nations,
+                                            "others", "nation")))) %>%
     mutate(place = str_replace_all(place, nation_translations$bp)) %>%
     filter(geography != "others") %>%
     select(year, value, place, geography) %>%
@@ -283,7 +288,9 @@ fix_wb_regions <- function(df) {
 
 #' Load data from the BP spreadsheet
 load_bp <- function(fname, sheet, kaya_var, unit_id, unit, scale = 1.0,
-                    scenario = "BPStat2019") {
+                    scenario = NULL) {
+  if (is.null(scenario))
+    scenario <- data_params$bp_scenario
   df <- read_excel(fname, sheet = sheet, col_names = TRUE,
                    skip = 2, na = c("", "NA", "na", "n/a", "N/A")) %>%
     clean_names()
@@ -301,8 +308,10 @@ load_bp <- function(fname, sheet, kaya_var, unit_id, unit, scale = 1.0,
                                levels = c("nation", "region", "world")),
            place = ordered(place, levels = levels(fct_wb_country))) %>%
     select(model, scenario, place, year, indicator, value, unit_id, unit,
-           geography, iso3c, iso2c)
-    invisible(df)
+           geography, iso3c, iso2c) %>%
+    filter(!is.na(place))
+
+  invisible(df)
 }
 
 load_wb <- function(indicator_id, kaya_var, unit_id, unit, scale = 1.0,
@@ -325,8 +334,8 @@ load_wb <- function(indicator_id, kaya_var, unit_id, unit, scale = 1.0,
            unit_id = unit_id, unit = unit, value = value / scale,
            model = "History", scenario = scenario,
            geography = ifelse(place == "World", "world",
-                                ifelse(place %in% wb_regions$country,
-                                       "region", "nation")) %>%
+                              ifelse(place %in% wb_regions$country,
+                                     "region", "nation")) %>%
              ordered(levels = c("nation", "region", "world")),
            iso2c = ifelse(geography == "nation", iso2c, NA),
            iso3c = ifelse(geography == "nation", iso3c, NA),
@@ -339,7 +348,7 @@ load_wb <- function(indicator_id, kaya_var, unit_id, unit, scale = 1.0,
 
 load_primary_energy <- function(fname) {
   df <- load_bp(fname, data_params$bp_energy_sheet, "E", "quad", "Quad",
-                1.0 / quad_per_mtoe)
+                1.0 / quad_per_EJ)
   invisible(df)
 }
 
@@ -377,14 +386,14 @@ load_fuel_mix <- function(fname) {
     mutate(place = str_trim(place)) %>%
     filter(!is.na(place), !str_detect(place, bp_omit_patterns)) %>%
     mutate(geography = ifelse(place == "Total World", "world",
-                                ifelse(place %in% bp_regions, "region",
-                                       ifelse(place %in% bp_other_nations,
-                                              "others", "nation")))) %>%
+                              ifelse(place %in% bp_regions, "region",
+                                     ifelse(place %in% bp_other_nations,
+                                            "others", "nation")))) %>%
     mutate(place = str_replace_all(place, nation_translations$bp)) %>%
     filter(geography != "others") %>%
     select(place, year, fuel, value, geography) %>%
     fix_bp_regions() %>%
-    mutate(value = value * quad_per_mtoe, unit_id = "quad", unit = "Quad",
+    mutate(value = value * quad_per_EJ, unit_id = "quad", unit = "Quad",
            model = "History", scenario = "BPStat2019") %>%
     select(model, scenario, place, year, fuel, value, unit_id, unit,
            geography, iso3c, iso2c) %>%
@@ -396,7 +405,7 @@ load_fuel_mix <- function(fname) {
     mutate(frac = value / total,
            fuel = str_replace_all(fuel, c("_" = " ", " +energy" = "",
                                           " +electric" = "")) %>%
-                                    str_to_title() %>% str_trim()) %>%
+             str_to_title() %>% str_trim()) %>%
     select(model, scenario, place, year, fuel, value, total, frac, unit_id,
            unit, geography, iso3c, iso2c)
 
@@ -463,7 +472,7 @@ prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
   #
   kaya_data <- bind_rows(population, gdp_ppp, gdp_mer, energy, co2) %>%
     select(place, geography, iso2c, iso3c, year, indicator, value) %>%
-    spread(key = indicator, value = value) %>%
+    pivot_wider(names_from = "indicator", values_from = "value") %>%
     mutate(G = G_mer, g = G / P, e = E / G, f = F / E, ef = F / G,
            iso3c = case_when(
              place == "World" ~ "WLD",
@@ -509,18 +518,19 @@ prepare_fuel_mix <- function(force_bp = FALSE) {
     select(region = place, region_code = iso3c, geography,
            year, fuel, quads = value, frac)
 
-    invisible(fuel_mix)
+  invisible(fuel_mix)
 }
 
 prepare_data_files = function(overwrite = FALSE, force_recalc = FALSE,
                               force_download = FALSE) {
-  kaya_data = prepare_kaya(force_wb = force_recalc, force_bp = force_recalc,
+  kaya_data <- prepare_kaya(force_wb = force_recalc, force_bp = force_recalc,
                            force_download = force_download)
-  fuel_mix = prepare_fuel_mix(force_bp = force_recalc)
+  fuel_mix <- prepare_fuel_mix(force_bp = force_recalc)
   tryCatch(usethis::use_data(kaya_data, fuel_mix,
-                              internal = FALSE, overwrite = overwrite,
-                              compress = "xz"),
+                             internal = FALSE, overwrite = overwrite,
+                             compress = "xz"),
            error = warning)
+  invisible(list(kaya_data = kaya_data, fuel_mix = fuel_mix))
 }
 
 # prepare_data_files()

@@ -2,6 +2,10 @@
 #' @keywords internal
 mtoe <- 1 / 25.2 # quads
 
+#' Conversion factor: quads per EJ
+#' @keywords internal
+EJ <- 0.947817120 # quads
+
 globalVariables(c("fuel_mix", "kaya_data", "region", "region_code",
                   "geography", "year", "P", "G", "E", "F", "g", "e", "f", "ef",
                   "td_values", "td_trends"))
