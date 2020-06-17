@@ -1,0 +1,60 @@
+destination: docs
+
+home:
+  title: Kaya Identity Data for Nations and Regions
+  description: >
+    Provides data for Kaya identity variables (population, gross
+    domestic product, primary energy consumption, and energy-related
+    CO2 emissions) for the world and for individual nations, and
+    utility functions for looking up data,  plotting trends of
+    Kaya variables, and plotting the fuel mix for a given country
+    or region. The Kaya identity (Yoichi Kaya and Keiichi Yokobori,
+    "Environment, Energy, and Economy: Strategies for Sustainability"
+    (United Nations University Press, 1998) and
+    <https://en.wikipedia.org/wiki/Kaya_identity>) expresses a nation's
+    or region's greenhouse gas emissions in terms of its population,
+    per-capita Gross Domestic Product, the energy intensity of its
+    economy, and the carbon-intensity of its energy supply.
+  strip_header: false
+
+authors:
+  Jonathan Gilligan:
+    href: https://www.jonathangilligan.org
+
+development:
+  mode: auto
+
+reference:
+  - title: Working with Kaya data
+    desc: Analyze historical emissions, energy use, GDP, and population for nations and regions
+    contents:
+    - get_kaya_data
+    - kaya_region_list
+  - title: Top-down projections
+    desc: Analyze top-down projections from the U.S. World Energy Outlook.
+    contents:
+    - get_top_down_trends
+    - get_top_down_values
+    - project_top_down
+  - title: Fuel mixes
+    desc: Examine the mixture of fuels that contribute to primary energy consumption.
+    contents:
+    - get_fuel_mix
+  - title: Graphics
+    desc: Plot data
+    contents:
+    - starts_with("plot_")
+  - title: Data
+    desc: The underlying data frames used by this package.
+    contents:
+    - kaya_data
+    - fuel_mix
+    - td_trends
+    - td_values
+  - title: Utilities
+    desc: Utility functions for unit conversion, etc.
+    contents:
+    - emissions_factors
+    - generation_capacity
+    - megawatts_per_quad
+

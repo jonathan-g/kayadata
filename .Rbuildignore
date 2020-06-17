@@ -1,6 +1,6 @@
 ^doc$
-^CRAN-RELEASE$
 ^Meta$
+^CRAN-RELEASE$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^README\.R?md$
@@ -13,3 +13,7 @@
 ^raw_data/.*$
 ^prep_tools/.*$
 ^cran-comments\.md$
+^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

@@ -1,13 +1,17 @@
 ---
 title: "kayadata"
 author: "Jonathan Gilligan"
-date: "2019-07-31"
-output: 
-  md_document:
-    variant: markdown_github
+date: "2019-12-21"
+output: github_document
 ---
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  echo = FALSE, 
+  comment = "#>",
+  fig.path="man/figures/README-",
+  out.width = "100%"
+  )
 library(tidyverse)
 # library(pacman)
 # p_load_current_gh("jonathan-g/kayadata")
@@ -15,29 +19,19 @@ library(kayadata)
 ```
 # kayadata
 
-[![CRAN Status Badge](https://www.r-pkg.org/badges/version/kayadata)](https://cran.r-project.org/package=kayadata)
-
-**GitHub:** [![Build Status](https://travis-ci.org/jonathan-g/kayadata.svg?branch=master)](https://github.com/jonathan-g/kayadata/commits/master)
-
-**GitLab:** [![Build Status](https://gitlab.jgilligan.org/gilligan_teaching/ees_3310/ees_3310_software/kayadata/badges/master/build.svg)](https://gitlab.jgilligan.org/gilligan_teaching/ees_3310/ees_3310_software/kayadata/commits/master)
-
+<!-- badges: start -->
+[![CRAN Status Badge](https://www.r-pkg.org/badges/version-last-release/kayadata)](https://cran.r-project.org/package=kayadata)
+[![DOI](https://zenodo.org/badge/108232691.svg)](https://zenodo.org/badge/latestdoi/108232691)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/jonathan-g/kayadata.svg?branch=master)](https://github.com/jonathan-g/kayadata/commits/master)
+<!-- badges: end -->
 
 This package loads Kaya-identity data, synthesized from several sources.
 
-To install and load the package, first install either the `pacman` or `devtools` 
-package from CRAN:
+To install the package from CRAN:
 ```{r initialize, echo=TRUE, eval=FALSE}
-install.packages("devtools")
-devtools::install_github("jonathan-g/kayadata")
-library(kayadata)
+install.packages("kayadata")
 ```
-or
-```{r initialize-pacman, echo=TRUE, eval=FALSE}
-install.packages("pacman")
-library(pacman)
-p_load_gh("jonathan-g/kayadata")
-```
-
 Once you've installed it, then you just need to use the command 
 `library(kayadata)` to load the package.
 
@@ -86,3 +80,9 @@ plot_fuel_mix(mexico_mix)
 
 After you install the package, you can get more help inside RStudio by typing 
 `help(package="kayadata")` in the R console window.
+
+## Code of conduct
+
+Please note that this project is released with a [Contributor Code of
+Conduct](https://jonathan-g.github.io/kayadata/CODE_OF_CONDUCT.html). By
+participating in this project you agree to abide by its terms.

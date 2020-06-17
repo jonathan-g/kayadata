@@ -1,4 +1,9 @@
 language: r
-sudo: required
+sudo: false
+before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
 cache: packages
+deploy:
+  provider: script
+  script: Rscript -e 'pkgdown::deploy_site_github()'
+  skip_cleanup: true
 after_failure: "cat /home/travis/build/gilligan-ees-3310/kayadata/kayadata.Rcheck/00install.out"

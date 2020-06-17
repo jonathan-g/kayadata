@@ -1,45 +1,46 @@
 ## Test environments
 
-* local Windows 10 install, R 3.6.1
-* local ubuntu 18.04.3 install, R 3.6.1
+* local Windows 10 install, R 3.6.2
+* local ubuntu 18.04.2 install, R 3.6.2
 * local Debian 9 (stretch), R 3.6.1
-* ubuntu 16.04.6 (on travis-ci), R 3.6.1
+* Ubuntu 16.04.6 (on travis-ci), R 3.6.1
 * r-hub builder:
-    * Fedora Linux, R-Devel clang
     * Ubuntu 16.04, R-Release gcc
-    * Windows Server 2008 R2 SP1, R-release, 32/64 bit
+    * Ubuntu 16.04, R-Devel gcc
+    * Debian, R-Release gcc
+    * Debian, R-Devel gcc
+    * Debian, R-Patched gcc
     * macOS 10.11 El Capitan, R-release
-* winbuilder: devel, release, oldrelease
+* winbuilder devel, release, oldrelease
 
 ## R CMD check results
 
-* Local installs and R-release builds on travis-ci and r-hub for MacOS, Fedora, 
-  and Windows builds:
+* Local installs, R-release builds on travis-ci, and win-builder builds:
 
     0 errors | 0 warnings | 0 notes
 
-* r-hub ubuntu and winbuilder builds:
+* r-hub debian R-devel build:
 
     0 errors | 0 warnings | 1 note
+
+* All other r-hub builds:
+
+    0 errors | 0 warnings | 0 notes
   
 ### NOTES: 
 
-* **r-hub ubuntu and winbuilder only**: False-positive warning about (possibly) 
-  invalid URL <https://www.eia.gov/outlooks/archive/ieo17/>.
-  This only occurs on r-hub builder and not other builds. I have checked this 
-  URL manually and it is correct and working when I visit it from a web 
-  browser.
-  
-    This URL is the underlying source of the data provided by this package
-    (it's listed in "\source" lines in td_trends.Rd and td_values.Rd).
-    It is a third-party web site operated by the U.S. Department of Energy
-    and is not under my control.
-
-* This is an update
-
-    I have updated the data to incorporate the 2019 Statistical Report on 
-    World Energy.
+* **r-hub debian R-devel only**: False-positive warning about (possible) 
+  misspellings for four people's names in DESCRIPTION: "Kaya", "Keiichi", 
+  "Yoichi", and "Yokobori". These names are spelled correctly.
 
 ## Reverse dependencies
 
 There are no reverse dependencies.
+
+## Additional comments
+
+* This submission updates the package to version 0.4.3.
+
+I fixed a newly discovered error caused by the update of the scales library
+to version 1.1.0 and added relevant regression tests. 
+See <https://github.com/tidyverse/ggplot2/issues/3644>.
