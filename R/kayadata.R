@@ -43,8 +43,8 @@
 #' Raupach _et al_, 2007)
 #'
 #'
-#' The data in this packages covers 1960-2018 for population and GDP, and
-#' 1965-2018 for energy and fossil-fuel CO2 emissions.
+#' The data in this packages covers 1960-2019 for population and GDP, and
+#' 1965-2019 for energy and fossil-fuel CO2 emissions.
 #'
 #' The package uses data on population and GDP from the World Bank,
 #' using market exchange rates (MER) for GDP because those data go back to
