@@ -1,3 +1,16 @@
+# kayadata 0.5.0
+
+This release updates to use the 2020 release of BP Energy Statistics. This
+release has data through 2019.
+
+The World Bank is missing GDP data for a number of nations, such as Syria and 
+Taiwan. Because of this and the  incommensurability of the regions used for 
+aggregate statistics in the World Bank data and the BP data, regional data 
+should be treated with caution. 
+
+This problem does not hold for individual nations, where missing data appears as
+NA values.
+
 # kayadata 0.4.4
 
 This release is a minor bug fix. Previously there hadn't been an emissions 

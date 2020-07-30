@@ -5,7 +5,7 @@
 \alias{kaya_data}
 \title{Kaya identity data for many countries and regions}
 \format{
-A tibble containing 5133 rows and 14 variables:
+A tibble containing 5160 rows and 14 variables:
 \describe{
 \item{region}{Country or region name}
 \item{region_code}{Three-letter country or region code}

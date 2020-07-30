@@ -3,7 +3,7 @@
 #' A dataset containing Kaya identity parameters
 #' P, G, E, F, g, e, f, and ef for many countries
 #'
-#' @format A tibble containing 5133 rows and 14 variables:
+#' @format A tibble containing 5160 rows and 14 variables:
 #' \describe{
 #'   \item{region}{Country or region name}
 #'   \item{region_code}{Three-letter country or region code}
@@ -37,7 +37,7 @@
 #' total primary energy supply comes from coal, gas, oil, nuclear, and
 #' renewable sources.
 #'
-#' @format A tibble containing 936 rows and 7 variables
+#' @format A tibble containing 948 rows and 7 variables
 #' \describe{
 #'   \item{region}{Country or region name}
 #'   \item{region_code}{Three-letter country or region code}
@@ -58,7 +58,7 @@
 #' A dataset containing top-down projections of P, G, and E, from the
 #' EIA's International Energy Outlook 2017.
 #'
-#' @format A tibble containing 648 rows and 12 variables
+#' @format A tibble containing 640 rows and 12 variables
 #' \describe{
 #'   \item{region}{Country or region name}
 #'   \item{region_code}{Three-letter country or region code}

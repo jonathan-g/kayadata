@@ -6,7 +6,7 @@
 \title{Mix of fuels contributing to primary energy supply for many countries and
 regions}
 \format{
-A tibble containing 936 rows and 7 variables
+A tibble containing 948 rows and 7 variables
 \describe{
 \item{region}{Country or region name}
 \item{region_code}{Three-letter country or region code}

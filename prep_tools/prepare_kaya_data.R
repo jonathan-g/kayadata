@@ -345,9 +345,22 @@ gen_region <- function(regions, df, var, name, df_vars = NULL,
             str_c(wrong_ctry, collapse = ", "))
   }
   rgn <- rgn %>% select(-iso3c.ctry) %>%
-    group_by(!!!df_vars) %>%
-    summarize(value = sum(value, na.rm = ignore_na), .groups = "drop") %>%
-    left_join(region_names, by = character())
+    group_by(!!!df_vars)
+
+  if (ignore_na) {
+    rgn <- rgn %>%
+      summarize(value = ifelse(all(is.na(value)), NA,
+                               sum(value, na.rm = TRUE)),
+                .groups = "drop")
+
+  } else {
+    rgn <- rgn %>%
+      summarize(value = sum(value, na.rm = FALSE), .groups = "drop")
+
+  }
+
+  rgn <- rgn %>% left_join(region_names, by = character())
+
   invisible(rgn)
 }
 

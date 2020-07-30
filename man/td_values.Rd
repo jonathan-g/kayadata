@@ -5,7 +5,7 @@
 \alias{td_values}
 \title{Top-down projections of future Kaya variables for many countries and regions}
 \format{
-A tibble containing 648 rows and 12 variables
+A tibble containing 640 rows and 12 variables
 \describe{
 \item{region}{Country or region name}
 \item{region_code}{Three-letter country or region code}
