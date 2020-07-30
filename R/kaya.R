@@ -175,8 +175,8 @@ get_fuel_mix <- function(region_name, collapse_renewables = TRUE,
       mutate(fuel = forcats::fct_recode(fuel, Renewables = "Hydro") %>%
                forcats::lvls_expand(levs)) %>%
       group_by(region, year, fuel) %>%
-      summarize_at(vars(quads, frac), list(~sum(., na.rm = T))) %>%
-      ungroup()
+      summarize_at(vars(quads, frac), list(~sum(., na.rm = T)),
+                   .groups = "drop")
   }
   if (nrow(data) == 0 && ! quiet) {
     warning("There is no data for country or region ",
@@ -337,8 +337,8 @@ project_top_down <- function(region_name, year, quiet = FALSE,
     dplyr::select(-region_code, -geography) %>%
     dplyr::group_by(region) %>%
     dplyr::summarize_at(vars(-year),
-                        list(~approx(x = year, y = ., xout = ytmp)$y)) %>%
-    dplyr::ungroup() %>%
+                        list(~approx(x = year, y = ., xout = ytmp)$y),
+                        .groups = "drop") %>%
     dplyr::mutate(year = (!!year)) %>%
     dplyr::select(region, year, P, G, g, E, F, e, f, ef)
   if (nrow(data) == 0 && is.null(region_code)) {

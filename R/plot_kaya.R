@@ -211,7 +211,7 @@ plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL,
     colors <- colors[names(colors) != "Hydro"]
   }
   fuel_mix <- fuel_mix %>% dplyr::group_by(fuel) %>%
-    dplyr::summarize(quads = sum(quads), frac = sum(frac)) %>% dplyr::ungroup()
+    dplyr::summarize(quads = sum(quads), frac = sum(frac), .groups = "drop")
   fd <- fuel_mix %>%
     dplyr::arrange(fuel) %>%
     dplyr::mutate(qmin = cumsum(lag(quads, default = 0)), qmax = cumsum(quads))

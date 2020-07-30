@@ -48,11 +48,12 @@ prepare_regions <- function() {
                  africa = "Africa",
                  non_oecd_americas = "Non-OECD Americas Other")
 
-  countries <- wbcountries() %>%
+  countries <- wb_countries() %>%
     mutate_all(str_trim) %>%
     mutate(country = str_replace_all(country, nation_translations$world_bank),
            region = str_replace_all(region, nation_translations$world_bank)) %>%
-    select(iso3c, iso2c, country, regionID, region) %>% distinct() %>%
+    select(iso3c, iso2c, country, regionID = region_iso3c, region) %>%
+    distinct() %>%
     mutate(geography = ifelse(country == "world", "world",
                               ifelse(region == "Aggregates", "region",
                                      "nation")) %>%

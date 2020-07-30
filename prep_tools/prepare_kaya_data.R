@@ -112,33 +112,36 @@ nation_translations <- list(
          " +" = " ")
 )
 
-wb_countries <- wbcountries() %>%
+wb_country_df <- wb_countries() %>%
   mutate_all(str_trim) %>%
   mutate(country = str_replace_all(country, nation_translations$world_bank),
          region = str_replace_all(region, nation_translations$world_bank)) %>%
-  select(iso3c, iso2c, country, regionID, region) %>% distinct() %>%
+  select(iso3c, country, regionID = region_iso3c, region) %>%
+  distinct() %>%
   mutate(geography = ifelse(country == "world", "world",
                             ifelse(region == "Aggregates", "region",
                                    "nation")) %>%
            ordered(levels = c("nation", "region", "world"))) %>%
   arrange(geography, country)
 
-all_countries <- wb_countries %>% bind_rows(
-  tibble(iso3c = NA, iso2c = NA,
+all_countries <- wb_country_df %>% bind_rows(
+  tibble(iso3c = NA,
          country = c("Asia Pacific", "Middle East", "Non-OECD",
                      "USSR"),
-         geography = ordered("region", levels = levels(wb_countries$geography))
+         geography = ordered("region", levels = levels(wb_country_df$geography))
   )
 ) %>% arrange(geography, country) %>% distinct()
 
 fct_wb_country <- ordered(NULL, levels = all_countries$country)
 
-wb_regions <- wb_countries %>% select(country, iso2c, iso3c, region) %>%
+wb_region_df <- wb_country_df %>% select(country, iso3c, region) %>%
   distinct() %>%
-  filter(region == "Aggregates") %>% select(-region) %>%
-  bind_rows(tibble(country = c("Asia Pacific", "Middle East", "Non-OECD"),
-                   iso2c = NA, iso3c = NA)) %>%
-  arrange(country)
+  filter(region == "Aggregates") %>%
+  select(region = country, regionID = iso3c) %>%
+  distinct() %>%
+  bind_rows(tibble(region = c("Asia Pacific", "Middle East", "Non-OECD"),
+                   regionID = NA)) %>%
+  arrange(region)
 
 #' Fix up BP data from the form in the spreadsheet
 fix_bp_regions <- function(df) {
@@ -151,7 +154,7 @@ fix_bp_regions <- function(df) {
   vars <- names(europe) %>%
     discard(~.x %in% c("value", "geography", "place")) %>% syms()
   europe <- europe %>%
-    group_by(!!!vars) %>% summarize(value = sum(value)) %>% ungroup() %>%
+    group_by(!!!vars) %>% summarize(value = sum(value), .groups = "drop") %>%
     mutate(place = "Europe and Central Asia", geography = "region")
   df <- bind_rows(not_europe, europe)
 
@@ -164,7 +167,7 @@ fix_bp_regions <- function(df) {
   vars <- names(europe) %>%
     discard(~.x %in% c("value", "geography", "place")) %>% syms()
   north_america <- north_america %>%
-    group_by(!!!vars) %>% summarize(value = sum(value)) %>% ungroup() %>%
+    group_by(!!!vars) %>% summarize(value = sum(value), .groups = "drop") %>%
     mutate(place = "North America", geography = "region")
   df <- bind_rows(not_north_america, north_america)
 
@@ -178,13 +181,13 @@ fix_bp_regions <- function(df) {
   vars <- names(europe) %>%
     discard(~.x %in% c("value", "geography", "place")) %>% syms()
   latin_america <- latin_america %>%
-    group_by(!!!vars) %>% summarize(value = sum(value)) %>% ungroup() %>%
+    group_by(!!!vars) %>% summarize(value = sum(value), .groups = "drop") %>%
     mutate(place = "Latin America and Caribbean", geography = "region")
   df <- bind_rows(not_latin_america, latin_america)
 
   df <- df %>% left_join(
-    wb_countries %>%
-      filter(region != "Aggregates") %>% select(place = country, iso2c, iso3c),
+    wb_country_df %>%
+      filter(region != "Aggregates") %>% select(place = country, iso3c),
     by = "place")
 
   invisible(df)
@@ -213,73 +216,170 @@ fix_bp <- function(df, kaya_var, bp_scenario = "BPStat2019") {
 }
 
 drop_wb_regions <- function(df) {
-  region_isos <- wb_regions$iso3c
+  region_isos <- wb_region_df$iso3c
 
   df <- df %>% filter(! iso3c %in% region_isos)
   invisible(df)
 }
 
-fix_wb_regions <- function(df) {
-  region_isos <- wb_regions$iso3c
-  wb_rc <- set_names(wb_regions$country, wb_regions$iso3c)
+make_regions <- function() {
+  region_ids <- wb_region_df$regionID
+  wb_rc <- set_names(wb_region_df$region, wb_region_df$regionID)
 
-  bp_regions <- list(
+  regions <- list(
     asia_pacific = wb_rc[c("EAS", "SAS")], # East Asia & Pacific; South Asia
     africa = wb_rc[c("MEA", "SSF")],       # North Africa & Middle East; Sub-Saharan Africa
     north_america = wb_rc["NAC"],          # North America
     lac = wb_rc["LCN"]                     # Latin America & Caribbean
-  )
-
-  asia_pacific <- df %>% filter(country %in% bp_regions$asia_pacific)
-  middle_east <- df %>%
-    filter(country %in% c("Bahrain", "Djibouti", "Iran", "Iraq", "Israel",
-                          "Jordan", "Kuwait", "Lebanon", "Oman", "Qatar",
-                          "Saudi Arabia", "Syria", "United Arab Emirates",
-                          "West Bank and Gaza", "Yemen"))
-  africa <- df %>% filter(country %in% bp_regions$africa)
-  bermuda <- df %>% filter(country %in% c("Bermuda"))
-  north_america <- df %>% filter(country %in% c("United States", "Canada"))
-  lac <- df %>% filter(country %in% c(bp_regions$lac, "Bermuda"))
-  oecd <- df %>% filter(country %in% c("OECD"))
-  world <- df %>% filter(country %in% c("World"))
-
-  # Don't drop OECD, World, Europe & Central Asia
-  clean_df <- df %>%
-    filter(! iso3c %in% discard(region_isos, ~.x %in% c("OED", "WLD", "ECS")))
-
-  vars <- names(df) %>%
-    discard(~.x %in% c("value", "place", "country", "iso3c", "iso2c")) %>%
-    syms()
-
-  # BP puts all of Asia and Pacific together, so do the same here.
-  asia_pacific <- asia_pacific %>%
-    group_by(!!!vars) %>% summarize(value = sum(value)) %>% ungroup() %>%
-    mutate(country = "Asia Pacific")
+  ) %>% as_tibble() %>%
+    pivot_longer(everything(), names_to = "var", values_to = "region") %>%
+    distinct() %>%
+    arrange(var) %>%
+    left_join(wb_country_df, by = "region") %>%
+    mutate(
+      region = case_when(
+        var == "asia_pacific" ~ "Asia Pacific",
+        var == "africa" ~ "Africa",
+        var == "lac" ~ "Latin America and Caribbean",
+        TRUE ~ region
+      ),
+      regionID = case_when(
+        var == "asia_pacific" ~ NA_character_,
+        var == "africa" ~ "AFR",
+        TRUE ~ regionID
+      )
+    )
 
   # BP lumps all Africa together; WB groups North Africa and Middle East
   # separately from Sub-Saharan Africa. Subtract out Middle East from
   # North Africa and Middle East and add the result to Sub-Saharan Africa
   # to get all of Africa
-  middle_east <- middle_east %>%
-    group_by(!!!vars) %>% summarize(value = sum(value)) %>% ungroup() %>%
-    mutate(country = "Middle East")
-  africa <- africa %>% bind_rows(mutate(middle_east, value = -value)) %>%
-    group_by(!!!vars) %>% summarize(value = sum(value)) %>% ungroup() %>%
-    mutate(country = "Africa")
+  middle_east <- tibble(var = "middle_east", region = "Middle East",
+                        regionID = NA,
+                        country = c("Bahrain", "Djibouti", "Iran", "Iraq",
+                                    "Israel", "Jordan", "Kuwait", "Lebanon",
+                                    "Oman", "Qatar", "Saudi Arabia", "Syria",
+                                    "United Arab Emirates",
+                                    "West Bank and Gaza", "Yemen")) %>%
+    left_join(select(wb_country_df, -region, -regionID), by = "country")
 
-  north_america <- north_america %>%
-    group_by(!!!vars) %>% summarize(value = sum(value)) %>% ungroup() %>%
-    mutate(country = "North America")
+  africa <- regions %>%
+    filter(var == "africa") %>%
+    filter(! country %in% middle_east$country) %>%
+    mutate(region = "Africa")
 
-  lac <- lac %>%
-    group_by(!!!vars) %>% summarize(value = sum(value)) %>% ungroup() %>%
-    mutate(country = "Latin America and Caribbean")
+  regions <- regions %>%
+    filter(var != "africa") %>%
+    bind_rows(middle_east, africa)
 
-  non_oecd <- oecd %>% mutate(value = -value) %>% bind_rows(world) %>%
-    group_by(!!!vars) %>% summarize(value = sum(value)) %>% ungroup() %>%
-    mutate(country = "Non-OECD")
+  # BP lumps all Caribbean nations, including US territories, into LAC/LCN;
+  # North America is just USA and Canada. WB puts Bermuda into North America.
+  # Here we move Bermuda to LAC so both groups are defined the same way.
+  #
+  bermuda <- wb_country_df %>%
+    filter(country == "Bermuda") %>%
+    select(-region, -regionID)
 
-  # message("OECD = (", str_c(names(oecd), collapse = ", "), ")")
+  lac <- regions %>% filter(var == "lac")
+
+  bermuda_lac <- head(lac, 1) %>%
+    select(var, region, regionID) %>%
+    bind_cols(bermuda)
+
+  north_america <- regions %>% filter(iso3c %in% c("USA", "CAN"))
+
+  regions <- regions %>% filter(! var %in% c("lac", "north_america")) %>%
+    bind_rows(north_america, bermuda_lac, lac)
+
+  oecd_countries <- c("Austria", "Belgium", "Czech Republic", "Denmark",
+                      "Estonia", "Finland", "France", "Germany", "Greece",
+                      "Hungary", "Iceland", "Ireland", "Italy", "Latvia",
+                      "Lithuania", "Luxembourg", "Netherlands", "Norway",
+                      "Poland", "Portugal", "Slovakia", "Slovenia", "Spain",
+                      "Sweden", "Switzerland", "Turkey", "United Kingdom",
+                      "Australia", "Canada", "Chile", "Israel", "Japan",
+                      "Mexico", "New Zealand", "South Korea", "United States")
+
+  non_oecd_countries <- wb_country_df %>%
+    filter(geography == "nation") %>%
+    pull(country) %>%
+    discard(~.x %in% oecd_countries)
+
+  oecd <- tibble(var = "oecd", region = "OECD", regionID = "OED",
+                 country = oecd_countries) %>%
+    left_join(select(wb_country_df, -region, -regionID), by = "country")
+
+  non_oecd <- tibble(var = "non_oecd", region = "Non-OECD", regionID = NA,
+                     country = non_oecd_countries) %>%
+    left_join(select(wb_country_df, -region, -regionID), by = "country")
+
+  regions <- regions %>% bind_rows(oecd, non_oecd)
+  invisible(regions)
+}
+
+region_df <- make_regions()
+
+gen_region <- function(regions, df, var, name, df_vars = NULL,
+                       ignore_na = FALSE) {
+  if (is.null(df_vars)) {
+    df_vars <- names(df) %>%
+      discard(~.x %in% c("value", "place", "country", "iso3c",
+                         "footnote", "last_updated", "obs_status")) %>%
+      syms()
+  }
+  rgn <- regions %>% filter(var == !!var)
+  region_names <- rgn %>% select(country = region, iso3c = regionID) %>%
+    distinct()
+  if (nrow(region_names) != 1) {
+    stop("Can't build region names for var = ", var)
+  }
+  rgn <- rgn %>%
+    left_join(df, by = "country", suffix = c("", ".ctry")) %>%
+    filter(! is.na(indicator))
+  tst <- rgn %>%
+    mutate(wrong = iso3c != iso3c.ctry) %>%
+    filter(wrong)
+  if (nrow(tst) > 0) {
+    wrong_ctry <- tst$country
+    warning("Mismatch ISO codes in ", name, " for countries ",
+            str_c(wrong_ctry, collapse = ", "))
+  }
+  rgn <- rgn %>% select(-iso3c.ctry) %>%
+    group_by(!!!df_vars) %>%
+    summarize(value = sum(value, na.rm = ignore_na), .groups = "drop") %>%
+    left_join(region_names, by = character())
+  invisible(rgn)
+}
+
+fix_wb_regions <- function(df, ignore_na = FALSE) {
+  region_ids <- wb_region_df$regionID
+  wb_rc <- set_names(wb_region_df$region, wb_region_df$regionID)
+
+  world <- df %>% filter(country %in% c("World"))
+
+  # Don't drop OECD, World, Europe & Central Asia
+  clean_df <- df %>%
+    filter(! iso3c %in% discard(region_ids, ~.x %in% c("OED", "WLD", "ECS")))
+
+  vars <- names(df) %>%
+    discard(~.x %in% c("value", "place", "country", "iso3c",
+                       "footnote", "last_updated", "obs_status")) %>%
+    syms()
+
+  # BP puts all of Asia and Pacific together, so do the same here.
+  asia_pacific  <- gen_region(region_df, df, "asia_pacific", "Asia Pacific",
+                              ignore_na = ignore_na)
+  middle_east   <- gen_region(region_df, df, "middle_east", "Middle East",
+                              ignore_na = ignore_na)
+  africa        <- gen_region(region_df, df, "africa", "Africa",
+                              ignore_na = ignore_na)
+  north_america <- gen_region(region_df, df, "north_america", "North America",
+                              ignore_na = ignore_na)
+  lac           <- gen_region(region_df, df, "lac",
+                              "Latin America and Caribbean",
+                              ignore_na = ignore_na)
+  non_oecd      <- gen_region(region_df, df, "non_oecd", "Non-OECD",
+                              ignore_na = ignore_na)
 
   df <- bind_rows(clean_df, asia_pacific, middle_east, africa, north_america,
                   lac, non_oecd)
@@ -308,7 +408,7 @@ load_bp <- function(fname, sheet, kaya_var, unit_id, unit, scale = 1.0,
                                levels = c("nation", "region", "world")),
            place = ordered(place, levels = levels(fct_wb_country))) %>%
     select(model, scenario, place, year, indicator, value, unit_id, unit,
-           geography, iso3c, iso2c) %>%
+           geography, iso3c) %>%
     filter(!is.na(place))
 
   invisible(df)
@@ -316,14 +416,17 @@ load_bp <- function(fname, sheet, kaya_var, unit_id, unit, scale = 1.0,
 
 load_wb <- function(indicator_id, kaya_var, unit_id, unit, scale = 1.0,
                     scenario = "World Bank",
-                    regions = c("fix", "drop", "wb", "original")) {
+                    regions = c("fix", "drop", "wb", "original"),
+                    ignore_na = FALSE) {
   region_flag <- match.arg(regions)
-  df <- wb(indicator = indicator_id) %>% as_tibble() %>%
+  df <- wb_data(indicator = indicator_id, country = "all",
+                return_wide = FALSE) %>%
+    select(-iso2c) %>%
     mutate(indicator = kaya_var,
            country = country %>% str_trim() %>%
              str_replace_all(nation_translations$world_bank))
   if (region_flag == "fix") {
-    df <- df %>% fix_wb_regions()
+    df <- df %>% fix_wb_regions(ignore_na = ignore_na)
   } else if (region_flag == "drop") {
     df <- df %>% drop_wb_regions()
   } else {
@@ -334,14 +437,13 @@ load_wb <- function(indicator_id, kaya_var, unit_id, unit, scale = 1.0,
            unit_id = unit_id, unit = unit, value = value / scale,
            model = "History", scenario = scenario,
            geography = ifelse(place == "World", "world",
-                              ifelse(place %in% wb_regions$country,
+                              ifelse(place %in% wb_region_df$region,
                                      "region", "nation")) %>%
              ordered(levels = c("nation", "region", "world")),
-           iso2c = ifelse(geography == "nation", iso2c, NA),
            iso3c = ifelse(geography == "nation", iso3c, NA),
            place = ordered(place, levels = levels(fct_wb_country))) %>%
     select(model, scenario, place, year, indicator, value, unit_id, unit,
-           geography, iso3c, iso2c) %>%
+           geography, iso3c) %>%
     arrange(geography, place)
   invisible(df)
 }
@@ -396,7 +498,7 @@ load_fuel_mix <- function(fname) {
     mutate(value = value * quad_per_EJ, unit_id = "quad", unit = "Quad",
            model = "History", scenario = "BPStat2019") %>%
     select(model, scenario, place, year, fuel, value, unit_id, unit,
-           geography, iso3c, iso2c) %>%
+           geography, iso3c) %>%
     arrange(geography, year, place)
   fuel_mix <- fuel_mix %>% filter(fuel != "total") %>%
     left_join(fuel_mix %>% filter(fuel == "total") %>%
@@ -407,7 +509,7 @@ load_fuel_mix <- function(fname) {
                                           " +electric" = "")) %>%
              str_to_title() %>% str_trim()) %>%
     select(model, scenario, place, year, fuel, value, total, frac, unit_id,
-           unit, geography, iso3c, iso2c)
+           unit, geography, iso3c)
 
   invisible(fuel_mix)
 }
@@ -415,7 +517,7 @@ load_fuel_mix <- function(fname) {
 #' Load Kaya-Identity data
 #'
 prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
-                         force_download = FALSE) {
+                         force_download = FALSE, ignore_na = TRUE) {
   if ((force_bp && force_download) ||
       ! file.exists(data_params$bp_spreadsheet_path)) {
     download.file(url = data_params$bp_spreadsheet_url,
@@ -438,7 +540,8 @@ prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
 
   if (force_wb || ! file.exists(data_params$wb_pop_path)) {
     population <- load_wb(data_params$wb_pop_id, kaya_var = "P",
-                          unit_id = "billion", unit = "billion", scale = 1E9)
+                          unit_id = "billion", unit = "billion", scale = 1E9,
+                          ignore_na = ignore_na)
     write_rds(population, path = data_params$wb_pop_path)
   } else {
     population <- read_rds(data_params$wb_pop_path)
@@ -446,7 +549,8 @@ prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
 
   if (force_wb || ! file.exists(data_params$wb_gdp_ppp_path)) {
     gdp_ppp <- load_wb(data_params$wb_gdp_ppp_id, kaya_var = "G_ppp",
-                       unit_id = "trillion", unit = "trillion", scale = 1E12)
+                       unit_id = "trillion", unit = "trillion", scale = 1E12,
+                       ignore_na = ignore_na)
     write_rds(gdp_ppp, path = data_params$wb_gdp_ppp_path)
   } else {
     gdp_ppp <- read_rds(data_params$wb_gdp_ppp_path)
@@ -454,7 +558,8 @@ prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
 
   if (force_wb || ! file.exists(data_params$wb_gdp_mer_path)) {
     gdp_mer <- load_wb(data_params$wb_gdp_mer_id, kaya_var = "G_mer",
-                       unit_id = "trillion", unit = "trillion", scale = 1E12)
+                       unit_id = "trillion", unit = "trillion", scale = 1E12,
+                       ignore_na = ignore_na)
     write_rds(gdp_mer, path = data_params$wb_gdp_mer_path)
   } else {
     gdp_mer <- read_rds(data_params$wb_gdp_mer_path)
@@ -471,7 +576,7 @@ prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
   # f = million tons of carbon per quad
   #
   kaya_data <- bind_rows(population, gdp_ppp, gdp_mer, energy, co2) %>%
-    select(place, geography, iso2c, iso3c, year, indicator, value) %>%
+    select(place, geography, iso3c, year, indicator, value) %>%
     pivot_wider(names_from = "indicator", values_from = "value") %>%
     mutate(G = G_mer, g = G / P, e = E / G, f = F / E, ef = F / G,
            iso3c = case_when(
@@ -522,9 +627,11 @@ prepare_fuel_mix <- function(force_bp = FALSE) {
 }
 
 prepare_data_files = function(overwrite = FALSE, force_recalc = FALSE,
-                              force_download = FALSE) {
+                              force_download = FALSE,
+                              ignore_na = TRUE) {
   kaya_data <- prepare_kaya(force_wb = force_recalc, force_bp = force_recalc,
-                           force_download = force_download)
+                            force_download = force_download,
+                            ignore_na = ignore_na)
   fuel_mix <- prepare_fuel_mix(force_bp = force_recalc)
   tryCatch(usethis::use_data(kaya_data, fuel_mix,
                              internal = FALSE, overwrite = overwrite,
