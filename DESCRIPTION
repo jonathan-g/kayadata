@@ -2,11 +2,13 @@ Package: kayadata
 Type: Package
 Title: Kaya Identity Data for Nations and Regions
 Version: 1.0.0
-Date: 2020-12-08
-Authors@R: c( person(given = "Jonathan", family = "Gilligan",
-              email = "jonathan.gilligan@vanderbilt.edu", 
-              comment = c(ORCID = "0000-0003-1375-6686"),
-              role = c("cre", "aut")))
+Date: 2021-01-03
+Authors@R: 
+    person(given = "Jonathan",
+           family = "Gilligan",
+           role = c("cre", "aut"),
+           email = "jonathan.gilligan@gmail.com",
+           comment = c(ORCID = "0000-0003-1375-6686"))
 Description: Provides data for Kaya identity variables (population, gross 
              domestic product, primary energy consumption, and energy-related 
              CO2 emissions) for the world and for individual nations, and 

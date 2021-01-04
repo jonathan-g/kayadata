@@ -1,8 +1,10 @@
 <!-- LICENSE.md is generated from LICENSE.Rmd. Please edit that file -->
 
+# The MIT License
+
 The datafsm package for R is licensed under the MIT License.
 
-> Copyright (c) 2017-2019: Jonathan Gilligan:
+> Copyright (c) 2017-2021: Jonathan Gilligan:
 >
 > Permission is hereby granted, free of charge, to any person obtaining
 > a copy of this software and associated documentation files (the
