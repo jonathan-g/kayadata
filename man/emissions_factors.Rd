@@ -21,3 +21,6 @@ Get emission factors for different energy sources
 e_fac <- emissions_factors()
 e_fac
 }
+\seealso{
+regions
+}

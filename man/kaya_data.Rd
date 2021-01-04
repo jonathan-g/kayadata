@@ -39,4 +39,7 @@ kaya_data
 A dataset containing Kaya identity parameters
 P, G, E, F, g, e, f, and ef for many countries
 }
+\seealso{
+regions
+}
 \keyword{datasets}

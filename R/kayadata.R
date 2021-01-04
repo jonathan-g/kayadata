@@ -78,3 +78,20 @@
 #' @importFrom stringr str_to_upper str_c str_trim
 #'
 NULL
+
+#' Aggregate regional data
+#'
+#' Problems with aggregate regional data
+#'
+#' The World Bank is missing GDP data for a number of nations, such as Syria
+#' and Taiwan.  Because of this and the incommensurability between the regions
+#' used for aggregate statistics in the World Bank data and the BP data,
+#' aggregate regional data (e.g., for the Middle East and Africa) should be
+#' treated with caution.
+#
+#' This problem does not hold for individual nations, where missing data
+#' appears as `NA` values.
+#'
+#' @name regions
+#'
+NULL

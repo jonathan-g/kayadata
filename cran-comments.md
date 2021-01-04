@@ -1,25 +1,31 @@
 ## Test environments
 
-* local Windows 10 install, R 3.6.2
-* local ubuntu 18.04.2 install, R 3.6.2
-* local Debian 9 (stretch), R 3.6.1
-* Ubuntu 16.04.6 (on travis-ci), R 3.6.1
+* local Windows 10 install, R 4.0.3
+* local ubuntu 20.04 LTS install, R 4.0.3
 * r-hub builder:
     * Ubuntu 16.04, R-Release gcc
     * Ubuntu 16.04, R-Devel gcc
     * Debian, R-Release gcc
     * Debian, R-Devel gcc
     * Debian, R-Patched gcc
-    * macOS 10.11 El Capitan, R-release
+    * Debian, R-Devel clang
+    * Fedora, R-Devel GCC
+    * Fedora, R-Devel clang, gfortran
+    * macOS 10.13.6 High Sierra, R-release, brew
+    * macOS 10.13.6 High Sierra, R-release, CRAN setup
 * winbuilder devel, release, oldrelease
 
 ## R CMD check results
 
-* Local installs, R-release builds on travis-ci, and win-builder builds:
+* Local installs and builds on GitHub actions:
 
     0 errors | 0 warnings | 0 notes
 
 * r-hub debian R-devel build:
+
+    0 errors | 0 warnings | 1 note
+
+* winbuilder builds:
 
     0 errors | 0 warnings | 1 note
 
@@ -32,6 +38,16 @@
 * **r-hub debian R-devel only**: False-positive warning about (possible) 
   misspellings for four people's names in DESCRIPTION: "Kaya", "Keiichi", 
   "Yoichi", and "Yokobori". These names are spelled correctly.
+* Winbuilder builds only: Note about an unreachable URL. This is a false 
+  positive. The URL 
+  https://www4.unfccc.int/sites/submissions/INDC/Published%20Documents/United%20States%20of%20America/1/U.S.%20Cover%20Note%20INDC%20and%20Accompanying%20Information.pdf
+  is the authoritative source for the United States's intended nationally
+  determined contribution to greenhouse gas emissions reduction. 
+  As such, this URL is a necessary part of the citation for data that I use in 
+  this package. The web server rejects requests from robots, but the URL can be 
+  downloaded successfully fromstandard interactive user agents, such as Firefox 
+  or Chromium. I have confirmed that this URL is correct and working.
+
 
 ## Reverse dependencies
 

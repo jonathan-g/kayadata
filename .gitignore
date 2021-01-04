@@ -48,3 +48,5 @@ Meta
 *~
 *.tmp
 
+docs
+/foo/

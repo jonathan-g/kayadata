@@ -33,4 +33,7 @@ td_values
 A dataset containing top-down projections of P, G, and E, from the
 EIA's International Energy Outlook 2017.
 }
+\seealso{
+regions
+}
 \keyword{datasets}

@@ -12,8 +12,7 @@ Badge](https://www.r-pkg.org/badges/version-last-release/kayadata)](https://cran
 [![DOI](https://zenodo.org/badge/108232691.svg)](https://zenodo.org/badge/latestdoi/108232691)
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build
-Status](https://travis-ci.org/jonathan-g/kayadata.svg?branch=master)](https://github.com/jonathan-g/kayadata/commits/master)
+[![R-CMD-check](https://github.com/jonathan-g/kayadata/workflows/R-CMD-check/badge.svg)](https://github.com/jonathan-g/kayadata/actions)
 <!-- badges: end -->
 
 This package loads Kaya-identity data, synthesized from several sources.
@@ -29,10 +28,8 @@ Once you’ve installed it, then you just need to use the command
 
 Some of the functions the package provides are:
 
-  - `kaya_region_list()`: Get a list of available countries and regions.
-  - `get_kaya_data()`: Get data for a specific country. Example:
-
-<!-- end list -->
+-   `kaya_region_list()`: Get a list of available countries and regions.
+-   `get_kaya_data()`: Get data for a specific country. Example:
 
 ``` r
 mexico_data = get_kaya_data("Mexico") 
@@ -50,10 +47,8 @@ mexico_data %>% filter(year >= 1965) %>%
 #> 6 Mexico  1970 0.0515 0.284 1.36   84.2  5.52  4.79  61.8  296.
 ```
 
-  - `project_top_down()`: Project future population, GDP, energy use,
+-   `project_top_down()`: Project future population, GDP, energy use,
     and emissions. Example:
-
-<!-- end list -->
 
 ``` r
 mexico_2050 = project_top_down("Mexico", 2050)
@@ -64,10 +59,8 @@ mexico_2050
 #> 1 Mexico  2050 0.163  2.57  15.8  9.99  581.  3.89  58.2  226.
 ```
 
-  - `plot_kaya`: Plot trends in Kaya variables for a given region or
+-   `plot_kaya`: Plot trends in Kaya variables for a given region or
     country. Example:
-
-<!-- end list -->
 
 ``` r
 us_kaya = get_kaya_data("United States")
@@ -102,9 +95,7 @@ mexico_mix
 #> 5 Mexico  2018 Renewables  0.483 0.0651
 ```
 
-  - `plot_fuel_mix`: Plot the fuel mix in a donut chart
-
-<!-- end list -->
+-   `plot_fuel_mix`: Plot the fuel mix in a donut chart
 
 ``` r
 plot_fuel_mix(mexico_mix)

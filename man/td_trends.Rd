@@ -30,4 +30,7 @@ td_trends
 A dataset containing top-down projections of trends in P, G, and E,
 from the EIA's International Energy Outlook 2017.
 }
+\seealso{
+regions
+}
 \keyword{datasets}

@@ -31,4 +31,7 @@ A dataset containing the fuel mix of how many quads and what fraction of
 total primary energy supply comes from coal, gas, oil, nuclear, and
 renewable sources.
 }
+\seealso{
+regions
+}
 \keyword{datasets}
