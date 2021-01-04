@@ -24,7 +24,7 @@
 #'
 #' Raupach, Michael R., _et al._, "Global and regional drivers of accelerating
 #' CO2 emissions," PNAS **104**, 10288--10293 (2007)
-#' [doi: `10.1073/pnas.0700609104`](https://doi.org/10.1073/pnas.0700609104).
+#' \doi{10.1073/pnas.0700609104}.
 #'
 #' @description
 #'

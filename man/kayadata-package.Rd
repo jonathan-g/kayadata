@@ -58,5 +58,5 @@ Nakicenovic, Nebojsa, and Rob Swart (Eds.),
 
 Raupach, Michael R., \emph{et al.}, "Global and regional drivers of accelerating
 CO2 emissions," PNAS \strong{104}, 10288--10293 (2007)
-\href{https://doi.org/10.1073/pnas.0700609104}{doi: \code{10.1073/pnas.0700609104}}.
+\doi{10.1073/pnas.0700609104}.
 }
