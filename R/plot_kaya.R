@@ -34,6 +34,7 @@ globalVariables(c("in_range", "fuel", "quads", "frac", "label",
 #' @examples
 #' china <- get_kaya_data("China")
 #' plot_kaya(china, "F", 2001, 2011)
+#' \dontrun{
 #' uk <- get_kaya_data("United Kingdom")
 #' plot_kaya(uk, "e", log_scale = TRUE, trend_line = TRUE)
 #' plot_kaya(uk, "e", log_scale = TRUE, trend_line = TRUE,
@@ -44,6 +45,8 @@ globalVariables(c("in_range", "fuel", "quads", "frac", "label",
 #'           start_year = 1970, stop_year = 2000,
 #'           pre_color = "limegreen", post_color = "limegreen",
 #'           trend_color = "magenta")
+#' }
+#'
 #' world <- get_kaya_data("World")
 #' plot_kaya(world, "g", 1982, log_scale = TRUE, trend_line = TRUE)
 #' @export

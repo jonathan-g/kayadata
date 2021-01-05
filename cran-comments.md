@@ -2,6 +2,7 @@
 
 * local Windows 10 install, R 4.0.3
 * local ubuntu 20.04 LTS install, R 4.0.3
+* GitHub actions ubuntu 20.04, R 4.0.3
 * r-hub builder:
     * Ubuntu 16.04, R-Release gcc
     * Ubuntu 16.04, R-Devel gcc
@@ -27,7 +28,7 @@
 
 * winbuilder builds:
 
-    0 errors | 0 warnings | 1 note
+    0 errors | 0 warnings | 0 notes
 
 * All other r-hub builds:
 
@@ -38,15 +39,6 @@
 * **r-hub debian R-devel only**: False-positive warning about (possible) 
   misspellings for four people's names in DESCRIPTION: "Kaya", "Keiichi", 
   "Yoichi", and "Yokobori". These names are spelled correctly.
-* Winbuilder builds only: Note about an unreachable URL. This is a false 
-  positive. The URL 
-  https://www4.unfccc.int/sites/submissions/INDC/Published%20Documents/United%20States%20of%20America/1/U.S.%20Cover%20Note%20INDC%20and%20Accompanying%20Information.pdf
-  is the authoritative source for the United States's intended nationally
-  determined contribution to greenhouse gas emissions reduction. 
-  As such, this URL is a necessary part of the citation for data that I use in 
-  this package. The web server rejects requests from robots, but the URL can be 
-  downloaded successfully fromstandard interactive user agents, such as Firefox 
-  or Chromium. I have confirmed that this URL is correct and working.
 
 
 ## Reverse dependencies
