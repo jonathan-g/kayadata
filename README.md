@@ -37,14 +37,14 @@ mexico_data %>% filter(year >= 1965) %>%
   select(region:ef) %>%
   head()
 #> # A tibble: 6 x 10
-#>   region  year      P     G     E     F     g     e     f    ef
-#>   <ord>  <int>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1 Mexico  1965 0.0441 0.210 0.991  62.1  4.76  4.72  62.7  296.
-#> 2 Mexico  1966 0.0455 0.223 1.05   65.0  4.90  4.70  62.0  292.
-#> 3 Mexico  1967 0.0470 0.236 1.07   66.6  5.03  4.53  62.4  282.
-#> 4 Mexico  1968 0.0484 0.258 1.16   72.2  5.33  4.50  62.1  279.
-#> 5 Mexico  1969 0.0499 0.267 1.28   79.1  5.35  4.78  61.9  296.
-#> 6 Mexico  1970 0.0515 0.284 1.36   84.2  5.52  4.79  61.8  296.
+#>   region  year     P     G     E     F     g     e     f    ef
+#>   <ord>  <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1 Mexico  2019 0.128  1.31  7.32  455. 10.3   5.58  62.2  347.
+#> 2 Mexico  2018 0.126  1.31  7.42  467. 10.4   5.66  62.8  355.
+#> 3 Mexico  2017 0.125  1.29  7.48  477. 10.3   5.82  63.7  371.
+#> 4 Mexico  2016 0.123  1.26  7.38  469. 10.2   5.86  63.5  372.
+#> 5 Mexico  2015 0.122  1.22  7.29  463. 10.0   5.96  63.6  379.
+#> 6 Mexico  2014 0.120  1.18  7.30  460.  9.84  6.16  63.0  388.
 ```
 
 -   `project_top_down()`: Project future population, GDP, energy use,
@@ -56,7 +56,7 @@ mexico_2050
 #> # A tibble: 1 x 10
 #>   region  year     P     G     g     E     F     e     f    ef
 #>   <chr>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1 Mexico  2050 0.163  2.57  15.8  9.99  581.  3.89  58.2  226.
+#> 1 Mexico  2050 0.157  2.57  16.3  10.1  589.  3.93  58.2  229.
 ```
 
 -   `plot_kaya`: Plot trends in Kaya variables for a given region or
@@ -86,13 +86,14 @@ renewables) for a region or country. Example:
 mexico_mix = get_fuel_mix("Mexico")
 mexico_mix
 #> # A tibble: 5 x 5
-#>   region  year fuel        quads   frac
-#>   <chr>  <int> <ord>       <dbl>  <dbl>
-#> 1 Mexico  2018 Coal        0.472 0.0637
-#> 2 Mexico  2018 Oil         3.29  0.443 
-#> 3 Mexico  2018 Natural Gas 3.05  0.412 
-#> 4 Mexico  2018 Nuclear     0.122 0.0165
-#> 5 Mexico  2018 Renewables  0.483 0.0651
+#> # Groups:   region, year [1]
+#>   region  year fuel         quads   frac
+#>   <chr>  <int> <ord>        <dbl>  <dbl>
+#> 1 Mexico  2019 Coal        0.481  0.0657
+#> 2 Mexico  2019 Oil         3.12   0.426 
+#> 3 Mexico  2019 Natural Gas 3.09   0.423 
+#> 4 Mexico  2019 Nuclear     0.0951 0.0130
+#> 5 Mexico  2019 Renewables  0.528  0.0722
 ```
 
 -   `plot_fuel_mix`: Plot the fuel mix in a donut chart
