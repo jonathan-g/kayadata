@@ -1,7 +1,8 @@
-pandoc: '2.2'
-pkgdown: 1.4.1
+pandoc: 2.7.3
+pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   kayadata: kayadata.html
   policy_analysis: policy_analysis.html
+last_built: 2021-01-09T21:44Z
 

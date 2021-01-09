@@ -11,23 +11,27 @@ regions — get_top_down_values • kayadata</title>
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -40,7 +44,6 @@ regions — get_top_down_values • kayadata</title>
 regions — get_top_down_values" />
 <meta property="og:description" content="Get top-down projections of Kaya variables for one or more countries or
 regions" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -58,7 +61,7 @@ regions" />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -72,7 +75,7 @@ regions" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kayadata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -80,7 +83,7 @@ regions" />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -108,8 +111,8 @@ regions" />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/jonathan-g/kayadata">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/jonathan-g/kayadata/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -137,7 +140,7 @@ regions</h1>
 regions</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_top_down_values</span>(<span class='no'>region_name</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>region_code</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>get_top_down_values</span><span class='op'>(</span><span class='va'>region_name</span>, quiet <span class='op'>=</span> <span class='cn'>FALSE</span>, region_code <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -161,7 +164,7 @@ instead of the <code>region_name</code></p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>a tibble of values for <em>P</em>, <em>G</em>, <em>E</em>, <em>F</em>, <em>g</em>, <em>e</em>, <em>f</em>, and <em>ef</em>
-for each country or region:</p><dl class='dl-horizontal'>
+for each country or region:</p><dl>
 <dt>region</dt><dd><p>The name of the country or region</p></dd>
 <dt>P</dt><dd><p>Population, in billions</p></dd>
 <dt>G</dt><dd><p>Gross domestic product, in trillions of constant 2010 U.S.
@@ -179,49 +182,51 @@ million dollars of GDP.</p></dd>
 
 </dl>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>regions</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_top_down_values</span>(<span class='st'>"New Zealand"</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 10
+    <pre class="examples"><div class='input'><span class='fu'>get_top_down_values</span><span class='op'>(</span><span class='st'>"New Zealand"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 8 x 10</span><span>
 #&gt;   region       year       P     G     g     E     F     e     f    ef
-#&gt;   &lt;chr&gt;       &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 New Zealand  2015 0.00460 0.170  37.0 0.845  35.3  4.96  41.8  208.
-#&gt; 2 New Zealand  2020 0.00496 0.194  39.1 0.882  34.9  4.55  39.5  180.
-#&gt; 3 New Zealand  2025 0.00534 0.220  41.3 0.955  36.5  4.34  38.2  166.
-#&gt; 4 New Zealand  2030 0.00568 0.250  43.9 1.03   38.5  4.12  37.4  154.
-#&gt; 5 New Zealand  2035 0.00603 0.284  47.1 1.11   40.7  3.93  36.5  143.
-#&gt; 6 New Zealand  2040 0.00636 0.322  50.6 1.21   43.3  3.77  35.7  134.
-#&gt; 7 New Zealand  2045 0.00669 0.364  54.5 1.32   46.4  3.63  35.1  127.
-#&gt; 8 New Zealand  2050 0.00700 0.412  58.8 1.46   50.2  3.54  34.4  122.</div><div class='input'><span class='fu'>get_top_down_values</span>(<span class='st'>"OECD"</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 10
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> New Zealand  </span><span style='text-decoration: underline;'>2</span><span>015 0.004</span><span style='text-decoration: underline;'>60</span><span> 0.169  36.8 0.843  36.5  4.98  43.3  216.
+#&gt; </span><span style='color: #555555;'>2</span><span> New Zealand  </span><span style='text-decoration: underline;'>2</span><span>020 0.004</span><span style='text-decoration: underline;'>96</span><span> 0.193  38.8 0.879  36.0  4.57  41.0  187.
+#&gt; </span><span style='color: #555555;'>3</span><span> New Zealand  </span><span style='text-decoration: underline;'>2</span><span>025 0.005</span><span style='text-decoration: underline;'>34</span><span> 0.219  41.0 0.953  37.7  4.35  39.6  172.
+#&gt; </span><span style='color: #555555;'>4</span><span> New Zealand  </span><span style='text-decoration: underline;'>2</span><span>030 0.005</span><span style='text-decoration: underline;'>68</span><span> 0.248  43.6 1.03   39.8  4.14  38.8  160.
+#&gt; </span><span style='color: #555555;'>5</span><span> New Zealand  </span><span style='text-decoration: underline;'>2</span><span>035 0.006</span><span style='text-decoration: underline;'>03</span><span> 0.282  46.8 1.11   42.0  3.94  37.8  149.
+#&gt; </span><span style='color: #555555;'>6</span><span> New Zealand  </span><span style='text-decoration: underline;'>2</span><span>040 0.006</span><span style='text-decoration: underline;'>36</span><span> 0.320  50.3 1.21   44.7  3.78  37.0  140.
+#&gt; </span><span style='color: #555555;'>7</span><span> New Zealand  </span><span style='text-decoration: underline;'>2</span><span>045 0.006</span><span style='text-decoration: underline;'>69</span><span> 0.362  54.1 1.32   47.9  3.65  36.3  132.
+#&gt; </span><span style='color: #555555;'>8</span><span> New Zealand  </span><span style='text-decoration: underline;'>2</span><span>050 0.007</span><span style='text-decoration: underline;'>00</span><span> 0.409  58.4 1.45   51.9  3.55  35.7  127.</div><div class='input'><span class='fu'>get_top_down_values</span><span class='op'>(</span><span class='st'>"OECD"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 8 x 10</span><span>
 #&gt;   region  year     P     G     g     E      F     e     f    ef
-#&gt;   &lt;chr&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 OECD    2015  1.28  48.8  38.0  218. 12411.  4.47  56.9  254.
-#&gt; 2 OECD    2020  1.32  53.3  40.3  222. 12427.  4.16  56.0  233.
-#&gt; 3 OECD    2025  1.35  58.6  43.3  225. 12177.  3.84  54.1  208.
-#&gt; 4 OECD    2030  1.38  63.3  45.9  227. 11987.  3.59  52.7  189.
-#&gt; 5 OECD    2035  1.40  68.5  48.8  232. 12136.  3.38  52.4  177.
-#&gt; 6 OECD    2040  1.42  74.0  52.1  238. 12373.  3.21  52.0  167.
-#&gt; 7 OECD    2045  1.44  79.7  55.5  244. 12681.  3.06  52.0  159.
-#&gt; 8 OECD    2050  1.45  85.7  59.2  251. 13088.  2.93  52.1  153.</div><div class='input'><span class='fu'>get_top_down_values</span>(<span class='kw'>region_code</span> <span class='kw'>=</span> <span class='st'>"PAK"</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 10
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> OECD    </span><span style='text-decoration: underline;'>2</span><span>015  1.33  49.3  37.1  217. </span><span style='text-decoration: underline;'>12</span><span>348.  4.40  57.0  250.
+#&gt; </span><span style='color: #555555;'>2</span><span> OECD    </span><span style='text-decoration: underline;'>2</span><span>020  1.37  53.9  39.4  221. </span><span style='text-decoration: underline;'>12</span><span>364.  4.09  56.1  230.
+#&gt; </span><span style='color: #555555;'>3</span><span> OECD    </span><span style='text-decoration: underline;'>2</span><span>025  1.40  59.2  42.3  224. </span><span style='text-decoration: underline;'>12</span><span>115.  3.78  54.1  205.
+#&gt; </span><span style='color: #555555;'>4</span><span> OECD    </span><span style='text-decoration: underline;'>2</span><span>030  1.43  64.0  44.8  226. </span><span style='text-decoration: underline;'>11</span><span>926.  3.54  52.7  186.
+#&gt; </span><span style='color: #555555;'>5</span><span> OECD    </span><span style='text-decoration: underline;'>2</span><span>035  1.45  69.2  47.7  230. </span><span style='text-decoration: underline;'>12</span><span>074.  3.33  52.4  174.
+#&gt; </span><span style='color: #555555;'>6</span><span> OECD    </span><span style='text-decoration: underline;'>2</span><span>040  1.47  74.8  50.9  237. </span><span style='text-decoration: underline;'>12</span><span>310.  3.16  52.0  165.
+#&gt; </span><span style='color: #555555;'>7</span><span> OECD    </span><span style='text-decoration: underline;'>2</span><span>045  1.48  80.5  54.2  242. </span><span style='text-decoration: underline;'>12</span><span>616.  3.01  52.0  157.
+#&gt; </span><span style='color: #555555;'>8</span><span> OECD    </span><span style='text-decoration: underline;'>2</span><span>050  1.49  86.5  57.9  250. </span><span style='text-decoration: underline;'>13</span><span>021.  2.89  52.1  150.</div><div class='input'><span class='fu'>get_top_down_values</span><span class='op'>(</span>region_code <span class='op'>=</span> <span class='st'>"PAK"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 8 x 10</span><span>
 #&gt;   region    year     P     G     g     E     F     e     f    ef
-#&gt;   &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 Pakistan  2015 0.189 0.216  1.14  2.79  161. 12.9   57.6  744.
-#&gt; 2 Pakistan  2020 0.202 0.267  1.32  3.05  180. 11.4   59.1  675.
-#&gt; 3 Pakistan  2025 0.213 0.331  1.55  3.46  206. 10.4   59.5  621.
-#&gt; 4 Pakistan  2030 0.224 0.401  1.79  3.96  223.  9.87  56.3  555.
-#&gt; 5 Pakistan  2035 0.233 0.478  2.05  4.43  251.  9.25  56.6  524.
-#&gt; 6 Pakistan  2040 0.241 0.565  2.35  4.99  282.  8.82  56.6  499.
-#&gt; 7 Pakistan  2045 0.248 0.660  2.66  5.59  316.  8.46  56.6  479.
-#&gt; 8 Pakistan  2050 0.254 0.766  3.02  6.24  354.  8.14  56.7  462.</div><div class='input'>
-</div></pre>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> Pakistan  </span><span style='text-decoration: underline;'>2</span><span>015 0.199 0.216  1.08  2.77  160. 12.8   57.7  742.
+#&gt; </span><span style='color: #555555;'>2</span><span> Pakistan  </span><span style='text-decoration: underline;'>2</span><span>020 0.212 0.266  1.25  3.03  179. 11.4   59.2  673.
+#&gt; </span><span style='color: #555555;'>3</span><span> Pakistan  </span><span style='text-decoration: underline;'>2</span><span>025 0.224 0.331  1.47  3.44  205. 10.4   59.6  619.
+#&gt; </span><span style='color: #555555;'>4</span><span> Pakistan  </span><span style='text-decoration: underline;'>2</span><span>030 0.235 0.400  1.70  3.93  222.  9.82  56.4  554.
+#&gt; </span><span style='color: #555555;'>5</span><span> Pakistan  </span><span style='text-decoration: underline;'>2</span><span>035 0.245 0.478  1.95  4.40  250.  9.21  56.7  523.
+#&gt; </span><span style='color: #555555;'>6</span><span> Pakistan  </span><span style='text-decoration: underline;'>2</span><span>040 0.254 0.565  2.22  4.96  281.  8.78  56.7  498.
+#&gt; </span><span style='color: #555555;'>7</span><span> Pakistan  </span><span style='text-decoration: underline;'>2</span><span>045 0.261 0.660  2.52  5.55  315.  8.42  56.7  477.
+#&gt; </span><span style='color: #555555;'>8</span><span> Pakistan  </span><span style='text-decoration: underline;'>2</span><span>050 0.267 0.765  2.86  6.20  352.  8.11  56.9  461.</div><div class='input'>
+</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -232,7 +237,7 @@ million dollars of GDP.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -6,19 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Example: Analysis of Emissions-Reduction Policy • kayadata</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Example: Analysis of Emissions-Reduction Policy">
-<meta property="og:description" content="">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="kayadata">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+<body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kayadata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -67,8 +67,8 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/jonathan-g/kayadata">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/jonathan-g/kayadata/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -82,10 +82,10 @@
 
       
 
-      </header><div class="row">
+      </header><script src="policy_analysis_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Example: Analysis of Emissions-Reduction Policy</h1>
+      <h1 data-toc-skip>Example: Analysis of Emissions-Reduction Policy</h1>
                         <h4 class="author">Jonathan Gilligan</h4>
             
             <h4 class="date">2019-07-31</h4>
@@ -124,59 +124,65 @@ F = P \times g \times e \times f,
 <h2 class="hasAnchor">
 <a href="#recent-trends-in-population-and-gdp" class="anchor"></a>Recent Trends in Population and GDP</h2>
 <p>Begin by loading historical values of the Kaya identity parameters for the United States:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span>({</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(magrittr)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(dplyr)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(stringr)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyr)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(purrr)</a>
-<a class="sourceLine" id="cb1-7" data-line-number="7">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(broom)</a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(knitr)</a>
-<a class="sourceLine" id="cb1-9" data-line-number="9">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(scales)</a>
-<a class="sourceLine" id="cb1-10" data-line-number="10">  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(kayadata)</a>
-<a class="sourceLine" id="cb1-11" data-line-number="11">})</a>
-<a class="sourceLine" id="cb1-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb1-13" data-line-number="13">kaya &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_kaya_data.html">get_kaya_data</a></span>(<span class="st">"United States"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/message.html">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">{</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org">scales</a></span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jonathan-g.github.io/kayadata/">kayadata</a></span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span>
+
+<span class="va">kaya</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"United States"</span><span class="op">)</span></code></pre></div>
 <p>Let’s start by looking at trends in <em>P</em>, <em>g</em>, <em>e</em>, and <em>f</em> starting in 1990. I plot these with a log-scale on the y-axis because a constant growth rate produces exponential growth, so it should look linear on a semi-log plot.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/plot_kaya.html">plot_kaya</a></span>(kaya, <span class="st">"P"</span>, <span class="dt">log_scale =</span> <span class="ot">TRUE</span>, <span class="dt">start_year =</span> <span class="dv">1990</span>, <span class="dt">trend_line =</span> <span class="ot">TRUE</span>, <span class="dt">points =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">kaya</span>, <span class="st">"P"</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>, start_year <span class="op">=</span> <span class="fl">1990</span>, trend_line <span class="op">=</span> <span class="cn">TRUE</span>, points <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
 <div class="figure">
-<img src="policy_analysis_files/figure-html/plot_P_1990-1.png" alt="Trend in population for U.S. from 1990--2018" width="700"><p class="caption">
-Trend in population for U.S. from 1990–2018
+<img src="policy_analysis_files/figure-html/plot_P_1990-1.png" alt="Trend in population for U.S. from 1990--2019" width="700"><p class="caption">
+Trend in population for U.S. from 1990–2019
 </p>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/plot_kaya.html">plot_kaya</a></span>(kaya, <span class="st">"g"</span>, <span class="dt">log_scale =</span> <span class="ot">TRUE</span>, <span class="dt">start_year =</span> <span class="dv">1990</span>, <span class="dt">trend_line =</span> <span class="ot">TRUE</span>, <span class="dt">points =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">kaya</span>, <span class="st">"g"</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>, start_year <span class="op">=</span> <span class="fl">1990</span>, trend_line <span class="op">=</span> <span class="cn">TRUE</span>, points <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
 <div class="figure">
-<img src="policy_analysis_files/figure-html/plot_g_1990-1.png" alt="Trend in per-capita GDP for U.S. from 1990--2018" width="700"><p class="caption">
-Trend in per-capita GDP for U.S. from 1990–2018
+<img src="policy_analysis_files/figure-html/plot_g_1990-1.png" alt="Trend in per-capita GDP for U.S. from 1990--2019" width="700"><p class="caption">
+Trend in per-capita GDP for U.S. from 1990–2019
 </p>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/plot_kaya.html">plot_kaya</a></span>(kaya, <span class="st">"e"</span>, <span class="dt">log_scale =</span> <span class="ot">TRUE</span>, <span class="dt">start_year =</span> <span class="dv">1990</span>, <span class="dt">trend_line =</span> <span class="ot">TRUE</span>, <span class="dt">points =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">kaya</span>, <span class="st">"e"</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>, start_year <span class="op">=</span> <span class="fl">1990</span>, trend_line <span class="op">=</span> <span class="cn">TRUE</span>, points <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
 <div class="figure">
-<img src="policy_analysis_files/figure-html/plot_e_1990-1.png" alt="Trend in primary-energy intensity of the U.S. economy from 1990--2018" width="700"><p class="caption">
-Trend in primary-energy intensity of the U.S. economy from 1990–2018
+<img src="policy_analysis_files/figure-html/plot_e_1990-1.png" alt="Trend in primary-energy intensity of the U.S. economy from 1990--2019" width="700"><p class="caption">
+Trend in primary-energy intensity of the U.S. economy from 1990–2019
 </p>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/plot_kaya.html">plot_kaya</a></span>(kaya, <span class="st">"f"</span>, <span class="dt">log_scale =</span> <span class="ot">TRUE</span>, <span class="dt">start_year =</span> <span class="dv">1990</span>, <span class="dt">trend_line =</span> <span class="ot">TRUE</span>, <span class="dt">points =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">kaya</span>, <span class="st">"f"</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>, start_year <span class="op">=</span> <span class="fl">1990</span>, trend_line <span class="op">=</span> <span class="cn">TRUE</span>, points <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
 <div class="figure">
-<img src="policy_analysis_files/figure-html/plot_f_1990-1.png" alt="Trend in the carbon-dioxide intensity of the U.S. energy supply from 1990--2018" width="700"><p class="caption">
-Trend in the carbon-dioxide intensity of the U.S. energy supply from 1990–2018
+<img src="policy_analysis_files/figure-html/plot_f_1990-1.png" alt="Trend in the carbon-dioxide intensity of the U.S. energy supply from 1990--2019" width="700"><p class="caption">
+Trend in the carbon-dioxide intensity of the U.S. energy supply from 1990–2019
 </p>
 </div>
 <p>All of these trends look reasonable, except for <em>f</em>. Let’s try <em>f</em> again, but fitting the trend only since 2005:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/plot_kaya.html">plot_kaya</a></span>(kaya, <span class="st">"f"</span>, <span class="dt">log_scale =</span> <span class="ot">TRUE</span>, <span class="dt">start_year =</span> <span class="dv">2005</span>, <span class="dt">trend_line =</span> <span class="ot">TRUE</span>, <span class="dt">points =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span><span class="kw">theme_bw</span>()</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">kaya</span>, <span class="st">"f"</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>, start_year <span class="op">=</span> <span class="fl">2005</span>, trend_line <span class="op">=</span> <span class="cn">TRUE</span>, points <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
 <div class="figure">
-<img src="policy_analysis_files/figure-html/plot_f_2005-1.png" alt="Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005--2018" width="700"><p class="caption">
-Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2018
+<img src="policy_analysis_files/figure-html/plot_f_2005-1.png" alt="Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005--2019" width="700"><p class="caption">
+Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2019
 </p>
 </div>
 <p>That looks better. The abrupt changes in trend at 1990 and again at 2005 illustrate the difficulties of predicting future values by extrapolating from past trends, and indicates that the extrapolations we will use here should be taken with several grains of salt.</p>
@@ -184,19 +190,20 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2018
 <h3 class="hasAnchor">
 <a href="#historical-trends" class="anchor"></a>Historical Trends</h3>
 <p>Now let’s calculate the historical trends:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">vars &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"P"</span>, <span class="st">"g"</span>, <span class="st">"e"</span>, <span class="st">"f"</span>)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">historical_trends &lt;-<span class="st"> </span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span>(vars, </a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">                 <span class="op">~</span>kaya <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">                   </span><span class="kw"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span>(<span class="dt">key =</span> variable, <span class="dt">value =</span> value, <span class="op">-</span>region, <span class="op">-</span>year) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">                   </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(variable <span class="op">==</span><span class="st"> </span>.x, </a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">                          year <span class="op">&gt;=</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(.x <span class="op">==</span><span class="st"> "f"</span>, <span class="dv">2005</span>, <span class="dv">1990</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="st">                   </span><span class="kw"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(value) <span class="op">~</span><span class="st"> </span>year, <span class="dt">data =</span> .) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/broom/man/reexports.html">tidy</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="st">                   </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(term <span class="op">==</span><span class="st"> "year"</span>) <span class="op">%$%</span><span class="st"> </span>estimate</a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/magrittr/man/aliases.html">set_names</a></span>(vars)</a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">tibble</a></span>(<span class="dt">Variable =</span> <span class="kw"><a href="https://rdrr.io/r/base/names.html">names</a></span>(historical_trends), </a>
-<a class="sourceLine" id="cb7-12" data-line-number="12">       <span class="dt">Rate =</span> <span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span>(historical_trends, <span class="op">~</span><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(.x, <span class="fl">0.01</span>))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="dt">align =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"c"</span>, <span class="st">"r"</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">vars</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"P"</span>, <span class="st">"g"</span>, <span class="st">"e"</span>, <span class="st">"f"</span><span class="op">)</span>
+<span class="va">historical_trends</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl</a></span><span class="op">(</span><span class="va">vars</span>, 
+                 <span class="op">~</span><span class="va">kaya</span> <span class="op">%&gt;%</span> 
+                   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html">gather</a></span><span class="op">(</span>key <span class="op">=</span> <span class="va">variable</span>, value <span class="op">=</span> <span class="va">value</span>, <span class="op">-</span><span class="va">region</span>, <span class="op">-</span><span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">variable</span> <span class="op">==</span> <span class="va">.x</span>, 
+                          <span class="va">year</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">.x</span> <span class="op">==</span> <span class="st">"f"</span>, <span class="fl">2005</span>, <span class="fl">1990</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                   <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">value</span><span class="op">)</span> <span class="op">~</span> <span class="va">year</span>, data <span class="op">=</span> <span class="va">.</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+                   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">term</span> <span class="op">==</span> <span class="st">"year"</span><span class="op">)</span> <span class="op">%$%</span> <span class="va">estimate</span>
+<span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://magrittr.tidyverse.org/reference/aliases.html">set_names</a></span><span class="op">(</span><span class="va">vars</span><span class="op">)</span>
+
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>Variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">historical_trends</span><span class="op">)</span>, 
+       Rate <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">historical_trends</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>align <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span>, <span class="st">"r"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="center">Variable</th>
@@ -205,19 +212,19 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2018
 <tbody>
 <tr class="odd">
 <td align="center">P</td>
-<td align="right">0.96%</td>
+<td align="right">0.94%</td>
 </tr>
 <tr class="even">
 <td align="center">g</td>
-<td align="right">1.49%</td>
+<td align="right">1.48%</td>
 </tr>
 <tr class="odd">
 <td align="center">e</td>
-<td align="right">-2.00%</td>
+<td align="right">-2.05%</td>
 </tr>
 <tr class="even">
 <td align="center">f</td>
-<td align="right">-1.03%</td>
+<td align="right">-1.08%</td>
 </tr>
 </tbody>
 </table>
@@ -227,18 +234,19 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2018
 <h2 class="hasAnchor">
 <a href="#implied-decarbonization-rates" class="anchor"></a>Implied Decarbonization Rates</h2>
 <p>Next, calculate the implied rate of change of <em>F</em> under the policy. This is not an extrapolation from history, but a pure implication of the policy goals: From the Kaya identity, <span class="math inline">\(F = G \times e \times f\)</span>, so the rates of change are <span class="math inline">\(r_F = r_G + r_e + r_f = r_G + r_{ef}\)</span>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">ref_year &lt;-<span class="st"> </span><span class="dv">2005</span></a>
-<a class="sourceLine" id="cb8-2" data-line-number="2">target_years &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="dv">2025</span>, <span class="dv">2050</span>)</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3">target_reduction &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="fl">0.26</span>, <span class="fl">0.80</span>)</a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5">F_ref &lt;-<span class="st"> </span>kaya <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(year <span class="op">==</span><span class="st"> </span>ref_year) <span class="op">%$%</span><span class="st"> </span>F</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6">F_target &lt;-<span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">tibble</a></span>(<span class="dt">year =</span> target_years, <span class="dt">F =</span> F_ref <span class="op">*</span><span class="st"> </span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>target_reduction)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">implied_rate =</span> <span class="kw"><a href="https://rdrr.io/r/base/Log.html">log</a></span>(F <span class="op">/</span><span class="st"> </span>F_ref) <span class="op">/</span><span class="st"> </span>(year <span class="op">-</span><span class="st"> </span>ref_year))</a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9">F_target <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">implied_rate =</span> <span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span>(implied_rate, <span class="op">~</span><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(.x,  <span class="fl">0.01</span>))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="st">"Target F"</span> =<span class="st"> </span>F, <span class="st">"Implied Rate"</span> =<span class="st"> </span>implied_rate) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="dt">align =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"crr"</span>), <span class="dt">digits =</span> <span class="dv">0</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ref_year</span> <span class="op">&lt;-</span> <span class="fl">2005</span>
+<span class="va">target_years</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2025</span>, <span class="fl">2050</span><span class="op">)</span>
+<span class="va">target_reduction</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.26</span>, <span class="fl">0.80</span><span class="op">)</span>
+
+<span class="va">F_ref</span> <span class="op">&lt;-</span> <span class="va">kaya</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="va">ref_year</span><span class="op">)</span> <span class="op">%$%</span> <span class="cn">F</span>
+<span class="va">F_target</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>year <span class="op">=</span> <span class="va">target_years</span>, F <span class="op">=</span> <span class="va">F_ref</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="va">target_reduction</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>implied_rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="cn">F</span> <span class="op">/</span> <span class="va">F_ref</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">year</span> <span class="op">-</span> <span class="va">ref_year</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">F_target</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>implied_rate <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">implied_rate</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>,  <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"Target F"</span> <span class="op">=</span> <span class="cn">F</span>, <span class="st">"Implied Rate"</span> <span class="op">=</span> <span class="va">implied_rate</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>align <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"crr"</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="center">year</th>
@@ -248,33 +256,34 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2018
 <tbody>
 <tr class="odd">
 <td align="center">2025</td>
-<td align="right">4330</td>
+<td align="right">4346</td>
 <td align="right">-1.51%</td>
 </tr>
 <tr class="even">
 <td align="center">2050</td>
-<td align="right">1170</td>
+<td align="right">1175</td>
 <td align="right">-3.58%</td>
 </tr>
 </tbody>
 </table>
 <p>For the bottom-up analysis of decarbonization, I will use <span class="math inline">\(r_{ef}\)</span>, the implied rate of decarbonization of the economy, conditional on future economic growth following the historical trend. This is expressed in the equation <span class="math inline">\(r_{ef} = r_F - r_G\)</span>, where <span class="math inline">\(r_F\)</span> is the rate of emissions-reduction implied by the policy (see above) and <span class="math inline">\(r_G\)</span> is the historical growth rate of GDP:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">implied_decarb_rates &lt;-<span class="st"> </span>F_target <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(year, <span class="dt">impl_F =</span> implied_rate, </a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">            <span class="dt">hist_G =</span> historical_trends[<span class="st">'P'</span>] <span class="op">+</span><span class="st"> </span>historical_trends[<span class="st">'g'</span>],</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4">            <span class="dt">hist_ef =</span> historical_trends[<span class="st">'e'</span>] <span class="op">+</span><span class="st"> </span>historical_trends[<span class="st">'f'</span>],</a>
-<a class="sourceLine" id="cb9-5" data-line-number="5">            <span class="dt">impl_ef =</span> impl_F <span class="op">-</span><span class="st"> </span>hist_G)</a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">implied_decarb_rates <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">starts_with</a></span>(<span class="st">"hist_"</span>), <span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">starts_with</a></span>(<span class="st">"impl_"</span>)),</a>
-<a class="sourceLine" id="cb9-9" data-line-number="9">            <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="op">~</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span>(., <span class="op">~</span><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(.x, <span class="fl">0.01</span>)))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="dt">Year =</span> year, </a>
-<a class="sourceLine" id="cb9-11" data-line-number="11">         <span class="st">"implied F"</span> =<span class="st"> </span>impl_F, </a>
-<a class="sourceLine" id="cb9-12" data-line-number="12">         <span class="st">"historical G"</span> =<span class="st"> </span>hist_G,</a>
-<a class="sourceLine" id="cb9-13" data-line-number="13">         <span class="st">"implied ef"</span> =<span class="st"> </span>impl_ef, </a>
-<a class="sourceLine" id="cb9-14" data-line-number="14">         <span class="st">"historical ef"</span> =<span class="st"> </span>hist_ef</a>
-<a class="sourceLine" id="cb9-15" data-line-number="15">  ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-16" data-line-number="16"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="dt">align=</span><span class="st">"rrrrr"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">implied_decarb_rates</span> <span class="op">&lt;-</span> <span class="va">F_target</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span><span class="op">(</span><span class="va">year</span>, impl_F <span class="op">=</span> <span class="va">implied_rate</span>, 
+            hist_G <span class="op">=</span> <span class="va">historical_trends</span><span class="op">[</span><span class="st">'P'</span><span class="op">]</span> <span class="op">+</span> <span class="va">historical_trends</span><span class="op">[</span><span class="st">'g'</span><span class="op">]</span>,
+            hist_ef <span class="op">=</span> <span class="va">historical_trends</span><span class="op">[</span><span class="st">'e'</span><span class="op">]</span> <span class="op">+</span> <span class="va">historical_trends</span><span class="op">[</span><span class="st">'f'</span><span class="op">]</span>,
+            impl_ef <span class="op">=</span> <span class="va">impl_F</span> <span class="op">-</span> <span class="va">hist_G</span><span class="op">)</span>
+
+<span class="va">implied_decarb_rates</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"hist_"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"impl_"</span><span class="op">)</span><span class="op">)</span>,
+            <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">.</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>Year <span class="op">=</span> <span class="va">year</span>, 
+         <span class="st">"implied F"</span> <span class="op">=</span> <span class="va">impl_F</span>, 
+         <span class="st">"historical G"</span> <span class="op">=</span> <span class="va">hist_G</span>,
+         <span class="st">"implied ef"</span> <span class="op">=</span> <span class="va">impl_ef</span>, 
+         <span class="st">"historical ef"</span> <span class="op">=</span> <span class="va">hist_ef</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>align<span class="op">=</span><span class="st">"rrrrr"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">Year</th>
@@ -287,16 +296,16 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2018
 <tr class="odd">
 <td align="right">2025</td>
 <td align="right">-1.51%</td>
-<td align="right">2.45%</td>
-<td align="right">-3.95%</td>
-<td align="right">-3.03%</td>
+<td align="right">2.43%</td>
+<td align="right">-3.93%</td>
+<td align="right">-3.12%</td>
 </tr>
 <tr class="even">
 <td align="right">2050</td>
 <td align="right">-3.58%</td>
-<td align="right">2.45%</td>
-<td align="right">-6.02%</td>
-<td align="right">-3.03%</td>
+<td align="right">2.43%</td>
+<td align="right">-6.00%</td>
+<td align="right">-3.12%</td>
 </tr>
 </tbody>
 </table>
@@ -304,20 +313,21 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2018
 <div id="results" class="section level2">
 <h2 class="hasAnchor">
 <a href="#results" class="anchor"></a>Results</h2>
-<p>To meet the goals for 2025 would require increasing the rate of reducing <em>ef</em> from -3.03% per year to -3.95% per year: 1.3 times faster.</p>
-<p>To meet the goals for 2050 would require increasing the rate of reducing <em>ef</em> from -3.03% per year to -6.02% per year: 2.0 times faster.</p>
+<p>To meet the goals for 2025 would require increasing the rate of reducing <em>ef</em> from -3.12% per year to -3.93% per year: 1.3 times faster.</p>
+<p>To meet the goals for 2050 would require increasing the rate of reducing <em>ef</em> from -3.12% per year to -6.00% per year: 1.9 times faster.</p>
 </div>
 </div>
 <div id="top-down-analysis" class="section level1">
 <h1 class="hasAnchor">
 <a href="#top-down-analysis" class="anchor"></a>Top-Down Analysis</h1>
 <p>The top-down analysis is very similar to the bottom-up analysis, but instead of looking at the elements of the Kaya identity individually, we use predictions from macroeconomic integrated assessment models that consider interactions between population, GDP, and energy use to predict future energy demand:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">top_down_trends &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_top_down_trends.html">get_top_down_trends</a></span>(<span class="st">"United States"</span>)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb10-3" data-line-number="3">top_down_trends <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(P, G, E) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_all</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="op">~</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span>(., <span class="op">~</span><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(.x, <span class="fl">0.01</span>)))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="st">"P trend"</span> =<span class="st"> </span>P, <span class="st">"G trend"</span> =<span class="st"> </span>G, <span class="st">"E trend"</span> =<span class="st"> </span>E) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="dt">align=</span><span class="st">"rrr"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">top_down_trends</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_top_down_trends.html">get_top_down_trends</a></span><span class="op">(</span><span class="st">"United States"</span><span class="op">)</span>
+
+<span class="va">top_down_trends</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">P</span>, <span class="va">G</span>, <span class="va">E</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">.</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"P trend"</span> <span class="op">=</span> <span class="va">P</span>, <span class="st">"G trend"</span> <span class="op">=</span> <span class="va">G</span>, <span class="st">"E trend"</span> <span class="op">=</span> <span class="va">E</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>align<span class="op">=</span><span class="st">"rrr"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">P trend</th>
@@ -334,23 +344,24 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2018
 <h2 class="hasAnchor">
 <a href="#implied-decarbonization" class="anchor"></a>Implied Decarbonization</h2>
 <p>In the bottom-up analysis, we calculated the implied rate of decarbonizing the economy by comparing the rate of emissions reduction implied by the policy (<span class="math inline">\(r_F\)</span>) to the predicted rate of change of GDP (<span class="math inline">\(r_G\)</span>). Here, in the top-down analysis, we calculate the implied rate of decarbonizing the energy supply (<span class="math inline">\(r_f\)</span>) by comparing the rate of emissions-reduction implied by policy (<span class="math inline">\(r_F\)</span>) to the predicted rate of growth of energy demand (<span class="math inline">\(r_E\)</span>): <span class="math inline">\(F = E \times f\)</span>, so <span class="math inline">\(r_F = r_E + r_f\)</span>, which we rearrange to find that <span class="math inline">\(r_f = r_F - r_E\)</span>.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">implied_decarb_rates_top_down &lt;-<span class="st"> </span>F_target <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(year, <span class="dt">impl_F =</span> implied_rate, </a>
-<a class="sourceLine" id="cb11-3" data-line-number="3">            <span class="dt">top_down_E =</span> top_down_trends<span class="op">$</span>E,</a>
-<a class="sourceLine" id="cb11-4" data-line-number="4">            <span class="dt">hist_f =</span> historical_trends[<span class="st">'f'</span>],</a>
-<a class="sourceLine" id="cb11-5" data-line-number="5">            <span class="dt">impl_f =</span> impl_F <span class="op">-</span><span class="st"> </span>top_down_E)</a>
-<a class="sourceLine" id="cb11-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb11-7" data-line-number="7">implied_decarb_rates_top_down <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">starts_with</a></span>(<span class="st">"hist_"</span>), <span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">starts_with</a></span>(<span class="st">"impl_"</span>), </a>
-<a class="sourceLine" id="cb11-9" data-line-number="9">                 <span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">starts_with</a></span>(<span class="st">"top_down"</span>)),</a>
-<a class="sourceLine" id="cb11-10" data-line-number="10">            <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="op">~</span><span class="kw"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span>(., <span class="op">~</span><span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span>(.x, <span class="fl">0.01</span>)))) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="dt">Year =</span> year, </a>
-<a class="sourceLine" id="cb11-12" data-line-number="12">         <span class="st">"implied F"</span> =<span class="st"> </span>impl_F, </a>
-<a class="sourceLine" id="cb11-13" data-line-number="13">         <span class="st">"top-down E"</span> =<span class="st"> </span>top_down_E,</a>
-<a class="sourceLine" id="cb11-14" data-line-number="14">         <span class="st">"implied f"</span> =<span class="st"> </span>impl_f, </a>
-<a class="sourceLine" id="cb11-15" data-line-number="15">         <span class="st">"historical f"</span> =<span class="st"> </span>hist_f</a>
-<a class="sourceLine" id="cb11-16" data-line-number="16">  ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb11-17" data-line-number="17"><span class="st">  </span><span class="kw"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span>(<span class="dt">align=</span><span class="st">"rrrrr"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">implied_decarb_rates_top_down</span> <span class="op">&lt;-</span> <span class="va">F_target</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span><span class="op">(</span><span class="va">year</span>, impl_F <span class="op">=</span> <span class="va">implied_rate</span>, 
+            top_down_E <span class="op">=</span> <span class="va">top_down_trends</span><span class="op">$</span><span class="va">E</span>,
+            hist_f <span class="op">=</span> <span class="va">historical_trends</span><span class="op">[</span><span class="st">'f'</span><span class="op">]</span>,
+            impl_f <span class="op">=</span> <span class="va">impl_F</span> <span class="op">-</span> <span class="va">top_down_E</span><span class="op">)</span>
+
+<span class="va">implied_decarb_rates_top_down</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"hist_"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"impl_"</span><span class="op">)</span>, 
+                 <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"top_down"</span><span class="op">)</span><span class="op">)</span>,
+            <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">.</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>Year <span class="op">=</span> <span class="va">year</span>, 
+         <span class="st">"implied F"</span> <span class="op">=</span> <span class="va">impl_F</span>, 
+         <span class="st">"top-down E"</span> <span class="op">=</span> <span class="va">top_down_E</span>,
+         <span class="st">"implied f"</span> <span class="op">=</span> <span class="va">impl_f</span>, 
+         <span class="st">"historical f"</span> <span class="op">=</span> <span class="va">hist_f</span>
+  <span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>align<span class="op">=</span><span class="st">"rrrrr"</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="right">Year</th>
@@ -365,14 +376,14 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2018
 <td align="right">-1.51%</td>
 <td align="right">0.30%</td>
 <td align="right">-1.81%</td>
-<td align="right">-1.03%</td>
+<td align="right">-1.08%</td>
 </tr>
 <tr class="even">
 <td align="right">2050</td>
 <td align="right">-3.58%</td>
 <td align="right">0.30%</td>
 <td align="right">-3.88%</td>
-<td align="right">-1.03%</td>
+<td align="right">-1.08%</td>
 </tr>
 </tbody>
 </table>
@@ -380,8 +391,8 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2018
 <div id="results-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#results-1" class="anchor"></a>Results</h2>
-<p>To meet the goals for 2025 would require increasing the rate of reducing <em>f</em> from -1.03% per year to -1.81% per year: 1.8 times faster.</p>
-<p>To meet the goals for 2050 would require increasing the rate of reducing <em>f</em> from -1.03% per year to -3.88% per year: 3.8 times faster.</p>
+<p>To meet the goals for 2025 would require increasing the rate of reducing <em>f</em> from -1.08% per year to -1.81% per year: 1.7 times faster.</p>
+<p>To meet the goals for 2050 would require increasing the rate of reducing <em>f</em> from -1.08% per year to -3.88% per year: 3.6 times faster.</p>
 </div>
 </div>
 <div id="references" class="section level1 unnumbered">
@@ -408,36 +419,17 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2018
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>The Trump administration has announced its intention to withdraw from the Paris accord. The analysis in this vignette does not address that development and simply presents the implications of the pledged contribution.<a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>A quad is short for a quadrillion British Thermal Units.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>The Trump administration has announced its intention to withdraw from the Paris accord. The analysis in this vignette does not address that development and simply presents the implications of the pledged contribution.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>A quad is short for a quadrillion British Thermal Units.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <div id="tocnav">
-      <h2 class="hasAnchor">
-<a href="#tocnav" class="anchor"></a>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-<li><a href="#u-s--nationally-defined-contribution-to-paris-accord">U.S. Nationally Defined Contribution to Paris Accord</a></li>
-      <li>
-<a href="#bottom-up-analysis">Bottom-Up Analysis</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#recent-trends-in-population-and-gdp">Recent Trends in Population and GDP</a></li>
-      <li><a href="#implied-decarbonization-rates">Implied Decarbonization Rates</a></li>
-      <li><a href="#results">Results</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#top-down-analysis">Top-Down Analysis</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#implied-decarbonization">Implied Decarbonization</a></li>
-      <li><a href="#results-1">Results</a></li>
-      </ul>
-</li>
-      <li><a href="#references">References</a></li>
-      </ul>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
 </div>
-      </div>
 
 </div>
 
@@ -448,7 +440,7 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2018
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

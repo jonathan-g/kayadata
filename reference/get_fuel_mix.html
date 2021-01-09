@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="Get fuel mix for one or more countries or regions — get_fuel_mix" />
 <meta property="og:description" content="Get fuel mix for one or more countries or regions" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kayadata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -77,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -105,8 +108,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/jonathan-g/kayadata">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/jonathan-g/kayadata/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -132,12 +135,12 @@
     <p>Get fuel mix for one or more countries or regions</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_fuel_mix</span>(
-  <span class='no'>region_name</span>,
-  <span class='kw'>collapse_renewables</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>region_code</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>get_fuel_mix</span><span class='op'>(</span>
+  <span class='va'>region_name</span>,
+  collapse_renewables <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  quiet <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  region_code <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,7 +172,7 @@ instead of the <code>region_name</code></p></td>
     <p>A tibble of fuel mix for the countries or regions specified.
 That is, the number of quads of each fuel and the
 fraction of total primary energy coming from that fuel for each country
-or region:</p><dl class='dl-horizontal'>
+or region:</p><dl>
 <dt>region</dt><dd><p>The name of the country or region</p></dd>
 <dt>year</dt><dd><p>The year reported</p></dd>
 <dt>fuel</dt><dd><p>The name of the fuel</p></dd>
@@ -179,40 +182,44 @@ fuel</p></dd>
 
 </dl>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>regions</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_fuel_mix</span>(<span class='st'>"United States"</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 5
+    <pre class="examples"><div class='input'><span class='fu'>get_fuel_mix</span><span class='op'>(</span><span class='st'>"United States"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 5 x 5</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   region, year [1]</span><span>
 #&gt;   region         year fuel        quads   frac
-#&gt;   &lt;chr&gt;         &lt;int&gt; &lt;ord&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-#&gt; 1 United States  2018 Coal        12.6  0.138 
-#&gt; 2 United States  2018 Oil         36.5  0.400 
-#&gt; 3 United States  2018 Natural Gas 27.9  0.305 
-#&gt; 4 United States  2018 Nuclear      7.63 0.0836
-#&gt; 5 United States  2018 Renewables   6.71 0.0735</div><div class='input'><span class='fu'>get_fuel_mix</span>(<span class='st'>"World"</span>, <span class='kw'>collapse_renewables</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 5
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;ord&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> United States  </span><span style='text-decoration: underline;'>2</span><span>019 Coal        10.7  0.120 
+#&gt; </span><span style='color: #555555;'>2</span><span> United States  </span><span style='text-decoration: underline;'>2</span><span>019 Oil         35.1  0.391 
+#&gt; </span><span style='color: #555555;'>3</span><span> United States  </span><span style='text-decoration: underline;'>2</span><span>019 Natural Gas 28.9  0.322 
+#&gt; </span><span style='color: #555555;'>4</span><span> United States  </span><span style='text-decoration: underline;'>2</span><span>019 Nuclear      7.20 0.080</span><span style='text-decoration: underline;'>2</span><span>
+#&gt; </span><span style='color: #555555;'>5</span><span> United States  </span><span style='text-decoration: underline;'>2</span><span>019 Renewables   7.82 0.087</span><span style='text-decoration: underline;'>1</span><span></div><div class='input'><span class='fu'>get_fuel_mix</span><span class='op'>(</span><span class='st'>"World"</span>, collapse_renewables <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6 x 5</span><span>
 #&gt;   region  year fuel        quads   frac
-#&gt;   &lt;chr&gt;  &lt;int&gt; &lt;ord&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-#&gt; 1 World   2018 Coal        150.  0.272 
-#&gt; 2 World   2018 Oil         185.  0.336 
-#&gt; 3 World   2018 Natural Gas 131.  0.239 
-#&gt; 4 World   2018 Nuclear      24.3 0.0441
-#&gt; 5 World   2018 Hydro        37.7 0.0684
-#&gt; 6 World   2018 Renewables   22.3 0.0405</div><div class='input'><span class='fu'>get_fuel_mix</span>(<span class='kw'>region_code</span> <span class='kw'>=</span> <span class='st'>"LCN"</span>)</div><div class='output co'>#&gt; # A tibble: 5 x 5
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;ord&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> World   </span><span style='text-decoration: underline;'>2</span><span>019 Coal        150.  0.270 
+#&gt; </span><span style='color: #555555;'>2</span><span> World   </span><span style='text-decoration: underline;'>2</span><span>019 Oil         183.  0.331 
+#&gt; </span><span style='color: #555555;'>3</span><span> World   </span><span style='text-decoration: underline;'>2</span><span>019 Natural Gas 134.  0.242 
+#&gt; </span><span style='color: #555555;'>4</span><span> World   </span><span style='text-decoration: underline;'>2</span><span>019 Nuclear      23.6 0.042</span><span style='text-decoration: underline;'>7</span><span>
+#&gt; </span><span style='color: #555555;'>5</span><span> World   </span><span style='text-decoration: underline;'>2</span><span>019 Hydro        35.7 0.064</span><span style='text-decoration: underline;'>5</span><span>
+#&gt; </span><span style='color: #555555;'>6</span><span> World   </span><span style='text-decoration: underline;'>2</span><span>019 Renewables   27.5 0.049</span><span style='text-decoration: underline;'>6</span><span></div><div class='input'><span class='fu'>get_fuel_mix</span><span class='op'>(</span>region_code <span class='op'>=</span> <span class='st'>"LCN"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 5</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   region, year [1]</span><span>
 #&gt;   region                       year fuel         quads    frac
-#&gt;   &lt;chr&gt;                       &lt;int&gt; &lt;ord&gt;        &lt;dbl&gt;   &lt;dbl&gt;
-#&gt; 1 Latin America and Caribbean  2018 Coal         1.90  0.0539 
-#&gt; 2 Latin America and Caribbean  2018 Oil         15.8   0.448  
-#&gt; 3 Latin America and Caribbean  2018 Natural Gas  8.80  0.249  
-#&gt; 4 Latin America and Caribbean  2018 Nuclear      0.324 0.00919
-#&gt; 5 Latin America and Caribbean  2018 Renewables   8.45  0.240  </div></pre>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;ord&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> Latin America and Caribbean  </span><span style='text-decoration: underline;'>2</span><span>019 Coal         1.89  0.054</span><span style='text-decoration: underline;'>8</span><span> 
+#&gt; </span><span style='color: #555555;'>2</span><span> Latin America and Caribbean  </span><span style='text-decoration: underline;'>2</span><span>019 Oil         14.4   0.417  
+#&gt; </span><span style='color: #555555;'>3</span><span> Latin America and Caribbean  </span><span style='text-decoration: underline;'>2</span><span>019 Natural Gas  8.74  0.254  
+#&gt; </span><span style='color: #555555;'>4</span><span> Latin America and Caribbean  </span><span style='text-decoration: underline;'>2</span><span>019 Nuclear      0.303 0.008</span><span style='text-decoration: underline;'>80</span><span>
+#&gt; </span><span style='color: #555555;'>5</span><span> Latin America and Caribbean  </span><span style='text-decoration: underline;'>2</span><span>019 Renewables   9.15  0.266  </div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -223,7 +230,7 @@ fuel</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
