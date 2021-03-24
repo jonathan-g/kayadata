@@ -390,6 +390,7 @@ emissions_factors <- function(collapse_renewables = TRUE) {
     ef <- ef %>% filter(fuel != "Hydro") %>%
       mutate(fuel = forcats::fct_recode(fuel, Renewables = "Hydro"))
   }
+  ef
 }
 
 #' Get power output from generation sources
