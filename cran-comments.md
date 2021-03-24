@@ -46,7 +46,6 @@ There are no reverse dependencies.
 
 ## Additional comments
 
-* This submission updates the package to version 0.5.0
+* This submission updates the package to version 0.5.1
 
-* I fixed an error where package tests would fail if the suggested vdiffr
-  package was not available.
+* This release is a bugfix for the emissions_factors() function.

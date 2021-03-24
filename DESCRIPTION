@@ -1,7 +1,7 @@
 Package: kayadata
 Type: Package
 Title: Kaya Identity Data for Nations and Regions
-Version: 0.5.0.9000
+Version: 0.5.1
 Date: 2021-03-24
 Authors@R: 
     person(given = "Jonathan",
