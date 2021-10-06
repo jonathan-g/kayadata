@@ -1,9 +1,9 @@
 ## Test environments
 
 * local Windows 10 install, R 4.0.3
-* local ubuntu 20.04 LTS install, R 4.0.3
-* GitHub actions ubuntu 20.04, R 4.0.3
-* r-hub builder:
+* local Ubuntu 20.04 LTS install, R 4.0.4
+* GitHub actions Ubuntu 20.04, R 4.0.4
+* r-hub builder (with _R_CHECK_FORCE_SUGGESTS_ = "false"):
     * Ubuntu 16.04, R-Release gcc
     * Ubuntu 16.04, R-Devel gcc
     * Debian, R-Release gcc
@@ -18,27 +18,9 @@
 
 ## R CMD check results
 
-* Local installs and builds on GitHub actions:
+* All builds:
 
     0 errors | 0 warnings | 0 notes
-
-* winbuilder builds:
-
-    0 errors | 0 warnings | 0 notes
-
-* r-hub ubuntu builds:
-
-    0 errors | 0 warnings | 1 note
-
-* All other r-hub builds:
-
-    0 errors | 0 warnings | 0 notes
-  
-### NOTES: 
-
-* R-Hub ubuntu builds have informative note that Suggested package vdiffr
-  is missing, but the build proceeds with no warnings or errors or other
-  notes.
 
 ## Reverse dependencies
 
@@ -46,7 +28,6 @@ There are no reverse dependencies.
 
 ## Additional comments
 
-* This submission updates the package to version 0.5.0
+* This submission updates the package to version 0.5.1
 
-* I fixed an error where package tests would fail if the suggested vdiffr
-  package was not available.
+* This release fixes a bug in the emissions_factors() function.
