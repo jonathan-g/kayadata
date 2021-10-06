@@ -75,14 +75,18 @@ prepare_regions <- function() {
                    "Yemen")
 
   eurasia <- countries %>%
-    filter(geography == "nation", regionID == "ECS") %$% country
+    filter(geography == "nation", regionID == "ECS") %>%
+    pull(country)
   asia <- countries %>%
-    filter(geography == "nation", regionID %in% c("EAS", "SAS")) %$% country
+    filter(geography == "nation", regionID %in% c("EAS", "SAS")) %>%
+    pull(country)
   africa <- countries %>%
     filter(geography == "nation", regionID %in% c("MEA", "SSF"),
-           ! country %in% middle_east) %$% country
+           ! country %in% middle_east) %>%
+    pull(country)
   americas <- countries %>%
-    filter(geography == "nation", regionID %in% c("NAC", "LCN")) %$% country
+    filter(geography == "nation", regionID %in% c("NAC", "LCN")) %>%
+    pull(country)
 
   oecd_americas <- intersect(americas, oecd)
   non_oecd_americas <- setdiff(americas, oecd)
@@ -123,7 +127,7 @@ prepare_regions <- function() {
                  regions = regions, region_tbl = region_tbl))
 }
 
-read_top_down_var <- function(var, file_name, kaya_data) {
+read_top_down_var <- function(var, file_name, kaya_data, ref_year = 2017) {
   var_name = enquo(var)
 
   x = prepare_regions()
@@ -137,17 +141,25 @@ read_top_down_var <- function(var, file_name, kaya_data) {
     "^Total *" = ""
   )
 
-  last_line = c(ieotab_1.xlsx = 30,
-                ieotab_3.xlsx = 30,
-                ieotab_10.xlsx = 30,
-                ieotab_14.xlsx = 31)
+  skip_lines = c("World_population_by_region.csv" = 4,
+                 "World_gross_domestic_product_(GDP)_per_capita_by_region_expressed_in_purchasing_power_parity.csv" = 4,
+                 "World_energy_intensity_by_region.csv"= 4,
+                 "World_carbon_dioxide_intensity_of_energy_use_by_region.csv" = 4)
 
-  range = str_c("A3:J", last_line[file_name])
+  last_line = c("World_population_by_region.csv" = 31,
+                "World_gross_domestic_product_(GDP)_per_capita_by_region_expressed_in_purchasing_power_parity.csv" = 31,
+                "World_energy_intensity_by_region.csv"= 31,
+                "World_carbon_dioxide_intensity_of_energy_use_by_region.csv" = 31)
 
-  td_df = read_excel(file.path("raw_data", file_name), range = range) %>%
+
+  td_df = read_csv(file.path("raw_data", "IEO", file_name),
+                   skip = skip_lines[file_name],
+                   col_names = TRUE,
+                   show_col_types = FALSE) %>%
     clean_names() %>%
-    rename(trend = average_annual_percent_change_2015_50) %>%
-    mutate(trend = trend / 100)
+    filter(! is.na(full_name)) %>%
+    rename(region = 1, trend = growth_2018_2050) %>%
+    mutate(trend = str_replace_all(trend, "%$", "") %>% as.numeric() / 100.)
 
   td_regions <- td_df %>%
     filter(region %in% c("Total OECD", "Total Non-OECD", "Total World")) %>%
@@ -173,12 +185,15 @@ read_top_down_var <- function(var, file_name, kaya_data) {
   td_trend = td_df %>% select(region, trend) %>%
     mutate(variable = var)
 
-  kd <- kaya_data %>% filter(year == 2015) %>%
+  kd <- kaya_data %>% filter(year == ref_year) %>%
     select(region, region_code, geography, ref = !!var_name) %>%
     mutate(region = as.character(region))
 
-  td_df <- td_df %>% select(-trend) %>% left_join(kd, by = "region") %>%
-    mutate(x = x2015) %>%
+  ref_col <- str_c("x", ref_year) %>% sym()
+
+  td_df <- td_df %>% select(-trend) %>%
+    left_join(kd, by = "region") %>%
+    mutate(x = !!ref_col) %>%
     mutate_at(vars(matches("^x2[0-9]+$")),
               list(~. * ref / x)) %>%
     select(-x, -ref) %>%
@@ -194,10 +209,10 @@ read_top_down_var <- function(var, file_name, kaya_data) {
 }
 
 prepare_top_down <- function(overwrite = FALSE) {
-  files = c(E = "ieotab_1.xlsx",
-            P = "ieotab_14.xlsx",
-            G = "ieotab_3.xlsx",
-            F = "ieotab_10.xlsx")
+  files = c(P = "World_population_by_region.csv",
+            g = "World_gross_domestic_product_(GDP)_per_capita_by_region_expressed_in_purchasing_power_parity.csv",
+            e = "World_energy_intensity_by_region.csv",
+            f = "World_carbon_dioxide_intensity_of_energy_use_by_region.csv")
 
   load(file.path('data', 'kaya_data.rda'))
 
@@ -211,11 +226,11 @@ prepare_top_down <- function(overwrite = FALSE) {
   }
 
   td_values = spread(td_values, key = variable, value = value) %>%
-    mutate(g = G / P, e = E / G, f = F / E, ef = F / G) %>%
+    mutate(G = g * P, E = e * G, F = f * E, ef = e * f) %>%
     select(region, region_code, geography, year,
            P, G, E, F, g, e, f, ef)
   td_trends = td_trends %>% spread(key = variable, value = trend) %>%
-    mutate(g = G - P, e = E - G, f = F - E, ef = F - G) %>%
+    mutate(G = g + P, E = e + G, F = f + E, ef = e + f) %>%
     select(region, region_code, geography,
            P, G, E, F, g, e, f, ef)
 
