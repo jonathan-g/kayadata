@@ -1,7 +1,7 @@
 kayadata
 ================
 Jonathan Gilligan
-2019-12-21
+2021-10-05
 
 # kayadata
 
@@ -39,12 +39,12 @@ mexico_data %>% filter(year >= 1965) %>%
 #> # A tibble: 6 x 10
 #>   region  year     P     G     E     F     g     e     f    ef
 #>   <ord>  <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1 Mexico  2019 0.128  1.31  7.32  455. 10.3   5.58  62.2  347.
-#> 2 Mexico  2018 0.126  1.31  7.42  467. 10.4   5.66  62.8  355.
-#> 3 Mexico  2017 0.125  1.29  7.48  477. 10.3   5.82  63.7  371.
-#> 4 Mexico  2016 0.123  1.26  7.38  469. 10.2   5.86  63.5  372.
-#> 5 Mexico  2015 0.122  1.22  7.29  463. 10.0   5.96  63.6  379.
-#> 6 Mexico  2014 0.120  1.18  7.30  460.  9.84  6.16  63.0  388.
+#> 1 Mexico  2020 0.129  1.20  6.14  373.  9.32  5.11  60.8  311.
+#> 2 Mexico  2019 0.128  1.31  7.16  460. 10.3   5.47  64.2  351.
+#> 3 Mexico  2018 0.126  1.31  7.43  477. 10.4   5.67  64.2  364.
+#> 4 Mexico  2017 0.125  1.28  7.49  486. 10.3   5.84  64.9  379.
+#> 5 Mexico  2016 0.123  1.26  7.38  480. 10.2   5.88  65.1  383.
+#> 6 Mexico  2015 0.122  1.22  7.29  475. 10.0   5.96  65.2  388.
 ```
 
 -   `project_top_down()`: Project future population, GDP, energy use,
@@ -67,7 +67,6 @@ us_kaya = get_kaya_data("United States")
 plot_kaya(us_kaya, "ef", y_lab = "Carbon intensity of economy",
           start_year = 2000, stop_year = 2010, log_scale = TRUE,
           trend_line = TRUE)
-#> `geom_smooth()` using formula 'y ~ x'
 ```
 
 <img src="man/figures/README-plot-kaya-1.png" width="100%" />
@@ -89,11 +88,11 @@ mexico_mix
 #> # Groups:   region, year [1]
 #>   region  year fuel         quads   frac
 #>   <chr>  <int> <ord>        <dbl>  <dbl>
-#> 1 Mexico  2019 Coal        0.481  0.0657
-#> 2 Mexico  2019 Oil         3.12   0.426 
-#> 3 Mexico  2019 Natural Gas 3.09   0.423 
-#> 4 Mexico  2019 Nuclear     0.0951 0.0130
-#> 5 Mexico  2019 Renewables  0.528  0.0722
+#> 1 Mexico  2020 Coal        0.198  0.0323
+#> 2 Mexico  2020 Oil         2.34   0.381 
+#> 3 Mexico  2020 Natural Gas 2.94   0.480 
+#> 4 Mexico  2020 Nuclear     0.0961 0.0157
+#> 5 Mexico  2020 Renewables  0.563  0.0918
 ```
 
 -   `plot_fuel_mix`: Plot the fuel mix in a donut chart
