@@ -26,7 +26,7 @@ data_params <- within(list(), {
   # bp_spreadsheet_url <- str_c("https://www.bp.com/content/dam/bp/business-sites/en/",
   #                             "global/corporate/xlsx/energy-economics/statistical-review/",
   #                             "bp-stats-review-2019-all-data.xlsx")
-  bp_year <- 2020
+  bp_year <- 2021
   bp_spreadsheet_name <- str_c("bp-stats-review-", bp_year, "-all-data.xlsx")
   bp_spreadsheet_url <- str_c(
     "https://www.bp.com/content/dam/bp/business-sites/en/global/corporate/xlsx/energy-economics/statistical-review/",
@@ -542,9 +542,9 @@ prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
     energy   <- load_primary_energy(data_params$bp_spreadsheet_path)
     co2      <- load_co2(data_params$bp_spreadsheet_path)
     fuel_mix <- load_fuel_mix(data_params$bp_spreadsheet_path)
-    write_rds(energy,   path = data_params$bp_energy_path)
-    write_rds(co2,      path = data_params$bp_co2_path)
-    write_rds(fuel_mix, path = data_params$bp_fuel_mix_path)
+    write_rds(energy,   file = data_params$bp_energy_path)
+    write_rds(co2,      file = data_params$bp_co2_path)
+    write_rds(fuel_mix, file = data_params$bp_fuel_mix_path)
   } else {
     energy   <- read_rds(data_params$bp_energy_path)
     co2      <- read_rds(data_params$bp_co2_path)
@@ -555,7 +555,7 @@ prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
     population <- load_wb(data_params$wb_pop_id, kaya_var = "P",
                           unit_id = "billion", unit = "billion", scale = 1E9,
                           ignore_na = ignore_na)
-    write_rds(population, path = data_params$wb_pop_path)
+    write_rds(population, file = data_params$wb_pop_path)
   } else {
     population <- read_rds(data_params$wb_pop_path)
   }
@@ -564,7 +564,7 @@ prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
     gdp_ppp <- load_wb(data_params$wb_gdp_ppp_id, kaya_var = "G_ppp",
                        unit_id = "trillion", unit = "trillion", scale = 1E12,
                        ignore_na = ignore_na)
-    write_rds(gdp_ppp, path = data_params$wb_gdp_ppp_path)
+    write_rds(gdp_ppp, file = data_params$wb_gdp_ppp_path)
   } else {
     gdp_ppp <- read_rds(data_params$wb_gdp_ppp_path)
   }
@@ -573,7 +573,7 @@ prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
     gdp_mer <- load_wb(data_params$wb_gdp_mer_id, kaya_var = "G_mer",
                        unit_id = "trillion", unit = "trillion", scale = 1E12,
                        ignore_na = ignore_na)
-    write_rds(gdp_mer, path = data_params$wb_gdp_mer_path)
+    write_rds(gdp_mer, file = data_params$wb_gdp_mer_path)
   } else {
     gdp_mer <- read_rds(data_params$wb_gdp_mer_path)
   }
@@ -615,7 +615,7 @@ prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
 prepare_fuel_mix <- function(force_bp = FALSE) {
   if (force_bp || ! file.exists(data_params$bp_fuel_mix_path)) {
     fuel_mix <- load_fuel_mix(data_params$bp_spreadsheet_path)
-    write_rds(fuel_mix, path = data_params$bp_fuel_mix_path)
+    write_rds(fuel_mix, file = data_params$bp_fuel_mix_path)
   } else {
     fuel_mix <- read_rds(data_params$bp_fuel_mix_path)
   }
