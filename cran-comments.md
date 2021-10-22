@@ -2,7 +2,13 @@
 
 * local Windows 10 install, R 4.1.1
 * local Ubuntu 20.04 LTS install, R 4.1.1
-* GitHub actions Ubuntu 20.04, R 4.1.1
+* GitHub actions:
+  * Ubuntu 20.04, R 4.1.1
+  * Ubuntu 20.04, R devel
+  * Ubuntu 20.04, R oldrel-1
+  * Windows Server 2019, R 4.1.1
+  * Windows Server 2019, R oldrel (3.6.3)
+  * MacOS 11, R 4.1.1
 * r-hub builder:
   * Ubuntu 20.04.1 LTS, R-Release GCC
   * Ubuntu 20.04.1 LTS, R-Devel GCC
@@ -33,8 +39,8 @@
     I have verified that the URLs are valid and work when visited interactively
     with browsers, but often give 503's when they are retrieved by robots.
   * There are no other notes from any of the builds.
-  * There are no notes from any of the local builds, the MacOS builds,
-    or the win-builder oldrelease build.
+  * There are no notes from any of the local builds, the GitHub actions,
+    or the r-hub MacOS builds.
 
 ## Reverse dependencies
 
