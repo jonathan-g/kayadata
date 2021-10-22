@@ -28,18 +28,13 @@ jobs:
           - {os: windows-latest, r: '3.6'}
           - {os: macOS-latest, r: 'release'}
           - {os: macOS-11, r: 'release'}
-          - {os: ubuntu-20.04, r: 'release'}
           - {os: ubuntu-20.04, r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-20.04, r: 'oldrel-1'}
         exclude:
-          - isMain: false
-            config:
-              - {os: windows-latest, r: 'release'}
-              - {os: windows-latest, r: '3.6'}
-              - {os: macOS-latest, r: 'release'}
-              - {os: macOS-11, r: 'release'}
-              - {os: ubuntu-20.04, r: 'devel', http-user-agent: 'release'}
-              - {os: ubuntu-20.04, r: 'oldrel-1'}
+          isMain: false
+        include:
+          config: {os: ubuntu-20.04, r: 'release'}
+
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
