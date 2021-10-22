@@ -42,7 +42,7 @@ There are no reverse dependencies.
 
 ## Additional comments
 
-* This submission updates the package to version 0.5.2
+* This submission updates the package to version 1.0.0
 
 * This release is a data update that brings data up to date through the 
   end of 2020.

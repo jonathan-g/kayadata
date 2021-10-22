@@ -1,7 +1,11 @@
-# kayadata 0.5.2
+# kayadata 1.0.0
 
-This release updates to use the 2021 release of BP Energy Statistics, which
-has data through 2020.
+The package has matured and this will be release 1.0.0.
+
+* This release updates to data through 2020:
+  * The 2021 release of BP Energy Statistics
+  * The latest population and GDP data from the World Bank.
+
 
 # kayadata 0.5.1
 
