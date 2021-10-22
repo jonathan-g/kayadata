@@ -48,6 +48,5 @@ Meta
 *~
 *.tmp
 
-docs
 /foo/
 /CRAN-RELEASE
