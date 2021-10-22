@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kayadata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2</span>
       </span>
     </div>
 
@@ -188,33 +188,33 @@ fuel</p></dd>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>get_fuel_mix</span><span class='op'>(</span><span class='st'>"United States"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 x 5</span><span>
-#&gt; </span><span style='color: #949494;'># Groups:   region, year [1]</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 × 5</span>
+#&gt; <span style='color: #949494;'># Groups:   region, year [1]</span>
 #&gt;   region         year fuel        quads   frac
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> United States  </span><span style='text-decoration: underline;'>2</span><span>019 Coal        10.7  0.120 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> United States  </span><span style='text-decoration: underline;'>2</span><span>019 Oil         35.1  0.391 
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> United States  </span><span style='text-decoration: underline;'>2</span><span>019 Natural Gas 28.9  0.322 
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> United States  </span><span style='text-decoration: underline;'>2</span><span>019 Nuclear      7.20 0.080</span><span style='text-decoration: underline;'>2</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> United States  </span><span style='text-decoration: underline;'>2</span><span>019 Renewables   7.82 0.087</span><span style='text-decoration: underline;'>1</span><span></div><div class='input'><span class='fu'>get_fuel_mix</span><span class='op'>(</span><span class='st'>"World"</span>, collapse_renewables <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 6 x 5</span><span>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;ord&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> United States  <span style='text-decoration: underline;'>2</span>020 Coal         8.72 0.105 
+#&gt; <span style='color: #BCBCBC;'>2</span> United States  <span style='text-decoration: underline;'>2</span>020 Oil         30.8  0.371 
+#&gt; <span style='color: #BCBCBC;'>3</span> United States  <span style='text-decoration: underline;'>2</span>020 Natural Gas 28.4  0.341 
+#&gt; <span style='color: #BCBCBC;'>4</span> United States  <span style='text-decoration: underline;'>2</span>020 Nuclear      7.00 0.084<span style='text-decoration: underline;'>1</span>
+#&gt; <span style='color: #BCBCBC;'>5</span> United States  <span style='text-decoration: underline;'>2</span>020 Renewables   8.26 0.099<span style='text-decoration: underline;'>3</span></div><div class='input'><span class='fu'>get_fuel_mix</span><span class='op'>(</span><span class='st'>"World"</span>, collapse_renewables <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6 × 5</span>
 #&gt;   region  year fuel        quads   frac
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> World   </span><span style='text-decoration: underline;'>2</span><span>019 Coal        150.  0.270 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> World   </span><span style='text-decoration: underline;'>2</span><span>019 Oil         183.  0.331 
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> World   </span><span style='text-decoration: underline;'>2</span><span>019 Natural Gas 134.  0.242 
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> World   </span><span style='text-decoration: underline;'>2</span><span>019 Nuclear      23.6 0.042</span><span style='text-decoration: underline;'>7</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> World   </span><span style='text-decoration: underline;'>2</span><span>019 Hydro        35.7 0.064</span><span style='text-decoration: underline;'>5</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>6</span><span> World   </span><span style='text-decoration: underline;'>2</span><span>019 Renewables   27.5 0.049</span><span style='text-decoration: underline;'>6</span><span></div><div class='input'><span class='fu'>get_fuel_mix</span><span class='op'>(</span>region_code <span class='op'>=</span> <span class='st'>"LCN"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 5 x 5</span><span>
-#&gt; </span><span style='color: #949494;'># Groups:   region, year [1]</span><span>
-#&gt;   region                       year fuel         quads    frac
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;ord&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Latin America and Caribbean  </span><span style='text-decoration: underline;'>2</span><span>019 Coal         1.89  0.054</span><span style='text-decoration: underline;'>8</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Latin America and Caribbean  </span><span style='text-decoration: underline;'>2</span><span>019 Oil         14.4   0.417  
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Latin America and Caribbean  </span><span style='text-decoration: underline;'>2</span><span>019 Natural Gas  8.74  0.254  
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Latin America and Caribbean  </span><span style='text-decoration: underline;'>2</span><span>019 Nuclear      0.303 0.008</span><span style='text-decoration: underline;'>80</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Latin America and Caribbean  </span><span style='text-decoration: underline;'>2</span><span>019 Renewables   9.15  0.266  </div></span></pre>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;ord&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> World   <span style='text-decoration: underline;'>2</span>020 Coal        144.  0.272 
+#&gt; <span style='color: #BCBCBC;'>2</span> World   <span style='text-decoration: underline;'>2</span>020 Oil         165.  0.312 
+#&gt; <span style='color: #BCBCBC;'>3</span> World   <span style='text-decoration: underline;'>2</span>020 Natural Gas 130.  0.247 
+#&gt; <span style='color: #BCBCBC;'>4</span> World   <span style='text-decoration: underline;'>2</span>020 Nuclear      22.7 0.043<span style='text-decoration: underline;'>1</span>
+#&gt; <span style='color: #BCBCBC;'>5</span> World   <span style='text-decoration: underline;'>2</span>020 Hydro        36.2 0.068<span style='text-decoration: underline;'>6</span>
+#&gt; <span style='color: #BCBCBC;'>6</span> World   <span style='text-decoration: underline;'>2</span>020 Renewables   30.1 0.057<span style='text-decoration: underline;'>0</span></div><div class='input'><span class='fu'>get_fuel_mix</span><span class='op'>(</span>region_code <span class='op'>=</span> <span class='st'>"LCN"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 × 5</span>
+#&gt; <span style='color: #949494;'># Groups:   region, year [1]</span>
+#&gt;   region                       year fuel         quads   frac
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                       <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;ord&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> Latin America and Caribbean  <span style='text-decoration: underline;'>2</span>020 Coal         1.60  0.051<span style='text-decoration: underline;'>7</span>
+#&gt; <span style='color: #BCBCBC;'>2</span> Latin America and Caribbean  <span style='text-decoration: underline;'>2</span>020 Oil         12.4   0.401 
+#&gt; <span style='color: #BCBCBC;'>3</span> Latin America and Caribbean  <span style='text-decoration: underline;'>2</span>020 Natural Gas  7.91  0.256 
+#&gt; <span style='color: #BCBCBC;'>4</span> Latin America and Caribbean  <span style='text-decoration: underline;'>2</span>020 Nuclear      0.315 0.010<span style='text-decoration: underline;'>2</span>
+#&gt; <span style='color: #BCBCBC;'>5</span> Latin America and Caribbean  <span style='text-decoration: underline;'>2</span>020 Renewables   8.73  0.282 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

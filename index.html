@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">kayadata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2</span>
       </span>
     </div>
 
@@ -89,7 +89,7 @@
 <div id="kayadata" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#kayadata" class="anchor"></a>kayadata</h1></div>
-<p>Jonathan Gilligan 2019-12-21</p>
+<p>Jonathan Gilligan 2021-10-05</p>
 </div>
 <div id="kayadata-1" class="section level1">
 <h1 class="hasAnchor">
@@ -116,12 +116,12 @@
 <span class="co">#&gt; # A tibble: 6 x 10</span>
 <span class="co">#&gt;   region  year     P     G     E     F     g     e     f    ef</span>
 <span class="co">#&gt;   &lt;ord&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Mexico  2019 0.128  1.31  7.32  455. 10.3   5.58  62.2  347.</span>
-<span class="co">#&gt; 2 Mexico  2018 0.126  1.31  7.42  467. 10.4   5.66  62.8  355.</span>
-<span class="co">#&gt; 3 Mexico  2017 0.125  1.29  7.48  477. 10.3   5.82  63.7  371.</span>
-<span class="co">#&gt; 4 Mexico  2016 0.123  1.26  7.38  469. 10.2   5.86  63.5  372.</span>
-<span class="co">#&gt; 5 Mexico  2015 0.122  1.22  7.29  463. 10.0   5.96  63.6  379.</span>
-<span class="co">#&gt; 6 Mexico  2014 0.120  1.18  7.30  460.  9.84  6.16  63.0  388.</span></code></pre></div>
+<span class="co">#&gt; 1 Mexico  2020 0.129  1.20  6.14  373.  9.32  5.11  60.8  311.</span>
+<span class="co">#&gt; 2 Mexico  2019 0.128  1.31  7.16  460. 10.3   5.47  64.2  351.</span>
+<span class="co">#&gt; 3 Mexico  2018 0.126  1.31  7.43  477. 10.4   5.67  64.2  364.</span>
+<span class="co">#&gt; 4 Mexico  2017 0.125  1.28  7.49  486. 10.3   5.84  64.9  379.</span>
+<span class="co">#&gt; 5 Mexico  2016 0.123  1.26  7.38  480. 10.2   5.88  65.1  383.</span>
+<span class="co">#&gt; 6 Mexico  2015 0.122  1.22  7.29  475. 10.0   5.96  65.2  388.</span></code></pre></div>
 <ul>
 <li>
 <code><a href="reference/project_top_down.html">project_top_down()</a></code>: Project future population, GDP, energy use, and emissions. Example:</li>
@@ -141,8 +141,7 @@
 <code class="sourceCode R"><span class="va">us_kaya</span> <span class="op">=</span> <span class="fu"><a href="reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"United States"</span><span class="op">)</span>
 <span class="fu"><a href="reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">us_kaya</span>, <span class="st">"ef"</span>, y_lab <span class="op">=</span> <span class="st">"Carbon intensity of economy"</span>,
           start_year <span class="op">=</span> <span class="fl">2000</span>, stop_year <span class="op">=</span> <span class="fl">2010</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>,
-          trend_line <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
+          trend_line <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p><img src="reference/figures/README-plot-kaya-1.png" width="100%"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">world_kaya</span> <span class="op">=</span> <span class="fu"><a href="reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"World"</span><span class="op">)</span>
@@ -156,11 +155,11 @@
 <span class="co">#&gt; # Groups:   region, year [1]</span>
 <span class="co">#&gt;   region  year fuel         quads   frac</span>
 <span class="co">#&gt;   &lt;chr&gt;  &lt;int&gt; &lt;ord&gt;        &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Mexico  2019 Coal        0.481  0.0657</span>
-<span class="co">#&gt; 2 Mexico  2019 Oil         3.12   0.426 </span>
-<span class="co">#&gt; 3 Mexico  2019 Natural Gas 3.09   0.423 </span>
-<span class="co">#&gt; 4 Mexico  2019 Nuclear     0.0951 0.0130</span>
-<span class="co">#&gt; 5 Mexico  2019 Renewables  0.528  0.0722</span></code></pre></div>
+<span class="co">#&gt; 1 Mexico  2020 Coal        0.198  0.0323</span>
+<span class="co">#&gt; 2 Mexico  2020 Oil         2.34   0.381 </span>
+<span class="co">#&gt; 3 Mexico  2020 Natural Gas 2.94   0.480 </span>
+<span class="co">#&gt; 4 Mexico  2020 Nuclear     0.0961 0.0157</span>
+<span class="co">#&gt; 5 Mexico  2020 Renewables  0.563  0.0918</span></code></pre></div>
 <ul>
 <li>
 <code>plot_fuel_mix</code>: Plot the fuel mix in a donut chart</li>

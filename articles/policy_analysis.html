@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kayadata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2</span>
       </span>
     </div>
 
@@ -141,48 +141,43 @@ F = P \times g \times e \times f,
 <p>Let’s start by looking at trends in <em>P</em>, <em>g</em>, <em>e</em>, and <em>f</em> starting in 1990. I plot these with a log-scale on the y-axis because a constant growth rate produces exponential growth, so it should look linear on a semi-log plot.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">kaya</span>, <span class="st">"P"</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>, start_year <span class="op">=</span> <span class="fl">1990</span>, trend_line <span class="op">=</span> <span class="cn">TRUE</span>, points <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<img src="policy_analysis_files/figure-html/plot_P_1990-1.png" alt="Trend in population for U.S. from 1990--2019" width="700"><p class="caption">
-Trend in population for U.S. from 1990–2019
+<img src="policy_analysis_files/figure-html/plot_P_1990-1.png" alt="Trend in population for U.S. from 1990--2020" width="700"><p class="caption">
+Trend in population for U.S. from 1990–2020
 </p>
 </div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">kaya</span>, <span class="st">"g"</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>, start_year <span class="op">=</span> <span class="fl">1990</span>, trend_line <span class="op">=</span> <span class="cn">TRUE</span>, points <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<img src="policy_analysis_files/figure-html/plot_g_1990-1.png" alt="Trend in per-capita GDP for U.S. from 1990--2019" width="700"><p class="caption">
-Trend in per-capita GDP for U.S. from 1990–2019
+<img src="policy_analysis_files/figure-html/plot_g_1990-1.png" alt="Trend in per-capita GDP for U.S. from 1990--2020" width="700"><p class="caption">
+Trend in per-capita GDP for U.S. from 1990–2020
 </p>
 </div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">kaya</span>, <span class="st">"e"</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>, start_year <span class="op">=</span> <span class="fl">1990</span>, trend_line <span class="op">=</span> <span class="cn">TRUE</span>, points <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<img src="policy_analysis_files/figure-html/plot_e_1990-1.png" alt="Trend in primary-energy intensity of the U.S. economy from 1990--2019" width="700"><p class="caption">
-Trend in primary-energy intensity of the U.S. economy from 1990–2019
+<img src="policy_analysis_files/figure-html/plot_e_1990-1.png" alt="Trend in primary-energy intensity of the U.S. economy from 1990--2020" width="700"><p class="caption">
+Trend in primary-energy intensity of the U.S. economy from 1990–2020
 </p>
 </div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">kaya</span>, <span class="st">"f"</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>, start_year <span class="op">=</span> <span class="fl">1990</span>, trend_line <span class="op">=</span> <span class="cn">TRUE</span>, points <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<img src="policy_analysis_files/figure-html/plot_f_1990-1.png" alt="Trend in the carbon-dioxide intensity of the U.S. energy supply from 1990--2019" width="700"><p class="caption">
-Trend in the carbon-dioxide intensity of the U.S. energy supply from 1990–2019
+<img src="policy_analysis_files/figure-html/plot_f_1990-1.png" alt="Trend in the carbon-dioxide intensity of the U.S. energy supply from 1990--2020" width="700"><p class="caption">
+Trend in the carbon-dioxide intensity of the U.S. energy supply from 1990–2020
 </p>
 </div>
 <p>All of these trends look reasonable, except for <em>f</em>. Let’s try <em>f</em> again, but fitting the trend only since 2005:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">kaya</span>, <span class="st">"f"</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>, start_year <span class="op">=</span> <span class="fl">2005</span>, trend_line <span class="op">=</span> <span class="cn">TRUE</span>, points <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
+  <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure">
-<img src="policy_analysis_files/figure-html/plot_f_2005-1.png" alt="Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005--2019" width="700"><p class="caption">
-Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2019
+<img src="policy_analysis_files/figure-html/plot_f_2005-1.png" alt="Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005--2020" width="700"><p class="caption">
+Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2020
 </p>
 </div>
 <p>That looks better. The abrupt changes in trend at 1990 and again at 2005 illustrate the difficulties of predicting future values by extrapolating from past trends, and indicates that the extrapolations we will use here should be taken with several grains of salt.</p>
@@ -202,7 +197,7 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2019
 <span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://magrittr.tidyverse.org/reference/aliases.html">set_names</a></span><span class="op">(</span><span class="va">vars</span><span class="op">)</span>
 
 <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>Variable <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">historical_trends</span><span class="op">)</span>, 
-       Rate <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">historical_trends</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+       Rate <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">historical_trends</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>align <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span>, <span class="st">"r"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -212,19 +207,19 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2019
 <tbody>
 <tr class="odd">
 <td align="center">P</td>
-<td align="right">0.94%</td>
+<td align="right">0.93%</td>
 </tr>
 <tr class="even">
 <td align="center">g</td>
-<td align="right">1.48%</td>
+<td align="right">1.45%</td>
 </tr>
 <tr class="odd">
 <td align="center">e</td>
-<td align="right">-2.05%</td>
+<td align="right">-2.06%</td>
 </tr>
 <tr class="even">
 <td align="center">f</td>
-<td align="right">-1.08%</td>
+<td align="right">-1.11%</td>
 </tr>
 </tbody>
 </table>
@@ -244,7 +239,7 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2019
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>implied_rate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="cn">F</span> <span class="op">/</span> <span class="va">F_ref</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">year</span> <span class="op">-</span> <span class="va">ref_year</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">F_target</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>implied_rate <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">implied_rate</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>,  <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>implied_rate <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">implied_rate</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>,  <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"Target F"</span> <span class="op">=</span> <span class="cn">F</span>, <span class="st">"Implied Rate"</span> <span class="op">=</span> <span class="va">implied_rate</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>align <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"crr"</span><span class="op">)</span>, digits <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -256,12 +251,12 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2019
 <tbody>
 <tr class="odd">
 <td align="center">2025</td>
-<td align="right">4346</td>
+<td align="right">4351</td>
 <td align="right">-1.51%</td>
 </tr>
 <tr class="even">
 <td align="center">2050</td>
-<td align="right">1175</td>
+<td align="right">1176</td>
 <td align="right">-3.58%</td>
 </tr>
 </tbody>
@@ -276,7 +271,7 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2019
 
 <span class="va">implied_decarb_rates</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"hist_"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"impl_"</span><span class="op">)</span><span class="op">)</span>,
-            <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">.</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+            <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">.</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>Year <span class="op">=</span> <span class="va">year</span>, 
          <span class="st">"implied F"</span> <span class="op">=</span> <span class="va">impl_F</span>, 
          <span class="st">"historical G"</span> <span class="op">=</span> <span class="va">hist_G</span>,
@@ -296,16 +291,16 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2019
 <tr class="odd">
 <td align="right">2025</td>
 <td align="right">-1.51%</td>
-<td align="right">2.43%</td>
-<td align="right">-3.93%</td>
-<td align="right">-3.12%</td>
+<td align="right">2.38%</td>
+<td align="right">-3.89%</td>
+<td align="right">-3.18%</td>
 </tr>
 <tr class="even">
 <td align="right">2050</td>
 <td align="right">-3.58%</td>
-<td align="right">2.43%</td>
-<td align="right">-6.00%</td>
-<td align="right">-3.12%</td>
+<td align="right">2.38%</td>
+<td align="right">-5.96%</td>
+<td align="right">-3.18%</td>
 </tr>
 </tbody>
 </table>
@@ -313,8 +308,8 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2019
 <div id="results" class="section level2">
 <h2 class="hasAnchor">
 <a href="#results" class="anchor"></a>Results</h2>
-<p>To meet the goals for 2025 would require increasing the rate of reducing <em>ef</em> from -3.12% per year to -3.93% per year: 1.3 times faster.</p>
-<p>To meet the goals for 2050 would require increasing the rate of reducing <em>ef</em> from -3.12% per year to -6.00% per year: 1.9 times faster.</p>
+<p>To meet the goals for 2025 would require increasing the rate of reducing <em>ef</em> from -3.18% per year to -3.89% per year: 1.2 times faster.</p>
+<p>To meet the goals for 2050 would require increasing the rate of reducing <em>ef</em> from -3.18% per year to -5.96% per year: 1.9 times faster.</p>
 </div>
 </div>
 <div id="top-down-analysis" class="section level1">
@@ -325,7 +320,7 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2019
 <code class="sourceCode R"><span class="va">top_down_trends</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_top_down_trends.html">get_top_down_trends</a></span><span class="op">(</span><span class="st">"United States"</span><span class="op">)</span>
 
 <span class="va">top_down_trends</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">P</span>, <span class="va">G</span>, <span class="va">E</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">.</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">.</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span><span class="st">"P trend"</span> <span class="op">=</span> <span class="va">P</span>, <span class="st">"G trend"</span> <span class="op">=</span> <span class="va">G</span>, <span class="st">"E trend"</span> <span class="op">=</span> <span class="va">E</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span>align<span class="op">=</span><span class="st">"rrr"</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -354,7 +349,7 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2019
 <span class="va">implied_decarb_rates_top_down</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate_all.html">mutate_at</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"hist_"</span><span class="op">)</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"impl_"</span><span class="op">)</span>, 
                  <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"top_down"</span><span class="op">)</span><span class="op">)</span>,
-            <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">.</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+            <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">~</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_chr</a></span><span class="op">(</span><span class="va">.</span>, <span class="op">~</span><span class="fu"><a href="https://scales.r-lib.org/reference/label_percent.html">percent</a></span><span class="op">(</span><span class="va">.x</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>Year <span class="op">=</span> <span class="va">year</span>, 
          <span class="st">"implied F"</span> <span class="op">=</span> <span class="va">impl_F</span>, 
          <span class="st">"top-down E"</span> <span class="op">=</span> <span class="va">top_down_E</span>,
@@ -376,14 +371,14 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2019
 <td align="right">-1.51%</td>
 <td align="right">0.30%</td>
 <td align="right">-1.81%</td>
-<td align="right">-1.08%</td>
+<td align="right">-1.11%</td>
 </tr>
 <tr class="even">
 <td align="right">2050</td>
 <td align="right">-3.58%</td>
 <td align="right">0.30%</td>
 <td align="right">-3.88%</td>
-<td align="right">-1.08%</td>
+<td align="right">-1.11%</td>
 </tr>
 </tbody>
 </table>
@@ -391,8 +386,8 @@ Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2019
 <div id="results-1" class="section level2">
 <h2 class="hasAnchor">
 <a href="#results-1" class="anchor"></a>Results</h2>
-<p>To meet the goals for 2025 would require increasing the rate of reducing <em>f</em> from -1.08% per year to -1.81% per year: 1.7 times faster.</p>
-<p>To meet the goals for 2050 would require increasing the rate of reducing <em>f</em> from -1.08% per year to -3.88% per year: 3.6 times faster.</p>
+<p>To meet the goals for 2025 would require increasing the rate of reducing <em>f</em> from -1.11% per year to -1.81% per year: 1.6 times faster.</p>
+<p>To meet the goals for 2050 would require increasing the rate of reducing <em>f</em> from -1.11% per year to -3.88% per year: 3.5 times faster.</p>
 </div>
 </div>
 <div id="references" class="section level1 unnumbered">
