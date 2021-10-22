@@ -1,8 +1,8 @@
 ## Test environments
 
 * local Windows 10 install, R 4.1.1
-* local Ubuntu 20.04 LTS install, R 4.0.4
-* GitHub actions Ubuntu 20.04, R 4.0.4
+* local Ubuntu 20.04 LTS install, R 4.1.1
+* GitHub actions Ubuntu 20.04, R 4.1.1
 * r-hub builder:
   * Ubuntu 20.04.1 LTS, R-Release GCC
   * Ubuntu 20.04.1 LTS, R-Devel GCC
@@ -24,12 +24,17 @@
 
     0 errors | 0 warnings
 
-* Some r-hub builds under Debian, Fedora, and Ubuntu have notes about
-  "possibly invalid URL" in the documentation with 503 return codes. 
-  I have verified that the URLs are valid and work when visited interactively 
-  with browsers, but often give 503's when they are retrieved by robots.
-* There are no other notes from any of the Linux builds.
-* There are no notes from MacOS or Windows builds.
+* Notes:
+  * Some of the win-builder builds and r-hub Linux builds under Debian, Fedora, 
+    and Ubuntu have notes about "possibly invalid URL" in the documentation with
+    503 return codes from URLs that use dynamically generated content from 
+    queries, such as
+    <https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_a>
+    I have verified that the URLs are valid and work when visited interactively
+    with browsers, but often give 503's when they are retrieved by robots.
+  * There are no other notes from any of the builds.
+  * There are no notes from any of the local builds, the MacOS builds,
+    or the win-builder oldrelease build.
 
 ## Reverse dependencies
 
