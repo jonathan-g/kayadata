@@ -68,13 +68,13 @@ jobs:
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
-          run: |
-            while read -r cmd
-            do
-              eval sudo $cmd
-            done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
-          if: runner.r == 'devel'
-            run: sudo apt-get install libcurl4-openssl-dev
+        run: |
+          while read -r cmd
+          do
+            eval sudo $cmd
+          done < <(Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04"))')
+        if: runner.r == 'devel'
+        run: sudo apt-get install libcurl4-openssl-dev
 
       - name: Install dependencies
         run: |
