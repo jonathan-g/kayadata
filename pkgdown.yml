@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   kayadata: kayadata.html
   policy_analysis: policy_analysis.html
-last_built: 2021-10-22T22:14Z
+last_built: 2021-10-22T22:16Z
 urls:
   reference: https://jonathan-g.github.io/kayadata/reference
   article: https://jonathan-g.github.io/kayadata/articles
