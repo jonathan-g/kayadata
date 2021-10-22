@@ -31,9 +31,9 @@ jobs:
           - {os: ubuntu-20.04, r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-20.04, r: 'oldrel-1'}
         exclude:
-          isMain: false
+          - isMain: false
         include:
-          config: {os: ubuntu-20.04, r: 'release'}
+          - config: {os: ubuntu-20.04, r: 'release'}
 
 
     env:
