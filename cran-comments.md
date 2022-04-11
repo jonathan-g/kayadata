@@ -1,7 +1,7 @@
 ## Test environments
 
-* local Windows 10 install, R 4.1.1
-* local Ubuntu 20.04 LTS install, R 4.1.1
+* local Windows 10 install, R 4.1.3
+* local Ubuntu 20.04 LTS install, R 4.1.3
 * GitHub actions:
   * Ubuntu 20.04, R 4.1.1
   * Ubuntu 20.04, R devel
@@ -48,7 +48,7 @@ There are no reverse dependencies.
 
 ## Additional comments
 
-* This submission updates the package to version 1.0.0
+* This submission updates the package to version 1.1.0
 
-* This release is a data update that brings data up to date through the 
-  end of 2020.
+* This release adds options to give the user better control of plotting Kaya
+  data.
