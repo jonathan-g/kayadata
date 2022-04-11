@@ -50,6 +50,7 @@ reference:
     contents:
     - kaya_data
     - fuel_mix
+    - regions
     - td_trends
     - td_values
   - title: Utilities
@@ -58,4 +59,8 @@ reference:
     - emissions_factors
     - generation_capacity
     - megawatts_per_quad
+  - title: internal
+    contents:
+    - kayadata-package
+
 
