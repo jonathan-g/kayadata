@@ -1,8 +1,8 @@
 Package: kayadata
 Type: Package
 Title: Kaya Identity Data for Nations and Regions
-Version: 1.0.0
-Date: 2021-10-22
+Version: 1.1.0
+Date: 2022-04-11
 Authors@R: 
     person(given = "Jonathan",
            family = "Gilligan",
@@ -33,8 +33,9 @@ Imports:
     forcats (>= 0.3),
     dplyr (>= 0.8),
     tidyr (>= 0.8),
-    stringr (>= 1.3.1),
-    scales (>= 1.0)
+    stringr (>= 1.3),
+    scales (>= 1.0),
+    purrr (>= 0.3)
 Encoding: UTF-8
 Language: en-US
 LazyData: true
@@ -43,7 +44,6 @@ RoxygenNote: 7.1.2
 Suggests:
     broom (>= 0.5),
     knitr (>= 1.22),
-    purrr (>= 0.3),
     rmarkdown (>= 1.12),
     testthat (>= 2.0),
     vdiffr (>= 0.3.1)

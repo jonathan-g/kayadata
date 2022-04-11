@@ -18,7 +18,16 @@ plot_kaya(
   pre_color = NULL,
   post_color = NULL,
   in_range_color = NULL,
-  trend_color = NULL
+  trend_color = NULL,
+  line_sizes = NULL,
+  pre_line_size = NULL,
+  post_line_size = NULL,
+  in_range_line_size = NULL,
+  trend_line_size = NULL,
+  point_sizes = NULL,
+  pre_point_size = NULL,
+  post_point_size = NULL,
+  in_range_point_size = NULL
 )
 }
 \arguments{
@@ -44,10 +53,12 @@ highlighting.}
 
 \item{font_size}{Base size of the font for axis labels and titles.}
 
-\item{colors}{Named vector of colors to use for the plot. Elements should include
-\code{PRE}, \code{POST}, \code{IN-RANGE}, and \code{TREND}, which respectively give the colors for
-the portion of the plot before \code{start_year}, after \code{stop_year}, between
-\code{start_year} and \code{stop_year}, and the trend line.}
+\item{colors}{Named vector of colors to use for the plot. Elements should
+include
+\code{PRE}, \code{POST}, \code{IN-RANGE}, and \code{TREND},
+which respectively give the colors for the portion of the plot before
+\code{start_year}, after \code{stop_year}, between \code{start_year} and \code{stop_year},
+and the trend line.}
 
 \item{pre_color}{Override default color for the portion of the chart before
 \code{start_year}.}
@@ -59,6 +70,40 @@ the portion of the plot before \code{start_year}, after \code{stop_year}, betwee
 between \code{start_year} and \code{stop_year}.}
 
 \item{trend_color}{Override default color for the trend line.}
+
+\item{line_sizes}{Named vector of sizes to use for the lines in the plot.
+Elements should include
+\code{PRE}, \code{POST}, \code{IN-RANGE}, and \code{TREND},
+which respectively give the sizes for lines in the portion of the plot
+before \code{start_year}, after \code{stop_year}, between
+\code{start_year} and \code{stop_year}, and the trend line.}
+
+\item{pre_line_size}{Override default line size for the portion of the chart
+before \code{start_year}.}
+
+\item{post_line_size}{Override default line size for the portion of the
+chart after \code{stop_year}.}
+
+\item{in_range_line_size}{Override default line size for the portion of the
+chart between \code{start_year} and \code{stop_year}.}
+
+\item{trend_line_size}{Override default size for the trend line.}
+
+\item{point_sizes}{Named vector of sizes to use for the points in the plot.
+Elements should include
+\code{PRE}, \code{POST}, and \code{IN-RANGE},
+which respectively give the sizes for points in the portion of the plot
+before \code{start_year}, after \code{stop_year}, and between
+\code{start_year} and \code{stop_year}.}
+
+\item{pre_point_size}{Override default point size for the portion of the
+chart before \code{start_year}.}
+
+\item{post_point_size}{Override default point size for the portion of the
+chart after \code{stop_year}.}
+
+\item{in_range_point_size}{Override default point size for the portion of the
+chart between \code{start_year} and \code{stop_year}.}
 }
 \value{
 A plot object.
