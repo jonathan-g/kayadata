@@ -67,11 +67,16 @@ globalVariables(c("in_range", "fuel", "quads", "frac", "label",
 #' plot_kaya(uk, "e", log_scale = TRUE, trend_line = TRUE,
 #'           start_year = 1970, stop_year = 2000,
 #'           colors = c(PRE="limegreen", POST="darkgreen",
-#'                      "IN-RANGE" = "cadetblue", TREMD="orange"))
+#'                      "IN-RANGE" = "cadetblue", TREND="orange"),
+#'           line_sizes = c(PRE=0.5, POST=0.5, "IN-RANGE"=1, TREND=1.5),
+#'           point_sizes = c(PRE=2, POST=2, "IN-RANGE"=3))
 #' plot_kaya(uk, "e", log_scale = TRUE, trend_line = TRUE,
 #'           start_year = 1970, stop_year = 2000,
 #'           pre_color = "limegreen", post_color = "limegreen",
-#'           trend_color = "magenta")
+#'           trend_color = "magenta",
+#'           pre_line_size = 0.5, post_line_size = 0.5,
+#'           trend_line_size = 1.5,
+#'           pre_point_size = 2, post_point_size = 2, in_range_point_size = 3)
 #' }
 #'
 #' world <- get_kaya_data("World")
