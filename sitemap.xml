@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jonathan-g.github.io/kayadata/404.html</loc>
+  </url>
+  <url>
+    <loc>https://jonathan-g.github.io/kayadata/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://jonathan-g.github.io/kayadata/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://jonathan-g.github.io/kayadata/ISSUE_TEMPLATE.html</loc>
+  </url>
+  <url>
+    <loc>https://jonathan-g.github.io/kayadata/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://jonathan-g.github.io/kayadata/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://jonathan-g.github.io/kayadata/SUPPORT.html</loc>
+  </url>
+  <url>
+    <loc>https://jonathan-g.github.io/kayadata/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://jonathan-g.github.io/kayadata/articles/kayadata.html</loc>
+  </url>
+  <url>
+    <loc>https://jonathan-g.github.io/kayadata/articles/policy_analysis.html</loc>
+  </url>
+  <url>
+    <loc>https://jonathan-g.github.io/kayadata/authors.html</loc>
+  </url>
+  <url>
     <loc>https://jonathan-g.github.io/kayadata/index.html</loc>
+  </url>
+  <url>
+    <loc>https://jonathan-g.github.io/kayadata/news/index.html</loc>
   </url>
   <url>
     <loc>https://jonathan-g.github.io/kayadata/reference/EJ.html</loc>
@@ -26,6 +62,9 @@
   </url>
   <url>
     <loc>https://jonathan-g.github.io/kayadata/reference/get_top_down_values.html</loc>
+  </url>
+  <url>
+    <loc>https://jonathan-g.github.io/kayadata/reference/index.html</loc>
   </url>
   <url>
     <loc>https://jonathan-g.github.io/kayadata/reference/kaya_data.html</loc>
@@ -62,11 +101,5 @@
   </url>
   <url>
     <loc>https://jonathan-g.github.io/kayadata/reference/td_values.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/articles/kayadata.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/articles/policy_analysis.html</loc>
   </url>
 </urlset>
