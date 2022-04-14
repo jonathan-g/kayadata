@@ -18,6 +18,7 @@
   * Fedora, R-Devel GCC
   * Fedora, R-Devel GCC, no long double
   * Fedora, R-Devel clang, gfortran
+  * macOS 11.6 Big Sur (M1 processor), R-release
   * macOS 10.13.6 High Sierra, R-release, brew
   * macOS 10.13.6 High Sierra, R-release, CRAN's setup
 * winbuilder devel, release, oldrelease
