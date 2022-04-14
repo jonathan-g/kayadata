@@ -247,6 +247,7 @@ plot_kaya <- function(kaya_data, variable,
 #' If `title` is `FALSE`, the plot is produced with no title.
 #' @param colors A named vector with the colors to use for
 #'   `Coal`, `Oil`, `Natural Gas`, `Nuclear`, `Hydro`, and `Renewables`.
+#' @param font_size The base font size.
 #' @return A plot object.
 #' @examples
 #' usa_fuel <- get_fuel_mix("United States", collapse_renewables = FALSE)
@@ -259,7 +260,7 @@ plot_kaya <- function(kaya_data, variable,
 #'
 #' @export
 plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL,
-                          colors = NULL) {
+                          colors = NULL, font_size = 20) {
   if (is.null(title) || title == TRUE) {
     title <- fuel_mix$region %>% unique() %>% str_c(collapse = ", ")
   } else if (!is.character(title)) {
@@ -297,7 +298,7 @@ plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL,
     ggplot2::xlim(c(0, 4)) +
     ggplot2::scale_fill_manual(values = colors,
                       breaks = names(labels), labels = labels, name = "Fuel") +
-    ggplot2::theme_bw(base_size = 20) +
+    ggplot2::theme_bw(base_size = font_size) +
     ggplot2::theme(panel.grid = ggplot2::element_blank(),
           axis.text = ggplot2::element_blank(),
           axis.ticks = ggplot2::element_blank())
