@@ -148,12 +148,12 @@
 <code class="sourceCode R"><span class="va">us_kaya</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"United States"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">us_kaya</span>, <span class="st">"ef"</span>, y_lab <span class="op">=</span> <span class="st">"Carbon intensity of economy"</span>,
           start_year <span class="op">=</span> <span class="fl">2000</span>, stop_year <span class="op">=</span> <span class="fl">2010</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>,
-          trend_line <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+          trend_line <span class="op">=</span> <span class="cn">TRUE</span>, font_size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></code></pre></div>
 <p><img src="kayadata_files/figure-html/plot-kaya-1.png" width="700"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">world_kaya</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"World"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">world_kaya</span>, <span class="st">"P"</span>, start_year <span class="op">=</span> <span class="fl">2000</span>, stop_year <span class="op">=</span> <span class="fl">2010</span>, log_scale <span class="op">=</span> <span class="cn">FALSE</span>,
-          trend_line <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">world_kaya</span>, <span class="st">"P"</span>, start_year <span class="op">=</span> <span class="fl">2000</span>, stop_year <span class="op">=</span> <span class="fl">2010</span>, 
+          log_scale <span class="op">=</span> <span class="cn">FALSE</span>, trend_line <span class="op">=</span> <span class="cn">FALSE</span>, font_size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></code></pre></div>
 <p><img src="kayadata_files/figure-html/plot-kaya-world-1.png" width="700"> * <code>get_fuel_mix</code>: Get the fuel mix (coal, gas, oil, nuclear, and renewables) for a region or country. Example:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mexico_mix</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_fuel_mix.html">get_fuel_mix</a></span><span class="op">(</span><span class="st">"Mexico"</span><span class="op">)</span>
@@ -172,7 +172,7 @@
 <code>plot_fuel_mix</code>: Plot the fuel mix in a donut chart</li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/plot_fuel_mix.html">plot_fuel_mix</a></span><span class="op">(</span><span class="va">mexico_mix</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="../reference/plot_fuel_mix.html">plot_fuel_mix</a></span><span class="op">(</span><span class="va">mexico_mix</span>, font_size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></code></pre></div>
 <p><img src="kayadata_files/figure-html/plot-fuel-mix-1.png" width="700"></p>
 <p>After you install the package, you can get more help inside RStudio by typing <code><a href="https://jonathan-g.github.io/kayadata/reference">help(package="kayadata")</a></code> in the R console window.</p>
 </div>
