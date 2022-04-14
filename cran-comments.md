@@ -11,12 +11,14 @@
   * MacOS 11, R 4.1.3
   * MacOS Latest, R 4.1.3
 * r-hub builder:
-  * Ubuntu 20.04.1 LTS, R-Release GCC
-  * Ubuntu 20.04.1 LTS, R-Devel GCC
   * Debian, R-Release GCC
   * Debian, R-Patched GCC
+  * Ubuntu 20.04.1 LTS, R-Release GCC
+  * Ubuntu 20.04.1 LTS, R-Devel GCC
+  * Debian, R-devel, clang, ISO-8859-15 locale
+  * Debian, R-devel, GCC
+  * Debian, R-devel, GCC, no long double
   * Fedora, R-Devel GCC
-  * Fedora, R-Devel GCC, no long double
   * Fedora, R-Devel clang, gfortran
   * macOS 11.6 Big Sur (M1 processor), R-release
   * macOS 10.13.6 High Sierra, R-release, brew

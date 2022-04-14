@@ -1,8 +1,7 @@
 # kayadata 1.1.0
 
 * Add optional arguments to `plot_kaya()` to allow the user to specify the 
-  line and point sizes for pre, post, in-range, and trend sections of the 
-  plot.
+  line and point sizes for the plot.
 
 # kayadata 1.0.0
 
