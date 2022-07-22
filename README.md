@@ -36,15 +36,15 @@ mexico_data = get_kaya_data("Mexico")
 mexico_data %>% filter(year >= 1965) %>% 
   select(region:ef) %>%
   head()
-#> # A tibble: 6 x 10
+#> # A tibble: 6 × 10
 #>   region  year     P     G     E     F     g     e     f    ef
 #>   <ord>  <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1 Mexico  2020 0.129  1.20  6.14  373.  9.32  5.11  60.8  311.
-#> 2 Mexico  2019 0.128  1.31  7.16  460. 10.3   5.47  64.2  351.
-#> 3 Mexico  2018 0.126  1.31  7.43  477. 10.4   5.67  64.2  364.
-#> 4 Mexico  2017 0.125  1.28  7.49  486. 10.3   5.84  64.9  379.
-#> 5 Mexico  2016 0.123  1.26  7.38  480. 10.2   5.88  65.1  383.
-#> 6 Mexico  2015 0.122  1.22  7.29  475. 10.0   5.96  65.2  388.
+#> 1 Mexico  2021 0.130  1.21  6.43  374.  9.26  5.34  58.1  310.
+#> 2 Mexico  2020 0.129  1.15  6.09  358.  8.92  5.30  58.7  311.
+#> 3 Mexico  2019 0.128  1.25  7.19  449.  9.82  5.74  62.5  359.
+#> 4 Mexico  2018 0.126  1.26  7.49  468.  9.95  5.96  62.6  373.
+#> 5 Mexico  2017 0.125  1.23  7.52  477.  9.84  6.12  63.4  388.
+#> 6 Mexico  2016 0.123  1.20  7.41  469.  9.75  6.16  63.3  390.
 ```
 
 -   `project_top_down()`: Project future population, GDP, energy use,
@@ -53,10 +53,10 @@ mexico_data %>% filter(year >= 1965) %>%
 ``` r
 mexico_2050 = project_top_down("Mexico", 2050)
 mexico_2050
-#> # A tibble: 1 x 10
+#> # A tibble: 1 × 10
 #>   region  year     P     G     g     E     F     e     f    ef
 #>   <chr>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1 Mexico  2050 0.157  2.57  16.3  10.1  589.  3.93  58.2  229.
+#> 1 Mexico  2050 0.157  2.45  15.6  10.5  577.  4.29  54.9  236.
 ```
 
 -   `plot_kaya`: Plot trends in Kaya variables for a given region or
@@ -84,15 +84,15 @@ renewables) for a region or country. Example:
 ``` r
 mexico_mix = get_fuel_mix("Mexico")
 mexico_mix
-#> # A tibble: 5 x 5
+#> # A tibble: 5 × 5
 #> # Groups:   region, year [1]
-#>   region  year fuel         quads   frac
-#>   <chr>  <int> <ord>        <dbl>  <dbl>
-#> 1 Mexico  2020 Coal        0.198  0.0323
-#> 2 Mexico  2020 Oil         2.34   0.381 
-#> 3 Mexico  2020 Natural Gas 2.94   0.480 
-#> 4 Mexico  2020 Nuclear     0.0961 0.0157
-#> 5 Mexico  2020 Renewables  0.563  0.0918
+#>   region  year fuel        quads   frac
+#>   <chr>  <int> <ord>       <dbl>  <dbl>
+#> 1 Mexico  2021 Coal        0.220 0.0341
+#> 2 Mexico  2021 Oil         2.43  0.377 
+#> 3 Mexico  2021 Natural Gas 3.01  0.468 
+#> 4 Mexico  2021 Nuclear     0.102 0.0159
+#> 5 Mexico  2021 Renewables  0.677 0.105
 ```
 
 -   `plot_fuel_mix`: Plot the fuel mix in a donut chart
