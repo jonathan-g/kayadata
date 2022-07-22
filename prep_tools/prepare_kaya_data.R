@@ -26,7 +26,7 @@ data_params <- within(list(), {
   # bp_spreadsheet_url <- str_c("https://www.bp.com/content/dam/bp/business-sites/en/",
   #                             "global/corporate/xlsx/energy-economics/statistical-review/",
   #                             "bp-stats-review-2019-all-data.xlsx")
-  bp_year <- 2021
+  bp_year <- 2022
   bp_spreadsheet_name <- str_c("bp-stats-review-", bp_year, "-all-data.xlsx")
   bp_spreadsheet_url <- str_c(
     "https://www.bp.com/content/dam/bp/business-sites/en/global/corporate/xlsx/energy-economics/statistical-review/",
@@ -35,7 +35,7 @@ data_params <- within(list(), {
   bp_scenario <- str_c("BPStat", bp_year)
 
   bp_energy_sheet     <- "Primary Energy Consumption"
-  bp_co2_sheet        <- "Carbon Dioxide Emissions"
+  bp_co2_sheet        <- "CO2 Emissions from Energy"
   bp_fuel_mix_sheet   <- "Primary Energy - Cons by fuel"
 
   bp_energy_file      <- "bp_primary_energy.Rds"

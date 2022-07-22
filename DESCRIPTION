@@ -1,8 +1,8 @@
 Package: kayadata
 Type: Package
 Title: Kaya Identity Data for Nations and Regions
-Version: 1.1.0
-Date: 2022-04-11
+Version: 1.1.0.9000
+Date: 2022-07-22
 Authors@R: 
     person(given = "Jonathan",
            family = "Gilligan",
@@ -46,5 +46,6 @@ Suggests:
     knitr (>= 1.22),
     rmarkdown (>= 1.12),
     testthat (>= 2.0),
-    vdiffr (>= 0.3.1)
+    vdiffr (>= 0.3.1),
+    shinytest2
 VignetteBuilder: knitr
