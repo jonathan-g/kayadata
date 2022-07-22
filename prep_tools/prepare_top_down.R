@@ -225,11 +225,15 @@ prepare_top_down <- function(overwrite = FALSE) {
     td_trends = bind_rows(td_trends, td$trend)
   }
 
-  td_values = spread(td_values, key = variable, value = value) %>%
+  td_values = td_values %>%
+    select(region, region_code, geography, year, value, variable) %>%
+    pivot_wider(names_from = "variable", values_from = "value") %>%
     mutate(G = g * P, E = e * G, F = f * E, ef = e * f) %>%
     select(region, region_code, geography, year,
            P, G, E, F, g, e, f, ef)
-  td_trends = td_trends %>% spread(key = variable, value = trend) %>%
+  td_trends = td_trends %>%
+    select(region, region_code, geography, variable, trend) %>%
+    pivot_wider(names_from = "variable", values_from = "trend") %>%
     mutate(G = g + P, E = e + G, F = f + E, ef = e + f) %>%
     select(region, region_code, geography,
            P, G, E, F, g, e, f, ef)

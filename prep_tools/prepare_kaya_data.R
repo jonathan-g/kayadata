@@ -47,10 +47,9 @@ data_params <- within(list(), {
   bp_fuel_mix_path    <- file.path(raw_data_path, bp_fuel_mix_file)
 
   wb_pop_id           <- "SP.POP.TOTL"       # Total population
-  wb_gdp_ppp_id       <- "NY.GDP.MKTP.PP.KD" # GDP in PPP (const. 2011 int. $)
-  wb_gdp_mer_id       <- "NY.GDP.MKTP.KD"    # GDP in market prices (const. 2010 US$)
-  wb_deflator_2005_id <- "PA.NUS.PPP.05"
-  wb_deflator_2011_id <- "PA.NUS.PPP"
+  wb_gdp_ppp_id       <- "NY.GDP.MKTP.PP.KD" # GDP in PPP (const. 2017 int. $)
+  wb_gdp_mer_id       <- "NY.GDP.MKTP.KD"    # GDP in market prices (const. 2015 US$)
+  wb_deflator_id <- "PA.NUS.PPP"
 
   wb_pop_file         <- "wb_pop.Rds"
   wb_gdp_ppp_file     <- "wb_gdp_ppp.Rds"
@@ -193,7 +192,8 @@ fix_bp_regions <- function(df) {
   invisible(df)
 }
 
-fix_bp <- function(df, kaya_var, bp_scenario = "BPStat2019") {
+fix_bp <- function(df, kaya_var, bp_scenario = get("bp_scenario",
+                                                   envir = globalenv())) {
   var_unit <- names(df)[[1]]
   df <- df %>% clean_names() %>% select(-matches("^x[0-9]{4}_")) %>%
     rename(place = 1) %>%
