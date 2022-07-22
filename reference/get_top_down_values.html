@@ -20,7 +20,7 @@ regions"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mat
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kayadata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -71,30 +71,40 @@ regions</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_top_down_values</span><span class="op">(</span><span class="va">region_name</span>, quiet <span class="op">=</span> <span class="cn">FALSE</span>, region_code <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_top_down_values</span><span class="op">(</span><span class="va">region_name</span>, quiet <span class="op">=</span> <span class="cn">FALSE</span>, region_code <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>region_name</dt>
 <dd><p>The name of a country or region to look up</p></dd>
+
+
 <dt>quiet</dt>
 <dd><p>Suppress warnings if there is no data for that country or
 region.</p></dd>
+
+
 <dt>region_code</dt>
 <dd><p>Optional three-letter country or region code to look up
 instead of the <code>region_name</code></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>a tibble of values for <em>P</em>, <em>G</em>, <em>E</em>, <em>F</em>, <em>g</em>, <em>e</em>, <em>f</em>, and <em>ef</em>for each country or region:</p><dl><dt>region</dt>
+    
+
+<p>a tibble of values for <em>P</em>, <em>G</em>, <em>E</em>, <em>F</em>, <em>g</em>, <em>e</em>, <em>f</em>, and <em>ef</em></p>
+
+
+<p>for each country or region:</p><dl><dt>region</dt>
 <dd><p>The name of the country or region</p></dd>
 
 <dt>P</dt>
 <dd><p>Population, in billions</p></dd>
 
 <dt>G</dt>
-<dd><p>Gross domestic product, in trillions of constant 2010 U.S.
+<dd><p>Gross domestic product, in trillions of constant 2015 U.S.
 dollars.</p></dd>
 
 <dt>E</dt>
@@ -105,7 +115,7 @@ dollars.</p></dd>
 tons</p></dd>
 
 <dt>g</dt>
-<dd><p>Per-capita GDP, in thousands of constant 2010 U.S. dollars per
+<dd><p>Per-capita GDP, in thousands of constant 2015 U.S. dollars per
 person.</p></dd>
 
 <dt>e</dt>
@@ -128,43 +138,55 @@ million dollars of GDP.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">get_top_down_values</span><span class="op">(</span><span class="st">"New Zealand"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   region       year       P     G     g     E     F     e     f    ef</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> New Zealand  <span style="text-decoration: underline;">2</span>015 0.004<span style="text-decoration: underline;">60</span> 0.169  36.8 0.843  36.5  4.98  43.3  216.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> New Zealand  <span style="text-decoration: underline;">2</span>020 0.004<span style="text-decoration: underline;">96</span> 0.193  38.8 0.879  36.0  4.57  41.0  187.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> New Zealand  <span style="text-decoration: underline;">2</span>025 0.005<span style="text-decoration: underline;">34</span> 0.219  41.0 0.953  37.7  4.35  39.6  172.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> New Zealand  <span style="text-decoration: underline;">2</span>030 0.005<span style="text-decoration: underline;">68</span> 0.248  43.6 1.03   39.8  4.14  38.8  160.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> New Zealand  <span style="text-decoration: underline;">2</span>035 0.006<span style="text-decoration: underline;">03</span> 0.282  46.8 1.11   42.0  3.94  37.8  149.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> New Zealand  <span style="text-decoration: underline;">2</span>040 0.006<span style="text-decoration: underline;">36</span> 0.320  50.3 1.21   44.7  3.78  37.0  140.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> New Zealand  <span style="text-decoration: underline;">2</span>045 0.006<span style="text-decoration: underline;">69</span> 0.362  54.1 1.32   47.9  3.65  36.3  132.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> New Zealand  <span style="text-decoration: underline;">2</span>050 0.007<span style="text-decoration: underline;">00</span> 0.409  58.4 1.45   51.9  3.55  35.7  127.</span>
-<span class="r-in"><span class="fu">get_top_down_values</span><span class="op">(</span><span class="st">"OECD"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   region  year     P     G     g     E      F     e     f    ef</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> OECD    <span style="text-decoration: underline;">2</span>015  1.33  49.3  37.1  217. <span style="text-decoration: underline;">12</span>348.  4.40  57.0  250.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> OECD    <span style="text-decoration: underline;">2</span>020  1.37  53.9  39.4  221. <span style="text-decoration: underline;">12</span>364.  4.09  56.1  230.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> OECD    <span style="text-decoration: underline;">2</span>025  1.40  59.2  42.3  224. <span style="text-decoration: underline;">12</span>115.  3.78  54.1  205.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> OECD    <span style="text-decoration: underline;">2</span>030  1.43  64.0  44.8  226. <span style="text-decoration: underline;">11</span>926.  3.54  52.7  186.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> OECD    <span style="text-decoration: underline;">2</span>035  1.45  69.2  47.7  230. <span style="text-decoration: underline;">12</span>074.  3.33  52.4  174.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> OECD    <span style="text-decoration: underline;">2</span>040  1.47  74.8  50.9  237. <span style="text-decoration: underline;">12</span>310.  3.16  52.0  165.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> OECD    <span style="text-decoration: underline;">2</span>045  1.48  80.5  54.2  242. <span style="text-decoration: underline;">12</span>616.  3.01  52.0  157.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> OECD    <span style="text-decoration: underline;">2</span>050  1.49  86.5  57.9  250. <span style="text-decoration: underline;">13</span>021.  2.89  52.1  150.</span>
-<span class="r-in"><span class="fu">get_top_down_values</span><span class="op">(</span>region_code <span class="op">=</span> <span class="st">"PAK"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   region    year     P     G     g     E     F     e     f    ef</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Pakistan  <span style="text-decoration: underline;">2</span>015 0.199 0.216  1.08  2.77  160. 12.8   57.7  742.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Pakistan  <span style="text-decoration: underline;">2</span>020 0.212 0.266  1.25  3.03  179. 11.4   59.2  673.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Pakistan  <span style="text-decoration: underline;">2</span>025 0.224 0.331  1.47  3.44  205. 10.4   59.6  619.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Pakistan  <span style="text-decoration: underline;">2</span>030 0.235 0.400  1.70  3.93  222.  9.82  56.4  554.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Pakistan  <span style="text-decoration: underline;">2</span>035 0.245 0.478  1.95  4.40  250.  9.21  56.7  523.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> Pakistan  <span style="text-decoration: underline;">2</span>040 0.254 0.565  2.22  4.96  281.  8.78  56.7  498.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> Pakistan  <span style="text-decoration: underline;">2</span>045 0.261 0.660  2.52  5.55  315.  8.42  56.7  477.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> Pakistan  <span style="text-decoration: underline;">2</span>050 0.267 0.765  2.86  6.20  352.  8.11  56.9  461.</span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">get_top_down_values</span><span class="op">(</span><span class="st">"New Zealand"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 41 × 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    region       year       P     G     g     E     F     e     f    ef</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> New Zealand  <span style="text-decoration: underline;">2</span>010 0.004<span style="text-decoration: underline;">32</span> 0.158  36.6 0.746  35.5  4.71  47.7  224.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> New Zealand  <span style="text-decoration: underline;">2</span>011 0.004<span style="text-decoration: underline;">38</span> 0.163  37.1 0.786  34.6  4.83  44.0  213.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> New Zealand  <span style="text-decoration: underline;">2</span>012 0.004<span style="text-decoration: underline;">45</span> 0.169  37.9 0.797  35.0  4.73  44.0  208.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> New Zealand  <span style="text-decoration: underline;">2</span>013 0.004<span style="text-decoration: underline;">52</span> 0.172  38.1 0.797  34.4  4.63  43.2  200.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> New Zealand  <span style="text-decoration: underline;">2</span>014 0.004<span style="text-decoration: underline;">58</span> 0.177  38.6 0.804  34.6  4.55  43.0  195.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> New Zealand  <span style="text-decoration: underline;">2</span>015 0.004<span style="text-decoration: underline;">65</span> 0.182  39.0 0.810  34.9  4.46  43.2  192.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> New Zealand  <span style="text-decoration: underline;">2</span>016 0.004<span style="text-decoration: underline;">73</span> 0.187  39.5 0.836  35.9  4.48  42.9  192.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> New Zealand  <span style="text-decoration: underline;">2</span>017 0.004<span style="text-decoration: underline;">81</span> 0.191  39.8 0.885  37.6  4.63  42.4  196.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> New Zealand  <span style="text-decoration: underline;">2</span>018 0.004<span style="text-decoration: underline;">89</span> 0.197  40.3 0.912  38.0  4.63  41.7  193.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> New Zealand  <span style="text-decoration: underline;">2</span>019 0.004<span style="text-decoration: underline;">96</span> 0.202  40.7 0.933  38.1  4.61  40.9  188.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 31 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span><span class="fu">get_top_down_values</span><span class="op">(</span><span class="st">"OECD"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 41 × 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    region  year     P     G     g     E      F     e     f    ef</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> OECD    <span style="text-decoration: underline;">2</span>010  1.29  43.1  33.3  219. <span style="text-decoration: underline;">12</span>951.  5.09  59.0  301.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> OECD    <span style="text-decoration: underline;">2</span>011  1.30  44.0  33.8  218. <span style="text-decoration: underline;">12</span>836.  4.95  59.0  292.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> OECD    <span style="text-decoration: underline;">2</span>012  1.31  44.6  34.1  215. <span style="text-decoration: underline;">12</span>662.  4.83  58.8  284.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> OECD    <span style="text-decoration: underline;">2</span>013  1.32  45.2  34.4  218. <span style="text-decoration: underline;">12</span>774.  4.81  58.7  282.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> OECD    <span style="text-decoration: underline;">2</span>014  1.33  46.2  34.9  217. <span style="text-decoration: underline;">12</span>641.  4.68  58.4  273.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> OECD    <span style="text-decoration: underline;">2</span>015  1.33  47.4  35.5  217. <span style="text-decoration: underline;">12</span>541.  4.57  57.8  265.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> OECD    <span style="text-decoration: underline;">2</span>016  1.34  48.3  35.9  218. <span style="text-decoration: underline;">12</span>485.  4.52  57.3  259.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> OECD    <span style="text-decoration: underline;">2</span>017  1.35  49.5  36.7  224. <span style="text-decoration: underline;">12</span>347.  4.52  55.2  249.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> OECD    <span style="text-decoration: underline;">2</span>018  1.36  50.6  37.3  226. <span style="text-decoration: underline;">12</span>293.  4.47  54.4  243.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> OECD    <span style="text-decoration: underline;">2</span>019  1.37  51.6  37.8  226. <span style="text-decoration: underline;">12</span>107.  4.39  53.5  235.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 31 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span><span class="fu">get_top_down_values</span><span class="op">(</span>region_code <span class="op">=</span> <span class="st">"PAK"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 41 × 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    region    year     P     G     g     E     F     e     f    ef</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Pakistan  <span style="text-decoration: underline;">2</span>010 0.189 0.216  1.14  2.58  151.  11.9  58.4  697.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Pakistan  <span style="text-decoration: underline;">2</span>011 0.192 0.226  1.18  2.61  153.  11.5  58.6  677.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Pakistan  <span style="text-decoration: underline;">2</span>012 0.195 0.238  1.22  2.69  156.  11.3  58.1  657.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Pakistan  <span style="text-decoration: underline;">2</span>013 0.197 0.249  1.26  2.75  166.  11.1  60.4  668.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Pakistan  <span style="text-decoration: underline;">2</span>014 0.200 0.260  1.30  2.84  172.  10.9  60.6  663.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Pakistan  <span style="text-decoration: underline;">2</span>015 0.203 0.271  1.34  2.92  178.  10.7  61.1  656.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Pakistan  <span style="text-decoration: underline;">2</span>016 0.205 0.284  1.38  3.06  185.  10.8  60.5  653.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Pakistan  <span style="text-decoration: underline;">2</span>017 0.208 0.298  1.43  3.21  189.  10.8  58.7  633.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Pakistan  <span style="text-decoration: underline;">2</span>018 0.210 0.313  1.49  3.31  195.  10.6  58.8  621.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Pakistan  <span style="text-decoration: underline;">2</span>019 0.213 0.328  1.54  3.37  199.  10.3  58.9  606.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 31 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -179,7 +201,7 @@ million dollars of GDP.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

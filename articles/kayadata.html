@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kayadata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -99,14 +99,14 @@
 <p>This package loads Kaya-identity data, synthesized from several sources.</p>
 <p>To install and load the package, first install either the <code>pacman</code> or <code>devtools</code> package from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"jonathan-g/kayadata"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jonathan-g.github.io/kayadata/">kayadata</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"jonathan-g/kayadata"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jonathan-g.github.io/kayadata/">kayadata</a></span><span class="op">)</span></span></code></pre></div>
 <p>or</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pacman"</span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/trinker/pacman" class="external-link">pacman</a></span><span class="op">)</span>
-<span class="fu">p_load_gh</span><span class="op">(</span><span class="st">"jonathan-g/kayadata"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pacman"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/trinker/pacman" class="external-link">pacman</a></span><span class="op">)</span></span>
+<span><span class="fu">p_load_gh</span><span class="op">(</span><span class="st">"jonathan-g/kayadata"</span><span class="op">)</span></span></code></pre></div>
 <p>Once you’ve installed it, then you just need to use the command <code><a href="https://jonathan-g.github.io/kayadata/">library(kayadata)</a></code> to load the package.</p>
 <p>Some of the functions the package provides are:</p>
 <ul>
@@ -116,63 +116,63 @@
 <code><a href="../reference/get_kaya_data.html">get_kaya_data()</a></code>: Get data for a specific country. Example:</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mexico_data</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"Mexico"</span><span class="op">)</span> 
-<span class="va">mexico_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&gt;=</span> <span class="fl">1965</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">select</span><span class="op">(</span><span class="va">region</span><span class="op">:</span><span class="va">ef</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 6 × 10</span></span>
-<span class="co">##   region  year     P     G     E     F     g     e     f    ef</span>
-<span class="co">##   <span style="color: #949494; font-style: italic;">&lt;ord&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">## <span style="color: #BCBCBC;">1</span> Mexico  <span style="text-decoration: underline;">2</span>020 0.129  1.20  6.14  373.  9.32  5.11  60.8  311.</span>
-<span class="co">## <span style="color: #BCBCBC;">2</span> Mexico  <span style="text-decoration: underline;">2</span>019 0.128  1.31  7.16  460. 10.3   5.47  64.2  351.</span>
-<span class="co">## <span style="color: #BCBCBC;">3</span> Mexico  <span style="text-decoration: underline;">2</span>018 0.126  1.31  7.43  477. 10.4   5.67  64.2  364.</span>
-<span class="co">## <span style="color: #BCBCBC;">4</span> Mexico  <span style="text-decoration: underline;">2</span>017 0.125  1.28  7.49  486. 10.3   5.84  64.9  379.</span>
-<span class="co">## <span style="color: #BCBCBC;">5</span> Mexico  <span style="text-decoration: underline;">2</span>016 0.123  1.26  7.38  480. 10.2   5.88  65.1  383.</span>
-<span class="co">## <span style="color: #BCBCBC;">6</span> Mexico  <span style="text-decoration: underline;">2</span>015 0.122  1.22  7.29  475. 10.0   5.96  65.2  388.</span></code></pre>
+<code class="sourceCode R"><span><span class="va">mexico_data</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"Mexico"</span><span class="op">)</span> </span>
+<span><span class="va">mexico_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&gt;=</span> <span class="fl">1965</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">region</span><span class="op">:</span><span class="va">ef</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 6 × 10</span></span></span>
+<span><span class="co">##   region  year     P     G     E     F     g     e     f    ef</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;ord&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> Mexico  <span style="text-decoration: underline;">2</span>021 0.130  1.21  6.43  374.  9.26  5.34  58.1  310.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> Mexico  <span style="text-decoration: underline;">2</span>020 0.129  1.15  6.09  358.  8.92  5.30  58.7  311.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> Mexico  <span style="text-decoration: underline;">2</span>019 0.128  1.25  7.19  449.  9.82  5.74  62.5  359.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> Mexico  <span style="text-decoration: underline;">2</span>018 0.126  1.26  7.49  468.  9.95  5.96  62.6  373.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> Mexico  <span style="text-decoration: underline;">2</span>017 0.125  1.23  7.52  477.  9.84  6.12  63.4  388.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">6</span> Mexico  <span style="text-decoration: underline;">2</span>016 0.123  1.20  7.41  469.  9.75  6.16  63.3  390.</span></span></code></pre>
 <ul>
 <li>
 <code><a href="../reference/project_top_down.html">project_top_down()</a></code>: Project future population, GDP, energy use, and emissions. Example:</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mexico_2050</span> <span class="op">=</span> <span class="fu"><a href="../reference/project_top_down.html">project_top_down</a></span><span class="op">(</span><span class="st">"Mexico"</span>, <span class="fl">2050</span><span class="op">)</span>
-<span class="va">mexico_2050</span></code></pre></div>
-<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 1 × 10</span></span>
-<span class="co">##   region  year     P     G     g     E     F     e     f    ef</span>
-<span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">## <span style="color: #BCBCBC;">1</span> Mexico  <span style="text-decoration: underline;">2</span>050 0.157  2.57  16.3  10.1  589.  3.93  58.2  229.</span></code></pre>
+<code class="sourceCode R"><span><span class="va">mexico_2050</span> <span class="op">=</span> <span class="fu"><a href="../reference/project_top_down.html">project_top_down</a></span><span class="op">(</span><span class="st">"Mexico"</span>, <span class="fl">2050</span><span class="op">)</span></span>
+<span><span class="va">mexico_2050</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 1 × 10</span></span></span>
+<span><span class="co">##   region  year     P     G     g     E     F     e     f    ef</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> Mexico  <span style="text-decoration: underline;">2</span>050 0.157  2.45  15.6  10.5  577.  4.29  54.9  236.</span></span></code></pre>
 <ul>
 <li>
 <code>plot_kaya</code>: Plot trends in Kaya variables for a given region or country. Example:</li>
 </ul>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">us_kaya</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"United States"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">us_kaya</span>, <span class="st">"ef"</span>, y_lab <span class="op">=</span> <span class="st">"Carbon intensity of economy"</span>,
-          start_year <span class="op">=</span> <span class="fl">2000</span>, stop_year <span class="op">=</span> <span class="fl">2010</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>,
-          trend_line <span class="op">=</span> <span class="cn">TRUE</span>, font_size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">us_kaya</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"United States"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">us_kaya</span>, <span class="st">"ef"</span>, y_lab <span class="op">=</span> <span class="st">"Carbon intensity of economy"</span>,</span>
+<span>          start_year <span class="op">=</span> <span class="fl">2000</span>, stop_year <span class="op">=</span> <span class="fl">2010</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>          trend_line <span class="op">=</span> <span class="cn">TRUE</span>, font_size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <p><img src="kayadata_files/figure-html/plot-kaya-1.png" width="700"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">world_kaya</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"World"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">world_kaya</span>, <span class="st">"P"</span>, start_year <span class="op">=</span> <span class="fl">2000</span>, stop_year <span class="op">=</span> <span class="fl">2010</span>, 
-          log_scale <span class="op">=</span> <span class="cn">FALSE</span>, trend_line <span class="op">=</span> <span class="cn">FALSE</span>, font_size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">world_kaya</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"World"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">world_kaya</span>, <span class="st">"P"</span>, start_year <span class="op">=</span> <span class="fl">2000</span>, stop_year <span class="op">=</span> <span class="fl">2010</span>, </span>
+<span>          log_scale <span class="op">=</span> <span class="cn">FALSE</span>, trend_line <span class="op">=</span> <span class="cn">FALSE</span>, font_size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <p><img src="kayadata_files/figure-html/plot-kaya-world-1.png" width="700"> * <code>get_fuel_mix</code>: Get the fuel mix (coal, gas, oil, nuclear, and renewables) for a region or country. Example:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mexico_mix</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_fuel_mix.html">get_fuel_mix</a></span><span class="op">(</span><span class="st">"Mexico"</span><span class="op">)</span>
-<span class="va">mexico_mix</span></code></pre></div>
-<pre><code><span class="co">## <span style="color: #949494;"># A tibble: 5 × 5</span></span>
-<span class="co">## <span style="color: #949494;"># Groups:   region, year [1]</span></span>
-<span class="co">##   region  year fuel         quads   frac</span>
-<span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;ord&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="co">## <span style="color: #BCBCBC;">1</span> Mexico  <span style="text-decoration: underline;">2</span>020 Coal        0.198  0.032<span style="text-decoration: underline;">3</span></span>
-<span class="co">## <span style="color: #BCBCBC;">2</span> Mexico  <span style="text-decoration: underline;">2</span>020 Oil         2.34   0.381 </span>
-<span class="co">## <span style="color: #BCBCBC;">3</span> Mexico  <span style="text-decoration: underline;">2</span>020 Natural Gas 2.94   0.480 </span>
-<span class="co">## <span style="color: #BCBCBC;">4</span> Mexico  <span style="text-decoration: underline;">2</span>020 Nuclear     0.096<span style="text-decoration: underline;">1</span> 0.015<span style="text-decoration: underline;">7</span></span>
-<span class="co">## <span style="color: #BCBCBC;">5</span> Mexico  <span style="text-decoration: underline;">2</span>020 Renewables  0.563  0.091<span style="text-decoration: underline;">8</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">mexico_mix</span> <span class="op">=</span> <span class="fu"><a href="../reference/get_fuel_mix.html">get_fuel_mix</a></span><span class="op">(</span><span class="st">"Mexico"</span><span class="op">)</span></span>
+<span><span class="va">mexico_mix</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 5 × 5</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># Groups:   region, year [1]</span></span></span>
+<span><span class="co">##   region  year fuel        quads   frac</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;ord&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> Mexico  <span style="text-decoration: underline;">2</span>021 Coal        0.220 0.034<span style="text-decoration: underline;">1</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> Mexico  <span style="text-decoration: underline;">2</span>021 Oil         2.43  0.377 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> Mexico  <span style="text-decoration: underline;">2</span>021 Natural Gas 3.01  0.468 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> Mexico  <span style="text-decoration: underline;">2</span>021 Nuclear     0.102 0.015<span style="text-decoration: underline;">9</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> Mexico  <span style="text-decoration: underline;">2</span>021 Renewables  0.677 0.105</span></span></code></pre>
 <ul>
 <li>
 <code>plot_fuel_mix</code>: Plot the fuel mix in a donut chart</li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/plot_fuel_mix.html">plot_fuel_mix</a></span><span class="op">(</span><span class="va">mexico_mix</span>, font_size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_fuel_mix.html">plot_fuel_mix</a></span><span class="op">(</span><span class="va">mexico_mix</span>, font_size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <p><img src="kayadata_files/figure-html/plot-fuel-mix-1.png" width="700"></p>
 <p>After you install the package, you can get more help inside RStudio by typing <code><a href="https://jonathan-g.github.io/kayadata/reference">help(package="kayadata")</a></code> in the R console window.</p>
 </div>
@@ -195,7 +195,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

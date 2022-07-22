@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kayadata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -66,13 +66,13 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">plot_fuel_mix</span><span class="op">(</span>
-  <span class="va">fuel_mix</span>,
-  collapse_renewables <span class="op">=</span> <span class="cn">TRUE</span>,
-  title <span class="op">=</span> <span class="cn">NULL</span>,
-  colors <span class="op">=</span> <span class="cn">NULL</span>,
-  font_size <span class="op">=</span> <span class="fl">20</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_fuel_mix</span><span class="op">(</span></span>
+<span>  <span class="va">fuel_mix</span>,</span>
+<span>  collapse_renewables <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  title <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  colors <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  font_size <span class="op">=</span> <span class="fl">20</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -92,39 +92,50 @@
 
 
 </dl></dd>
+
+
 <dt>collapse_renewables</dt>
 <dd><p>Combine hydroelectricity and other renewables into
 a single category.</p></dd>
+
+
 <dt>title</dt>
 <dd><p>Include a title on the plot. If <code>title</code> is <code>NULL</code> (default)
 or <code>TRUE</code>, a default title is created from the names of the regions in
 <code>fuel_mix</code>.
 If <code>title</code> is a character string, that string is used.
 If <code>title</code> is <code>FALSE</code>, the plot is produced with no title.</p></dd>
+
+
 <dt>colors</dt>
 <dd><p>A named vector with the colors to use for
 <code>Coal</code>, <code>Oil</code>, <code>Natural Gas</code>, <code>Nuclear</code>, <code>Hydro</code>, and <code>Renewables</code>.</p></dd>
+
+
 <dt>font_size</dt>
 <dd><p>The base font size.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A plot object.</p>
+    
+
+<p>A plot object.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">usa_fuel</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_fuel_mix.html">get_fuel_mix</a></span><span class="op">(</span><span class="st">"United States"</span>, collapse_renewables <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">plot_fuel_mix</span><span class="op">(</span><span class="va">usa_fuel</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">usa_fuel</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_fuel_mix.html">get_fuel_mix</a></span><span class="op">(</span><span class="st">"United States"</span>, collapse_renewables <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plot_fuel_mix</span><span class="op">(</span><span class="va">usa_fuel</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_fuel_mix-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu">plot_fuel_mix</span><span class="op">(</span><span class="va">usa_fuel</span>, collapse_renewables <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">plot_fuel_mix</span><span class="op">(</span><span class="va">usa_fuel</span>, collapse_renewables <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_fuel_mix-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="fu">plot_fuel_mix</span><span class="op">(</span><span class="va">usa_fuel</span>, collapse_renewables <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in">              colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Coal <span class="op">=</span> <span class="st">"black"</span>, <span class="st">"Natural Gas"</span> <span class="op">=</span> <span class="st">"gray60"</span>,</span>
-<span class="r-in">                         Oil <span class="op">=</span> <span class="st">"gray30"</span>, Nuclear <span class="op">=</span> <span class="st">"forestgreen"</span>,</span>
-<span class="r-in">                         Hydro <span class="op">=</span> <span class="st">"royalblue"</span>, Renewables<span class="op">=</span><span class="st">"palegreen"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">plot_fuel_mix</span><span class="op">(</span><span class="va">usa_fuel</span>, collapse_renewables <span class="op">=</span> <span class="cn">FALSE</span>,</span></span>
+<span class="r-in"><span>              colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>Coal <span class="op">=</span> <span class="st">"black"</span>, <span class="st">"Natural Gas"</span> <span class="op">=</span> <span class="st">"gray60"</span>,</span></span>
+<span class="r-in"><span>                         Oil <span class="op">=</span> <span class="st">"gray30"</span>, Nuclear <span class="op">=</span> <span class="st">"forestgreen"</span>,</span></span>
+<span class="r-in"><span>                         Hydro <span class="op">=</span> <span class="st">"royalblue"</span>, Renewables<span class="op">=</span><span class="st">"palegreen"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="plot_fuel_mix-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -139,7 +150,7 @@ If <code>title</code> is <code>FALSE</code>, the plot is produced with no title.
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
