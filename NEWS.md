@@ -1,3 +1,10 @@
+# kayadata 1.3.0
+
+* Update data through 2022:
+  * The 2023 release of Energy Statistics (which moved from BP to the 
+    Energy Institute)
+  * The latest population and GDP data from the World Bank.
+
 # kayadata 1.2.0
 
 * Update data through 2021:

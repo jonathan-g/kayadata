@@ -49,8 +49,8 @@ There are no reverse dependencies.
 
 ## Additional comments
 
-* This submission updates the package to version 1.2.0
+* This submission updates the package to version 1.3.0
 
 * This release updates the data to the latest releases from World Bank and 
-  BP, with energy use, CO2 emissions,  economic, and population data through 
-  2021.
+  Energy Institute, with energy use, CO2 emissions,  economic, and population 
+  data through 2022.

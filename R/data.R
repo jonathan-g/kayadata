@@ -3,7 +3,7 @@
 #' A dataset containing Kaya identity parameters
 #' P, G, E, F, g, e, f, and ef for many countries
 #'
-#' @format A tibble containing 5160 rows and 14 variables:
+#' @format A tibble containing 5292 rows and 14 variables:
 #' \describe{
 #'   \item{region}{Country or region name}
 #'   \item{region_code}{Three-letter country or region code}
@@ -27,7 +27,7 @@
 #' @seealso regions
 #' @source <https://data.worldbank.org/indicator/SP.POP.TOTL>,
 #' <https://data.worldbank.org/indicator/NY.GDP.MKTP.KD>, and
-#' <https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html>
+#' <https://www.energyinst.org/statistical-review>
 "kaya_data"
 
 

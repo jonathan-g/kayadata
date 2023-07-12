@@ -20,17 +20,12 @@ raw_data_path <- file.path(base_dir, "raw_data")
 data_params <- within(list(), {
 
   # List of data files, to look up when loading data
-  # bp_spreadsheet_url  <- str_c("https://www.bp.com/content/dam/bp/en/corporate/excel/",
-  #                              "energy-economics/statistical-review/",
-  #                              "bp-stats-review-2018-all-data.xlsx")
-  # bp_spreadsheet_url <- str_c("https://www.bp.com/content/dam/bp/business-sites/en/",
-  #                             "global/corporate/xlsx/energy-economics/statistical-review/",
-  #                             "bp-stats-review-2019-all-data.xlsx")
-  bp_year <- 2022
+  bp_year <- 2023
   bp_spreadsheet_name <- str_c("bp-stats-review-", bp_year, "-all-data.xlsx")
   bp_spreadsheet_url <- str_c(
-    "https://www.bp.com/content/dam/bp/business-sites/en/global/corporate/xlsx/energy-economics/statistical-review/",
-    bp_spreadsheet_name)
+    "https://www.energyinst.org/__data/assets/excel_doc/0007/1055545/",
+    "EI-stats-review-all-data.xlsx"
+    )
   bp_spreadsheet_path <- file.path(raw_data_path, bp_spreadsheet_name)
   bp_scenario <- str_c("BPStat", bp_year)
 
@@ -199,8 +194,10 @@ fix_bp <- function(df, kaya_var, bp_scenario = get("bp_scenario",
     rename(place = 1) %>%
     filter(!is.na(place), !str_detect(place, bp_omit_patterns)) %>%
     gather(-place, key = year, value = value) %>%
+    filter(! is.na(place)) %>%
     mutate(year = as.integer(str_replace(year, "^x", "")),
-           place = str_trim(place)) %>%
+           place = str_trim(place),
+           value = as.numeric(value)) %>%
     mutate(geography = ifelse(place == "Total World", "world",
                               ifelse(place %in% bp_regions, "region",
                                      ifelse(place %in% bp_other_nations,
@@ -488,13 +485,17 @@ load_fuel_mix <- function(fname) {
     select(column, variable) %>%
     bind_rows(tibble(column = 1, variable = "place")) %>%
     arrange(column)
-  fuel_mix <- read_excel(fname, data_params$bp_fuel_mix_sheet, skip = 3,
+  fuel_mix <- read_excel(fname, data_params$bp_fuel_mix_sheet,
+                         range = cell_limits(ul = c(5,1),
+                                              lr = c(NA, nrow(col_names))),
                          col_names = col_names$variable,
                          na = c("", "na", "NA", "n/a", "N/A")) %>%
-    clean_names()
+    clean_names() %>%
+    filter(!is.na(place))
   fuel_mix <- fuel_mix %>% gather(-place, key = variable, value = value) %>%
     mutate(year = str_replace(variable, "[a-z_]+_([0-9]+)$", "\\1") %>%
              as.integer(),
+           value = as.numeric(value),
            fuel = str_replace_all(variable, "_[0-9]+$", "")) %>%
     select(-variable)
   fuel_mix <- fuel_mix %>%
