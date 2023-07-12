@@ -20,26 +20,26 @@ raw_data_path <- file.path(base_dir, "raw_data")
 data_params <- within(list(), {
 
   # List of data files, to look up when loading data
-  bp_year <- 2023
-  bp_spreadsheet_name <- str_c("bp-stats-review-", bp_year, "-all-data.xlsx")
-  bp_spreadsheet_url <- str_c(
+  es_year <- 2023
+  es_spreadsheet_name <- str_c("EI-stats-review-", es_year, "-all-data.xlsx")
+  es_spreadsheet_url <- str_c(
     "https://www.energyinst.org/__data/assets/excel_doc/0007/1055545/",
     "EI-stats-review-all-data.xlsx"
-    )
-  bp_spreadsheet_path <- file.path(raw_data_path, bp_spreadsheet_name)
-  bp_scenario <- str_c("BPStat", bp_year)
+  )
+  es_spreadsheet_path <- file.path(raw_data_path, es_spreadsheet_name)
+  es_scenario <- str_c("EIStat", es_year)
 
-  bp_energy_sheet     <- "Primary Energy Consumption"
-  bp_co2_sheet        <- "CO2 Emissions from Energy"
-  bp_fuel_mix_sheet   <- "Primary Energy - Cons by fuel"
+  es_energy_sheet     <- "Primary Energy Consumption"
+  es_co2_sheet        <- "CO2 Emissions from Energy"
+  es_fuel_mix_sheet   <- "Primary Energy - Cons by fuel"
 
-  bp_energy_file      <- "bp_primary_energy.Rds"
-  bp_co2_file         <- "bp_emissions.Rds"
-  bp_fuel_mix_file    <- "bp_fuel_mix.Rds"
+  es_energy_file      <- "es_primary_energy.Rds"
+  es_co2_file         <- "es_emissions.Rds"
+  es_fuel_mix_file    <- "es_fuel_mix.Rds"
 
-  bp_energy_path      <- file.path(raw_data_path, bp_energy_file)
-  bp_co2_path         <- file.path(raw_data_path, bp_co2_file)
-  bp_fuel_mix_path    <- file.path(raw_data_path, bp_fuel_mix_file)
+  es_energy_path      <- file.path(raw_data_path, es_energy_file)
+  es_co2_path         <- file.path(raw_data_path, es_co2_file)
+  es_fuel_mix_path    <- file.path(raw_data_path, es_fuel_mix_file)
 
   wb_pop_id           <- "SP.POP.TOTL"       # Total population
   wb_gdp_ppp_id       <- "NY.GDP.MKTP.PP.KD" # GDP in PPP (const. 2017 int. $)
@@ -59,15 +59,15 @@ data_params <- within(list(), {
 })
 
 #' Information for organizing world regions and converting
-#' geographic names to be consistent across the BP and World Bank
+#' geographic names to be consistent across the Energy Institute and World Bank
 #' databases.
-bp_regions <- c("Total North America", "Total S. & Cent. America",
+es_regions <- c("Total North America", "Total S. & Cent. America",
                 "Total Europe", "Total CIS", "Total Middle East",
                 "Total Asia Pacific", "Total Africa", "Total World",
                 "European Union \\#", "Non-OECD", "of which: OECD", "CIS"
 )
 
-bp_other_nations <- c("Other Caribbean", "Other South America",
+es_other_nations <- c("Other Caribbean", "Other South America",
                       "Other Europe", "Other CIS", "Other Middle East",
                       "Other Northern Africa", "Other Southern Africa",
                       "Other Asia Pacific",
@@ -75,7 +75,7 @@ bp_other_nations <- c("Other Caribbean", "Other South America",
                       "Middle Africa", "Eastern Africa", "Western Africa"
 )
 
-bp_omit_patterns <- str_c("^([^A-Za-z]", "Notes:", "^Note:", "Growth rates",
+es_omit_patterns <- str_c("^([^A-Za-z]", "Notes:", "^Note:", "Growth rates",
                           "w Less|n/a)",
                           "^This does not allow", "^Our data", sep = "|",
                           "^USSR includes Georgia")
@@ -97,7 +97,7 @@ nation_translations <- list(
                  " +SAR, +China *$" = "", ", +The" = "",
                  " +members *$" = "", ", +RB *$" = "",
                  "\\&" = "and", " +" = " "),
-  bp = c("^Total +" = "", "\\&" = "and", "of which: +" = "",
+  ei = c("^Total +" = "", "\\&" = "and", "of which: +" = "",
          "^US$" = "United States",
          "European Union \\#" = "European Union",
          "S\\. +and +Cent\\. +America" = "Latin America and Caribbean",
@@ -137,8 +137,8 @@ wb_region_df <- wb_country_df %>% select(country, iso3c, region) %>%
                    regionID = NA)) %>%
   arrange(region)
 
-#' Fix up BP data from the form in the spreadsheet
-fix_bp_regions <- function(df) {
+#' Fix up Energy Institute data from the form in the spreadsheet
+fix_es_regions <- function(df) {
   # World Bank region is Europe and Central Asia, which groups CIS in with
   # all European countries.
   not_europe <- df %>%
@@ -153,7 +153,7 @@ fix_bp_regions <- function(df) {
   df <- bind_rows(not_europe, europe)
 
   # World Bank North America is US, Canada, and Bermuda
-  # BP North America is US, Canada, and Mexico
+  # Energy Institute North America is US, Canada, and Mexico
   # Harmonize by choosing just US and Canada
   not_north_america <- df %>%
     filter(geography != "region" | place != "North America" )
@@ -166,7 +166,8 @@ fix_bp_regions <- function(df) {
   df <- bind_rows(not_north_america, north_america)
 
   # World Bank is Latin America and Caribbean, which does not include Bermuda
-  # BP is South and Central America, which includes Bermuda and not Mexico
+  # Energy Institute is South and Central America, which includes Bermuda and
+  # not Mexico
   # Harmonize by including Bermuda and Mexico
   not_latin_america <- df %>%
     filter(geography != "region" | place != "Latin America and Caribbean")
@@ -187,27 +188,27 @@ fix_bp_regions <- function(df) {
   invisible(df)
 }
 
-fix_bp <- function(df, kaya_var, bp_scenario = get("bp_scenario",
+fix_es <- function(df, kaya_var, es_scenario = get("es_scenario",
                                                    envir = globalenv())) {
   var_unit <- names(df)[[1]]
   df <- df %>% clean_names() %>% select(-matches("^x[0-9]{4}_")) %>%
     rename(place = 1) %>%
-    filter(!is.na(place), !str_detect(place, bp_omit_patterns)) %>%
+    filter(!is.na(place), !str_detect(place, es_omit_patterns)) %>%
     gather(-place, key = year, value = value) %>%
     filter(! is.na(place)) %>%
     mutate(year = as.integer(str_replace(year, "^x", "")),
            place = str_trim(place),
            value = as.numeric(value)) %>%
     mutate(geography = ifelse(place == "Total World", "world",
-                              ifelse(place %in% bp_regions, "region",
-                                     ifelse(place %in% bp_other_nations,
+                              ifelse(place %in% es_regions, "region",
+                                     ifelse(place %in% es_other_nations,
                                             "others", "nation")))) %>%
-    mutate(place = str_replace_all(place, nation_translations$bp)) %>%
+    mutate(place = str_replace_all(place, nation_translations$ei)) %>%
     filter(geography != "others") %>%
     select(year, value, place, geography) %>%
-    fix_bp_regions() %>%
+    fix_es_regions() %>%
     mutate(indicator = kaya_var, unit = var_unit, model = "History",
-           scenario = bp_scenario) %>%
+           scenario = es_scenario) %>%
     arrange(geography, place, year)
   invisible(df)
 }
@@ -247,9 +248,9 @@ make_regions <- function() {
       )
     )
 
-  # BP lumps all Africa together; WB groups North Africa and Middle East
-  # separately from Sub-Saharan Africa. Subtract out Middle East from
-  # North Africa and Middle East and add the result to Sub-Saharan Africa
+  # Energy Institute lumps all Africa together; WB groups North Africa and
+  # Middle Eastseparately from Sub-Saharan Africa. Subtract out Middle East
+  # from North Africa and Middle East and add the result to Sub-Saharan Africa
   # to get all of Africa
   middle_east <- tibble(var = "middle_east", region = "Middle East",
                         regionID = NA,
@@ -269,8 +270,9 @@ make_regions <- function() {
     filter(var != "africa") %>%
     bind_rows(middle_east, africa)
 
-  # BP lumps all Caribbean nations, including US territories, into LAC/LCN;
-  # North America is just USA and Canada. WB puts Bermuda into North America.
+  # Energy Institute lumps all Caribbean nations, including US territories,
+  # into LAC/LCN; North America is just USA and Canada.
+  # WB puts Bermuda into North America.
   # Here we move Bermuda to LAC so both groups are defined the same way.
   #
   bermuda <- wb_country_df %>%
@@ -376,7 +378,7 @@ fix_wb_regions <- function(df, ignore_na = FALSE) {
                        "footnote", "last_updated", "obs_status")) %>%
     syms()
 
-  # BP puts all of Asia and Pacific together, so do the same here.
+  # Energy Institute puts all of Asia and Pacific together, so do the same here.
   asia_pacific  <- gen_region(region_df, df, "asia_pacific", "Asia Pacific",
                               ignore_na = ignore_na)
   middle_east   <- gen_region(region_df, df, "middle_east", "Middle East",
@@ -396,11 +398,11 @@ fix_wb_regions <- function(df, ignore_na = FALSE) {
   invisible(df)
 }
 
-#' Load data from the BP spreadsheet
-load_bp <- function(fname, sheet, kaya_var, unit_id, unit, scale = 1.0,
+#' Load data from the Energy Institute spreadsheet
+load_es <- function(fname, sheet, kaya_var, unit_id, unit, scale = 1.0,
                     scenario = NULL) {
   if (is.null(scenario))
-    scenario <- data_params$bp_scenario
+    scenario <- data_params$es_scenario
   df <- read_excel(fname, sheet = sheet, col_names = TRUE,
                    skip = 2, na = c("", "NA", "na", "n/a", "N/A")) %>%
     clean_names()
@@ -410,7 +412,7 @@ load_bp <- function(fname, sheet, kaya_var, unit_id, unit, scale = 1.0,
   fixit <- sort(dups, decreasing = TRUE, na.last = TRUE)[1]
   df <- df %>% rename(!!fixit := names(fixit)) %>%
     select(-matches("^x[0-9]+_[0-9]+$"))
-  df <- df %>% fix_bp(kaya_var, scenario) %>%
+  df <- df %>% fix_es(kaya_var, scenario) %>%
     # Use quosure for unit to reference "unit" in parent environment,
     # not column of tibble.
     mutate(value = value / scale, unit_id = unit_id, unit = (!!unit),
@@ -459,19 +461,19 @@ load_wb <- function(indicator_id, kaya_var, unit_id, unit, scale = 1.0,
 }
 
 load_primary_energy <- function(fname) {
-  df <- load_bp(fname, data_params$bp_energy_sheet, "E", "quad", "Quad",
+  df <- load_es(fname, data_params$es_energy_sheet, "E", "quad", "Quad",
                 1.0 / quad_per_EJ)
   invisible(df)
 }
 
 load_co2 <- function(fname) {
-  df <- load_bp(fname, data_params$bp_co2_sheet, "F", "mmtco2",
+  df <- load_es(fname, data_params$es_co2_sheet, "F", "mmtco2",
                 "Million Metric Tons CO2")
   invisible(df)
 }
 
 load_fuel_mix <- function(fname) {
-  col_names <- read_excel(fname, data_params$bp_fuel_mix_sheet, skip = 1,
+  col_names <- read_excel(fname, data_params$es_fuel_mix_sheet, skip = 1,
                           col_names = FALSE, col_types = "text", n_max = 2) %>%
     clean_names() %>%
     mutate(x1 = c("year", "variable")) %>%
@@ -485,9 +487,9 @@ load_fuel_mix <- function(fname) {
     select(column, variable) %>%
     bind_rows(tibble(column = 1, variable = "place")) %>%
     arrange(column)
-  fuel_mix <- read_excel(fname, data_params$bp_fuel_mix_sheet,
+  fuel_mix <- read_excel(fname, data_params$es_fuel_mix_sheet,
                          range = cell_limits(ul = c(5,1),
-                                              lr = c(NA, nrow(col_names))),
+                                             lr = c(NA, nrow(col_names))),
                          col_names = col_names$variable,
                          na = c("", "na", "NA", "n/a", "N/A")) %>%
     clean_names() %>%
@@ -500,17 +502,17 @@ load_fuel_mix <- function(fname) {
     select(-variable)
   fuel_mix <- fuel_mix %>%
     mutate(place = str_trim(place)) %>%
-    filter(!is.na(place), !str_detect(place, bp_omit_patterns)) %>%
+    filter(!is.na(place), !str_detect(place, es_omit_patterns)) %>%
     mutate(geography = ifelse(place == "Total World", "world",
-                              ifelse(place %in% bp_regions, "region",
-                                     ifelse(place %in% bp_other_nations,
+                              ifelse(place %in% es_regions, "region",
+                                     ifelse(place %in% es_other_nations,
                                             "others", "nation")))) %>%
-    mutate(place = str_replace_all(place, nation_translations$bp)) %>%
+    mutate(place = str_replace_all(place, nation_translations$ei)) %>%
     filter(geography != "others") %>%
     select(place, year, fuel, value, geography) %>%
-    fix_bp_regions() %>%
+    fix_es_regions() %>%
     mutate(value = value * quad_per_EJ, unit_id = "quad", unit = "Quad",
-           model = "History", scenario = "BPStat2019") %>%
+           model = "History", scenario = "EIStat2023") %>%
     select(model, scenario, place, year, fuel, value, unit_id, unit,
            geography, iso3c) %>%
     arrange(geography, year, place)
@@ -530,26 +532,26 @@ load_fuel_mix <- function(fname) {
 
 #' Load Kaya-Identity data
 #'
-prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
+prepare_kaya <- function(force_wb = FALSE, force_es = FALSE,
                          force_download = FALSE, ignore_na = TRUE) {
-  if ((force_bp && force_download) ||
-      ! file.exists(data_params$bp_spreadsheet_path)) {
-    download.file(url = data_params$bp_spreadsheet_url,
-                  destfile = data_params$bp_spreadsheet_path,
+  if ((force_es && force_download) ||
+      ! file.exists(data_params$es_spreadsheet_path)) {
+    download.file(url = data_params$es_spreadsheet_url,
+                  destfile = data_params$es_spreadsheet_path,
                   mode = "wb")
   }
 
-  if (force_bp) {
-    energy   <- load_primary_energy(data_params$bp_spreadsheet_path)
-    co2      <- load_co2(data_params$bp_spreadsheet_path)
-    fuel_mix <- load_fuel_mix(data_params$bp_spreadsheet_path)
-    write_rds(energy,   file = data_params$bp_energy_path)
-    write_rds(co2,      file = data_params$bp_co2_path)
-    write_rds(fuel_mix, file = data_params$bp_fuel_mix_path)
+  if (force_es) {
+    energy   <- load_primary_energy(data_params$es_spreadsheet_path)
+    co2      <- load_co2(data_params$es_spreadsheet_path)
+    fuel_mix <- load_fuel_mix(data_params$es_spreadsheet_path)
+    write_rds(energy,   file = data_params$es_energy_path)
+    write_rds(co2,      file = data_params$es_co2_path)
+    write_rds(fuel_mix, file = data_params$es_fuel_mix_path)
   } else {
-    energy   <- read_rds(data_params$bp_energy_path)
-    co2      <- read_rds(data_params$bp_co2_path)
-    fuel_mix <- read_rds(data_params$bp_fuel_mix_path)
+    energy   <- read_rds(data_params$es_energy_path)
+    co2      <- read_rds(data_params$es_co2_path)
+    fuel_mix <- read_rds(data_params$es_fuel_mix_path)
   }
 
   if (force_wb || ! file.exists(data_params$wb_pop_path)) {
@@ -613,12 +615,12 @@ prepare_kaya <- function(force_wb = FALSE, force_bp = FALSE,
   invisible(kaya_data)
 }
 
-prepare_fuel_mix <- function(force_bp = FALSE) {
-  if (force_bp || ! file.exists(data_params$bp_fuel_mix_path)) {
-    fuel_mix <- load_fuel_mix(data_params$bp_spreadsheet_path)
-    write_rds(fuel_mix, file = data_params$bp_fuel_mix_path)
+prepare_fuel_mix <- function(force_es = FALSE) {
+  if (force_es || ! file.exists(data_params$es_fuel_mix_path)) {
+    fuel_mix <- load_fuel_mix(data_params$es_spreadsheet_path)
+    write_rds(fuel_mix, file = data_params$es_fuel_mix_path)
   } else {
-    fuel_mix <- read_rds(data_params$bp_fuel_mix_path)
+    fuel_mix <- read_rds(data_params$es_fuel_mix_path)
   }
 
   fuel_mix <- fuel_mix %>%
@@ -643,10 +645,10 @@ prepare_fuel_mix <- function(force_bp = FALSE) {
 prepare_data_files = function(overwrite = FALSE, force_recalc = FALSE,
                               force_download = FALSE,
                               ignore_na = TRUE) {
-  kaya_data <- prepare_kaya(force_wb = force_recalc, force_bp = force_recalc,
+  kaya_data <- prepare_kaya(force_wb = force_recalc, force_es = force_recalc,
                             force_download = force_download,
                             ignore_na = ignore_na)
-  fuel_mix <- prepare_fuel_mix(force_bp = force_recalc)
+  fuel_mix <- prepare_fuel_mix(force_es = force_recalc)
   tryCatch(usethis::use_data(kaya_data, fuel_mix,
                              internal = FALSE, overwrite = overwrite,
                              compress = "xz"),

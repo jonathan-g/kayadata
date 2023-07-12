@@ -51,7 +51,7 @@
 #'   \item{frac}{The fraction of that country or region's total primary
 #'              energy consumption from the fuel}
 #' }
-#' @source <https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html>
+#' @source <https://www.energyinst.org/statistical-review/resources-and-data-downloads>
 #' @seealso regions
 "fuel_mix"
 
