@@ -1,7 +1,7 @@
 kayadata
 ================
 Jonathan Gilligan
-2022-04-14
+2022-07-22
 
 # kayadata
 
@@ -9,7 +9,7 @@ Jonathan Gilligan
 
 [![CRAN Status
 Badge](https://www.r-pkg.org/badges/version-last-release/kayadata)](https://cran.r-project.org/package=kayadata)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6462452.svg)](https://doi.org/10.5281/zenodo.6462452)
+[![DOI](https://zenodo.org/badge/108232691.svg)](https://zenodo.org/badge/latestdoi/108232691)
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![R-CMD-check](https://github.com/jonathan-g/kayadata/workflows/R-CMD-check/badge.svg)](https://github.com/jonathan-g/kayadata/actions)
