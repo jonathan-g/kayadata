@@ -24,7 +24,7 @@
 #'   \item{G_mer}{Gross domestic product at market-exchange-rate,
 #'                in trillions of constant 2015 U.S. dollars}
 #' }
-#' @seealso regions
+#' @seealso [regions], [get_kaya_data()]
 #' @source <https://data.worldbank.org/indicator/SP.POP.TOTL>,
 #' <https://data.worldbank.org/indicator/NY.GDP.MKTP.KD>, and
 #' <https://www.energyinst.org/statistical-review>
@@ -51,8 +51,14 @@
 #'   \item{frac}{The fraction of that country or region's total primary
 #'              energy consumption from the fuel}
 #' }
+#'
+#' @note The 2023 data from the Energy Institute has inconsistencies in the fuel
+#' mix for Hong Kong and Sri Lanka: The percentages add up to 98.7% and
+#' 102.9%, respectively. The sums of energy in quads are off by
+#' -0.095 and +0.095 quads, respectively, from the total energy figure.
+#'
 #' @source <https://www.energyinst.org/statistical-review/resources-and-data-downloads>
-#' @seealso regions
+#' @seealso [regions], [get_fuel_mix()]
 "fuel_mix"
 
 #' Top-down projections of future Kaya variables for many countries and regions
@@ -78,7 +84,7 @@
 #'             million dollars of GDP.}
 #' }
 #' @source <https://www.eia.gov/outlooks/archive/ieo17/>
-#' @seealso regions
+#' @seealso [regions], [get_top_down_values()]
 "td_values"
 
 #' Top-down projections of trends in Kaya variables for many countries and regions
@@ -101,5 +107,5 @@
 #'   \item{ef}{Trend in emissions intensity of the economy, in fraction per year}
 #' }
 #' @source <https://www.eia.gov/outlooks/archive/ieo17/>
-#' @seealso regions
+#' @seealso [regions], [get_top_down_trends()]
 "td_trends"
