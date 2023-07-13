@@ -2,9 +2,9 @@
 
 # The MIT License
 
-The datafsm package for R is licensed under the MIT License.
+The kayadata package for R is licensed under the MIT License.
 
-> Copyright (c) 2017-2022: Jonathan Gilligan:
+> Copyright (c) 2017-2023: Jonathan Gilligan:
 >
 > Permission is hereby granted, free of charge, to any person obtaining
 > a copy of this software and associated documentation files (the
