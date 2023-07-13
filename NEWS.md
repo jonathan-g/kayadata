@@ -5,7 +5,8 @@
     Energy Institute)
     * The new data has some small discrepancies (around 2--3 percent) between 
       the sum of primary energy consumption by fuel and the total primary energy 
-      consumption for Hong Kong and Sri Lanka.
+      consumption for Hong Kong and Sri Lanka. See documentation for
+      `fuel_mix` for details.
   * The latest population and GDP data from the World Bank.
 
 # kayadata 1.2.0
