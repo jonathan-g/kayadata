@@ -1,72 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/index.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/EJ.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/emissions_factors.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/fuel_mix.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/generation_capacity.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/get_fuel_mix.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/get_kaya_data.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/get_top_down_trends.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/get_top_down_values.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/kaya_data.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/kaya_region_list.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/kayadata-package.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/lookup_region_code.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/megawatts_per_quad.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/mtoe.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/plot_fuel_mix.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/plot_kaya.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/project_top_down.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/regions.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/td_trends.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/reference/td_values.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/articles/kayadata.html</loc>
-  </url>
-  <url>
-    <loc>https://jonathan-g.github.io/kayadata/articles/policy_analysis.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://jonathan-g.github.io/kayadata/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/CONTRIBUTING.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/ISSUE_TEMPLATE.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/LICENSE-text.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/LICENSE.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/SUPPORT.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/articles/index.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/articles/kayadata.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/articles/policy_analysis.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/authors.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/index.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/news/index.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/EJ.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/emissions_factors.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/fuel_mix.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/generation_capacity.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/get_fuel_mix.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/get_kaya_data.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/get_top_down_trends.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/get_top_down_values.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/index.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/kaya_data.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/kaya_region_list.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/kayadata-package.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/lookup_region_code.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/megawatts_per_quad.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/mtoe.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/plot_fuel_mix.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/plot_kaya.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/project_top_down.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/regions.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/td_trends.html</loc></url>
+<url><loc>https://jonathan-g.github.io/kayadata/reference/td_values.html</loc></url>
 </urlset>
+

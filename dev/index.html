@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kaya Identity Data for Nations and Regions • kayadata</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,18 +35,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">kayadata</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">0.5.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.4.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/kayadata.html">Get started</a>
 </li>
@@ -52,9 +48,9 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
@@ -69,9 +65,9 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/jonathan-g/kayadata/">
+  <a href="https://github.com/jonathan-g/kayadata/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -82,25 +78,25 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="contents col-md-9">
 
-<div id="kayadata" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#kayadata" class="anchor"></a>kayadata</h1></div>
-<p>Jonathan Gilligan 2019-12-21</p>
+<div class="section level1">
+<div class="page-header"><h1 id="kayadata">kayadata<a class="anchor" aria-label="anchor" href="#kayadata"></a>
+</h1></div>
+<p>Jonathan Gilligan 2023-07-13</p>
 </div>
-<div id="kayadata-1" class="section level1">
-<h1 class="hasAnchor">
-<a href="#kayadata-1" class="anchor"></a>kayadata</h1>
+<div class="section level1">
+<h1 id="kayadata-1">kayadata<a class="anchor" aria-label="anchor" href="#kayadata-1"></a>
+</h1>
 <!-- badges: start -->
-<p><a href="https://cran.r-project.org/package=kayadata"><img src="https://www.r-pkg.org/badges/version-last-release/kayadata" alt="CRAN Status Badge"></a> <a href="https://zenodo.org/badge/latestdoi/108232691"><img src="https://zenodo.org/badge/108232691.svg" alt="DOI"></a> <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a> <a href="https://github.com/jonathan-g/kayadata/actions"><img src="https://github.com/jonathan-g/kayadata/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a> <!-- badges: end --></p>
+
 <p>This package loads Kaya-identity data, synthesized from several sources.</p>
 <p>To install the package from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"kayadata"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"kayadata"</span><span class="op">)</span></span></code></pre></div>
 <p>Once you’ve installed it, then you just need to use the command <code><a href="https://jonathan-g.github.io/kayadata/">library(kayadata)</a></code> to load the package.</p>
 <p>Some of the functions the package provides are:</p>
 <ul>
@@ -110,69 +106,68 @@
 <code><a href="reference/get_kaya_data.html">get_kaya_data()</a></code>: Get data for a specific country. Example:</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mexico_data</span> <span class="op">=</span> <span class="fu"><a href="reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"Mexico"</span><span class="op">)</span> 
-<span class="va">mexico_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&gt;=</span> <span class="fl">1965</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">select</span><span class="op">(</span><span class="va">region</span><span class="op">:</span><span class="va">ef</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 10</span>
-<span class="co">#&gt;   region  year     P     G     E     F     g     e     f    ef</span>
-<span class="co">#&gt;   &lt;ord&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Mexico  2019 0.128  1.31  7.32  455. 10.3   5.58  62.2  347.</span>
-<span class="co">#&gt; 2 Mexico  2018 0.126  1.31  7.42  467. 10.4   5.66  62.8  355.</span>
-<span class="co">#&gt; 3 Mexico  2017 0.125  1.29  7.48  477. 10.3   5.82  63.7  371.</span>
-<span class="co">#&gt; 4 Mexico  2016 0.123  1.26  7.38  469. 10.2   5.86  63.5  372.</span>
-<span class="co">#&gt; 5 Mexico  2015 0.122  1.22  7.29  463. 10.0   5.96  63.6  379.</span>
-<span class="co">#&gt; 6 Mexico  2014 0.120  1.18  7.30  460.  9.84  6.16  63.0  388.</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mexico_data</span> <span class="op">=</span> <span class="fu"><a href="reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"Mexico"</span><span class="op">)</span> </span>
+<span><span class="va">mexico_data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&gt;=</span> <span class="fl">1965</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">region</span><span class="op">:</span><span class="va">ef</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 10</span></span>
+<span><span class="co">#&gt;   region  year     P     G     E     F     g     e     f    ef</span></span>
+<span><span class="co">#&gt;   &lt;ord&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Mexico  2022 0.128  1.24  8.27  506.  9.76  6.65  61.1  407.</span></span>
+<span><span class="co">#&gt; 2 Mexico  2021 0.127  1.21  7.57  450.  9.53  6.27  59.4  373.</span></span>
+<span><span class="co">#&gt; 3 Mexico  2020 0.126  1.15  7.04  418.  9.15  6.11  59.3  363.</span></span>
+<span><span class="co">#&gt; 4 Mexico  2019 0.125  1.25  7.64  480. 10.0   6.10  62.8  383.</span></span>
+<span><span class="co">#&gt; 5 Mexico  2018 0.124  1.26  7.73  489  10.1   6.16  63.2  390.</span></span>
+<span><span class="co">#&gt; 6 Mexico  2017 0.123  1.23  7.83  503. 10.0   6.37  64.3  410.</span></span></code></pre></div>
 <ul>
 <li>
 <code><a href="reference/project_top_down.html">project_top_down()</a></code>: Project future population, GDP, energy use, and emissions. Example:</li>
 </ul>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mexico_2050</span> <span class="op">=</span> <span class="fu"><a href="reference/project_top_down.html">project_top_down</a></span><span class="op">(</span><span class="st">"Mexico"</span>, <span class="fl">2050</span><span class="op">)</span>
-<span class="va">mexico_2050</span>
-<span class="co">#&gt; # A tibble: 1 x 10</span>
-<span class="co">#&gt;   region  year     P     G     g     E     F     e     f    ef</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Mexico  2050 0.157  2.57  16.3  10.1  589.  3.93  58.2  229.</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mexico_2050</span> <span class="op">=</span> <span class="fu"><a href="reference/project_top_down.html">project_top_down</a></span><span class="op">(</span><span class="st">"Mexico"</span>, <span class="fl">2050</span><span class="op">)</span></span>
+<span><span class="va">mexico_2050</span></span>
+<span><span class="co">#&gt; # A tibble: 1 × 10</span></span>
+<span><span class="co">#&gt;   region  year     P     G     g     E     F     e     f    ef</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Mexico  2050 0.157  2.45  15.6  10.5  577.  4.29  54.9  236.</span></span></code></pre></div>
 <ul>
 <li>
 <code>plot_kaya</code>: Plot trends in Kaya variables for a given region or country. Example:</li>
 </ul>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">us_kaya</span> <span class="op">=</span> <span class="fu"><a href="reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"United States"</span><span class="op">)</span>
-<span class="fu"><a href="reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">us_kaya</span>, <span class="st">"ef"</span>, y_lab <span class="op">=</span> <span class="st">"Carbon intensity of economy"</span>,
-          start_year <span class="op">=</span> <span class="fl">2000</span>, stop_year <span class="op">=</span> <span class="fl">2010</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>,
-          trend_line <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; `geom_smooth()` using formula 'y ~ x'</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">us_kaya</span> <span class="op">=</span> <span class="fu"><a href="reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"United States"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">us_kaya</span>, <span class="st">"ef"</span>, y_lab <span class="op">=</span> <span class="st">"Carbon intensity of economy"</span>,</span>
+<span>          start_year <span class="op">=</span> <span class="fl">2000</span>, stop_year <span class="op">=</span> <span class="fl">2010</span>, log_scale <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>          trend_line <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-plot-kaya-1.png" width="100%"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">world_kaya</span> <span class="op">=</span> <span class="fu"><a href="reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"World"</span><span class="op">)</span>
-<span class="fu"><a href="reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">world_kaya</span>, <span class="st">"P"</span>, start_year <span class="op">=</span> <span class="fl">2000</span>, stop_year <span class="op">=</span> <span class="fl">2010</span>, log_scale <span class="op">=</span> <span class="cn">FALSE</span>,
-          trend_line <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">world_kaya</span> <span class="op">=</span> <span class="fu"><a href="reference/get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"World"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot_kaya.html">plot_kaya</a></span><span class="op">(</span><span class="va">world_kaya</span>, <span class="st">"P"</span>, start_year <span class="op">=</span> <span class="fl">2000</span>, stop_year <span class="op">=</span> <span class="fl">2010</span>, log_scale <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>          trend_line <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-plot-kaya-world-1.png" width="100%"> * <code>get_fuel_mix</code>: Get the fuel mix (coal, gas, oil, nuclear, and renewables) for a region or country. Example:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mexico_mix</span> <span class="op">=</span> <span class="fu"><a href="reference/get_fuel_mix.html">get_fuel_mix</a></span><span class="op">(</span><span class="st">"Mexico"</span><span class="op">)</span>
-<span class="va">mexico_mix</span>
-<span class="co">#&gt; # A tibble: 5 x 5</span>
-<span class="co">#&gt; # Groups:   region, year [1]</span>
-<span class="co">#&gt;   region  year fuel         quads   frac</span>
-<span class="co">#&gt;   &lt;chr&gt;  &lt;int&gt; &lt;ord&gt;        &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Mexico  2019 Coal        0.481  0.0657</span>
-<span class="co">#&gt; 2 Mexico  2019 Oil         3.12   0.426 </span>
-<span class="co">#&gt; 3 Mexico  2019 Natural Gas 3.09   0.423 </span>
-<span class="co">#&gt; 4 Mexico  2019 Nuclear     0.0951 0.0130</span>
-<span class="co">#&gt; 5 Mexico  2019 Renewables  0.528  0.0722</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">mexico_mix</span> <span class="op">=</span> <span class="fu"><a href="reference/get_fuel_mix.html">get_fuel_mix</a></span><span class="op">(</span><span class="st">"Mexico"</span><span class="op">)</span></span>
+<span><span class="va">mexico_mix</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 5</span></span>
+<span><span class="co">#&gt; # Groups:   region, year [1]</span></span>
+<span><span class="co">#&gt;   region  year fuel         quads   frac</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;int&gt; &lt;ord&gt;        &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Mexico  2022 Coal        0.237  0.0286</span></span>
+<span><span class="co">#&gt; 2 Mexico  2022 Oil         3.91   0.472 </span></span>
+<span><span class="co">#&gt; 3 Mexico  2022 Natural Gas 3.30   0.399 </span></span>
+<span><span class="co">#&gt; 4 Mexico  2022 Nuclear     0.0948 0.0115</span></span>
+<span><span class="co">#&gt; 5 Mexico  2022 Renewables  0.749  0.0905</span></span></code></pre></div>
 <ul>
 <li>
 <code>plot_fuel_mix</code>: Plot the fuel mix in a donut chart</li>
 </ul>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/plot_fuel_mix.html">plot_fuel_mix</a></span><span class="op">(</span><span class="va">mexico_mix</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/plot_fuel_mix.html">plot_fuel_mix</a></span><span class="op">(</span><span class="va">mexico_mix</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-plot-fuel-mix-1.png" width="100%"></p>
 <p>After you install the package, you can get more help inside RStudio by typing <code><a href="https://jonathan-g.github.io/kayadata/reference">help(package="kayadata")</a></code> in the R console window.</p>
-<div id="code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of conduct</h2>
+<div class="section level2">
+<h2 id="code-of-conduct">Code of conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
+</h2>
 <p>Please note that this project is released with a <a href="https://jonathan-g.github.io/kayadata/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 </div>
@@ -181,35 +176,53 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=kayadata">https://​cloud.r-project.org/​package=kayadata</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/jonathan-g/kayadata/">https://​github.com/​jonathan-g/​kayadata/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/jonathan-g/kayadata/issues">https://​github.com/​jonathan-g/​kayadata/​issues</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=kayadata" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/jonathan-g/kayadata/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/jonathan-g/kayadata/issues" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+<li><a href="SUPPORT.html">Getting help</a></li>
 </ul>
 </div>
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing kayadata</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>
-<a href="https://www.jonathangilligan.org">Jonathan Gilligan</a> <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0003-1375-6686" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<a href="https://www.jonathangilligan.org" class="external-link">Jonathan Gilligan</a> <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0003-1375-6686" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+</ul>
+</div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/package=kayadata" class="external-link"><img src="https://www.r-pkg.org/badges/version-last-release/kayadata" alt="CRAN Status Badge"></a></li>
+<li><a href="https://zenodo.org/badge/latestdoi/108232691" class="external-link"><img src="https://zenodo.org/badge/108232691.svg" alt="DOI"></a></li>
+<li><a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a></li>
+<li><a href="https://github.com/jonathan-g/kayadata/actions" class="external-link"><img src="https://github.com/jonathan-g/kayadata/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 
@@ -218,17 +231,21 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://www.jonathangilligan.org">Jonathan Gilligan</a>.</p>
+  <p></p>
+<p>Developed by <a href="https://www.jonathangilligan.org" class="external-link">Jonathan Gilligan</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
 </div>
 
       </footer>
 </div>
 
-  
+
+
+
 
 
   </body>
