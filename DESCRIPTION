@@ -1,8 +1,8 @@
 Package: kayadata
 Type: Package
 Title: Kaya Identity Data for Nations and Regions
-Version: 1.3.0
-Date: 2023-07-13
+Version: 1.4.0.9000
+Date: 2024-07-07
 Authors@R: 
     person(given = "Jonathan",
            family = "Gilligan",
@@ -27,21 +27,21 @@ URL: https://jonathan-g.github.io/kayadata/,
 BugReports: https://github.com/jonathan-g/kayadata/issues
 License: MIT + file LICENSE
 Depends:
-    R       (>= 3.5),
-    ggplot2 (>= 3.0)
+    R (>= 3.5),
+    ggplot2 (>= 3.5.1)
 Imports:
-    magrittr (>= 1.5),
-    forcats (>= 0.3),
-    dplyr (>= 0.8),
-    tidyr (>= 0.8),
-    stringr (>= 1.3),
-    scales (>= 1.0),
-    purrr (>= 0.3)
+    magrittr (>= 2.0.3),
+    forcats (>= 1.0.0),
+    dplyr (>= 1.1.4),
+    tidyr (>= 1.3.1),
+    stringr (>= 1.5.1),
+    scales (>= 1.3.0),
+    purrr (>= 1.0.2)
 Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Suggests:
     broom (>= 0.5),
     knitr (>= 1.22),

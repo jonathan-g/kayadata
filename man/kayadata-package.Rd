@@ -2,6 +2,7 @@
 % Please edit documentation in R/kayadata.R
 \docType{package}
 \name{kayadata-package}
+\alias{kayadata}
 \alias{kayadata-package}
 \title{kayadata package}
 \description{
@@ -59,4 +60,18 @@ Nakicenovic, Nebojsa, and Rob Swart (Eds.),
 Raupach, Michael R., \emph{et al.}, "Global and regional drivers of accelerating
 CO2 emissions," PNAS \strong{104}, 10288--10293 (2007)
 \doi{10.1073/pnas.0700609104}.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://jonathan-g.github.io/kayadata/}
+  \item \url{https://github.com/jonathan-g/kayadata}
+  \item \doi{10.5281/zenodo.8144476}
+  \item Report bugs at \url{https://github.com/jonathan-g/kayadata/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Jonathan Gilligan \email{jonathan.gilligan@vanderbilt.edu} (\href{https://orcid.org/0000-0003-1375-6686}{ORCID})
+
 }
