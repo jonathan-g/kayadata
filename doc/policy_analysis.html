@@ -20,11 +20,6 @@
 // be compatible with the behavior of Pandoc < 2.8).
 document.addEventListener('DOMContentLoaded', function(e) {
   var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
-  // With reveal.js output, div.section does not seem to pick up on the
-  // sections properly.
-  if (hs.length == 0) {
-   hs = document.querySelectorAll("section[class*='level'] > :first-child");
-  }
   var i, h, a;
   for (i = 0; i < hs.length; i++) {
     h = hs[i];
@@ -36,27 +31,27 @@ document.addEventListener('DOMContentLoaded', function(e) {
 </script>
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
 
 
 
 <style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -70,55 +65,54 @@ pre > code.sourceCode { white-space: pre-wrap; }
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
-  { counter-reset: source-line 0; }
+{ counter-reset: source-line 0; }
 pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
+{ position: relative; left: -4em; counter-increment: source-line; }
 pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {   }
+{ }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -127,13 +121,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -145,29 +146,209 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <style type="text/css">
-/* for pandoc --citeproc since 2.11 */
+
 div.csl-bib-body { }
 div.csl-entry {
-  clear: both;
+clear: both;
 }
 .hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+margin-left:2em;
+text-indent:-2em;
 }
 div.csl-left-margin {
-  min-width:2em;
-  float:left;
+min-width:2em;
+float:left;
 }
 div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
+margin-left:2em;
+padding-left:1em;
 }
 div.csl-indent {
-  margin-left: 2em;
+margin-left: 2em;
 }
 </style>
 
-<style type="text/css">body {background-color: #fff;margin: 1em auto;max-width: 700px;overflow: visible;padding-left: 2em;padding-right: 2em;font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size: 14px;line-height: 1.35;}#TOC {clear: both;margin: 0 0 10px 10px;padding: 4px;width: 400px;border: 1px solid #CCCCCC;border-radius: 5px;background-color: #f6f6f6;font-size: 13px;line-height: 1.3;}#TOC .toctitle {font-weight: bold;font-size: 15px;margin-left: 5px;}#TOC ul {padding-left: 40px;margin-left: -1.5em;margin-top: 5px;margin-bottom: 5px;}#TOC ul ul {margin-left: -2em;}#TOC li {line-height: 16px;}table {margin: 1em auto;border-width: 1px;border-color: #DDDDDD;border-style: outset;border-collapse: collapse;}table th {border-width: 2px;padding: 5px;border-style: inset;}table td {border-width: 1px;border-style: inset;line-height: 18px;padding: 5px 5px;}table, table th, table td {border-left-style: none;border-right-style: none;}table thead, table tr.even {background-color: #f7f7f7;}p {margin: 0.5em 0;}blockquote {background-color: #f6f6f6;padding: 0.25em 0.75em;}hr {border-style: solid;border: none;border-top: 1px solid #777;margin: 28px 0;}dl {margin-left: 0;}dl dd {margin-bottom: 13px;margin-left: 13px;}dl dt {font-weight: bold;}ul {margin-top: 0;}ul li {list-style: circle outside;}ul ul {margin-bottom: 0;}pre, code {background-color: #f7f7f7;border-radius: 3px;color: #333;white-space: pre-wrap; }pre {border-radius: 3px;margin: 5px 0px 10px 0px;padding: 10px;}pre:not([class]) {background-color: #f7f7f7;}code {font-family: Consolas, Monaco, 'Courier New', monospace;font-size: 85%;}p > code, li > code {padding: 2px 0px;}div.figure {text-align: center;}img {background-color: #FFFFFF;padding: 2px;border: 1px solid #DDDDDD;border-radius: 3px;border: 1px solid #CCCCCC;margin: 0 5px;}h1 {margin-top: 0;font-size: 35px;line-height: 40px;}h2 {border-bottom: 4px solid #f7f7f7;padding-top: 10px;padding-bottom: 2px;font-size: 145%;}h3 {border-bottom: 2px solid #f7f7f7;padding-top: 10px;font-size: 120%;}h4 {border-bottom: 1px solid #f7f7f7;margin-left: 8px;font-size: 105%;}h5, h6 {border-bottom: 1px solid #ccc;font-size: 105%;}a {color: #0033dd;text-decoration: none;}a:hover {color: #6666ff; }a:visited {color: #800080; }a:visited:hover {color: #BB00BB; }a[href^="http:"] {text-decoration: underline; }a[href^="https:"] {text-decoration: underline; }code > span.kw { color: #555; font-weight: bold; } code > span.dt { color: #902000; } code > span.dv { color: #40a070; } code > span.bn { color: #d14; } code > span.fl { color: #d14; } code > span.ch { color: #d14; } code > span.st { color: #d14; } code > span.co { color: #888888; font-style: italic; } code > span.ot { color: #007020; } code > span.al { color: #ff0000; font-weight: bold; } code > span.fu { color: #900; font-weight: bold; } code > span.er { color: #a61717; background-color: #e3d2d2; } </style>
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -222,62 +403,84 @@ extrapolating from recent trends.</p>
 <h2>Recent Trends in Population and GDP</h2>
 <p>Begin by loading historical values of the Kaya identity parameters
 for the United States:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(magrittr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(dplyr)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(stringr)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(tidyr)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(purrr)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(broom)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(knitr)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(scales)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(kayadata)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>kaya <span class="ot">&lt;-</span> <span class="fu">get_kaya_data</span>(<span class="st">&quot;United States&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>({</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>  <span class="fu">library</span>(magrittr)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="fu">library</span>(stringr)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="fu">library</span>(tidyr)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  <span class="fu">library</span>(purrr)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  <span class="fu">library</span>(broom)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  <span class="fu">library</span>(knitr)</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>  <span class="fu">library</span>(scales)</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>  <span class="fu">library</span>(kayadata)</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>})</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>kaya <span class="ot">&lt;-</span> <span class="fu">get_kaya_data</span>(<span class="st">&quot;United States&quot;</span>)</span></code></pre></div>
 <p>Let’s start by looking at trends in <em>P</em>, <em>g</em>,
 <em>e</em>, and <em>f</em> starting in 1990. I plot these with a
 log-scale on the y-axis because a constant growth rate produces
 exponential growth, so it should look linear on a semi-log plot.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_kaya</span>(kaya, <span class="st">&quot;P&quot;</span>, <span class="at">log_scale =</span> <span class="cn">TRUE</span>, <span class="at">start_year =</span> <span class="dv">1990</span>, <span class="at">trend_line =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">points =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<div class="figure">
-<img src="data:image/png;base64,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" alt />
-<p class="caption">Trend in population for U.S. from 1990–2021</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">plot_kaya</span>(kaya, <span class="st">&quot;P&quot;</span>, <span class="at">log_scale =</span> <span class="cn">TRUE</span>, <span class="at">start_year =</span> <span class="dv">1990</span>, <span class="at">trend_line =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>          <span class="at">points =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co">#&gt; Warning: No shared levels found between `names(values)` of the manual scale and the</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="co">#&gt; data&#39;s size values.</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co">#&gt; No shared levels found between `names(values)` of the manual scale and the</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="co">#&gt; data&#39;s size values.</span></span></code></pre></div>
+<div class="float">
+<img src="data:image/png;base64,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" alt="Trend in population for U.S. from 1990–2023" />
+<div class="figcaption">Trend in population for U.S. from
+1990–2023</div>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_kaya</span>(kaya, <span class="st">&quot;g&quot;</span>, <span class="at">log_scale =</span> <span class="cn">TRUE</span>, <span class="at">start_year =</span> <span class="dv">1990</span>, <span class="at">trend_line =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">points =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<div class="figure">
-<img src="data:image/png;base64,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" alt />
-<p class="caption">Trend in per-capita GDP for U.S. from 1990–2021</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">plot_kaya</span>(kaya, <span class="st">&quot;g&quot;</span>, <span class="at">log_scale =</span> <span class="cn">TRUE</span>, <span class="at">start_year =</span> <span class="dv">1990</span>, <span class="at">trend_line =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>          <span class="at">points =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt; Warning: No shared levels found between `names(values)` of the manual scale and the</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="co">#&gt; data&#39;s size values.</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="co">#&gt; No shared levels found between `names(values)` of the manual scale and the</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt; data&#39;s size values.</span></span></code></pre></div>
+<div class="float">
+<img src="data:image/png;base64,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" alt="Trend in per-capita GDP for U.S. from 1990–2023" />
+<div class="figcaption">Trend in per-capita GDP for U.S. from
+1990–2023</div>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_kaya</span>(kaya, <span class="st">&quot;e&quot;</span>, <span class="at">log_scale =</span> <span class="cn">TRUE</span>, <span class="at">start_year =</span> <span class="dv">1990</span>, <span class="at">trend_line =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">points =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<div class="figure">
-<img src="data:image/png;base64,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" alt />
-<p class="caption">Trend in primary-energy intensity of the U.S. economy
-from 1990–2021</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">plot_kaya</span>(kaya, <span class="st">&quot;e&quot;</span>, <span class="at">log_scale =</span> <span class="cn">TRUE</span>, <span class="at">start_year =</span> <span class="dv">1990</span>, <span class="at">trend_line =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>          <span class="at">points =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; Warning: No shared levels found between `names(values)` of the manual scale and the</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; data&#39;s size values.</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; No shared levels found between `names(values)` of the manual scale and the</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; data&#39;s size values.</span></span></code></pre></div>
+<div class="float">
+<img src="data:image/png;base64,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" alt="Trend in primary-energy intensity of the U.S. economy from 1990–2023" />
+<div class="figcaption">Trend in primary-energy intensity of the U.S.
+economy from 1990–2023</div>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_kaya</span>(kaya, <span class="st">&quot;f&quot;</span>, <span class="at">log_scale =</span> <span class="cn">TRUE</span>, <span class="at">start_year =</span> <span class="dv">1990</span>, <span class="at">trend_line =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">points =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<div class="figure">
-<img src="data:image/png;base64,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" alt />
-<p class="caption">Trend in the carbon-dioxide intensity of the U.S.
-energy supply from 1990–2021</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">plot_kaya</span>(kaya, <span class="st">&quot;f&quot;</span>, <span class="at">log_scale =</span> <span class="cn">TRUE</span>, <span class="at">start_year =</span> <span class="dv">1990</span>, <span class="at">trend_line =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>          <span class="at">points =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; Warning: No shared levels found between `names(values)` of the manual scale and the</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt; data&#39;s size values.</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; No shared levels found between `names(values)` of the manual scale and the</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; data&#39;s size values.</span></span></code></pre></div>
+<div class="float">
+<img src="data:image/png;base64,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" alt="Trend in the carbon-dioxide intensity of the U.S. energy supply from 1990–2023" />
+<div class="figcaption">Trend in the carbon-dioxide intensity of the
+U.S. energy supply from 1990–2023</div>
 </div>
 <p>All of these trends look reasonable, except for <em>f</em>. Let’s try
 <em>f</em> again, but fitting the trend only since 2005:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_kaya</span>(kaya, <span class="st">&quot;f&quot;</span>, <span class="at">log_scale =</span> <span class="cn">TRUE</span>, <span class="at">start_year =</span> <span class="dv">2005</span>, <span class="at">trend_line =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">points =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<div class="figure">
-<img src="data:image/png;base64,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" alt />
-<p class="caption">Trend in the carbon-dioxide intensity of the U.S.
-energy supply from 2005–2021</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">plot_kaya</span>(kaya, <span class="st">&quot;f&quot;</span>, <span class="at">log_scale =</span> <span class="cn">TRUE</span>, <span class="at">start_year =</span> <span class="dv">2005</span>, <span class="at">trend_line =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>          <span class="at">points =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt; Warning: No shared levels found between `names(values)` of the manual scale and the</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co">#&gt; data&#39;s size values.</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co">#&gt; No shared levels found between `names(values)` of the manual scale and the</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co">#&gt; data&#39;s size values.</span></span></code></pre></div>
+<div class="float">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAAwFBMVEUAAAAAADoAAGYAAIsAOpAAZrYzMzM6AAA6ADo6AGY6kNtNTU1NTW5NTY5NbqtNjshkle1mAABmADpmAGZmtv9uTU1uTW5uTY5ubqtuq8huq+SLR4mOTU2OTW6OTY6ObquOyP+QOgCQkDqQtpCQ27aQ2/+rbk2rbm6rbo6rjk2ryKur5P+2ZgC2///Ijk3I///bkDrb/7bb///kq27k///r6+v/tmb/yI7/25D/29v/5Kv//7b//8j//9v//+T///8N1P9zAAAACXBIWXMAAA7DAAAOwwHHb6hkAAANCUlEQVR4nO2di3bbNhKGlTKus3aayLtJmo3cVO5unHaltZXGllVZNt7/rUpcSAIgbgPxAgL4z0lo2QOQ/DS4EhjOUJZRs7EvIHTxgJ6u3o12HcGKB/R4kQG1JBSxzcs/x7qOYCV60Izoh/+PdjnhKVfSFgEB/ZiOlIA2s9k7Y0X0Y/PjvQ2m1SAUC6WBEtD65beLd09XJ/q80gZUNvO4pd8aKukMKANiUhaxDS5ijxdn+rwSB4S2uBtk4JM8IKsyoEbfz7GW6HB5/uZOTuZ93hAtAIA2uIhxI9aHN3fP10v0/a2czPu8IVoAKmncfnGV9OGXFTp8vkX7n2+lZN7nDdEC0szjQ9PMY8/Zf7wjoNgw416veSnDnycmF0CES1nKGCCeq4o7BgT65kKxcC9i2xdf+CKG2XAexCfTZCsQCuT2Oy1is0rEiW4+lf/B6qC4AUl6/or95vn6E6AV410okNvvDxArWLB+EEcokNsPrSfd1NSB3H6AgBiiQG4/NECNDwVy+10Bcnso5taTpoQCuf0QAaEMyHJe4kKB3H6QgFCUgMRutFrOgOSBmfuVDW8xhge5EUoZEDbIgCzntbpQ6oBQVIDc5AdIVx1lQISLvr5OHhBxoXkkgJ6uuuwHMYMKjobQpADhx872ahr62KdynhgAlVpbGfk+F4sEEC1oJkb+gFSEJggIYUZ9rA+KBVDpQfjZmFZpA7LRwcl8n+RO7rG0qhWz0UFHeJDShSblQb30gzg1gJqfJgXITccAmks/ZEDiR8ZlngFpDOou9Zwbw9qmjNICNGeUBEBmQgEB6ruS5ob19X/3SDcIcT7J1AervOb8yLV5cjYZQKjPwSqW0I41z16NLhQYoP4Gq6IqV6IWkwKE+hqsChLXf3Au1PKm4AD1NlgVVHFgFlwfW27VwgLkMlg99rwqi6Zuqtt+CWEXZwEaDD5YNVnw07IioYAA9d8PMli0u4xCNd7RWUAGgW2Hanep58OtMZoCIIXmVV+717NoDdrP5v/FFSzhgyqZ93kBFoEBwiuoWBdxo6+uB90OVRIKCRAiQw3LptXEAdmVAVmUAXF6vj5/vaKbe38aZ0vmfB40oJsl2VJXHtrJvM8LsggbEN5Jh6pdY3Iy7/OCLHwALRbg6/AEtP/4By5ih0uyex7ZN/V2L5+nsYtFN+dWb8nk+z/790u8YXX/YcV5UeoeVHaE6vBK/G7euh4aeN+8z2r9FqFuixjekUA7iodfpwkI9QuIIqKbnkkRww3Z8+8jRV7wA7SwWbhchg7QZjY7wbG6/iS7eXH/p+wHvV7JybzPC7Pw2xDTH6D6mYY2CNU0AC1sFg6XoW7FrCEmhw5u4rdjqC9ADho8+osfoIXNwn4ZPW+oczJwAlTv9wDk0QsgNw0fP4h71OGcR1qAeDnlUfQISA7RpU3mfV64RQ1GTeheKn3zopAIdQhIDtGlT+Z93qMs1IAEbuUHSqhwPwugmTd3glCggNC8/ivlUxQloKKx8LmMeACRJ/qoWfNYVISOu1BlEZNCdBmSeZ/3KAtVJUR6SvQfq6RkF+rSg6xdoXEBNS4056puxNaF1FasEqoIRd7MC+IW8dWA2P+SbyULaF4fuBWzqsLXEIq9HyRIXEnETcq2KycMqHA6Szz9IGEhOgWkz6N2oYSaeXH/Av1Jn0fCgJoPpjyqlj6hfpAkyxq0onNA4feDQBZVbzqlZh5kUfWmMyCdOgfk8HaotAFRPf7TsJ582MULRwqXMe/EhiK2Nbz9aFIeVI7pe6mDQu4HgSzYrFDngNaxeBBzoc4radOelskBWuRm3vA3OrHYzE5DskgKkIWQOyDygjHjSzITB7Q+wVNCm2he4Ve4lTHIdAd+wWE0zTwl1C0gPNcRESDEJhbNhJwBPV2d4RmhdTRFjKhDQGh3Ojsx9hMnCWjRHSC7MiCLMiCLpgrISChxQHYXSh3QfQZkseBXUzlnYd8OpdQkARUWFwJ4EL8dSqlJAkIWFwIVsWY7lFLTBFR0CIjbDmVK5nJlIQFadAaI2w5lSuZyZRECCm47VIeADIQArVhw26E6sugIkCQWeSGG16mbyxjAg6rVL2RGiEZeiOJ16uwZKyQL4xpFPPFaRV6I4nXq9AEZKAvzEjxcSbPIC+6vUw9YZG4alsQB0Pt6W7jz28LtX8xIFsbHG/AihjZlP4i5Duh16h6XPoyF8QkZoBXb0oXkGzxoZZEXoqiDOgMkiEZegL1O3XrekSxqQCpCzoCeroRdCCzyQgz9oOYZ61GAHF5zOFVAhBDSEAJU0ubJIDRhQKiavT8GUGyrXGUL6kKOWaQ0J139oHOhDIipA0CbshdkrIgmDkhdTbsDWr/8RpcIaTVpQDoXgjTzuKWPa32QYKF2oQyoltqFIP2gb3SRmVYTB6R2Iehg1cBn+oBULpSbeU6qzmIGxEnlQu6AdqdRDzWwFgoXAkx3GHpAYjKXK4sPUMzTHZWO9KD4AakqIfc6yNRFFJO5XFmYgBTtWJ4PEtR+/pObeVEZkMWitSw4zweJapWxPB8kyh9Q/NMdRBmQzUKuhDqdD+pnecrAIi5ksUl0PohKcqHczLeUAVksxFWvGVBLYhnLgFrKgCwWPoBYJ8iiSACJhDIgheCAaCTgBOaDqKxB71Odk65U+AByUESALEHvtfNBKQw1sLidvoDBavABt7uzKCwx3c17NbQniwcQNy2UASnVPCDLRUwpH0ApVdJcGcvNvEYZkMWiascyIJ0yIIsFc6EMSKcMyGIBBRRrgCXtX+AeFGmAJa3okB5UxKIMsKQVHdID66AIAyzpRVwIBIgLsPT9/Bxve2YHMZnLlY1/+3aLAgZIDLB0syS/ZAcxmcuVjX/7dgsSNwfQivFF6/nrijtIyVyubPzbt1tAAfHzQYfLsmwtqwOadPQXrfRvt7ED2n9YYfdhB4mry1c3vn/YLcjEq6MHNc/FuDWKcj0UGyBCCFrEeMUPqCTkORbDkZWef79lBymZy5UFcPt2C3dA9KUj/KPnsgOEo+Cxg5jM5coCuH27RaELb5ZH81QFCQujUAZEVehcSAkotnf7OFjAAMX2bh8HCxCg+N7t42ABBBTfu30cACkJqfesxvhuHwdAyBFQnO/2cQLUJpSbeSb6+DkD0ooBahFKNTRFSwUrY3JQoVRDU7RVFCxMp/jr1JcBNwIASiI0RUtFRUj8dbqhKWQVjJDkQumGppBVqF0oN/OVitqFhF9nQJVoO99yoYRDU0hii4GdAKURmkIWXajoAiiVyAtKA7krlAHJBpIL+YamAJ93AhYMUGEHlEpoCqWBNLGYm3nZQOoK5e1QLQPRhTKgloH4jNVx+Yus2AE1hHzng4ZdADaoCiHsUq6k2wZCaLM8J902sAJKc05aBFQTynPSCgMboDTnpAGA0pyTBgBKc05aANT8MjfzFoMMyGLgsAzYlMz7vCFaZA/yMciALAYZkMUgA7IYZEAWgwzIYpCnOywGvtMd6UgByGG6Q4H4CHWQRe+XAZzucM12sCwGBeQw3eGa7WBZDArIYSyWnoDNfHrKgCwCBppMT8BQpekJuHhh//Nt+d97ElDo+ZpsqD9cnr+5A5yRz4IdgFmUqXC4FZZKPHhlIX4SBQP0gO/ncLlE38ucbpY4OsPzdfnprfvd8VkcflnhAzALnGr/YcVSiQevLMRPkkBF7Ob1/8qvf//xDud5+EziVeADcQo3CVmQw+dbYBYP+CZuliyVePDKQvwkmQIr6T1/d3/gIsY+ud6dkAXzIHAWqKYrH7yyaH/iBGzm8d2R8vF6tX+/xDeKg5+AAbEsWKkHZ1EWqE9VKvHglUXrEy8PQLhO+/dX76+Oz+LDCj38dAvO4nD5CaHjPIjPQv4kSLHK1TRircoorjl+rasiQAUiZMG+M2gW2Hfrys+rDhKzkD6JAvaDSPnANcdbEnWphI6dE9KK8VkwDwJmQW8HsVTiwSsL8ZMkn37Qw3nV8/DoxAhZPJx7dKVwYEcWfs63HyRmIWUoCggoPbXng2DzitGLezbv8nao9JSnOyzyn5NORP5PNRKRtF/MGI58KD1dkVpwd2p9TDeAgpy0353ivqoxkNFgCrOSxl363WkQBT5MQI8XJzRSGA4Bjh2arBo4Q7t//Da0fwMXLwyl7Yv/vPrCVguUNSNpPkq3GqFakoK8lS19EG1Z6Tm4Gqq69n/h2mj36ssIxU5u5tdnaBtC5UgHhGyT3xmdiHnxZffK9maUziUD2pgDTQ4mBoh9V+SdMdiDxgWE68XywoLoDVFAW/YuHeLU29E9CFdCaD2zvuBnCFFAT1clmRIMBrU7HR9QQGLlHDfz+Atbl4f/XrzLgMITB4i078Spsxo1gOgAqPTmEBqxcNQAqoMAm6IBpyd+OxT7KYh+UDDKgCyqAeE+EFUQHcVgxAU3YY7TkMpCQjO/Jl3ox4vsQLz4jiKZDgpioBGQ/gbKnSFTkmcFjQAAAABJRU5ErkJggg==" alt="Trend in the carbon-dioxide intensity of the U.S. energy supply from 2005–2023" />
+<div class="figcaption">Trend in the carbon-dioxide intensity of the
+U.S. energy supply from 2005–2023</div>
 </div>
 <p>That looks better. The abrupt changes in trend at 1990 and again at
 2005 illustrate the difficulties of predicting future values by
@@ -286,19 +489,19 @@ will use here should be taken with several grains of salt.</p>
 <div id="historical-trends" class="section level3">
 <h3>Historical Trends</h3>
 <p>Now let’s calculate the historical trends:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;P&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>historical_trends <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(vars, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                 <span class="sc">~</span>kaya <span class="sc">%&gt;%</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">gather</span>(<span class="at">key =</span> variable, <span class="at">value =</span> value, <span class="sc">-</span>region, <span class="sc">-</span>year) <span class="sc">%&gt;%</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">filter</span>(variable <span class="sc">==</span> .x, </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                          year <span class="sc">&gt;=</span> <span class="fu">ifelse</span>(.x <span class="sc">==</span> <span class="st">&quot;f&quot;</span>, <span class="dv">2005</span>, <span class="dv">1990</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">lm</span>(<span class="fu">log</span>(value) <span class="sc">~</span> year, <span class="at">data =</span> .) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">&quot;year&quot;</span>) <span class="sc">%$%</span> estimate</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">set_names</span>(vars)</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Variable =</span> <span class="fu">names</span>(historical_trends), </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">Rate =</span> <span class="fu">map_chr</span>(historical_trends, <span class="sc">~</span><span class="fu">percent</span>(.x, <span class="fl">0.01</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">&quot;c&quot;</span>, <span class="st">&quot;r&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;P&quot;</span>, <span class="st">&quot;g&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;f&quot;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>historical_trends <span class="ot">&lt;-</span> <span class="fu">map_dbl</span>(vars, </span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>                 <span class="sc">~</span>kaya <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>                   <span class="fu">gather</span>(<span class="at">key =</span> variable, <span class="at">value =</span> value, <span class="sc">-</span>region, <span class="sc">-</span>year) <span class="sc">%&gt;%</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>                   <span class="fu">filter</span>(variable <span class="sc">==</span> .x, </span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>                          year <span class="sc">&gt;=</span> <span class="fu">ifelse</span>(.x <span class="sc">==</span> <span class="st">&quot;f&quot;</span>, <span class="dv">2005</span>, <span class="dv">1990</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>                   <span class="fu">lm</span>(<span class="fu">log</span>(value) <span class="sc">~</span> year, <span class="at">data =</span> .) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>                   <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">&quot;year&quot;</span>) <span class="sc">%$%</span> estimate</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>) <span class="sc">%&gt;%</span> <span class="fu">set_names</span>(vars)</span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">Variable =</span> <span class="fu">names</span>(historical_trends), </span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>       <span class="at">Rate =</span> <span class="fu">map_chr</span>(historical_trends, <span class="sc">~</span><span class="fu">percent</span>(.x, <span class="fl">0.01</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">&quot;c&quot;</span>, <span class="st">&quot;r&quot;</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -309,19 +512,19 @@ will use here should be taken with several grains of salt.</p>
 <tbody>
 <tr class="odd">
 <td align="center">P</td>
-<td align="right">0.92%</td>
+<td align="right">0.89%</td>
 </tr>
 <tr class="even">
 <td align="center">g</td>
-<td align="right">1.43%</td>
+<td align="right">1.48%</td>
 </tr>
 <tr class="odd">
 <td align="center">e</td>
-<td align="right">-2.04%</td>
+<td align="right">-2.08%</td>
 </tr>
 <tr class="even">
 <td align="center">f</td>
-<td align="right">-1.21%</td>
+<td align="right">-1.20%</td>
 </tr>
 </tbody>
 </table>
@@ -334,18 +537,18 @@ policy. This is not an extrapolation from history, but a pure
 implication of the policy goals: From the Kaya identity, <span class="math inline">\(F = G \times e \times f\)</span>, so the rates of
 change are <span class="math inline">\(r_F = r_G + r_e + r_f = r_G +
 r_{ef}\)</span>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ref_year <span class="ot">&lt;-</span> <span class="dv">2005</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>target_years <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2025</span>, <span class="dv">2050</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>target_reduction <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.26</span>, <span class="fl">0.80</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>F_ref <span class="ot">&lt;-</span> kaya <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">==</span> ref_year) <span class="sc">%$%</span> F</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>F_target <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">year =</span> target_years, <span class="at">F =</span> F_ref <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> target_reduction)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">implied_rate =</span> <span class="fu">log</span>(F <span class="sc">/</span> F_ref) <span class="sc">/</span> (year <span class="sc">-</span> ref_year))</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>F_target <span class="sc">%&gt;%</span> </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">implied_rate =</span> <span class="fu">map_chr</span>(implied_rate, <span class="sc">~</span><span class="fu">percent</span>(.x,  <span class="fl">0.01</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;Target F&quot;</span> <span class="ot">=</span> F, <span class="st">&quot;Implied Rate&quot;</span> <span class="ot">=</span> implied_rate) <span class="sc">%&gt;%</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">&quot;crr&quot;</span>), <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>ref_year <span class="ot">&lt;-</span> <span class="dv">2005</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>target_years <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2025</span>, <span class="dv">2050</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>target_reduction <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.26</span>, <span class="fl">0.80</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>F_ref <span class="ot">&lt;-</span> kaya <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">==</span> ref_year) <span class="sc">%$%</span> F</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>F_target <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">year =</span> target_years, <span class="at">F =</span> F_ref <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> target_reduction)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">implied_rate =</span> <span class="fu">log</span>(F <span class="sc">/</span> F_ref) <span class="sc">/</span> (year <span class="sc">-</span> ref_year))</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>F_target <span class="sc">%&gt;%</span> </span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">implied_rate =</span> <span class="fu">map_chr</span>(implied_rate, <span class="sc">~</span><span class="fu">percent</span>(.x,  <span class="fl">0.01</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;Target F&quot;</span> <span class="ot">=</span> F, <span class="st">&quot;Implied Rate&quot;</span> <span class="ot">=</span> implied_rate) <span class="sc">%&gt;%</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align =</span> <span class="fu">c</span>(<span class="st">&quot;crr&quot;</span>), <span class="at">digits =</span> <span class="dv">0</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -357,7 +560,7 @@ r_{ef}\)</span>.</p>
 <tbody>
 <tr class="odd">
 <td align="center">2025</td>
-<td align="right">4346</td>
+<td align="right">4347</td>
 <td align="right">-1.51%</td>
 </tr>
 <tr class="even">
@@ -372,22 +575,22 @@ decarbonization of the economy, conditional on future economic growth
 following the historical trend. This is expressed in the equation <span class="math inline">\(r_{ef} = r_F - r_G\)</span>, where <span class="math inline">\(r_F\)</span> is the rate of emissions-reduction
 implied by the policy (see above) and <span class="math inline">\(r_G\)</span> is the historical growth rate of
 GDP:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>implied_decarb_rates <span class="ot">&lt;-</span> F_target <span class="sc">%&gt;%</span> </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(year, <span class="at">impl_F =</span> implied_rate, </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">hist_G =</span> historical_trends[<span class="st">&#39;P&#39;</span>] <span class="sc">+</span> historical_trends[<span class="st">&#39;g&#39;</span>],</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">hist_ef =</span> historical_trends[<span class="st">&#39;e&#39;</span>] <span class="sc">+</span> historical_trends[<span class="st">&#39;f&#39;</span>],</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">impl_ef =</span> impl_F <span class="sc">-</span> hist_G)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>implied_decarb_rates <span class="sc">%&gt;%</span> </span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">&quot;hist_&quot;</span>), <span class="fu">starts_with</span>(<span class="st">&quot;impl_&quot;</span>)),</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>            <span class="fu">list</span>(<span class="sc">~</span><span class="fu">map_chr</span>(., <span class="sc">~</span><span class="fu">percent</span>(.x, <span class="fl">0.01</span>)))) <span class="sc">%&gt;%</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">Year =</span> year, </span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;implied F&quot;</span> <span class="ot">=</span> impl_F, </span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;historical G&quot;</span> <span class="ot">=</span> hist_G,</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;implied ef&quot;</span> <span class="ot">=</span> impl_ef, </span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;historical ef&quot;</span> <span class="ot">=</span> hist_ef</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align=</span><span class="st">&quot;rrrrr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>implied_decarb_rates <span class="ot">&lt;-</span> F_target <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  <span class="fu">transmute</span>(year, <span class="at">impl_F =</span> implied_rate, </span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>            <span class="at">hist_G =</span> historical_trends[<span class="st">&#39;P&#39;</span>] <span class="sc">+</span> historical_trends[<span class="st">&#39;g&#39;</span>],</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>            <span class="at">hist_ef =</span> historical_trends[<span class="st">&#39;e&#39;</span>] <span class="sc">+</span> historical_trends[<span class="st">&#39;f&#39;</span>],</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>            <span class="at">impl_ef =</span> impl_F <span class="sc">-</span> hist_G)</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>implied_decarb_rates <span class="sc">%&gt;%</span> </span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">&quot;hist_&quot;</span>), <span class="fu">starts_with</span>(<span class="st">&quot;impl_&quot;</span>)),</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>            <span class="fu">list</span>(<span class="sc">~</span><span class="fu">map_chr</span>(., <span class="sc">~</span><span class="fu">percent</span>(.x, <span class="fl">0.01</span>)))) <span class="sc">%&gt;%</span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">Year =</span> year, </span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>         <span class="st">&quot;implied F&quot;</span> <span class="ot">=</span> impl_F, </span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>         <span class="st">&quot;historical G&quot;</span> <span class="ot">=</span> hist_G,</span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>         <span class="st">&quot;implied ef&quot;</span> <span class="ot">=</span> impl_ef, </span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>         <span class="st">&quot;historical ef&quot;</span> <span class="ot">=</span> hist_ef</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align=</span><span class="st">&quot;rrrrr&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -402,16 +605,16 @@ GDP:</p>
 <tr class="odd">
 <td align="right">2025</td>
 <td align="right">-1.51%</td>
-<td align="right">2.35%</td>
-<td align="right">-3.85%</td>
-<td align="right">-3.24%</td>
+<td align="right">2.37%</td>
+<td align="right">-3.88%</td>
+<td align="right">-3.28%</td>
 </tr>
 <tr class="even">
 <td align="right">2050</td>
 <td align="right">-3.58%</td>
-<td align="right">2.35%</td>
-<td align="right">-5.92%</td>
-<td align="right">-3.24%</td>
+<td align="right">2.37%</td>
+<td align="right">-5.95%</td>
+<td align="right">-3.28%</td>
 </tr>
 </tbody>
 </table>
@@ -419,10 +622,10 @@ GDP:</p>
 <div id="results" class="section level2">
 <h2>Results</h2>
 <p>To meet the goals for 2025 would require increasing the rate of
-reducing <em>ef</em> from -3.24% per year to -3.85% per year: 1.2 times
+reducing <em>ef</em> from -3.28% per year to -3.88% per year: 1.2 times
 faster.</p>
 <p>To meet the goals for 2050 would require increasing the rate of
-reducing <em>ef</em> from -3.24% per year to -5.92% per year: 1.8 times
+reducing <em>ef</em> from -3.28% per year to -5.95% per year: 1.8 times
 faster.</p>
 </div>
 </div>
@@ -433,12 +636,12 @@ instead of looking at the elements of the Kaya identity individually, we
 use predictions from macroeconomic integrated assessment models that
 consider interactions between population, GDP, and energy use to predict
 future energy demand:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>top_down_trends <span class="ot">&lt;-</span> <span class="fu">get_top_down_trends</span>(<span class="st">&quot;United States&quot;</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>top_down_trends <span class="sc">%&gt;%</span> <span class="fu">select</span>(P, G, E) <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_all</span>(<span class="fu">list</span>(<span class="sc">~</span><span class="fu">map_chr</span>(., <span class="sc">~</span><span class="fu">percent</span>(.x, <span class="fl">0.01</span>)))) <span class="sc">%&gt;%</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;P trend&quot;</span> <span class="ot">=</span> P, <span class="st">&quot;G trend&quot;</span> <span class="ot">=</span> G, <span class="st">&quot;E trend&quot;</span> <span class="ot">=</span> E) <span class="sc">%&gt;%</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align=</span><span class="st">&quot;rrr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>top_down_trends <span class="ot">&lt;-</span> <span class="fu">get_top_down_trends</span>(<span class="st">&quot;United States&quot;</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>top_down_trends <span class="sc">%&gt;%</span> <span class="fu">select</span>(P, G, E) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="fu">mutate_all</span>(<span class="fu">list</span>(<span class="sc">~</span><span class="fu">map_chr</span>(., <span class="sc">~</span><span class="fu">percent</span>(.x, <span class="fl">0.01</span>)))) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;P trend&quot;</span> <span class="ot">=</span> P, <span class="st">&quot;G trend&quot;</span> <span class="ot">=</span> G, <span class="st">&quot;E trend&quot;</span> <span class="ot">=</span> E) <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align=</span><span class="st">&quot;rrr&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -465,23 +668,23 @@ calculate the implied rate of decarbonizing the energy supply (<span class="math
 emissions-reduction implied by policy (<span class="math inline">\(r_F\)</span>) to the predicted rate of growth of
 energy demand (<span class="math inline">\(r_E\)</span>): <span class="math inline">\(F = E \times f\)</span>, so <span class="math inline">\(r_F = r_E + r_f\)</span>, which we rearrange to
 find that <span class="math inline">\(r_f = r_F - r_E\)</span>.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>implied_decarb_rates_top_down <span class="ot">&lt;-</span> F_target <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(year, <span class="at">impl_F =</span> implied_rate, </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">top_down_E =</span> top_down_trends<span class="sc">$</span>E,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">hist_f =</span> historical_trends[<span class="st">&#39;f&#39;</span>],</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">impl_f =</span> impl_F <span class="sc">-</span> top_down_E)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>implied_decarb_rates_top_down <span class="sc">%&gt;%</span> </span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">&quot;hist_&quot;</span>), <span class="fu">starts_with</span>(<span class="st">&quot;impl_&quot;</span>), </span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">starts_with</span>(<span class="st">&quot;top_down&quot;</span>)),</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>            <span class="fu">list</span>(<span class="sc">~</span><span class="fu">map_chr</span>(., <span class="sc">~</span><span class="fu">percent</span>(.x, <span class="fl">0.01</span>)))) <span class="sc">%&gt;%</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">Year =</span> year, </span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;implied F&quot;</span> <span class="ot">=</span> impl_F, </span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;top-down E&quot;</span> <span class="ot">=</span> top_down_E,</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;implied f&quot;</span> <span class="ot">=</span> impl_f, </span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;historical f&quot;</span> <span class="ot">=</span> hist_f</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align=</span><span class="st">&quot;rrrrr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>implied_decarb_rates_top_down <span class="ot">&lt;-</span> F_target <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">transmute</span>(year, <span class="at">impl_F =</span> implied_rate, </span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>            <span class="at">top_down_E =</span> top_down_trends<span class="sc">$</span>E,</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>            <span class="at">hist_f =</span> historical_trends[<span class="st">&#39;f&#39;</span>],</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>            <span class="at">impl_f =</span> impl_F <span class="sc">-</span> top_down_E)</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>implied_decarb_rates_top_down <span class="sc">%&gt;%</span> </span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  <span class="fu">mutate_at</span>(<span class="fu">vars</span>(<span class="fu">starts_with</span>(<span class="st">&quot;hist_&quot;</span>), <span class="fu">starts_with</span>(<span class="st">&quot;impl_&quot;</span>), </span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>                 <span class="fu">starts_with</span>(<span class="st">&quot;top_down&quot;</span>)),</span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>            <span class="fu">list</span>(<span class="sc">~</span><span class="fu">map_chr</span>(., <span class="sc">~</span><span class="fu">percent</span>(.x, <span class="fl">0.01</span>)))) <span class="sc">%&gt;%</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a>  <span class="fu">select</span>(<span class="at">Year =</span> year, </span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a>         <span class="st">&quot;implied F&quot;</span> <span class="ot">=</span> impl_F, </span>
+<span id="cb11-13"><a href="#cb11-13" tabindex="-1"></a>         <span class="st">&quot;top-down E&quot;</span> <span class="ot">=</span> top_down_E,</span>
+<span id="cb11-14"><a href="#cb11-14" tabindex="-1"></a>         <span class="st">&quot;implied f&quot;</span> <span class="ot">=</span> impl_f, </span>
+<span id="cb11-15"><a href="#cb11-15" tabindex="-1"></a>         <span class="st">&quot;historical f&quot;</span> <span class="ot">=</span> hist_f</span>
+<span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">align=</span><span class="st">&quot;rrrrr&quot;</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -498,14 +701,14 @@ find that <span class="math inline">\(r_f = r_F - r_E\)</span>.</p>
 <td align="right">-1.51%</td>
 <td align="right">0.20%</td>
 <td align="right">-1.71%</td>
-<td align="right">-1.21%</td>
+<td align="right">-1.20%</td>
 </tr>
 <tr class="even">
 <td align="right">2050</td>
 <td align="right">-3.58%</td>
 <td align="right">0.20%</td>
 <td align="right">-3.78%</td>
-<td align="right">-1.21%</td>
+<td align="right">-1.20%</td>
 </tr>
 </tbody>
 </table>
@@ -513,10 +716,10 @@ find that <span class="math inline">\(r_f = r_F - r_E\)</span>.</p>
 <div id="results-1" class="section level2">
 <h2>Results</h2>
 <p>To meet the goals for 2025 would require increasing the rate of
-reducing <em>f</em> from -1.21% per year to -1.71% per year: 1.4 times
+reducing <em>f</em> from -1.20% per year to -1.71% per year: 1.4 times
 faster.</p>
 <p>To meet the goals for 2050 would require increasing the rate of
-reducing <em>f</em> from -1.21% per year to -3.78% per year: 3.1 times
+reducing <em>f</em> from -1.20% per year to -3.78% per year: 3.1 times
 faster.</p>
 </div>
 </div>

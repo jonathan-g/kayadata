@@ -39,12 +39,12 @@ mexico_data %>% filter(year >= 1965) %>%
 #> # A tibble: 6 × 10
 #>   region  year     P     G     E     F     g     e     f    ef
 #>   <ord>  <int> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1 Mexico  2022 0.128  1.24  8.27  506.  9.76  6.65  61.1  407.
-#> 2 Mexico  2021 0.127  1.21  7.57  450.  9.53  6.27  59.4  373.
-#> 3 Mexico  2020 0.126  1.15  7.04  418.  9.15  6.11  59.3  363.
-#> 4 Mexico  2019 0.125  1.25  7.64  480. 10.0   6.10  62.8  383.
-#> 5 Mexico  2018 0.124  1.26  7.73  489  10.1   6.16  63.2  390.
-#> 6 Mexico  2017 0.123  1.23  7.83  503. 10.0   6.37  64.3  410.
+#> 1 Mexico  2023 0.128  1.33  8.01  490. 10.3   6.04  61.1  369.
+#> 2 Mexico  2022 0.128  1.29  7.76  469. 10.1   6.04  60.5  365.
+#> 3 Mexico  2021 0.127  1.24  7.42  443.  9.76  6.01  59.6  358.
+#> 4 Mexico  2020 0.126  1.17  6.97  413.  9.28  5.96  59.3  354.
+#> 5 Mexico  2019 0.125  1.28  7.65  481. 10.2   5.98  62.8  376.
+#> 6 Mexico  2018 0.124  1.28  7.73  489. 10.3   6.03  63.3  381.
 ```
 
 - `project_top_down()`: Project future population, GDP, energy use, and
@@ -85,14 +85,13 @@ renewables) for a region or country. Example:
 mexico_mix = get_fuel_mix("Mexico")
 mexico_mix
 #> # A tibble: 5 × 5
-#> # Groups:   region, year [1]
-#>   region  year fuel         quads   frac
-#>   <chr>  <int> <ord>        <dbl>  <dbl>
-#> 1 Mexico  2022 Coal        0.237  0.0286
-#> 2 Mexico  2022 Oil         3.91   0.472 
-#> 3 Mexico  2022 Natural Gas 3.30   0.399 
-#> 4 Mexico  2022 Nuclear     0.0948 0.0115
-#> 5 Mexico  2022 Renewables  0.749  0.0905
+#>   region  year fuel        quads   frac
+#>   <chr>  <int> <ord>       <dbl>  <dbl>
+#> 1 Mexico  2023 Oil         3.64  0.454 
+#> 2 Mexico  2023 Natural Gas 3.33  0.416 
+#> 3 Mexico  2023 Coal        0.250 0.0312
+#> 4 Mexico  2023 Nuclear     0.105 0.0131
+#> 5 Mexico  2023 Renewables  0.690 0.0861
 ```
 
 - `plot_fuel_mix`: Plot the fuel mix in a donut chart
