@@ -1,8 +1,8 @@
 Package: kayadata
 Type: Package
 Title: Kaya Identity Data for Nations and Regions
-Version: 1.2.0
-Date: 2022-07-22
+Version: 1.3.0
+Date: 2023-07-13
 Authors@R: 
     person(given = "Jonathan",
            family = "Gilligan",
@@ -22,7 +22,8 @@ Description: Provides data for Kaya identity variables (population, gross
              per-capita Gross Domestic Product, the energy intensity of its 
              economy, and the carbon-intensity of its energy supply.
 URL: https://jonathan-g.github.io/kayadata/, 
-     https://github.com/jonathan-g/kayadata
+     https://github.com/jonathan-g/kayadata,
+     https://doi.org/10.5281/zenodo.8144476
 BugReports: https://github.com/jonathan-g/kayadata/issues
 License: MIT + file LICENSE
 Depends:
@@ -40,7 +41,7 @@ Encoding: UTF-8
 Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Suggests:
     broom (>= 0.5),
     knitr (>= 1.22),

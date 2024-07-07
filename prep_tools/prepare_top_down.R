@@ -22,7 +22,7 @@ prepare_regions <- function() {
                    " +SAR, +China *$" = "", ", +The" = "",
                    " +members *$" = "", ", +RB *$" = "",
                    "\\&" = "and", " +" = " "),
-    bp = c("^Total +" = "", "\\&" = "and", "of which: +" = "",
+    ei = c("^Total +" = "", "\\&" = "and", "of which: +" = "",
            "^US$" = "United States",
            "European Union \\#" = "European Union",
            "S\\. +and +Cent\\. +America" = "Latin America and Caribbean",
