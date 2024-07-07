@@ -54,7 +54,7 @@
 #'
 #' The package uses data on energy consumption and fossil-fuel CO2 emissions
 #' from the [Energy Institute](https://www.energyinst.org/)'s
-#' [2023 Statistical Review of World Energy](https://www.energyinst.org/statistical-review/home)
+#' [2024 Statistical Review of World Energy](https://www.energyinst.org/statistical-review/home)
 #'
 #' @section License:
 #'

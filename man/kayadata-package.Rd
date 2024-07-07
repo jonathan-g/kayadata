@@ -32,7 +32,7 @@ data frame.
 
 The package uses data on energy consumption and fossil-fuel CO2 emissions
 from the \href{https://www.energyinst.org/}{Energy Institute}'s
-\href{https://www.energyinst.org/statistical-review/home}{2023 Statistical Review of World Energy}
+\href{https://www.energyinst.org/statistical-review/home}{2024 Statistical Review of World Energy}
 }
 \section{License}{
 
