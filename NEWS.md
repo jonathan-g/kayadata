@@ -1,3 +1,12 @@
+# kayadata 1.4.0
+
+* Update data through 2023:
+  * The 2024 release of Energy Statistics
+  * The latest population and GDP data from the World Bank.
+  * Cleaned up some code to avoid importing more global symbols than necesssary
+    from Imported packages, and to fix calls to dependency libraries that had
+    become deprecated or raised warnings.
+
 # kayadata 1.3.0
 
 * Update data through 2022:

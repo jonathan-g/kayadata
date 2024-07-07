@@ -20,11 +20,6 @@
 // be compatible with the behavior of Pandoc < 2.8).
 document.addEventListener('DOMContentLoaded', function(e) {
   var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
-  // With reveal.js output, div.section does not seem to pick up on the
-  // sections properly.
-  if (hs.length == 0) {
-   hs = document.querySelectorAll("section[class*='level'] > :first-child");
-  }
   var i, h, a;
   for (i = 0; i < hs.length; i++) {
     h = hs[i];
@@ -36,27 +31,27 @@ document.addEventListener('DOMContentLoaded', function(e) {
 </script>
 
 <style type="text/css">
-  code{white-space: pre-wrap;}
-  span.smallcaps{font-variant: small-caps;}
-  span.underline{text-decoration: underline;}
-  div.column{display: inline-block; vertical-align: top; width: 50%;}
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-  ul.task-list{list-style: none;}
-    </style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
 
 
 
 <style type="text/css">
-  code {
-    white-space: pre;
-  }
-  .sourceCode {
-    overflow: visible;
-  }
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -70,55 +65,54 @@ pre > code.sourceCode { white-space: pre-wrap; }
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
-  { counter-reset: source-line 0; }
+{ counter-reset: source-line 0; }
 pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
+{ position: relative; left: -4em; counter-increment: source-line; }
 pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
 div.sourceCode
-  {   }
+{ }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <script>
 // apply pandoc div.sourceCode style to pre.sourceCode instead
@@ -127,13 +121,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   for (var i = 0; i < sheets.length; i++) {
     if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
     try { var rules = sheets[i].cssRules; } catch (e) { continue; }
-    for (var j = 0; j < rules.length; j++) {
+    var j = 0;
+    while (j < rules.length) {
       var rule = rules[j];
       // check if there is a div.sourceCode rule
-      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -145,7 +146,187 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<style type="text/css">body {background-color: #fff;margin: 1em auto;max-width: 700px;overflow: visible;padding-left: 2em;padding-right: 2em;font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size: 14px;line-height: 1.35;}#TOC {clear: both;margin: 0 0 10px 10px;padding: 4px;width: 400px;border: 1px solid #CCCCCC;border-radius: 5px;background-color: #f6f6f6;font-size: 13px;line-height: 1.3;}#TOC .toctitle {font-weight: bold;font-size: 15px;margin-left: 5px;}#TOC ul {padding-left: 40px;margin-left: -1.5em;margin-top: 5px;margin-bottom: 5px;}#TOC ul ul {margin-left: -2em;}#TOC li {line-height: 16px;}table {margin: 1em auto;border-width: 1px;border-color: #DDDDDD;border-style: outset;border-collapse: collapse;}table th {border-width: 2px;padding: 5px;border-style: inset;}table td {border-width: 1px;border-style: inset;line-height: 18px;padding: 5px 5px;}table, table th, table td {border-left-style: none;border-right-style: none;}table thead, table tr.even {background-color: #f7f7f7;}p {margin: 0.5em 0;}blockquote {background-color: #f6f6f6;padding: 0.25em 0.75em;}hr {border-style: solid;border: none;border-top: 1px solid #777;margin: 28px 0;}dl {margin-left: 0;}dl dd {margin-bottom: 13px;margin-left: 13px;}dl dt {font-weight: bold;}ul {margin-top: 0;}ul li {list-style: circle outside;}ul ul {margin-bottom: 0;}pre, code {background-color: #f7f7f7;border-radius: 3px;color: #333;white-space: pre-wrap; }pre {border-radius: 3px;margin: 5px 0px 10px 0px;padding: 10px;}pre:not([class]) {background-color: #f7f7f7;}code {font-family: Consolas, Monaco, 'Courier New', monospace;font-size: 85%;}p > code, li > code {padding: 2px 0px;}div.figure {text-align: center;}img {background-color: #FFFFFF;padding: 2px;border: 1px solid #DDDDDD;border-radius: 3px;border: 1px solid #CCCCCC;margin: 0 5px;}h1 {margin-top: 0;font-size: 35px;line-height: 40px;}h2 {border-bottom: 4px solid #f7f7f7;padding-top: 10px;padding-bottom: 2px;font-size: 145%;}h3 {border-bottom: 2px solid #f7f7f7;padding-top: 10px;font-size: 120%;}h4 {border-bottom: 1px solid #f7f7f7;margin-left: 8px;font-size: 105%;}h5, h6 {border-bottom: 1px solid #ccc;font-size: 105%;}a {color: #0033dd;text-decoration: none;}a:hover {color: #6666ff; }a:visited {color: #800080; }a:visited:hover {color: #BB00BB; }a[href^="http:"] {text-decoration: underline; }a[href^="https:"] {text-decoration: underline; }code > span.kw { color: #555; font-weight: bold; } code > span.dt { color: #902000; } code > span.dv { color: #40a070; } code > span.bn { color: #d14; } code > span.fl { color: #d14; } code > span.ch { color: #d14; } code > span.st { color: #d14; } code > span.co { color: #888888; font-style: italic; } code > span.ot { color: #007020; } code > span.al { color: #ff0000; font-weight: bold; } code > span.fu { color: #900; font-weight: bold; } code > span.er { color: #a61717; background-color: #e3d2d2; } </style>
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
 
 
 
@@ -170,13 +351,13 @@ Package</h1>
 sources.</p>
 <p>To install and load the package, first install either the
 <code>pacman</code> or <code>devtools</code> package from CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;jonathan-g/kayadata&quot;</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kayadata)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;jonathan-g/kayadata&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="fu">library</span>(kayadata)</span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">p_load_gh</span>(<span class="st">&quot;jonathan-g/kayadata&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">p_load_gh</span>(<span class="st">&quot;jonathan-g/kayadata&quot;</span>)</span></code></pre></div>
 <p>Once you’ve installed it, then you just need to use the command
 <code>library(kayadata)</code> to load the package.</p>
 <p>Some of the functions the package provides are:</p>
@@ -186,60 +367,59 @@ and regions.</li>
 <li><code>get_kaya_data()</code>: Get data for a specific country.
 Example:</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mexico_data <span class="ot">=</span> <span class="fu">get_kaya_data</span>(<span class="st">&quot;Mexico&quot;</span>) </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mexico_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1965</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(region<span class="sc">:</span>ef) <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>mexico_data <span class="ot">=</span> <span class="fu">get_kaya_data</span>(<span class="st">&quot;Mexico&quot;</span>) </span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>mexico_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year <span class="sc">&gt;=</span> <span class="dv">1965</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="fu">select</span>(region<span class="sc">:</span>ef) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 10
 ##   region  year     P     G     E     F     g     e     f    ef
 ##   &lt;ord&gt;  &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 Mexico  2021 0.130  1.21  6.43  374.  9.26  5.34  58.1  310.
-## 2 Mexico  2020 0.129  1.15  6.09  358.  8.92  5.30  58.7  311.
-## 3 Mexico  2019 0.128  1.25  7.19  449.  9.82  5.74  62.5  359.
-## 4 Mexico  2018 0.126  1.26  7.49  468.  9.95  5.96  62.6  373.
-## 5 Mexico  2017 0.125  1.23  7.52  477.  9.84  6.12  63.4  388.
-## 6 Mexico  2016 0.123  1.20  7.41  469.  9.75  6.16  63.3  390.</code></pre>
+## 1 Mexico  2023 0.128  1.33  8.01  490. 10.3   6.04  61.1  369.
+## 2 Mexico  2022 0.128  1.29  7.76  469. 10.1   6.04  60.5  365.
+## 3 Mexico  2021 0.127  1.24  7.42  443.  9.76  6.01  59.6  358.
+## 4 Mexico  2020 0.126  1.17  6.97  413.  9.28  5.96  59.3  354.
+## 5 Mexico  2019 0.125  1.28  7.65  481. 10.2   5.98  62.8  376.
+## 6 Mexico  2018 0.124  1.28  7.73  489. 10.3   6.03  63.3  381.</code></pre>
 <ul>
 <li><code>project_top_down()</code>: Project future population, GDP,
 energy use, and emissions. Example:</li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mexico_2050 <span class="ot">=</span> <span class="fu">project_top_down</span>(<span class="st">&quot;Mexico&quot;</span>, <span class="dv">2050</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mexico_2050</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>mexico_2050 <span class="ot">=</span> <span class="fu">project_top_down</span>(<span class="st">&quot;Mexico&quot;</span>, <span class="dv">2050</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>mexico_2050</span></code></pre></div>
 <pre><code>## # A tibble: 1 × 10
 ##   region  year     P     G     g     E     F     e     f    ef
 ##   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 Mexico  2050 0.157  2.45  15.6  10.5  577.  4.29  54.9  236.</code></pre>
+## 1 Mexico  2050 0.154  2.51  16.3  10.9  609.  4.36  55.7  243.</code></pre>
 <ul>
 <li><code>plot_kaya</code>: Plot trends in Kaya variables for a given
 region or country. Example:</li>
 </ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>us_kaya <span class="ot">=</span> <span class="fu">get_kaya_data</span>(<span class="st">&quot;United States&quot;</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_kaya</span>(us_kaya, <span class="st">&quot;ef&quot;</span>, <span class="at">y_lab =</span> <span class="st">&quot;Carbon intensity of economy&quot;</span>,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">start_year =</span> <span class="dv">2000</span>, <span class="at">stop_year =</span> <span class="dv">2010</span>, <span class="at">log_scale =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">trend_line =</span> <span class="cn">TRUE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>world_kaya <span class="ot">=</span> <span class="fu">get_kaya_data</span>(<span class="st">&quot;World&quot;</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_kaya</span>(world_kaya, <span class="st">&quot;P&quot;</span>, <span class="at">start_year =</span> <span class="dv">2000</span>, <span class="at">stop_year =</span> <span class="dv">2010</span>, </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">log_scale =</span> <span class="cn">FALSE</span>, <span class="at">trend_line =</span> <span class="cn">FALSE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- -->
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>us_kaya <span class="ot">=</span> <span class="fu">get_kaya_data</span>(<span class="st">&quot;United States&quot;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">plot_kaya</span>(us_kaya, <span class="st">&quot;ef&quot;</span>, <span class="at">y_lab =</span> <span class="st">&quot;Carbon intensity of economy&quot;</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>          <span class="at">start_year =</span> <span class="dv">2000</span>, <span class="at">stop_year =</span> <span class="dv">2010</span>, <span class="at">log_scale =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>          <span class="at">trend_line =</span> <span class="cn">TRUE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>world_kaya <span class="ot">=</span> <span class="fu">get_kaya_data</span>(<span class="st">&quot;World&quot;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">plot_kaya</span>(world_kaya, <span class="st">&quot;P&quot;</span>, <span class="at">start_year =</span> <span class="dv">2000</span>, <span class="at">stop_year =</span> <span class="dv">2010</span>, </span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>          <span class="at">log_scale =</span> <span class="cn">FALSE</span>, <span class="at">trend_line =</span> <span class="cn">FALSE</span>, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAAxlBMVEUAAAAAADoAAGYAAIsAOpAAZrYzMzM6AAA6ADo6AGY6Ojo6OmY6kLY6kNtNTU1NTW5NTY5Nbm5NbqtNjshkle1mAABmADpmAGZmOgBmOpBmtv9uTU1uTW5uTY5ubqtuq+SOTU2OTW6OTY6Ojm6Oq6uOyP+QOgCQOjqQOmaQ2/+rbk2rbm6rbo6r5P+2ZgC2///Ijk3I/8jI///bkDrb///kq27k///r6+v/tmb/yI7/25D/5Kv/5OT//7b//8j//9v//+T////EtNemAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAKW0lEQVR4nO2da0PbNhSGadOO7pZ2xewSNrK1hQ0YkJWGQTII/v9/anYcEsm6nCPrRJKj836gHjt5ZT8c3Ww52itZVu3FPoHUxYAAMSBADAgQAwKEAfRVnnIAJBz/C4fThES3YUBACAMCQhgQEMKAgBAGBIQwIE1IURTrYwakhBSNVv/FgJQQN0DT4fBADnUtzy8kuE2xVvNbAND8+Pbp/EQKdSvPNySwTVF0AHRxWTYTsX93XyKg5jdQFZsfvb0sJZYufxD/kLA2agJBGXT/PqMqVhTugKbjCtKBFIoujyQkFqD1b+EMKidjKRRdHklIOBstHribn2TSzWurVy0eKDYy4GFAKxn5MKBaxvpVMqClzHgYUC0LHgZU2vOHAQF4GJC9fpUMCEqg3AGJePimvSI5fRiQIrl6MaC2CgZki1GaZwYkS+m+GJAktXv3BxT3gQOtxApmDcwzg7TDQ65iG2mHzwxoLf38ggGtpZ9+MaCVTNNTBrSSgQ8DWsmUQAyokQkPA1pK33/ZbPIFhLTJC5AtgRhQaWuAjDY5AbKlj9EmT0AONhkBAhIoe0AAntwBWfsvm02GgNxsoFWuw0o7sIhzMBhsB1Cl+W+fpVDsOSUEaNDIiqc7oMmJHIo7p1QBOduAgObHt8u4Hr+rMRisCbl/GAT0vIy8vxk0EAC520CAHj98boVizokuxNtmIKiLDfi2T1PDhFD4nChDKAF1soEAPb/JUvYUED6BMh0oovHkCQifPkabXAB1ttllQGL7QwhocbpX69UXQ6j1nMhDutvIzTMZoNn+i7Plwd3e6qAdajFDlOcakhqgh182ibP461oXajFDlOca0tmm1b9zG9TSYIuA7l5e3yj1q+wVoDYeUkCL09HD4eiu1420Ov4hBPTw41mVQ7Ovrw2hfuW5hnSy0cwvaDPo5tWXmz5nkGb8TNoGVQ3Q7E1/2yDt/IJ7sY208y8G9CxN++N1NtoqVutlLxtpAx7aXuxwpDdgQI2qbl5v0IOnGiIfIktNFbt5bQBE8QdxDXGzMSYQbRXraxtkxsO92FJmPAyohJ5fUAJa3lJUZxppA7LjIZ6L1Y30Vc/mYgEBNd18z2bzEJ/sMygkoB62QSCe3HsxEE/egBD5QweoaqF7NpJG4ck5gxiQ/X8j+dBVsaZ+9aeKhQZkU4KAigKHJ2NABQpPrlWsCA9IUcrbRqzevUDg2R6ghLeNQLzgRHE2wEBxOlZC/cpzDUEB8rGBQoAMmnw6aqpYcu9qiAm0zXIgQPWX/idYxaT6RXxrW5bpdsfq0U8NZ5rgC3VS/QoMSLphVr+JkGAGye1PYEDyLdfp+o3MhAAVUQE1T1avvjeF+pXnGqKJUfr3kID6MJJW+vfQGWRSIoDUAWLQDEp/Ibk6PgyaQam/iqAbPwfv5lN+mUU3v+A2aC39BJUBraTHw4DWYkD2GBMfBtSoYEC2GDOe8ICSXEhuxhN+Np/iQnJL/kS63WEO9SvPNUQB5GXTIaQXC8lt6eNg0ymkFwvJ7XzS6cW2+fDAJiGBwhfeg24eyJ/wGZTWIk5r/4W3Ib3dkdQyYJhPnG4+lYXkiATKO4NgPFm3QYj0wZW0q5NVFJ+MAeESKCigpBaS4/Bkm0GY/gtd0o4D8i9pB8dB+AQKC2i2v1q8EHschMaT5w0zfPrgStq5NmjDh/bWtnuI7o5i9G5ebH/SA9R8w1vEFWZy85wgoGqs+FPML3lLHdDidLT48+wZ0GQ4fBd224hW/54eoHL25uxub6+pYk8Xl+1Qv/LgkPQBidrsOhLoVQSpfU5BAKD7H47Cvg6ljH8SyyBlGfB/t+U04Ep7dYCYGCCdAr6roRk/Jw6oflcjWAZp56fpAZJvmE0CvquhnYClB6jRlboGZtuAtAmULKAII2kdnnQB3YWerGrTh6ykLbRBoauYgU+CgIzaJiB9+0NXUs8BmfEkCUh8qVcT6leeNqRfgFaLF1RCWwNk45MgoPCPfXoGaPVSb7AMsuJJEZDxvd6tA/KyITobRbF7MSB/cgcE4kkSUMAVZr0EFHCNIoJPgoDCdfNFPwGZM4j2cYGEh9aaUvHaIET2EJXkZROtF8NUL5qS/GwiAcLiSQ9QXb8CvFCH5pMcoGoOtjhVl74IoX7lNcLzSQ3Qso/XbAAphPqVtxS+gmUJyAVP7oBglwwBuSVQcoC2/SVvEp6tXhmRTehxkJQ+DKitVvViQLKk6SkDsgPCuuQESO2+GJAgpX7hXPIE5OCSCyD96JABraSrXkiXHgCa+i/iNM0udgLQ/MgbkHH2tQuAni4+LgH5vKshAqJ84BBEEKDp2LeKGfNnJzJofnxLBwh5Ss4xMQFNh8P1UvtOgCz5sxOASr9ezIqHAWUCqB3qUB7AJ3dApvGzk0sugFxOyTmmp4BAPJkDgvMna0AYPAwI4pMvILD7QrmgY/oGCIuHAUF8MgWE55MlIHj4jHFxi+ktoI6n5BzTJ0ACnthXRmRDC6hgQDYzuXrFvjIiGxdA0AMAMX12RoQZ1GqfY//piWzIACndV+wrI7LZBiDPU3KO6QMgzfAn9pUR2ZAA0g6fY18ZkQ05IP9Tco5JHpB+ehH7yohs/AFp65fPKTnH9AgQySk5xyQNyIQn/pUR2fgBMlUvr1NKy8YLkAVP/CsjsvEAZEsfn1NKy4YBASGdAQF44l8ZkU1HQCCe+FdGZNMNUMGAzKE4PPGvjMjGHxD5KaVlAwGaDIcncij22XvsKyOyAQDdH5SPH1obj6DwxL8yIhu4ijWAhHc1BEBRnzeEEQhoqlSxEpM/8f/0RDaIRnrS3hUBxSf6lRHZIABp9tWA8cS/MiIbuJFWM8inPNeQ6DaIbj7YvhpJ2oT+chPXkOg2DAgIYUBACAMCQlwA5Sk8IA1XT9G4BLFhQMSAshMDAsSAADEgQAwIEA7Q8uZic5d6Oqw3qL3f3LHGi8Tl6Vz4qPizu41k2RYK0OPv7z6X9+9vny4u58e3T+cnj39crvc6RovGZXpQrj8q/vSwEY+VQAygp7//qf729e2z5+/MqS9Q2C0bJdGl+XwXl6VkA2+b9rEkfBWr//bn48mneg9o8XYaXhuXcn709rKjy9Kn+aj408OmdSzLqQ16+3E8eX/b+Zw2LktMXa+sqgslAaCNjXzckgOgsjaoLYzpiHapK9r9QTeX+a+Xz3Xcp4oJNtJxWw5V7KDehL7h3KldFF3qPBx3cmk+4d1IizbisRLYpZsf+3fzk87d/KT5aizfbl60kSzb4oEiIAYEiAEBYkCAGBAgBgSIAQFiQIAYEKDUAC1Ol/sLPRzqtzoLr9QArdDc6LdhiqDkAJV3L6/L2Zuz2KfxrPQAlVevm70EHw6XO1Xd7dWbL86+/VndtiqEEgT0cPhNXcEWp6O6pj0cjsq7F2ez/VGcs0kQUM2jbPZUbnZXrv+JVulSBNRsNz3br+pWhar+t8ogdQvqMEoYUIOkTp06gxjQRg2Mug2qjupO7YozSNIKRtWLVTWs3kH4u9MRA0pVDAgQAwLEgAAxIEAMCND/HmEr5CtnPUkAAAAASUVORK5CYII=" /><!-- -->
 * <code>get_fuel_mix</code>: Get the fuel mix (coal, gas, oil, nuclear,
 and renewables) for a region or country. Example:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mexico_mix <span class="ot">=</span> <span class="fu">get_fuel_mix</span>(<span class="st">&quot;Mexico&quot;</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mexico_mix</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>mexico_mix <span class="ot">=</span> <span class="fu">get_fuel_mix</span>(<span class="st">&quot;Mexico&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>mexico_mix</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 5
-## # Groups:   region, year [1]
 ##   region  year fuel        quads   frac
 ##   &lt;chr&gt;  &lt;int&gt; &lt;ord&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-## 1 Mexico  2021 Coal        0.220 0.0341
-## 2 Mexico  2021 Oil         2.43  0.377 
-## 3 Mexico  2021 Natural Gas 3.01  0.468 
-## 4 Mexico  2021 Nuclear     0.102 0.0159
-## 5 Mexico  2021 Renewables  0.677 0.105</code></pre>
+## 1 Mexico  2023 Oil         3.64  0.454 
+## 2 Mexico  2023 Natural Gas 3.33  0.416 
+## 3 Mexico  2023 Coal        0.250 0.0312
+## 4 Mexico  2023 Nuclear     0.105 0.0131
+## 5 Mexico  2023 Renewables  0.690 0.0861</code></pre>
 <ul>
 <li><code>plot_fuel_mix</code>: Plot the fuel mix in a donut chart</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_fuel_mix</span>(mexico_mix, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">plot_fuel_mix</span>(mexico_mix, <span class="at">font_size =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 <p>After you install the package, you can get more help inside RStudio
 by typing <code>help(package=&quot;kayadata&quot;)</code> in the R console
 window.</p>
