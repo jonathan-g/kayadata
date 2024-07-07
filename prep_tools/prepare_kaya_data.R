@@ -20,18 +20,18 @@ raw_data_path <- file.path(base_dir, "raw_data")
 data_params <- within(list(), {
 
   # List of data files, to look up when loading data
-  es_year <- 2023
+  es_year <- 2024
   es_spreadsheet_name <- str_c("EI-stats-review-", es_year, "-all-data.xlsx")
   es_spreadsheet_url <- str_c(
-    "https://www.energyinst.org/__data/assets/excel_doc/0007/1055545/",
-    "EI-stats-review-all-data.xlsx"
+    "https://www.energyinst.org/__data/assets/excel_doc/0020/1540550/",
+    "EI-Stats-Review-All-Data.xlsx"
   )
   es_spreadsheet_path <- file.path(raw_data_path, es_spreadsheet_name)
   es_scenario <- str_c("EIStat", es_year)
 
-  es_energy_sheet     <- "Primary Energy Consumption"
-  es_co2_sheet        <- "CO2 Emissions from Energy"
-  es_fuel_mix_sheet   <- "Primary Energy - Cons by fuel"
+  es_energy_sheet     <- "Primary energy cons - EJ"
+  es_co2_sheet        <- "Carbon Dioxide from Energy"
+  es_fuel_mix_sheet   <- "PE Cons by fuel EJ"
 
   es_energy_file      <- "es_primary_energy.Rds"
   es_co2_file         <- "es_emissions.Rds"
@@ -259,7 +259,7 @@ make_regions <- function() {
                                     "Oman", "Qatar", "Saudi Arabia", "Syria",
                                     "United Arab Emirates",
                                     "West Bank and Gaza", "Yemen")) %>%
-    left_join(select(wb_country_df, -region, -regionID), by = "country")
+    left_join(select(wb_country_df, -"region", -"regionID"), by = "country")
 
   africa <- regions %>%
     filter(var == "africa") %>%
@@ -358,7 +358,7 @@ gen_region <- function(regions, df, var, name, df_vars = NULL,
 
   }
 
-  rgn <- rgn %>% left_join(region_names, by = character())
+  rgn <- rgn %>% cross_join(region_names)
 
   invisible(rgn)
 }
@@ -512,7 +512,7 @@ load_fuel_mix <- function(fname) {
     select(place, year, fuel, value, geography) %>%
     fix_es_regions() %>%
     mutate(value = value * quad_per_EJ, unit_id = "quad", unit = "Quad",
-           model = "History", scenario = "EIStat2023") %>%
+           model = "History", scenario = data_params$es_scenario) %>%
     select(model, scenario, place, year, fuel, value, unit_id, unit,
            geography, iso3c) %>%
     arrange(geography, year, place)

@@ -176,7 +176,8 @@ read_top_down_var <- function(var, file_name, kaya_data, ref_year = 2017) {
 
   td_df = td_df %>% filter(region != "Other") %>% bind_rows(td_others)
 
-  td_df <- td_df %>% left_join(x$region_tbl, by = "region") %>% select(-rgn) %>%
+  td_df <- td_df %>% left_join(x$region_tbl, by = "region") %>%
+    select(-"rgn") %>%
     filter(!is.na(region)) %>%
     bind_rows(td_regions) %>%
     mutate(region = ifelse(is.na(country), region, country)) %>%

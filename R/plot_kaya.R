@@ -118,7 +118,7 @@ plot_kaya <- function(kaya_data, variable,
   if (! is.null(trend_color)) colors['TREND'] <- trend_color
 
   if (is.null(line_sizes)) {
-    line_sizes = c("IN-RANGE" = 1,
+    line_sizes = c("IN-RANGE" = 1.5,
                "PRE" = 1,
                "POST" = 1,
                "TREND" = 1)
@@ -138,7 +138,8 @@ plot_kaya <- function(kaya_data, variable,
   if (! is.null(post_point_size)) point_sizes['POST'] <- post_point_size
   if (! is.null(in_range_point_size)) point_sizes['IN-RANGE'] <- in_range_point_size
 
-  point_sizes = set_names(point_sizes, nm = str_c(names(point_sizes), "_PT"))
+  point_sizes = purrr::set_names(point_sizes,
+                                 nm = stringr::str_c(names(point_sizes), "_PT"))
 
   if (is.null(y_lab)) y_lab <- labels[variable]
   if (is.null(start_year) || is.null(stop_year)) {
@@ -151,7 +152,7 @@ plot_kaya <- function(kaya_data, variable,
 
   se <- FALSE
   if (is.character(trend_line)) {
-    trend_line <- str_to_upper(trend_line) %>% str_trim()
+    trend_line <- stringr::str_to_upper(trend_line) %>% stringr::str_trim()
     if (trend_line %in% c("T", "TRUE")) {
       trend_line <- TRUE
       se <- FALSE
@@ -182,7 +183,7 @@ plot_kaya <- function(kaya_data, variable,
       kaya_data %>% dplyr::filter(year >= stop_year) %>%
         dplyr::mutate(in_range = "POST"),
       kaya_data %>%
-        dplyr::filter(between(year, start_year, stop_year)) %>%
+        dplyr::filter(dplyr::between(year, start_year, stop_year)) %>%
         dplyr::mutate(in_range = "IN-RANGE")
     )
   } else {
@@ -191,12 +192,12 @@ plot_kaya <- function(kaya_data, variable,
 
   variable <- sym(variable)
   p <- ggplot2::ggplot(df, aes(x = year, y = !!variable, color = in_range,
-                               size = in_range))
+                               size = in_range, linewidth = in_range))
   p <- p +
     ggplot2::geom_line(na.rm = TRUE)
 
   if (points) {
-    p <- p + ggplot2::geom_point(aes(size = str_c(in_range, "_PT")),
+    p <- p + ggplot2::geom_point(aes(size = stringr::str_c(in_range, "_PT")),
                                  na.rm = TRUE)
   }
   p <- p + color_scale + legend
@@ -209,11 +210,13 @@ plot_kaya <- function(kaya_data, variable,
     p <- p + ggplot2::geom_smooth(method = "lm", formula = y ~ x,
                                   data = dplyr::filter(df, in_range == "IN-RANGE"),
                          na.rm = TRUE, se = se,
-                         mapping = aes(color = "TREND", size = "TREND"))
+                         mapping = aes(color = "TREND", linewidth = "TREND"))
   }
 
   p <- p +
-    scale_size_manual( values = c(line_sizes, point_sizes),
+    scale_size_manual( values = point_sizes,
+                       guide = "none") +
+    scale_linewidth_manual(values = line_sizes,
                        guide = "none") +
     ggplot2::labs(x = "Year", y = y_lab) +
     ggplot2::theme_bw(base_size = font_size) +
@@ -262,7 +265,7 @@ plot_kaya <- function(kaya_data, variable,
 plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL,
                           colors = NULL, font_size = 20) {
   if (is.null(title) || title == TRUE) {
-    title <- fuel_mix$region %>% unique() %>% str_c(collapse = ", ")
+    title <- fuel_mix$region %>% unique() %>% stringr::str_c(collapse = ", ")
   } else if (!is.character(title)) {
     title <- NULL
   }
@@ -276,18 +279,19 @@ plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL,
 
   if (collapse_renewables) {
     fuel_mix <- fuel_mix %>%
-      dplyr::mutate(fuel = forcats::fct_recode(fuel, Renewables = "Hydro"))
+      dplyr::mutate(fuel = forcats::fct_recode(.data$fuel, Renewables = "Hydro"))
     colors <- colors[names(colors) != "Hydro"]
   }
   fuel_mix <- fuel_mix %>% dplyr::group_by(fuel) %>%
     dplyr::summarize(quads = sum(quads), frac = sum(frac), .groups = "drop")
   fd <- fuel_mix %>%
     dplyr::arrange(fuel) %>%
-    dplyr::mutate(qmin = cumsum(lag(quads, default = 0)), qmax = cumsum(quads))
+    dplyr::mutate(qmin = cumsum(dplyr::lag(quads, default = 0)),
+                  qmax = cumsum(quads))
   labels <- fd %>% dplyr::mutate(label = paste0(fuel, ": ", round(quads, 2),
                                          " quads (", scales::percent(frac, 0.1),
                                          ")")) %>%
-    dplyr::arrange(fuel) %>% dplyr::select(fuel, label) %>%
+    dplyr::arrange(fuel) %>% dplyr::select("fuel", "label") %>%
     tidyr::spread(key = fuel, value = label) %>% unlist()
   if (FALSE) {
     message(paste0(levels(fd$fuel), collapse = ", "))
