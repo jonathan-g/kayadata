@@ -1,7 +1,7 @@
 kayadata
 ================
 Jonathan Gilligan
-2023-07-13
+2024-07-07
 
 # kayadata
 
@@ -56,7 +56,7 @@ mexico_2050
 #> # A tibble: 1 × 10
 #>   region  year     P     G     g     E     F     e     f    ef
 #>   <chr>  <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
-#> 1 Mexico  2050 0.157  2.45  15.6  10.5  577.  4.29  54.9  236.
+#> 1 Mexico  2050 0.154  2.51  16.3  10.9  609.  4.36  55.7  243.
 ```
 
 - `plot_kaya`: Plot trends in Kaya variables for a given region or
