@@ -337,7 +337,7 @@ get_top_down_values <- function(region_name, quiet = FALSE,
 #'
 #' @examples
 #' project_top_down("China", 2037)
-#' project_top_down(region_code = "VNM", year = 2043)
+#' project_top_down(region_code = "CHE", year = 2043)
 #' @export
 project_top_down <- function(region_name, year, quiet = FALSE,
                              region_code = NULL) {
