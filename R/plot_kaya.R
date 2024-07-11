@@ -4,7 +4,8 @@ globalVariables(c("in_range", "fuel", "quads", "frac", "label",
 
 #' Plot Kaya-identity variable
 #'
-#' @param kaya_data A tibble with Kaya-identity data
+#' @param data A tibble with Kaya-identity data or the name of a region or a
+#'   region code.
 #' @param variable The name of the variable to plot (character)
 #' @param start_year The year to start highlighting the data (should correspond
 #' to the beginning of the trend calculation). Set to `NULL` to turn off
@@ -77,13 +78,15 @@ globalVariables(c("in_range", "fuel", "quads", "frac", "label",
 #'           pre_line_size = 0.5, post_line_size = 0.5,
 #'           trend_line_size = 1.5,
 #'           pre_point_size = 2, post_point_size = 2, in_range_point_size = 3)
+#' plot_kaya("United Kingdom")
+#' plot_kaya("GBR")
 #' }
 #'
 #' world <- get_kaya_data("World")
 #' plot_kaya(world, "g", 1982, log_scale = TRUE, trend_line = TRUE)
 #' @export
 #' @importFrom magrittr %>%
-plot_kaya <- function(kaya_data, variable,
+plot_kaya <- function(data, variable,
                       start_year = NA, stop_year = NA,
                       y_lab = NULL,
                       log_scale = FALSE, trend_line = FALSE,
@@ -96,6 +99,21 @@ plot_kaya <- function(kaya_data, variable,
                       trend_line_size = NULL,
                       point_sizes = NULL, pre_point_size = NULL,
                       post_point_size = NULL, in_range_point_size = NULL) {
+  if (is.character(data)) {
+    if (length(data) != 1) {
+      stop("Can't plot kaya data for multiple regions.")
+    }
+    if (data %in% kaya_region_list()) {
+      data <- get_kaya_data(region_name = data, quiet = TRUE)
+    } else if (data %in% kaya_data$region_code) {
+      data <- get_kaya_data(region_code = data, quiet = TRUE)
+    } else {
+      stop("No region or region code ", data)
+    }
+  }
+
+
+
   labels <- c(P =  "Population (billions)",
               G =  "Gross Domestic Product ($ trillion)",
               E =  "Energy consumption (quads)",
@@ -147,7 +165,7 @@ plot_kaya <- function(kaya_data, variable,
     stop_year <- NULL
   } else {
     if (is.na(start_year)) start_year <- 1980
-    if (is.na(stop_year)) stop_year <-  max(kaya_data$year)
+    if (is.na(stop_year)) stop_year <-  max(data$year)
   }
 
   se <- FALSE
@@ -178,16 +196,16 @@ plot_kaya <- function(kaya_data, variable,
 
   if (!any(is.null(start_year), is.null(stop_year))) {
     df <- dplyr::bind_rows(
-      kaya_data %>% dplyr::filter(year <= start_year) %>%
+      data %>% dplyr::filter(year <= start_year) %>%
         dplyr::mutate(in_range = "PRE", pt_in_range = "PRE"),
-      kaya_data %>% dplyr::filter(year >= stop_year) %>%
+      data %>% dplyr::filter(year >= stop_year) %>%
         dplyr::mutate(in_range = "POST"),
-      kaya_data %>%
+      data %>%
         dplyr::filter(dplyr::between(year, start_year, stop_year)) %>%
         dplyr::mutate(in_range = "IN-RANGE")
     )
   } else {
-    df <- kaya_data %>% dplyr::mutate(in_range = "IN-RANGE")
+    df <- data %>% dplyr::mutate(in_range = "IN-RANGE")
   }
 
   variable <- sym(variable)
@@ -260,10 +278,27 @@ plot_kaya <- function(kaya_data, variable,
 #'               colors = c(Coal = "black", "Natural Gas" = "gray60",
 #'                          Oil = "gray30", Nuclear = "forestgreen",
 #'                          Hydro = "royalblue", Renewables="palegreen"))
+#' plot_fuel_mix("United States")
+#' plot_fuel_mix("USA")
 #'
 #' @export
 plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL,
                           colors = NULL, font_size = 20) {
+  if (is.character(fuel_mix)) {
+    if (length(fuel_mix) != 1) {
+      stop("Can't plot fuel mix for multiple regions.")
+    }
+    if (fuel_mix %in% kaya_region_list()) {
+      fuel_mix <- get_fuel_mix(region_name = fuel_mix, quiet = TRUE,
+                               collapse_renewables = collapse_renewables)
+    } else if (fuel_mix %in% kaya_data$region_code) {
+      fuel_mix <- get_fuel_mix(region_code = fuel_mix, quiet = TRUE,
+                               collapse_renewables = collapse_renewables)
+    } else {
+      stop("No region or region code ", fuel_mix)
+    }
+  }
+
   if (is.null(title) || title == TRUE) {
     title <- fuel_mix$region %>% unique() %>% stringr::str_c(collapse = ", ")
   } else if (!is.character(title)) {

@@ -6,6 +6,8 @@
   * Cleaned up some code to avoid importing more global symbols than necesssary
     from Imported packages, and to fix calls to dependency libraries that had
     become deprecated or raised warnings.
+  * Modify `plot_kaya` and `plot_fuel_mix` to accept a character value with a
+    region name or code as an alternative to the data frame.
 
 # kayadata 1.3.0
 
