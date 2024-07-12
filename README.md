@@ -13,6 +13,7 @@ Badge](https://www.r-pkg.org/badges/version-last-release/kayadata)](https://cran
 [![License:
 MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![R-CMD-check](https://github.com/jonathan-g/kayadata/workflows/R-CMD-check/badge.svg)](https://github.com/jonathan-g/kayadata/actions)
+[![pkgdown](https://github.com/jonathan-g/kayadata/workflows/pkgdown/badge.svg)](https://github.com/jonathan-g/kayadata/actions)
 <!-- badges: end -->
 
 This package loads Kaya-identity data, synthesized from several sources.
