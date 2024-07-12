@@ -105,7 +105,7 @@ plot_kaya <- function(data, variable,
     }
     if (data %in% kaya_region_list()) {
       data <- get_kaya_data(region_name = data, quiet = TRUE)
-    } else if (data %in% kaya_data$region_code) {
+    } else if (data %in% kayadata::kaya_data$region_code) {
       data <- get_kaya_data(region_code = data, quiet = TRUE)
     } else {
       stop("No region or region code ", data)
@@ -291,7 +291,7 @@ plot_fuel_mix <- function(fuel_mix, collapse_renewables = TRUE, title = NULL,
     if (fuel_mix %in% kaya_region_list()) {
       fuel_mix <- get_fuel_mix(region_name = fuel_mix, quiet = TRUE,
                                collapse_renewables = collapse_renewables)
-    } else if (fuel_mix %in% kaya_data$region_code) {
+    } else if (fuel_mix %in% kayadata::kaya_data$region_code) {
       fuel_mix <- get_fuel_mix(region_code = fuel_mix, quiet = TRUE,
                                collapse_renewables = collapse_renewables)
     } else {
