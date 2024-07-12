@@ -67,7 +67,7 @@
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_kaya</span><span class="op">(</span></span>
-<span>  <span class="va">kaya_data</span>,</span>
+<span>  <span class="va">data</span>,</span>
 <span>  <span class="va">variable</span>,</span>
 <span>  start_year <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  stop_year <span class="op">=</span> <span class="cn">NA</span>,</span>
@@ -97,8 +97,9 @@
     <h2>Arguments</h2>
 
 
-<dl><dt id="arg-kaya-data">kaya_data<a class="anchor" aria-label="anchor" href="#arg-kaya-data"></a></dt>
-<dd><p>A tibble with Kaya-identity data</p></dd>
+<dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
+<dd><p>A tibble with Kaya-identity data or the name of a region or a
+region code.</p></dd>
 
 
 <dt id="arg-variable">variable<a class="anchor" aria-label="anchor" href="#arg-variable"></a></dt>
@@ -243,6 +244,8 @@ chart between <code>start_year</code> and <code>stop_year</code>.</p></dd>
 <span class="r-in"><span>          pre_line_size <span class="op">=</span> <span class="fl">0.5</span>, post_line_size <span class="op">=</span> <span class="fl">0.5</span>,</span></span>
 <span class="r-in"><span>          trend_line_size <span class="op">=</span> <span class="fl">1.5</span>,</span></span>
 <span class="r-in"><span>          pre_point_size <span class="op">=</span> <span class="fl">2</span>, post_point_size <span class="op">=</span> <span class="fl">2</span>, in_range_point_size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plot_kaya</span><span class="op">(</span><span class="st">"United Kingdom"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">plot_kaya</span><span class="op">(</span><span class="st">"GBR"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">world</span> <span class="op">&lt;-</span> <span class="fu"><a href="get_kaya_data.html">get_kaya_data</a></span><span class="op">(</span><span class="st">"World"</span><span class="op">)</span></span></span>
