@@ -23,7 +23,7 @@ Description: Provides data for Kaya identity variables (population, gross
              economy, and the carbon-intensity of its energy supply.
 URL: https://jonathan-g.github.io/kayadata/, 
      https://github.com/jonathan-g/kayadata,
-     https://doi.org/10.5281/zenodo.8144476
+     https://doi.org/10.5281/zenodo.12734769
 BugReports: https://github.com/jonathan-g/kayadata/issues
 License: MIT + file LICENSE
 Depends:
