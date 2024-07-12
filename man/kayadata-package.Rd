@@ -66,7 +66,7 @@ Useful links:
 \itemize{
   \item \url{https://jonathan-g.github.io/kayadata/}
   \item \url{https://github.com/jonathan-g/kayadata}
-  \item \doi{10.5281/zenodo.8144476}
+  \item \doi{10.5281/zenodo.12734769}
   \item Report bugs at \url{https://github.com/jonathan-g/kayadata/issues}
 }
 
