@@ -1,7 +1,7 @@
 ## Test environments
 
-* local Windows 10 install, R 4.3.1
-* local Ubuntu 22.04.1 LTS install, R 4.3.1
+* local Windows 10 install, R 4.4.1
+* local Ubuntu 22.04.4 LTS install, R 4.4.1
 * GitHub actions:
   * Ubuntu latest, R release
   * Ubuntu latest, R devel
@@ -9,15 +9,11 @@
   * Windows latest, R release
   * MacOS latest, R release
 * r-hub builder:
-  * Debian, R-Release GCC
-  * Debian, R-Patched GCC
-  * Ubuntu 20.04.1 LTS, R-Release GCC
-  * Ubuntu 20.04.1 LTS, R-Devel GCC
-  * Debian, R-devel, clang, ISO-8859-15 locale
-  * Debian, R-devel, GCC
-  * Debian, R-devel, GCC, no long double
-  * Fedora, R-Devel GCC
-  * Fedora, R-Devel clang, gfortran
+  * linux
+  * macos
+  * windows
+  * ubuntu-next
+  * ubuntu-release
 * winbuilder devel, release, oldrelease
 
 ## R CMD check results
@@ -43,8 +39,8 @@ There are no reverse dependencies.
 
 ## Additional comments
 
-* This submission updates the package to version 1.3.0
+* This submission updates the package to version 1.4.0
 
 * This release updates the data to the latest releases from World Bank and 
   Energy Institute, with energy use, CO2 emissions,  economic, and population 
-  data through 2022.
+  data through 2024.
