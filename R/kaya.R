@@ -44,7 +44,7 @@ lookup_region_code <- function(region_code, data = kayadata::kaya_data,
 kaya_region_list <- function() {
   levels(kayadata::kaya_data$region) %>%
     # eliminate levels without instances
-    intersect(unique(kaya_data$region)) %>%
+    intersect(unique(kayadata::kaya_data$region)) %>%
     as.character()
 }
 
